@@ -16,7 +16,7 @@ fpTHM=$ppTHM	# final pT Hat Minimum (fpTHM).
 
 # Ahora corremos el macro para todos los pT Hat Minimum.. Así aumentamos la estadística.
 cd /home/saksevul/T/FastJet
-for pTHM in {1..5}	# Ciclo sobre: root Files List (rFL).
+for pTHM in {1..2400..10}	# Ciclo sobre: root Files List (rFL).
 do
   sed -i "s/$pOF/$pTHM.root/g" $PttMM
 	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM/g" $PttMM	# Cabiamos el valor del pTHatMin.
@@ -35,8 +35,8 @@ sed -i "s/$ppTHM/$fpTHM/g" $PttMM
 for JCA in ak5FJ #ak7PF kt4PF kt6PF	# Hago en ciclo sobre los Jet Clustering Algorithms (JCAs).
 do
 	rm $PttOrFD/$JCA.root	# Eliminamos los archivos viejos, pues serán remplazados.
-	hadd $PttOrFD/$JCA.root $PttOrFD/.$JCA-*.root	# Creamos un único archivo root para cada JCA.
-	rm $PttOrFD/.$JCA-*.root	# Eliminamos permanentemente los archivos que ya no necesitaremos más.
+	hadd $PttOrFD/$JCA.root $PttOrFD/$JCA-*.root	# Creamos un único archivo root para cada JCA.
+	# rm $PttOrFD/.$JCA-*.root	# Eliminamos permanentemente los archivos que ya no necesitaremos más.
 done
 
 

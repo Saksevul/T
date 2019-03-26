@@ -192,12 +192,21 @@ void Analisis(){   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=1;
       for (Int_t j=i+1; j<ak5PFJets_pt_.GetSize(); j++) {
         // h__etaDistance__jet_jet -> Fill( abs(ak5PFJets_eta_[i] - ak5PFJets_eta_[j]) );
         // h__phiDistance__jet_jet -> Fill( abs(ak5PFJets_phi_[i] - ak5PFJets_phi_[j]) );
-        h_ak5PFJets__D_Jet_Jet    -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
-        if ( 4.0<ak5PFJets_pt_[i] &&  4.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT04__D_Jet_Jet -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
-        if ( 8.0<ak5PFJets_pt_[i] &&  8.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT08__D_Jet_Jet -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
-        if (16.0<ak5PFJets_pt_[i] && 16.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT16__D_Jet_Jet -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
-        if (32.0<ak5PFJets_pt_[i] && 32.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT32__D_Jet_Jet -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
-        if (64.0<ak5PFJets_pt_[i] && 64.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT64__D_Jet_Jet -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
+        if ( abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]) < PI ) {
+          h_ak5PFJets__D_Jet_Jet    -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(ak5PFJets_phi_[i]-ak5PFJets_phi_[j])) );
+          if ( 4.0<ak5PFJets_pt_[i] &&  4.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT04__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(ak5PFJets_phi_[i]-ak5PFJets_phi_[j])) );
+          if ( 8.0<ak5PFJets_pt_[i] &&  8.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT08__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(ak5PFJets_phi_[i]-ak5PFJets_phi_[j])) );
+          if (16.0<ak5PFJets_pt_[i] && 16.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT16__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(ak5PFJets_phi_[i]-ak5PFJets_phi_[j])) );
+          if (32.0<ak5PFJets_pt_[i] && 32.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT32__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(ak5PFJets_phi_[i]-ak5PFJets_phi_[j])) );
+          if (64.0<ak5PFJets_pt_[i] && 64.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT64__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(ak5PFJets_phi_[i]-ak5PFJets_phi_[j])) );
+        } else {  // Esto es debido a que ningún Jet puede estar a una distancia mayor a PI, de otro Jet.
+          h_ak5PFJets__D_Jet_Jet    -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(2*PI-abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]))) );
+          if ( 4.0<ak5PFJets_pt_[i] &&  4.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT04__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(2*PI-abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]))) );
+          if ( 8.0<ak5PFJets_pt_[i] &&  8.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT08__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(2*PI-abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]))) );
+          if (16.0<ak5PFJets_pt_[i] && 16.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT16__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(2*PI-abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]))) );
+          if (32.0<ak5PFJets_pt_[i] && 32.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT32__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(2*PI-abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]))) );
+          if (64.0<ak5PFJets_pt_[i] && 64.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT64__D_Jet_Jet -> Fill( sqrt(pow2(ak5PFJets_eta_[i]-ak5PFJets_eta_[j]) +  pow2(2*PI-abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]))) );
+        }
       }
 
       // Cociente de la energía de las partículas respecto al p_T del Jet. Y Multiplicidad de las particulas en cada Jet.

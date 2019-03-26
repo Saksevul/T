@@ -32,18 +32,15 @@
 using namespace Pythia8;
 
 //--------------------------------------------------------------------------------------------------------------
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* outFile = new TFile("/home/saksevul/T/FastJet/root/.ak5FJ-1.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/FastJet/root/ak5FJ-1.root", "RECREATE");
   // Histograms.
-  TH1F* nAna     = new TH1F("nAna     ", "multiplicity of analyzed event", 200, 0, 2000);
-  TH1F* tGen     = new TH1F("tGen     ", "generation time as fn of multiplicity", 200, 0, 2000);
-  TH1F* tFast    = new TH1F("tFast    ", "FastJet time as fn of multiplicity", 200, 0, 2000);
-  TH1F* tFastGen = new TH1F("tFastGen ", "FastJet/generation time as fn of multiplicity", 200, 0, 2000);
-  TH1F* h_ak5FastJet__pt          = new TH1F("ak5FastJet__pT", "Espectro de p_{T} de ak5 FastJet; p_{T} [GeV]; Ocurrencia", 3200, 0, 3200);
+  TH1F* h_ak5FastJet__pt          = new TH1F("ak5FastJet__pT", "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 2400, 0, 2400);
+  TH1F* h_ak5FastJet__phi         = new TH1F("ak5FastJet__phi", "Distribución en #phi de ak5FastJet; Valor; Ocurrencia", 126, 0, 2*PI);
   TH1F* h_ak5FastJet__D_Jet_Jet   = new TH1F("ak5FastJet__DistanciaAngular_Jet_Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5FastJet_{i} al ak5FastJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
   TH1F* h_ak5FastJet__Multipicity = new TH1F("ak5FastJet__Multiplicidad", "Multiplicidad, de ak5FastJet, por Evento; Multilicidad; Ocurrencia", 120, 0, 120);
 
@@ -58,12 +55,12 @@ int main(int argc, char* argv[]) {
   pythia.readString("Next:numberShowProcess = 0");
   pythia.readString("Next:numberShowEvent = 0");
   // LHC initialization.
-  pythia.readString("Beams:eCM = 14000.");
+  pythia.readString("Beams:eCM = 7000.0");
   pythia.init();
 
 
   // Number of events, generated and listed ones (for jets).
-  int nEvent    = 100;
+  int nEvent    = 10000;
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= - -1; C/A = 0; kT = 1.
   double R      = 0.5;    // Jet size.
@@ -80,9 +77,8 @@ int main(int argc, char* argv[]) {
 
 
   // Begin event loop. Generate event. Skip if error. Por Evento se refiere a una colisión o a un decaimiento.
-  for (int iEvent = 0; iEvent < nEvent; ++iEvent) {    clock_t befGen = clock();
+  for (int iEvent = 0; iEvent < nEvent; ++iEvent) {    if (!pythia.next()) continue;
 
-    if (!pythia.next()) continue;    clock_t aftGenbefFast = clock();
     // Begin FastJet analysis: extract particles from event record.
     fjInputs.resize(0);    Vec4   pTemp;    double mTemp;    int nAnalyze = 0;
 
@@ -117,43 +113,38 @@ int main(int argc, char* argv[]) {
     sortedJets    = sorted_by_pt(inclusiveJets);
 
     for (size_t i=0; i<sortedJets.size(); i++){
+
       h_ak5FastJet__pt -> Fill(sortedJets[i].pt());
+      h_ak5FastJet__phi-> Fill(sortedJets[i].phi());
+
       for (size_t j=i+1; j<sortedJets.size(); j++) {
-        h_ak5FastJet__D_Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(sortedJets[i].phi()-sortedJets[j].phi())) );
-      }
+        if ( abs(sortedJets[i].phi()-sortedJets[j].phi()) < PI ) {
+          h_ak5FastJet__D_Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(sortedJets[i].phi()-sortedJets[j].phi())) );
+        } else {
+          h_ak5FastJet__D_Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(2*PI-abs(sortedJets[i].phi()-sortedJets[j].phi()))) );
+      } }
     }
 
     h_ak5FastJet__Multipicity -> Fill(sortedJets.size());
 
-    clock_t aftFast = clock();
+  }  // End of event loop.
 
-    // Comparison of time consumption by analyzed multiplicity.
-    nAna -> Fill( nAnalyze);
-    tGen -> Fill( nAnalyze, aftGenbefFast - befGen);
-    tFast -> Fill( nAnalyze, aftFast - aftGenbefFast);
-    tFastGen  -> Fill( nAnalyze, (float)(aftFast-aftGenbefFast)/(float)(aftGenbefFast-befGen));
-  // End of event loop.
-  }
+
 
   // Statistics. Histograms.
-  pythia.stat();
-  nAna     -> Scale(1.0/nAna     ->Integral());
-  tGen     -> Scale(1.0/tGen     ->Integral());
-  tFast    -> Scale(1.0/tFast    ->Integral());
-  tFastGen -> Scale(1.0/tFastGen ->Integral());
-  h_ak5FastJet__pt          -> Scale(1.0/h_ak5FastJet__pt         ->Integral());
-  h_ak5FastJet__D_Jet_Jet   -> Scale(1.0/h_ak5FastJet__D_Jet_Jet  ->Integral());
-  h_ak5FastJet__Multipicity -> Scale(1.0/h_ak5FastJet__Multipicity->Integral());
+  // pythia.stat();
 
-  nAna     -> Write();
-  tGen     -> Write();
-  tFast    -> Write();
-  tFastGen -> Write();
+  // h_ak5FastJet__pt          -> Scale(1.0/h_ak5FastJet__pt->Integral());
+  // h_ak5FastJet__phi         -> Scale(1.0/h_ak5FastJet__phi->Integral());
+  // h_ak5FastJet__D_Jet_Jet   -> Scale(1.0/h_ak5FastJet__D_Jet_Jet->Integral());
+  // h_ak5FastJet__Multipicity -> Scale(1.0/h_ak5FastJet__Multipicity->Integral());
+
   h_ak5FastJet__pt          -> Write();
+  h_ak5FastJet__phi         -> Write();
   h_ak5FastJet__D_Jet_Jet   -> Write();
   h_ak5FastJet__Multipicity -> Write();
 
   // Done.
-  delete outFile;
+  delete OutputFile;
   return 0;
 }
