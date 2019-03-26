@@ -6,7 +6,7 @@ void Analisis(){   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=1;
   TTreeReader reader("Events", InputFile);
 
   //Crear el archivo de salida que queremos. Tiene que ir después del imputFile.
-  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF-0001.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/.ak5PF-0001.root", "RECREATE");
 
 
   printf("\n\n InputFile: Jet_20000/0001.root, JCA: ak5PF. \n\n\n\t %i) Archivos abiertos. \n\n", nprint++);
@@ -81,7 +81,7 @@ void Analisis(){   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=1;
   // ak5PFJets
   TH1I *h_ak5PFJets_present = new TH1I("ak5PFJets_present", "recoPFJets_PFJets__RECO.present; Present; Probabilidad", 19, -9.5, 9.5);
   TH1I *h_ak5PFJets_qx3_         = new TH1I("ak5PFJets_qx3_", "recoPFJets_PFJets__RECO.obj.qx3_; qx3; Probabilidad", 59, -59, 59);
-  TH1F *h_ak5PFJets_pt_          = new TH1F("ak5PFJets_pt_",  "recoPFJets_PFJets__RECO.obj.pt_; p_{T} [GeV]; Probabilidad",  2400, 0, 2400);
+  TH1F *h_ak5PFJets_pt_          = new TH1F("ak5PFJets_pt_",  "recoPFJets_PFJets__RECO.obj.pt_; p_{T} [GeV]; Probabilidad",  3200, 0, 3200);
   TH1F *h_ak5PFJets_eta_         = new TH1F("ak5PFJets_eta_", "recoPFJets_PFJets__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
   TH1F *h_ak5PFJets_phi_         = new TH1F("ak5PFJets_phi_", "recoPFJets_PFJets__RECO.obj.phi_; #phi [Rad]; Probabilidad", 61, -3.1416, 3.1416);
   TH1F *h_ak5PFJets_mass_        = new TH1F("ak5PFJets_mass_","recoPFJets_PFJets__RECO.obj.mass_; Masa [GeV]; Probabilidad",60, 0, 60);
@@ -113,12 +113,12 @@ void Analisis(){   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=1;
   TH1F *h_ak5PFJets_pT32__Multiplicity  = new TH1F("ak5PFJets_pT>32  Multiplicidad", "Multiplicidad de ak5PFJets, con p_{T} > 32 GeV, por Evento; Numero de Jets; Ocurrencia", 120, 0, 120);
   TH1F *h_ak5PFJets_pT64__Multiplicity  = new TH1F("ak5PFJets_pT>64  Multiplicidad", "Multiplicidad de ak5PFJets, con p_{T} > 64 GeV, por Evento; Numero de Jets; Ocurrencia", 120, 0, 120);
   // Espectro de p_T. Tomando como criterio de seleccion la multiplicidad de Jets en cada Evento.
-  TH1F *h_ak5PFJets_Multiplicity64__pT = new TH1F("ak5PFJets_Mult<=64  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 64, por Evento; p_{T} [GeV]; Ocurrencia", 500, 0, 2000);
-  TH1F *h_ak5PFJets_Multiplicity32__pT = new TH1F("ak5PFJets_Mult<=32  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 32, por Evento; p_{T} [GeV]; Ocurrencia", 500, 0, 2000);
-  TH1F *h_ak5PFJets_Multiplicity16__pT = new TH1F("ak5PFJets_Mult<=16  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 16, por Evento; p_{T} [GeV]; Ocurrencia", 500, 0, 2000);
-  TH1F *h_ak5PFJets_Multiplicity08__pT = new TH1F("ak5PFJets_Mult<=08  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 08, por Evento; p_{T} [GeV]; Ocurrencia", 500, 0, 2000);
-  TH1F *h_ak5PFJets_Multiplicity04__pT = new TH1F("ak5PFJets_Mult<=04  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 04, por Evento; p_{T} [GeV]; Ocurrencia", 500, 0, 2000);
-  TH1F *h_ak5PFJets_Multiplicity02__pT = new TH1F("ak5PFJets_Mult<=02  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 02, por Evento; p_{T} [GeV]; Ocurrencia", 500, 0, 2000);
+  TH1F *h_ak5PFJets_Multiplicity64__pT = new TH1F("ak5PFJets_Mult<=64  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 64, por Evento; p_{T} [GeV]; Ocurrencia", 800, 0, 3200);
+  TH1F *h_ak5PFJets_Multiplicity32__pT = new TH1F("ak5PFJets_Mult<=32  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 32, por Evento; p_{T} [GeV]; Ocurrencia", 800, 0, 3200);
+  TH1F *h_ak5PFJets_Multiplicity16__pT = new TH1F("ak5PFJets_Mult<=16  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 16, por Evento; p_{T} [GeV]; Ocurrencia", 800, 0, 3200);
+  TH1F *h_ak5PFJets_Multiplicity08__pT = new TH1F("ak5PFJets_Mult<=08  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 08, por Evento; p_{T} [GeV]; Ocurrencia", 800, 0, 3200);
+  TH1F *h_ak5PFJets_Multiplicity04__pT = new TH1F("ak5PFJets_Mult<=04  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 04, por Evento; p_{T} [GeV]; Ocurrencia", 800, 0, 3200);
+  TH1F *h_ak5PFJets_Multiplicity02__pT = new TH1F("ak5PFJets_Mult<=02  pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 02, por Evento; p_{T} [GeV]; Ocurrencia", 800, 0, 3200);
   // Distancia angular entre Jets.
   TH1F *h_ak5PFJets__D_Jet_Jet      = new TH1F("ak5PFJets__DistanciaAngular_Jet_Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
   TH1F *h_ak5PFJets_pT04__D_Jet_Jet = new TH1F("ak5PFJets_pT>04  D Jet Jet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);

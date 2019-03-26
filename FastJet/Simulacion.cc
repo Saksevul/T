@@ -37,13 +37,13 @@ int main(int argc, char* argv[]) {
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* outFile = new TFile("simulacion.root", "RECREATE");
+  TFile* outFile = new TFile("/home/saksevul/T/FastJet/root/.ak5FJ-1.root", "RECREATE");
   // Histograms.
   TH1F* nAna     = new TH1F("nAna     ", "multiplicity of analyzed event", 200, 0, 2000);
   TH1F* tGen     = new TH1F("tGen     ", "generation time as fn of multiplicity", 200, 0, 2000);
   TH1F* tFast    = new TH1F("tFast    ", "FastJet time as fn of multiplicity", 200, 0, 2000);
   TH1F* tFastGen = new TH1F("tFastGen ", "FastJet/generation time as fn of multiplicity", 200, 0, 2000);
-  TH1F* h_ak5FastJet__pt          = new TH1F("ak5FastJet__pT", "Espectro de p_{T} de ak5 FastJet; p_{T} [GeV]; Ocurrencia", 2400, 0, 2400);
+  TH1F* h_ak5FastJet__pt          = new TH1F("ak5FastJet__pT", "Espectro de p_{T} de ak5 FastJet; p_{T} [GeV]; Ocurrencia", 3200, 0, 3200);
   TH1F* h_ak5FastJet__D_Jet_Jet   = new TH1F("ak5FastJet__DistanciaAngular_Jet_Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5FastJet_{i} al ak5FastJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
   TH1F* h_ak5FastJet__Multipicity = new TH1F("ak5FastJet__Multiplicidad", "Multiplicidad, de ak5FastJet, por Evento; Multilicidad; Ocurrencia", 120, 0, 120);
 
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
   Event& event = pythia.event;
   // Process selection.
   pythia.readString("HardQCD:all = on");
-  pythia.readString("PhaseSpace:pTHatMin = 300.");
+  pythia.readString("PhaseSpace:pTHatMin = 1.0");
   // No event record printout.
   pythia.readString("Next:numberShowInfo = 0");
   pythia.readString("Next:numberShowProcess = 0");
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
 
 
   // Number of events, generated and listed ones (for jets).
-  int nEvent    = 1000;
+  int nEvent    = 100;
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= - -1; C/A = 0; kT = 1.
   double R      = 0.5;    // Jet size.
