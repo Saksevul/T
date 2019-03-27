@@ -37,9 +37,9 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* OutputFile = new TFile("/home/saksevul/T/FastJet/root/ak5FJ-1.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/FastJet/root/ak5FJ-0.root", "RECREATE");
   // Histograms.
-  TH1F* h_ak5FastJet__pt          = new TH1F("ak5FastJet__pT", "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 2400, 0, 2400);
+  TH1F* h_ak5FastJet__pt          = new TH1F("ak5FastJet__pT", "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 3200, 0, 3200);
   TH1F* h_ak5FastJet__phi         = new TH1F("ak5FastJet__phi", "Distribución en #phi de ak5FastJet; Valor; Ocurrencia", 126, 0, 2*PI);
   TH1F* h_ak5FastJet__D_Jet_Jet   = new TH1F("ak5FastJet__DistanciaAngular_Jet_Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5FastJet_{i} al ak5FastJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
   TH1F* h_ak5FastJet__Multipicity = new TH1F("ak5FastJet__Multiplicidad", "Multiplicidad, de ak5FastJet, por Evento; Multilicidad; Ocurrencia", 120, 0, 120);
@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   Event& event = pythia.event;
   // Process selection.
   pythia.readString("HardQCD:all = on");
-  pythia.readString("PhaseSpace:pTHatMin = 1.0");
+  pythia.readString("PhaseSpace:pTHatMin = 0.0");
   // No event record printout.
   pythia.readString("Next:numberShowInfo = 0");
   pythia.readString("Next:numberShowProcess = 0");
