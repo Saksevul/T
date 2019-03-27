@@ -4,8 +4,9 @@ start_time=$(date +%X)
 
 
 # Primero definimos los parámetros de entrada.
-PttMM=~/T/FastJet/Simulacion.cc	# Path to the Master Macro (pttMM).
-PttOrFD=~/T/FastJet/root	# Path to the Output root Files Directory (PttOrFD).
+MMN=Simulacion.cc	# Master Macro Name (MMN).
+PttMMD=/home/saksevul/T/PYTHIA/  # Path to the Master Macro Directory (pttMMD).
+PttOrFD=/home/saksevul/T/PYTHIA/FastJet/	# Path to the Output root Files Directory (PttOrFD).
 
 
 pOF=0.root  # previous Output File (pOF).
@@ -15,20 +16,21 @@ fpTHM=$ppTHM	# final pT Hat Minimum (fpTHM).
 
 
 # Ahora corremos el macro para todos los pT Hat Minimum.. Así aumentamos la estadística.
-cd /home/saksevul/T/FastJet
+pwd=$PWD && cd $PttMMD  # Guardamos es directorio actual de trabajo y pasamos a MMD.
 for pTHM in {0..3200..10}	# Ciclo sobre: root Files List (rFL).
 do
-  sed -i "s/$pOF/$pTHM.root/g" $PttMM
-	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM/g" $PttMM	# Cabiamos el valor del pTHatMin.
+  sed -i "s/$pOF/$pTHM.root/g" $PttMMD$MMN
+	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM/g" $PttMMD$MMN	# Cabiamos el valor del pTHatMin.
   make Simulacion && ./Simulacion # A CORRER ESA MADRE!
   pOF=$pTHM.root
 	ppTHM=pTHatMin\ =\ $pTHM
 done
-cd
+cd $pwd  # Regresamos al directorio anterior de tranajo.
+
 
 # Esta siguiente parte es para regresar al código a su estado original.
-sed -i "s/$pOF/$fOF/g" $PttMM
-sed -i "s/$ppTHM/$fpTHM/g" $PttMM
+sed -i "s/$pOF/$fOF/g" $PttMMD$MMN
+sed -i "s/$ppTHM/$fpTHM/g" $PttMM$MMN
 
 
 # Finalmete juntamos todos los archivos root de salida, correspondientes a cada JCA, (1 por cada root File).

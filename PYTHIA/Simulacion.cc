@@ -37,7 +37,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* OutputFile = new TFile("/home/saksevul/T/FastJet/root/ak5FJ-0.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-0.root", "RECREATE");
   // Histograms.
   TH1F* h_ak5FastJet__pt          = new TH1F("ak5FastJet__pT", "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 3200, 0, 3200);
   TH1F* h_ak5FastJet__phi         = new TH1F("ak5FastJet__phi", "Distribución en #phi de ak5FastJet; Valor; Ocurrencia", 126, 0, 2*PI);
