@@ -15,7 +15,7 @@ frF=$prF	# final root File (prF).
 fJCA=$pJCA	# final Jet Clustering Algorithm (fJCA).
 
 
-# Ahora corremos el macro para todos archivos. Así aumentamos la estadística.
+# Ahora corremos el macro para todos los archivos. Así aumentamos la estadística.
 for rF in $(cat $PttrFL)	# Ciclo sobre: root Files List (rFL).
 do
 	sed -i "s/$prF/$rF/g" $PttMM	# Cambiamos el root File de entrada del Master Macro (MM).
@@ -38,8 +38,8 @@ sed -i "s/$JCA/$fJCA/g" $PttMM
 for JCA in ak5PF ak7PF kt4PF kt6PF	# Hago en ciclo sobre los Jet Clustering Algorithms (JCAs).
 do
 	rm $PttOrFD/$JCA.root	# Eliminamos los archivos viejos, pues serán remplazados.
-	hadd $PttOrFD/$JCA.root $PttOrFD/$JCA-*.root	# Creamos un único archivo root para cada JCA.
-	rm $PttOrFD/$JCA-*.root	# Eliminamos permanentemente los archivos que ya no necesitamos.
+	hadd $PttOrFD/$JCA.root $PttOrFD/.$JCA-*.root	# Creamos un único archivo root para cada JCA.
+	rm $PttOrFD/.$JCA-*.root	# Eliminamos permanentemente los archivos que ya no necesitamos.
 done
 
 

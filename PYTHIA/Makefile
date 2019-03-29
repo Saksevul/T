@@ -148,7 +148,7 @@ ifeq ($(FASTJET3_USE)$(ROOT_USE),truetrue)
 	 -L$(FASTJET3_LIB) -Wl,-rpath,$(FASTJET3_LIB) -lfastjet\
 	  $(GZIP_INC) $(GZIP_FLAGS)
 else
-	@echo "Error: $@ requires FASTJET3"
+	@echo "Error: $@ requires FASTJET3 and ROOT"
 endif
 #-------------------------------------------------------------------------------
 
