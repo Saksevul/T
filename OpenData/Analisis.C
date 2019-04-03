@@ -1,5 +1,4 @@
-
-void Analisis(){   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=1;
+void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=0;
 
   //Abrimos los archivos que nos interesan y los árboles que queremos leer.
   TFile* InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_AOD_12Oct2013-v1_20000/0001.root", "READ");
@@ -19,7 +18,7 @@ void Analisis(){   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=1;
 	TTreeReaderArray<Float_t>gsfElectrons_eta_ ( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.eta_" );
 	TTreeReaderArray<Float_t>gsfElectrons_phi_ ( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.phi_" );
 	TTreeReaderArray<Float_t>gsfElectrons_mass_( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.mass_" );
-  // TTreeReaderArray<ProxyParam_t> gsfElectrons_fX_( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.vertex_.fCoordinates.fX" );
+  TTreeReaderArray<Double32_t> gsfElectrons_fX_( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.vertex_.fCoordinates.fX" );
   // Muones
   TTreeReaderArray<Bool_t> muons_present ( reader, "recoMuons_muons__RECO.present" );
   TTreeReaderArray<Int_t>  muons_qx3_ ( reader, "recoMuons_muons__RECO.obj.qx3_" );
