@@ -18,7 +18,6 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=0;
 	TTreeReaderArray<Float_t>gsfElectrons_eta_ ( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.eta_" );
 	TTreeReaderArray<Float_t>gsfElectrons_phi_ ( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.phi_" );
 	TTreeReaderArray<Float_t>gsfElectrons_mass_( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.mass_" );
-  TTreeReaderArray<Double32_t> gsfElectrons_fX_( reader, "recoGsfElectrons_gsfElectrons__RECO.obj.vertex_.fCoordinates.fX" );
   // Muones
   TTreeReaderArray<Bool_t> muons_present ( reader, "recoMuons_muons__RECO.present" );
   TTreeReaderArray<Int_t>  muons_qx3_ ( reader, "recoMuons_muons__RECO.obj.qx3_" );
@@ -44,8 +43,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=0;
   TTreeReaderArray<Int_t>  ak5PFJets_status_      ( reader, "recoPFJets_ak5PFJets__RECO.obj.status_" );
   // TTreeReaderArray<Float_t>ak5PFJets_dau          ( reader, "recoPFJets_ak5PFJets__RECO.obj.dau" ); // vector<edm::Ptr<reco::Candidate> > dau[recoPFJets_ak5PFJets__RECO.obj_]
   TTreeReaderArray<Float_t>ak5PFJets_meta_jrea     ( reader, "recoPFJets_ak5PFJets__RECO.obj.mJetArea" );
-  TTreeReaderArray<Float_t>ak5PFJets_mPileupEnergy( reader, "recoPFJets_ak5PFJets__RECO.obj.mPileupEnergy" );
-  TTreeReaderArray<Int_t>  ak5PFJets_mPassNumber  ( reader, "recoPFJets_ak5PFJets__RECO.obj.mPassNumber" );
+  TTreeReaderArray<Float_t>ak5PFJets_mPileupEnergy ( reader, "recoPFJets_ak5PFJets__RECO.obj.mPileupEnergy" );
+  TTreeReaderArray<Int_t>  ak5PFJets_mPassNumber   ( reader, "recoPFJets_ak5PFJets__RECO.obj.mPassNumber" );
   TTreeReaderArray<Float_t>ak5PFJets_mChargedHadronEnergy      ( reader, "recoPFJets_ak5PFJets__RECO.obj.m_specific.mChargedHadronEnergy" );
   TTreeReaderArray<Float_t>ak5PFJets_mNeutralHadronEnergy      ( reader, "recoPFJets_ak5PFJets__RECO.obj.m_specific.mNeutralHadronEnergy" );
   TTreeReaderArray<Float_t>ak5PFJets_mElectronEnergy           ( reader, "recoPFJets_ak5PFJets__RECO.obj.m_specific.mElectronEnergy" );
@@ -191,7 +190,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=0;
       for (Int_t j=i+1; j<ak5PFJets_pt_.GetSize(); j++) {
         // h__etaDistance__jet_jet -> Fill( abs(ak5PFJets_eta_[i] - ak5PFJets_eta_[j]) );
         // h__phiDistance__jet_jet -> Fill( abs(ak5PFJets_phi_[i] - ak5PFJets_phi_[j]) );
-        if ( abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]) < PI ) {
+        if ( abs(ak5PFJets_phi_[i]-ak5PFJets_phi_[j]) <= PI ) {
           h_ak5PFJets__D_Jet_Jet    -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
           if ( 4.0<ak5PFJets_pt_[i] &&  4.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT04__D_Jet_Jet -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
           if ( 8.0<ak5PFJets_pt_[i] &&  8.0<ak5PFJets_pt_[j])  h_ak5PFJets_pT08__D_Jet_Jet -> Fill( sqrt(pow(ak5PFJets_eta_[i]-ak5PFJets_eta_[j], 2) +  pow(ak5PFJets_phi_[i]-ak5PFJets_phi_[j], 2)) );
@@ -308,7 +307,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1, evento=0;
     if (muons_pt_.GetSize() != 0)        h_Muons__Multiplicity        -> Fill(muons_pt_.GetSize());
 
 
-    // printf("\t \t Dont worry. While %i hecho. =D \n\n", evento++);
+    printf("\t \t Dont worry. While %i hecho. =D \n\n", evento++);
   }
 
 
