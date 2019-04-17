@@ -8,7 +8,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   // TBranch *ak5PFJets = Eventos->GetBranch("recoPFJets_ak5PFJets__RECO.obj");
 
   //Crear el archivo de salida que queremos. Tiene que ir después del imputFile.
-  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ROOT5ak5PF-0001.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF-0001.root", "RECREATE");
 
 
     printf("\n\n InputFile: Jet_20000/0001.root, JCA: ak5PF. \n\n\n\t %i) Archivos abiertos. \n\n", nprint++);
@@ -62,19 +62,19 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
 
   // Muons
-  TH1F *h_Muones_pt_ = new TH1F("Muons_pt_",  "p_{T} de Muones contenidos en ak5PFJets; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
-  TH1F *h_Muones_eta_= new TH1F("Muons_eta_", "recoMuones_muons__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
-  TH1F *h_Muones_phi_= new TH1F("Muons_phi_", "recoMuones_muons__RECO.obj.phi_; #phi [Rad]; Probabilidad", 61, -3.1424, 3.1424);
-  TH1D *h_Muones_fX_ = new TH1D("Muons_fX_", "Vertice en X de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 481, -24.05, 24.05);
-  TH1D *h_Muones_fY_ = new TH1D("Muons_fY_", "Vertice en Y de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 481, -24.05, 24.05);
-  TH1D *h_Muones_fZ_ = new TH1D("Muons_fZ_", "Vertice en Z de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 481, -24.05, 24.05);
+  TH1F *h_Muons_pt_ = new TH1F("Muons_pt_",  "p_{T} de Muones contenidos en ak5PFJets; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
+  TH1F *h_Muons_eta_= new TH1F("Muons_eta_", "recoMuones_muons__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
+  TH1F *h_Muons_phi_= new TH1F("Muons_phi_", "recoMuones_muons__RECO.obj.phi_; #phi [Rad]; Probabilidad", 61, -3.1424, 3.1424);
+  TH1D *h_Muons_fX_ = new TH1D("Muons_fX_", "Vertice en X de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
+  TH1D *h_Muons_fY_ = new TH1D("Muons_fY_", "Vertice en Y de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
+  TH1D *h_Muons_fZ_ = new TH1D("Muons_fZ_", "Vertice en Z de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 249, -124.5, 124.5);
   // gsfElectrons
   TH1F *h_gsfElectrons_pt_ = new TH1F("gsfElectrons_pt_",  "p_{T} de gsfElectrones contenidos en ak5PFJets; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
   TH1F *h_gsfElectrons_eta_= new TH1F("gsfElectrons_eta_", "recoGsfElectrons_gsfElectrons__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
   TH1F *h_gsfElectrons_phi_= new TH1F("gsfElectrons_phi_", "recoGsfElectrons_gsfElectrons__RECO.obj.phi_; #phi [Rad]; Probabilidad", 61, -3.1424, 3.1424);
-  TH1D *h_gsfElectrons_fX_ = new TH1D("gsfElectrons_fX_", "Vertice en X de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 481, -24.05, 24.05);
-  TH1D *h_gsfElectrons_fY_ = new TH1D("gsfElectrons_fY_", "Vertice en Y de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 481, -24.05, 24.05);
-  TH1D *h_gsfElectrons_fZ_ = new TH1D("gsfElectrons_fZ_", "Vertice en Z de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 481, -24.05, 24.05);
+  TH1D *h_gsfElectrons_fX_ = new TH1D("gsfElectrons_fX_", "Vertice en X de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
+  TH1D *h_gsfElectrons_fY_ = new TH1D("gsfElectrons_fY_", "Vertice en Y de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
+  TH1D *h_gsfElectrons_fZ_ = new TH1D("gsfElectrons_fZ_", "Vertice en Z de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
   // ak5PFJets
   TH1F *h_ak5PFJets_pt_                       = new TH1F("ak5PFJets_pt_",  "recoPFJets_PFJets__RECO.obj.pt_; p_{T} [GeV]; Probabilidad",  3200, 0, 3200);
   // TH1F *h_ak5PFJets_eta_                      = new TH1F("ak5PFJets_eta_", "recoPFJets_PFJets__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
@@ -120,26 +120,26 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   TH1F *h_ak5PFJets_Multiplicity04__pT = new TH1F("ak5PFJets_Mult<=04__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 04, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   TH1F *h_ak5PFJets_Multiplicity02__pT = new TH1F("ak5PFJets_Mult<=02__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 02, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   // Cocientes.
-  TH1F *h__pTQuotient_Muon_ak5PFJet            = new TH1F("_Cociente_pT__Muon-ak5PFJet",  "Cociente p_{T}  Muon / ak5PFJets; Indice; Frecuencia", 100, 0, 2);
-  TH1F *h__pTQuotient_Photon_ak5PFJet          = new TH1F("_Cociente_pT__Foton-ak5PFJet",  "Cociente p_{T}  Foton / ak5PFJets; Indice; Frecuencia", 100, 0, 10);
-  TH1F *h__pTQuotient_gsfElectron_ak5PFJet     = new TH1F("_Cociente_pT__gsfElectron-ak5PFJet",  "Cociente p_{T}  gsfElectron / ak5PFJet; Indice; Frecuencia", 100, 0, 2);
+  TH1F *h__pTQuotient_Muon_ak5PFJet            = new TH1F("Cociente_pT__Muon-ak5PFJet",  "Cociente p_{T}  Muon / ak5PFJet; Indice; Frecuencia", 100, 0, 2);
+  TH1F *h__pTQuotient_Photon_ak5PFJet          = new TH1F("Cociente_pT__Foton-ak5PFJet",  "Cociente p_{T}  Foton / ak5PFJet; Indice; Frecuencia", 100, 0, 10);
+  TH1F *h__pTQuotient_gsfElectron_ak5PFJet     = new TH1F("Cociente_pT__gsfElectron-ak5PFJet",  "Cociente p_{T}  gsfElectron / ak5PFJet; Indice; Frecuencia", 100, 0, 2);
   TH1F *h_ak5PFJets__EnergyQuotient_ChaHad_Jet  = new TH1F("Cociente_ak5PFJets__Energia_ChaHad-p_T_Jet", "Cociente Energia_{ChaHad}/p_{TJet} para cada ak5PFJet; Energia_{ChaHad}/p_{Tak5PFJet}; Probabilidad", 100, 0, 10);
   TH1F *h_ak5PFJets__EnergyQuotient_NeuHad_Jet  = new TH1F("Cociente_ak5PFJets__Energia_NeuHad-p_T_Jet", "Cociente Energia_{NeuHad}/p_{TJet} para cada ak5PFJet; Energia_{NueHad}/p_{Tak5PFJet}; Probabilidad", 100, 0, 10);
   TH1F *h_ak5PFJets__EnergyQuotient_Electron_Jet= new TH1F("Cociente_ak5PFJets__Energia_Electron-p_T_Jet", "Cociente Energia_{Electron}/p_{TJet} para cada ak5PFJet; Energia_{Electron}/p_{Tak5PFJet}; Probabilidad", 100, 0, 10);
   TH1F *h_ak5PFJets__EnergyQuotient_Photon_Jet  = new TH1F("Cociente_ak5PFJets__Energia_Photon-p_T_Jet", "Cociente Energia_{Photon}/p_{TJet} para cada ak5PFJet; Energia_{Photon}/p_{Tak5PFJet}; Probabilidad", 100, 0, 10);
   TH1F *h_ak5PFJets__EnergyQuotient_Muon_Jet    = new TH1F("Cociente_ak5PFJets__Energia_Muon-p_T_Jet", "Cociente Energia_{Muon}/p_{TJet} para cada ak5PFJet; Energia_{Muon}/p_{Tak5PFJet}; Probabilidad", 100, 0, 10);
   // Distancia eta.
-  TH1F *h__eta_D__Muon_ak5PFJet        = new TH1F("_D_eta__Muon-ak5PFJet", "Diferencia |#eta_{Muon} - #eta_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
-  TH1F *h__eta_D__Photon_ak5PFJet      = new TH1F("_D_eta__Foton-ak5PFJet", "Diferencia |#eta_{Foton} - #eta_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
-  TH1F *h__eta_D__gsfElectron_ak5PFJet = new TH1F("_D_eta__gsfElectron-ak5PFJet", "Diferencia |#eta_{gsfElectron} - #eta_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
+  TH1F *h__eta_D__Muon_ak5PFJet        = new TH1F("D_eta__Muon-ak5PFJet", "Diferencia |#eta_{Muon} - #eta_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
+  TH1F *h__eta_D__Photon_ak5PFJet      = new TH1F("D_eta__Foton-ak5PFJet", "Diferencia |#eta_{Foton} - #eta_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
+  TH1F *h__eta_D__gsfElectron_ak5PFJet = new TH1F("D_eta__gsfElectron-ak5PFJet", "Diferencia |#eta_{gsfElectron} - #eta_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
   // Distancia phi.
-  TH1F *h__phi_D__Muon_ak5PFJet        = new TH1F("_D_phi__Muon-ak5PFJet", "Diferencia |#phi_{Muon} - #phi_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
-  TH1F *h__phi_D__Photon_ak5PFJet      = new TH1F("_D_phi__Foton-ak5PFJet", "Diferencia |#phi_{Foton} - #phi_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
-  TH1F *h__phi_D__gsfElectron_ak5PFJet = new TH1F("_D_phi__gsfElectron-ak5PFJet", "Diferencia |#phi_{gsfElectron} - #phi_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
+  TH1F *h__phi_D__Muon_ak5PFJet        = new TH1F("D_phi__Muon-ak5PFJet", "Diferencia |#phi_{Muon} - #phi_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
+  TH1F *h__phi_D__Photon_ak5PFJet      = new TH1F("D_phi__Foton-ak5PFJet", "Diferencia |#phi_{Foton} - #phi_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
+  TH1F *h__phi_D__gsfElectron_ak5PFJet = new TH1F("D_phi__gsfElectron-ak5PFJet", "Diferencia |#phi_{gsfElectron} - #phi_{ak5PFJet}|; Distancia angular; Frecuencia", 120, 0, 1.2);
   // Distancia angular.
-  TH1F *h__D__Muon_ak5PFJet        = new TH1F("_D__Muon-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Muon al ak5PFJets; Valor; Frecuencia", 120, 0, 1.2);
-  TH1F *h__D__Photon_ak5PFJet      = new TH1F("_D__Foton-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Foton al ak5PFJets; Valor; Frecuencia", 120, 0, 1.2);
-  TH1F *h__D__gsfElectron_ak5PFJet = new TH1F("_D__gsfElectron-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del gsfElectron al ak5PFJets; Valor; Frecuencia", 480, 0, 1.2);
+  TH1F *h__D__Muon_ak5PFJet        = new TH1F("D__Muon-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Muon al ak5PFJet; Valor; Frecuencia", 120, 0, 1.2);
+  TH1F *h__D__Photon_ak5PFJet      = new TH1F("D__Foton-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Foton al ak5PFJet; Valor; Frecuencia", 120, 0, 1.2);
+  TH1F *h__D__gsfElectron_ak5PFJet = new TH1F("D__gsfElectron-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del gsfElectron al ak5PFJet; Valor; Frecuencia", 480, 0, 1.2);
   TH1F *h_ak5PFJets__D__Jet_Jet      = new TH1F("ak5PFJets__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Frecuencia", 120, 0, 12);
   TH1F *h_ak5PFJets_pT04__D__Jet_Jet = new TH1F("ak5PFJets_pT>04__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Frecuencia", 120, 0, 12);
   TH1F *h_ak5PFJets_pT08__D__Jet_Jet = new TH1F("ak5PFJets_pT>08__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Frecuencia", 120, 0, 12);
@@ -155,19 +155,22 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   //---------------------------------------------------------------------------------------------------------------
   for (Int_t e=0; e<Eventos->GetEntries(); e++) {  //Creamos unos histogramas para conocer la distribución de los vértices.
-    gsfElectrons_fX_ ->GetBranch()->GetEntry(e);
-    gsfElectrons_fY_ ->GetBranch()->GetEntry(e);
-    gsfElectrons_fZ_ ->GetBranch()->GetEntry(e);
+    gsfElectrons_fX_ ->GetBranch()->GetEntry(e);  Muons_fX_ ->GetBranch()->GetEntry(e);
+    gsfElectrons_fY_ ->GetBranch()->GetEntry(e);  Muons_fY_ ->GetBranch()->GetEntry(e);
+    gsfElectrons_fZ_ ->GetBranch()->GetEntry(e);  Muons_fZ_ ->GetBranch()->GetEntry(e);
     for (Int_t i=0; i<gsfElectrons_fX_->GetLen(); i++) {
-      h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(i));
-      h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(i));
-      h_gsfElectrons_fZ_ -> Fill(gsfElectrons_fZ_->GetValue(i));
+      h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(i));  h_Muons_fX_ -> Fill(Muons_fX_->GetValue(i));
+      h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(i));  h_Muons_fY_ -> Fill(Muons_fY_->GetValue(i));
+      h_gsfElectrons_fZ_ -> Fill(gsfElectrons_fZ_->GetValue(i));  h_Muons_fZ_ -> Fill(Muons_fZ_->GetValue(i));
   } }
 
   TF1 *gauss = new TF1("gauss", "gaus");
-  h_gsfElectrons_fX_->Fit("gauss", "CNQ");  Float_t cte_x=gauss->GetParameter(0), mean_x=gauss->GetParameter(1), sigma_x=gauss->GetParameter(2);  h_gsfElectrons_fX_->Reset("ICESM");
-  h_gsfElectrons_fY_->Fit("gauss", "CNQ");  Float_t cte_y=gauss->GetParameter(0), mean_y=gauss->GetParameter(1), sigma_y=gauss->GetParameter(2);  h_gsfElectrons_fY_->Reset("ICESM");
-  h_gsfElectrons_fZ_->Fit("gauss", "CNQ");  Float_t cte_z=gauss->GetParameter(0), mean_z=gauss->GetParameter(1), sigma_z=gauss->GetParameter(2);  h_gsfElectrons_fZ_->Reset("ICESM");
+  h_gsfElectrons_fX_->Fit("gauss", "CNQ");  Float_t x_electron=gauss->GetParameter(1), sx_electron=gauss->GetParameter(2);  h_gsfElectrons_fX_->Reset("ICESM");
+  h_gsfElectrons_fY_->Fit("gauss", "CNQ");  Float_t y_electron=gauss->GetParameter(1), sy_electron=gauss->GetParameter(2);  h_gsfElectrons_fY_->Reset("ICESM");
+  h_gsfElectrons_fZ_->Fit("gauss", "CNQ");  Float_t z_electron=gauss->GetParameter(1), sz_electron=gauss->GetParameter(2);  h_gsfElectrons_fZ_->Reset("ICESM");
+  h_Muons_fX_->Fit("gauss", "CNQ");  Float_t x_muon=gauss->GetParameter(1), sx_muon=gauss->GetParameter(2);  h_Muons_fX_->Reset("ICESM");
+  h_Muons_fY_->Fit("gauss", "CNQ");  Float_t y_muon=gauss->GetParameter(1), sy_muon=gauss->GetParameter(2);  h_Muons_fY_->Reset("ICESM");
+  h_Muons_fZ_->Fit("gauss", "CNQ");  Float_t z_muon=gauss->GetParameter(1), sz_muon=gauss->GetParameter(2);  h_Muons_fZ_->Reset("ICESM");
 
   //---------------------------------------------------------------------------------------------------------------
   // Hacemos un loop respecto a todo el conjunto de datos de interés.
@@ -253,15 +256,15 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             D = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi),2));
             j_D = j;  }
         }
-        // if ( mean_x-sigma_x<gsfElectrons_fX_->GetValue(j_D) && gsfElectrons_fX_->GetValue(j_D)<mean_x+sigma_x && mean_y-sigma_y<gsfElectrons_fY_->GetValue(j_D)
-             // && gsfElectrons_fY_->GetValue(j_D)<mean_y+sigma_y && mean_z-sigma_z<gsfElectrons_fZ_->GetValue(j_D) && gsfElectrons_fZ_->GetValue(j_D)<mean_z+sigma_z ) {
+        // if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(j_D) && gsfElectrons_fX_->GetValue(j_D)<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(j_D)
+             // && gsfElectrons_fY_->GetValue(j_D)<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(j_D) && gsfElectrons_fZ_->GetValue(j_D)<z_electron+sz_electron ) {
           h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(j_D));
           h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(j_D));
           h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(j_D));
           h_gsfElectrons_fZ_ -> Fill(gsfElectrons_fZ_->GetValue(j_D));
+          h__pTQuotient_gsfElectron_ak5PFJet -> Fill(gsfElectrons_pt_->GetValue(j_D)/iPF_pT);
           h__eta_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_eta_->GetValue(j_D) - ak5PFJets_eta_->GetValue(i)));                 // Distancia en el ángulo ETA entre el jet y su electrón.
           h__phi_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_phi_->GetValue(j_D) - ak5PFJets_phi_->GetValue(i)));                 // Distancia en el ángulo PHI entre el jet y su electrón.
-          h__pTQuotient_gsfElectron_ak5PFJet -> Fill(gsfElectrons_pt_->GetValue(j_D)/iPF_pT);
           h__D__gsfElectron_ak5PFJet -> Fill(D); // Distancia angular total entre el jet y su electrón.
         // }
       } // if loop
@@ -276,10 +279,16 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             D = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(Muons_phi_->GetValue(j)-iPF_phi),2));
             j_D = j;  }
         }
-        h__pTQuotient_Muon_ak5PFJet  -> Fill(Muons_pt_->GetValue(j_D)/iPF_pT);
-        h__eta_D__Muon_ak5PFJet -> Fill(fabs(Muons_eta_->GetValue(j_D) - ak5PFJets_eta_->GetValue(i)));
-        h__phi_D__Muon_ak5PFJet -> Fill(fabs(Muons_phi_->GetValue(j_D) - ak5PFJets_phi_->GetValue(i)));
-        h__D__Muon_ak5PFJet -> Fill(D);
+        // if (/* condition respecto a muon_vertex */) {
+          h_Muons_pt_ -> Fill(Muons_pt_->GetValue(j_D));
+          h_Muons_fX_ -> Fill(Muons_fX_->GetValue(j_D));
+          h_Muons_fY_ -> Fill(Muons_fY_->GetValue(j_D));
+          h_Muons_fZ_ -> Fill(Muons_fZ_->GetValue(j_D));
+          h__pTQuotient_Muon_ak5PFJet  -> Fill(Muons_pt_->GetValue(j_D)/iPF_pT);
+          h__eta_D__Muon_ak5PFJet -> Fill(fabs(Muons_eta_->GetValue(j_D) - ak5PFJets_eta_->GetValue(i)));
+          h__phi_D__Muon_ak5PFJet -> Fill(fabs(Muons_phi_->GetValue(j_D) - ak5PFJets_phi_->GetValue(i)));
+          h__D__Muon_ak5PFJet -> Fill(D);
+        // }
       }
     } // for loop i
 
@@ -384,8 +393,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   h__phi_D__gsfElectron_ak5PFJet-> Write();
   h__D__Muon_ak5PFJet       -> Write();
   // h__D__Photon_ak5PFJet     -> Write();
-  // h__D__gsfElectron_ak5PFJet-> Write();
-  // h_ak5PFJets__D__Jet_Jet      -> Write();
+  h__D__gsfElectron_ak5PFJet-> Write();
+  h_ak5PFJets__D__Jet_Jet      -> Write();
   // h_ak5PFJets_pT04__D__Jet_Jet -> Write();
   // h_ak5PFJets_pT08__D__Jet_Jet -> Write();
   // h_ak5PFJets_pT16__D__Jet_Jet -> Write();
