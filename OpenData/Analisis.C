@@ -165,12 +165,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   } }
 
   TF1 *gauss = new TF1("gauss", "gaus");
-  h_gsfElectrons_fX_->Fit("gauss", "CNQ");  Float_t x_electron=gauss->GetParameter(1), sx_electron=gauss->GetParameter(2);  h_gsfElectrons_fX_->Reset("ICESM");
-  h_gsfElectrons_fY_->Fit("gauss", "CNQ");  Float_t y_electron=gauss->GetParameter(1), sy_electron=gauss->GetParameter(2);  h_gsfElectrons_fY_->Reset("ICESM");
-  h_gsfElectrons_fZ_->Fit("gauss", "CNQ");  Float_t z_electron=gauss->GetParameter(1), sz_electron=gauss->GetParameter(2);  h_gsfElectrons_fZ_->Reset("ICESM");
-  h_Muons_fX_->Fit("gauss", "CNQ");  Float_t x_muon=gauss->GetParameter(1), sx_muon=gauss->GetParameter(2);  h_Muons_fX_->Reset("ICESM");
-  h_Muons_fY_->Fit("gauss", "CNQ");  Float_t y_muon=gauss->GetParameter(1), sy_muon=gauss->GetParameter(2);  h_Muons_fY_->Reset("ICESM");
-  h_Muons_fZ_->Fit("gauss", "CNQ");  Float_t z_muon=gauss->GetParameter(1), sz_muon=gauss->GetParameter(2);  h_Muons_fZ_->Reset("ICESM");
+  h_gsfElectrons_fX_->Fit("gauss", "CNQ");  Float_t x_electron=gauss->GetParameter(1), sx_electron=0.5 /*gauss->GetParameter(2)*/;  h_gsfElectrons_fX_->Reset("ICESM");
+  h_gsfElectrons_fY_->Fit("gauss", "CNQ");  Float_t y_electron=gauss->GetParameter(1), sy_electron=0.5 /*gauss->GetParameter(2)*/;  h_gsfElectrons_fY_->Reset("ICESM");
+  h_gsfElectrons_fZ_->Fit("gauss", "CNQ");  Float_t z_electron=gauss->GetParameter(1), sz_electron=0.5 /*gauss->GetParameter(2)*/;  h_gsfElectrons_fZ_->Reset("ICESM");
+  h_Muons_fX_->Fit("gauss", "CNQ");  Float_t x_muon=gauss->GetParameter(1), sx_muon=0.5 /*gauss->GetParameter(2)*/;  h_Muons_fX_->Reset("ICESM");
+  h_Muons_fY_->Fit("gauss", "CNQ");  Float_t y_muon=gauss->GetParameter(1), sy_muon=0.5 /*gauss->GetParameter(2)*/;  h_Muons_fY_->Reset("ICESM");
+  h_Muons_fZ_->Fit("gauss", "CNQ");  Float_t z_muon=gauss->GetParameter(1), sz_muon=0.5 /*gauss->GetParameter(2)*/;  h_Muons_fZ_->Reset("ICESM");
 
   //---------------------------------------------------------------------------------------------------------------
   // Hacemos un loop respecto a todo el conjunto de datos de interés.
@@ -256,8 +256,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             D = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi),2));
             j_D = j;  }
         }
-        // if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(j_D) && gsfElectrons_fX_->GetValue(j_D)<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(j_D)
-             // && gsfElectrons_fY_->GetValue(j_D)<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(j_D) && gsfElectrons_fZ_->GetValue(j_D)<z_electron+sz_electron ) {
+        if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(j_D) && gsfElectrons_fX_->GetValue(j_D)<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(j_D)
+             && gsfElectrons_fY_->GetValue(j_D)<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(j_D) && gsfElectrons_fZ_->GetValue(j_D)<z_electron+sz_electron ) {
           h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(j_D));
           h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(j_D));
           h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(j_D));
@@ -266,7 +266,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
           h__eta_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_eta_->GetValue(j_D) - ak5PFJets_eta_->GetValue(i)));                 // Distancia en el ángulo ETA entre el jet y su electrón.
           h__phi_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_phi_->GetValue(j_D) - ak5PFJets_phi_->GetValue(i)));                 // Distancia en el ángulo PHI entre el jet y su electrón.
           h__D__gsfElectron_ak5PFJet -> Fill(D); // Distancia angular total entre el jet y su electrón.
-        // }
+        }
       } // if loop
 
       // Muones
@@ -279,7 +279,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             D = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(Muons_phi_->GetValue(j)-iPF_phi),2));
             j_D = j;  }
         }
-        // if (/* condition respecto a muon_vertex */) {
+        if ( x_muon-sx_muon<Muons_fX_->GetValue(j_D) && Muons_fX_->GetValue(j_D)<x_muon+sx_muon && y_muon-sy_muon<Muons_fY_->GetValue(j_D)
+             && Muons_fY_->GetValue(j_D)<y_muon+sy_muon && z_muon-sz_muon<Muons_fZ_->GetValue(j_D) && Muons_fZ_->GetValue(j_D)<z_muon+sz_muon ) {
           h_Muons_pt_ -> Fill(Muons_pt_->GetValue(j_D));
           h_Muons_fX_ -> Fill(Muons_fX_->GetValue(j_D));
           h_Muons_fY_ -> Fill(Muons_fY_->GetValue(j_D));
@@ -288,7 +289,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
           h__eta_D__Muon_ak5PFJet -> Fill(fabs(Muons_eta_->GetValue(j_D) - ak5PFJets_eta_->GetValue(i)));
           h__phi_D__Muon_ak5PFJet -> Fill(fabs(Muons_phi_->GetValue(j_D) - ak5PFJets_phi_->GetValue(i)));
           h__D__Muon_ak5PFJet -> Fill(D);
-        // }
+        }
       }
     } // for loop i
 
@@ -318,12 +319,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   // Guardamos nustros histogramas en el archivo root que nos interesa.
   // Muons
-  // h_Muones_pt_ -> Write();
-  // h_Muones_eta_-> Write();
-  // h_Muones_phi_-> Write();
-  // h_Muones_fX_ -> Write();
-  // h_Muones_fY_ -> Write();
-  // h_Muones_fZ_ -> Write();
+  h_Muons_pt_ -> Write();
+  // h_Muons_eta_-> Write();
+  // h_Muons_phi_-> Write();
+  h_Muons_fX_ -> Write();
+  h_Muons_fY_ -> Write();
+  h_Muons_fZ_ -> Write();
   // gsfElectrons
   h_gsfElectrons_pt_ -> Write();
   // h_gsfElectrons_eta_-> Write();

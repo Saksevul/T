@@ -9,6 +9,13 @@ void DistanciaAngular() {
   ak5PFJets__D_Jet_Jet =(TH1F*)inFile->Get("ak5PFJets__D__Jet_Jet");
   ak5FastJet__D_Jet_Jet =(TH1F*)inputFile->Get("ak5FastJet__D__Jet_Jet");
 
+
+    auto   legend = new TLegend(0.75,0.80,0.90,0.92);
+      legend->SetTextSize(0.04);
+      legend->AddEntry(ak5PFJets__D_Jet_Jet, "PFJets", "lp");
+      legend->AddEntry(ak5FastJet__D_Jet_Jet, "FastJet", "lp");
+
+
   //Creamos un liezo en el cual dibujarémos los histogramas sin modificar.
   TCanvas* ak5PFJet__D_Jet_Jet = new TCanvas("DistanciaAngular","Distancia Angular de FastJet y PFJets por Evento",10,10,1920,1080);
   ak5PFJet__D_Jet_Jet -> SetFillColor(0);  ak5PFJet__D_Jet_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
@@ -23,8 +30,9 @@ void DistanciaAngular() {
   ak5PFJets__D_Jet_Jet -> SetMarkerStyle(45); ak5PFJets__D_Jet_Jet -> SetMarkerColor(2);
   ak5FastJet__D_Jet_Jet -> Draw("same"); ak5FastJet__D_Jet_Jet -> SetLineColor(4);
   ak5FastJet__D_Jet_Jet -> SetMarkerStyle(41); ak5FastJet__D_Jet_Jet -> SetMarkerColor(4);
+  legend -> Draw();
 
-  ak5PFJet__D_Jet_Jet     -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/D_Jet_Jet FastJet y PFJets.pdf"    ); ak5PFJet__D_Jet_Jet     -> Close();
+  ak5PFJet__D_Jet_Jet     -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/D_Jet_Jet FastJet y PFJets.png"    ); ak5PFJet__D_Jet_Jet     -> Close();
 
 }
 
@@ -41,6 +49,13 @@ void Multiplicidad() {
   ak5PFJets__Multiplicidad =(TH1F*)inFile->Get("ak5PFJets__Multiplicidad");
   ak5FastJet__Multiplicidad =(TH1F*)inputFile->Get("ak5FastJet__Multiplicidad");
 
+
+    auto   legend = new TLegend(0.75,0.80,0.90,0.92);
+      legend->SetTextSize(0.04);
+      legend->AddEntry(ak5PFJets__Multiplicidad, "PFJets", "lp");
+      legend->AddEntry(ak5FastJet__Multiplicidad, "FastJet", "lp");
+
+
   //Creamos un liezo en el cual dibujarémos los histogramas sin modificar.
   TCanvas* Espectro_Multiplicidad__Jets = new TCanvas("Multiplicidad de Jets","Multiplicidad de FastJet y PFJets por Evento",10,10,1920,1080);
   Espectro_Multiplicidad__Jets -> SetFillColor(0);  Espectro_Multiplicidad__Jets -> SetFrameBorderMode(0);  gPad ->SetLogy();
@@ -55,8 +70,9 @@ void Multiplicidad() {
     ak5PFJets__Multiplicidad -> SetMarkerStyle(45); ak5PFJets__Multiplicidad -> SetMarkerColor(2);
     ak5FastJet__Multiplicidad -> Draw("same"); ak5FastJet__Multiplicidad -> SetLineColor(4);
     ak5FastJet__Multiplicidad -> SetMarkerStyle(41); ak5FastJet__Multiplicidad -> SetMarkerColor(4);
+    legend -> Draw();
 
-  Espectro_Multiplicidad__Jets -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Multiplicidad FastJet y PFJets.pdf"); Espectro_Multiplicidad__Jets -> Close();
+  Espectro_Multiplicidad__Jets -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Multiplicidad__FastJet_PFJets.png"); Espectro_Multiplicidad__Jets -> Close();
 
 }
 
@@ -77,6 +93,9 @@ void pT() {
 
   Cociente_pT__gsfElectron_ak5PFJet =(TH1F*)inFile->Get("Cociente_pT__gsfElectron-ak5PFJet");
   Cociente_pT__Electron_ak5FastJet =(TH1F*)inputFile->Get("Cociente_pT__Electron-ak5FastJet");
+
+  Cociente_pT__Muon_ak5PFJet =(TH1F*)inFile->Get("Cociente_pT__Muon-ak5PFJet");
+  Cociente_pT__Muon_ak5FastJet =(TH1F*)inputFile->Get("Cociente_pT__Muon-ak5FastJet");
 
 
   auto   legend = new TLegend(0.75,0.80,0.90,0.92);
@@ -99,13 +118,14 @@ void pT() {
   ak5PFJets_pt_ -> SetMarkerStyle(45); ak5PFJets_pt_ -> SetMarkerColor(2);
   ak5FastJet__pT -> Draw("same"); ak5FastJet__pT -> SetLineColor(4);
   ak5FastJet__pT -> SetMarkerStyle(41); ak5FastJet__pT -> SetMarkerColor(4);
+  legend -> Draw();
 
 
-  TCanvas* Cociente_pT__Electon_Jet = new TCanvas("Cociente_pT__Electon_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
-  Cociente_pT__Electon_Jet -> SetFillColor(0);  Cociente_pT__Electon_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
+  TCanvas* Cociente_pT__Electron_Jet = new TCanvas("Cociente_pT__Electron_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
+  Cociente_pT__Electron_Jet -> SetFillColor(0);  Cociente_pT__Electron_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
 
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT__gsfElectron_ak5PFJet->SetTitle("Cociente pT, para electrones; Cociente; Frecuencia");
+  Cociente_pT__gsfElectron_ak5PFJet->SetTitle("Cociente pT para electrones; Cociente; Frecuencia");
   Cociente_pT__gsfElectron_ak5PFJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__gsfElectron_ak5PFJet->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT__gsfElectron_ak5PFJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__gsfElectron_ak5PFJet->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT__gsfElectron_ak5PFJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__gsfElectron_ak5PFJet->GetYaxis()->SetTitleOffset(1.0);
@@ -117,8 +137,25 @@ void pT() {
   legend -> Draw();
 
 
-  Espectro_pT__Jets -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/pT FastJet y PFJets.pdf"); Espectro_pT__Jets -> Close();
-  Cociente_pT__Electon_Jet -> SaveAs("/home/saksevul/Parallelism/Cpmparisons/pT Cociente.png"); Cociente_pT__Electon_Jet -> Close();
+  TCanvas* Cociente_pT__Muon_Jet = new TCanvas("Cociente_pT__Muon_Jet","Cociente pT FastJet y PFJets para muones",10,10,1920,1080);
+  Cociente_pT__Muon_Jet -> SetFillColor(0);  Cociente_pT__Muon_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+  // Esto es para modificar las etiquetas del canvas.
+  Cociente_pT__Muon_ak5PFJet->SetTitle("Cociente pT para muones; Cociente; Frecuencia");
+  Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetLabelSize(0.05);
+  Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetTitleSize(0.05);
+  Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Cociente_pT__Muon_ak5PFJet -> Draw(""); Cociente_pT__Muon_ak5PFJet -> SetLineColor(2);
+  Cociente_pT__Muon_ak5PFJet -> SetMarkerStyle(45); Cociente_pT__Muon_ak5PFJet -> SetMarkerColor(2);
+  Cociente_pT__Electron_ak5FastJet -> Draw("same"); Cociente_pT__Electron_ak5FastJet -> SetLineColor(4);
+  Cociente_pT__Electron_ak5FastJet -> SetMarkerStyle(41); Cociente_pT__Electron_ak5FastJet -> SetMarkerColor(4);
+  legend -> Draw();
+
+
+  Espectro_pT__Jets -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/pT__FastJet_PFJets.png"); Espectro_pT__Jets -> Close();
+  Cociente_pT__Electron_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Electron_Jet.png"); Cociente_pT__Electron_Jet -> Close();
+  Cociente_pT__Muon_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Muon_Jet.png"); Cociente_pT__Muon_Jet -> Close();
 
 }
 
@@ -155,8 +192,8 @@ void Vertice() {
       legend->AddEntry(Electrons__fX, "FastJet", "lp");
 
 
-  TCanvas* X_vertex = new TCanvas("X_vertex","X vertice de FastJet y PFJets para electrones",10,10,1920,1080);
-  X_vertex -> SetFillColor(0);  X_vertex -> SetFrameBorderMode(0);  gPad ->SetLogy();
+  TCanvas* fX_Electrons = new TCanvas("fX_Electrons","X vertice de FastJet y PFJets para electrones",10,10,1920,1080);
+  fX_Electrons -> SetFillColor(0);  fX_Electrons -> SetFrameBorderMode(0);  gPad ->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
     gsfElectrons_fX_->SetTitle("Vertice en el eje X para electrones; Posicion [cm]; Frecuencia");
@@ -171,8 +208,8 @@ void Vertice() {
     legend -> Draw();
 
 
-  TCanvas* Y_vertex = new TCanvas("Y_vertex","Y vertice de FastJet y PFJets para electrones",10,10,1920,1080);
-  Y_vertex -> SetFillColor(0);  Y_vertex -> SetFrameBorderMode(0);  gPad ->SetLogy();
+  TCanvas* fY_Electrons = new TCanvas("fY_Electrons","Y vertice de FastJet y PFJets para electrones",10,10,1920,1080);
+  fY_Electrons -> SetFillColor(0);  fY_Electrons -> SetFrameBorderMode(0);  gPad ->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
     gsfElectrons_fY_->SetTitle("Vertice en el eje Y para electrones; Posicion [cm]; Frecuencia");
@@ -187,8 +224,8 @@ void Vertice() {
     legend -> Draw();
 
 
-  TCanvas* Z_vertex = new TCanvas("Z_vertex","X vertice de FastJet y PFJets para electrones",10,10,1920,1080);
-  Z_vertex -> SetFillColor(0);  Z_vertex -> SetFrameBorderMode(0);  gPad ->SetLogy();
+  TCanvas* fZ_Electrons = new TCanvas("fZ_Electrons","X vertice de FastJet y PFJets para electrones",10,10,1920,1080);
+  fZ_Electrons -> SetFillColor(0);  fZ_Electrons -> SetFrameBorderMode(0);  gPad ->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
     gsfElectrons_fZ_->SetTitle("Vertice en el eje Z para electrones; Posicion [cm]; Frecuencia");
@@ -202,9 +239,63 @@ void Vertice() {
     Electrons__fZ -> SetMarkerStyle(41); Electrons__fZ -> SetMarkerColor(4);
     legend -> Draw();
 
-  X_vertex -> SaveAs("/home/saksevul/Parallelism/Cpmparisons/X vertex FastJet y PFJets.png"); X_vertex -> Close();
-  Y_vertex -> SaveAs("/home/saksevul/Parallelism/Cpmparisons/Y vertex FastJet y PFJets.png"); Y_vertex -> Close();
-  Z_vertex -> SaveAs("/home/saksevul/Parallelism/Cpmparisons/Z vertex FastJet y PFJets.png"); Z_vertex -> Close();
+  fX_Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/fX_Electrones__FastJe-PFJets.png"); fX_Electrons -> Close();
+  fY_Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/fY_Electrones__FastJe-PFJets.png"); fY_Electrons -> Close();
+  fZ_Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/fZ_Electrones__FastJe-PFJets.png"); fZ_Electrons -> Close();
+
+
+
+  TCanvas* fX_Muons = new TCanvas("fX_Muons","X vertice de FastJet y PFJets para muones",10,10,1920,1080);
+  fX_Muons -> SetFillColor(0);  fX_Muons -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+    // Esto es para modificar las etiquetas del canvas.
+    Muons_fX_->SetTitle("Vertice en el eje X para muones; Posicion [cm]; Frecuencia");
+    Muons_fX_->GetXaxis()->SetLabelSize(0.05); Muons_fX_->GetYaxis()->SetLabelSize(0.05);
+    Muons_fX_->GetXaxis()->SetTitleSize(0.05); Muons_fX_->GetYaxis()->SetTitleSize(0.05);
+    Muons_fX_->GetXaxis()->SetTitleOffset(1.0);Muons_fX_->GetYaxis()->SetTitleOffset(1.0);
+    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+    Muons_fX_ -> Draw(""); Muons_fX_ -> SetLineColor(2);
+    Muons_fX_ -> SetMarkerStyle(45); Muons_fX_ -> SetMarkerColor(2);
+    Muons__fX -> Draw("same"); Muons__fX -> SetLineColor(4);
+    Muons__fX -> SetMarkerStyle(41); Muons__fX -> SetMarkerColor(4);
+    legend -> Draw();
+
+
+  TCanvas* fY_Muons = new TCanvas("fY_Muons","Y vertice de FastJet y PFJets para muones",10,10,1920,1080);
+  fY_Muons -> SetFillColor(0);  fY_Muons -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+    // Esto es para modificar las etiquetas del canvas.
+    Muons_fY_->SetTitle("Vertice en el eje Y para muones; Posicion [cm]; Frecuencia");
+    Muons_fY_->GetXaxis()->SetLabelSize(0.05); Muons_fY_->GetYaxis()->SetLabelSize(0.05);
+    Muons_fY_->GetXaxis()->SetTitleSize(0.05); Muons_fY_->GetYaxis()->SetTitleSize(0.05);
+    Muons_fY_->GetXaxis()->SetTitleOffset(1.0);Muons_fY_->GetYaxis()->SetTitleOffset(1.0);
+    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+    Muons_fY_ -> Draw(""); Muons_fY_ -> SetLineColor(2);
+    Muons_fY_ -> SetMarkerStyle(45); Muons_fY_ -> SetMarkerColor(2);
+    Muons__fY -> Draw("same"); Muons__fY -> SetLineColor(4);
+    Muons__fY -> SetMarkerStyle(41); Muons__fY -> SetMarkerColor(4);
+    legend -> Draw();
+
+
+  TCanvas* fZ_Muons = new TCanvas("fZ_Muons","X vertice de FastJet y PFJets para muones",10,10,1920,1080);
+  fZ_Muons -> SetFillColor(0);  fZ_Muons -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+    // Esto es para modificar las etiquetas del canvas.
+    Muons_fZ_->SetTitle("Vertice en el eje Z para muones; Posicion [cm]; Frecuencia");
+    Muons_fZ_->GetXaxis()->SetLabelSize(0.05); Muons_fZ_->GetYaxis()->SetLabelSize(0.05);
+    Muons_fZ_->GetXaxis()->SetTitleSize(0.05); Muons_fZ_->GetYaxis()->SetTitleSize(0.05);
+    Muons_fZ_->GetXaxis()->SetTitleOffset(1.0);Muons_fZ_->GetYaxis()->SetTitleOffset(1.0);
+    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+    Muons_fZ_ -> Draw(""); Muons_fZ_ -> SetLineColor(2);
+    Muons_fZ_ -> SetMarkerStyle(45); Muons_fZ_ -> SetMarkerColor(2);
+    Muons__fZ -> Draw("same"); Muons__fZ -> SetLineColor(4);
+    Muons__fZ -> SetMarkerStyle(41); Muons__fZ -> SetMarkerColor(4);
+    legend -> Draw();
+
+  fX_Muons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/fX_Muones__FastJet-PFJets.png"); fX_Muons -> Close();
+  fY_Muons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/fY_Muones__FastJet-PFJets.png"); fY_Muons -> Close();
+  fZ_Muons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/fZ_Muones__FastJet-PFJets.png"); fZ_Muons -> Close();
+
 
 }
 
@@ -222,7 +313,7 @@ void rootMacro(){
   // Corremos los macros que nos interesan.
   // DistanciaAngular();
   pT();
-  Multiplicidad();
+  // Multiplicidad();
   Vertice();
 
 }

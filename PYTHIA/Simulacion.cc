@@ -151,8 +151,8 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
         if (sortedJets[i].constituents()[j].user_info<MyInfo>().pdg_id() == 11 || sortedJets[i].constituents()[j].user_info<MyInfo>().pdg_id() == -11) {
         // printf("%f %f %f \n", sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fX(),
         // sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fY(), sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fZ() );
-          // if ( -0.05<Electrons__fX->GetValue(j_D) && Electrons__fX->GetValue(j_D)<0.05 && -0.05<Electrons_fY_->GetValue(j_D)
-               // && Electrons_fY_->GetValue(j_D)<0.05 && -0.05<Electrons_fZ_->GetValue(j_D) && Electrons_fZ_->GetValue(j_D)<0.05 ) {
+          if ( -5<sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fX() && sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fX()<5 && -5<sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fY()
+               && sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fY()<5 && -5<sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fZ() && sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fZ()<5 ) {
             h_Electrons__pT -> Fill(sortedJets[i].constituents()[j].pt());
             h_Electrons__fX -> Fill(sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fX()/10.0);
             h_Electrons__fY -> Fill(sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fY()/10.0);
@@ -164,11 +164,12 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
               h__D__Electron_ak5FastJet -> Fill(sqrt( pow2(sortedJets[i].constituents()[j].eta()-sortedJets[i].eta()) + pow2(2*PI-abs(sortedJets[i].constituents()[j].phi()-sortedJets[i].phi())) ));
             }
 
-          // }
+          }
         }
 
         if (sortedJets[i].constituents()[j].user_info<MyInfo>().pdg_id() == 13 || sortedJets[i].constituents()[j].user_info<MyInfo>().pdg_id() == -13) {
-          // if (/* vertices */) {
+          if ( -5<sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fX() && sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fX()<5 && -5<sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fY()
+               && sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fY()<5 && -5<sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fZ() && sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fZ()<5 ) {
           h_Muons__pT -> Fill(sortedJets[i].constituents()[j].pt());
           h_Muons__fX -> Fill(sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fX()/10.0);
           h_Muons__fY -> Fill(sortedJets[i].constituents()[j].user_info<MyInfo>().vertex_fY()/10.0);
@@ -179,7 +180,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
           } else {
             h__D__Muon_ak5FastJet -> Fill(sqrt( pow2(sortedJets[i].constituents()[j].eta()-sortedJets[i].eta()) + pow2(2*PI-abs(sortedJets[i].constituents()[j].phi()-sortedJets[i].phi())) ));
           }
-          // }
+          }
         }
 
       }

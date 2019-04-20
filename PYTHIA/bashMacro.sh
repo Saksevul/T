@@ -21,13 +21,13 @@ NoE=1000  # Number of Events.
 
 # Ahora corremos el macro para todos los pT Hat Minimum.. Así aumentamos la estadística.
 pwd=$PWD && cd $PttMMD  # Guardamos es directorio actual de trabajo y pasamos a MMD.
-for pTHM in {0..500..10}	# Ciclo sobre los distintos valores posibles de pT Hat Minimum.
+for pTHM in {0..200..10}	# Ciclo sobre los distintos valores posibles de pT Hat Minimum.
 do
   sed -i "s/$pOF/\-$pTHM.root/g" $PttMMD$MMN
 	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM.0/g" $PttMMD$MMN	# Cabiamos el valor del pTHatMin.
-  # NoE=$(( 1000*( 10**(-)) ))
+  NoE=$(awk -vpTHM="$pTHM" 'BEGIN{x=1200*2.72^(-pTHM/200); print x}')  # Decrecimiento exponancial.
   sed -i "s/$pNoE/nEvent\ \ \ \ =\ $NoE\;/g" $PttMMD$MMN	# Cabiamos el valor del NoE.
-  # make Simulacion && ./Simulacion # A CORRER ESA MADRE!
+  make Simulacion && ./Simulacion # A CORRER ESA MADRE!
   pOF=-$pTHM.root
 	ppTHM=pTHatMin\ =\ $pTHM.0
   pNoE=nEvent\ \ \ \ =\ $NoE\;
@@ -46,7 +46,7 @@ for JCA in ak5FJ #ak7PF kt4PF kt6PF	# Hago en ciclo sobre los Jet Clustering Alg
 do
 	rm $PttOrFD/$JCA.root	# Eliminamos los archivos viejos, pues serán remplazados.
 	hadd $PttOrFD/$JCA.root $PttOrFD$JCA-*.root	# Creamos un único archivo root para cada JCA.
-	# rm $PttOrFD/$JCA-*.root	# Eliminamos permanentemente los archivos que ya no necesitaremos más.
+	rm $PttOrFD/$JCA-*.root	# Eliminamos permanentemente los archivos que ya no necesitaremos más.
 done
 
 
