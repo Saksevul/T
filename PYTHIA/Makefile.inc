@@ -70,7 +70,7 @@ ROOT_USE=true
 ROOT_BIN=/home/saksevul/root61406/bin/
 ROOT_INCLUDE=/home/saksevul/root61406/include	# Directorio faltante.
 ROOT_LIBS=-L/home/saksevul/root61406/lib -lGui -lCore -lImt -lRIO -lNet -lHist -lGraf -lGraf3d -lGpad -lROOTDataFrame -lROOTVecOps -lTree -lTreePlayer -lRint -lPostscript -lMatrix -lPhysics -lMathCore -lThread -lMultiProc -pthread -lm -ldl -rdynamic
-#CXX_ROOT=-O2  -W -Wall -Wshadow -fPIC -pthread -std=c++11 -m64 -I/home/saksevul/root61406/include
+CXX_ROOT=-O2  -W -Wall -Wshadow -fPIC -pthread -std=c++11 -m64 -I/home/saksevul/root61406/include
 
 # GZIP configuration.
 GZIP_USE=false

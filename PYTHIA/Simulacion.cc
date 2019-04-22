@@ -31,7 +31,32 @@
 
 using namespace Pythia8;
 
+using namespace std;
+using namespace fastjet;
+
 //--------------------------------------------------------------------------------------------------------------
+
+// class MyUserInfo : public PseudoJet::UserInfoBase{
+// public:
+//   // default ctor
+//   //  - pdg_id        the PDG id of the particle
+//   //  - vertex_number theid of the vertex it originates from
+//   MyUserInfo(const int & pdg_id_in, const int & vertex_number_in) :
+//     _pdg_id(pdg_id_in), _vertex_number(vertex_number_in){}
+//
+//   /// access to the PDG id
+//   int pdg_id() const { return _pdg_id;}
+//
+//   /// access to the vertex number
+//   int vertex_number() const { return _vertex_number;}
+//
+// protected:
+//   int _pdg_id;         // the associated pdg id
+//   int _vertex_number;  // the associated vertex number
+// };
+
+//--------------------------------------------------------------------------------------------------------------
+
 int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
   // Create the ROOT application environment.
@@ -129,6 +154,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
   }  // End of event loop.
 
+//--------------------------------------------------------------------------------------------------------------
 
 
   // Statistics. Histograms.
