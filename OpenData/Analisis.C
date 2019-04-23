@@ -1,7 +1,7 @@
 void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   //Abrimos los archivos que nos interesan y los árboles que queremos leer.
-  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_AOD_12Oct2013-v1_20000/0001.root");
+  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_AOD_12Oct2013-v1_20000/0002.root");
   TTree *Eventos = (TTree*)InputFile->Get("Events");
   // TBranch *Muons = Eventos->GetBranch("recoMuons_muons__RECO.obj");
   // TBranch *gsfElectrons = Eventos->GetBranch("recoGsfElectrons_gsfElectrons__RECO.obj");
@@ -97,9 +97,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   // TH1I *h_ak5PFJets_mHFHadronMultiplicity     = new TH1I("ak5PFJets_mHFHadronMultiplicity", "recoPFJets_PFJets__RECO.obj.m_specific.mHFHadronMultiplicity; mHFHadronMultiplicity; Probabilidad", 40, 0, 40);
   TH1I *h_ak5PFJets_mHFEMMultiplicity         = new TH1I("ak5PFJets_mHFEMMultiplicity", "recoPFJets_PFJets__RECO.obj.m_specific.mHFEMMultiplicity; mHFEMMultiplicity; Probabilidad", 40, 0, 40);
   // Multiplicidad.
-  TH1F *h_Muons__Multiplicity         = new TH1F("Muones__Multiplicidad", "Multiplicidad, != 0, de Muones por Evento; Numero de muones; Frecuencia", 13, 0, 13);
-  TH1F *h_Photons__Multiplicity       = new TH1F("Fotones__Multiplicidad", "Multiplicidad, != 0, de Fotones por Evento; Numero de fotones; Frecuencia", 13, 0, 13);
-  TH1F *h_gsfElectrons__Multiplicity  = new TH1F("gsfElectrones__Multiplicidad", "Multiplicidad, != 0, de gsfElectrones por Evento; Numero de electrones; Frecuencia", 13, 0, 13);
+  TH1F *h_Muons__Multiplicity         = new TH1F("Muones__Multiplicidad", "Multiplicidad, != 0, de Muones por Evento; Numero de muones; Frecuencia", 48, 0, 48);
+  TH1F *h_Photons__Multiplicity       = new TH1F("Fotones__Multiplicidad", "Multiplicidad, != 0, de Fotones por Evento; Numero de fotones; Frecuencia", 24, 0, 24);
+  TH1F *h_gsfElectrons__Multiplicity  = new TH1F("gsfElectrones__Multiplicidad", "Multiplicidad, != 0, de gsfElectrones por Evento; Numero de electrones; Frecuencia", 24, 0, 24);
   TH1F *h_ak5PFJets__MuonMultiplicity       = new TH1F("ak5PFJets__Multiplicidad_Muon!=0", "Multiplicidad, != 0, de Muones en cada ak5PFJet; Multiplicidad Muon; Probabilidad", 12, 0, 12);
   TH1F *h_ak5PFJets__PhotonMultiplicity     = new TH1F("ak5PFJets__Multiplicidad_Photon!=0", "Multiplicidad, != 0, de Fotones en cada ak5PFJet; Multiplicidad Foton; Probabilidad", 120, 0, 120);
   TH1F *h_ak5PFJets__ElectronMultiplicity   = new TH1F("ak5PFJets__Multiplicidad_Electron!=0", "Multiplicidad, != 0, de Electrones en cada ak5PFJet; Multiplicidad Electron; Probabilidad", 12, 0, 12);
@@ -246,49 +246,50 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         h_ak5PFJets__EnergyQuotient_Muon_Jet -> Fill(ak5PFJets_mMuonEnergy->GetValue(i)/iPF_pT);
         h_ak5PFJets__MuonMultiplicity -> Fill(ak5PFJets_mMuonMultiplicity->GetValue(i));    }
 
-      // Elesctrones.      // Selecciono los Jets que contiene un solo electrón.
-      if (ak5PFJets_mElectronMultiplicity->GetValue(i) == 1) {   Float_t D=PI; Int_t j_D=-1; // Defino valores de referencia. Estos cambiarán más adelante.
-        for (Int_t j=0; j<gsfElectrons_pt_->GetLen(); j++) {// Busco el electón que esté mas cerca, angularmente, del jet.
-          if ( sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(gsfElectrons_phi_->GetValue(j)-iPF_phi,2)) < D ) {
-            D = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(gsfElectrons_phi_->GetValue(j)-iPF_phi,2));
-            j_D = j;  }
-          if (sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi),2)) < D ) {
-            D = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi),2));
-            j_D = j;  }
+      // Electrones.      // Selecciono los Jets que contiene un solo electrón.
+      if (ak5PFJets_mElectronMultiplicity->GetValue(i) > 0) {   Float_t D[100]; Int_t Index[100]; // Defino valores de referencia. Estos cambiarán más adelante.
+        for (Int_t j=0; j<gsfElectrons_pt_->GetLen(); j++) { // Busco el electón que esté mas cerca, angularmente, del jet.
+          if ( fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi) <= PI ) {
+            D[j] = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(gsfElectrons_phi_->GetValue(j)-iPF_phi,2));
+          } else { D[j] = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi),2));  }
         }
-        if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(j_D) && gsfElectrons_fX_->GetValue(j_D)<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(j_D)
-             && gsfElectrons_fY_->GetValue(j_D)<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(j_D) && gsfElectrons_fZ_->GetValue(j_D)<z_electron+sz_electron ) {
-          h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(j_D));
-          h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(j_D));
-          h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(j_D));
-          h_gsfElectrons_fZ_ -> Fill(gsfElectrons_fZ_->GetValue(j_D));
-          h__pTQuotient_gsfElectron_ak5PFJet -> Fill(gsfElectrons_pt_->GetValue(j_D)/iPF_pT);
-          h__eta_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_eta_->GetValue(j_D) - ak5PFJets_eta_->GetValue(i)));                 // Distancia en el ángulo ETA entre el jet y su electrón.
-          h__phi_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_phi_->GetValue(j_D) - ak5PFJets_phi_->GetValue(i)));                 // Distancia en el ángulo PHI entre el jet y su electrón.
-          h__D__gsfElectron_ak5PFJet -> Fill(D); // Distancia angular total entre el jet y su electrón.
-        }
+        TMath::Sort(gsfElectrons_pt_->GetLen(), D, Index, false);
+        for (Int_t j=0; j<ak5PFJets_mElectronMultiplicity->GetValue(i); j++) {
+          // if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(Index[j]) && gsfElectrons_fX_->GetValue(Index[j])<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(Index[j])
+          // && gsfElectrons_fY_->GetValue(Index[j])<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(Index[j]) && gsfElectrons_fZ_->GetValue(Index[j])<z_electron+sz_electron ) {
+            h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(Index[j]));
+            h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(Index[j]));
+            h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(Index[j]));
+            h_gsfElectrons_fZ_ -> Fill(gsfElectrons_fZ_->GetValue(Index[j]));
+            h__pTQuotient_gsfElectron_ak5PFJet -> Fill(gsfElectrons_pt_->GetValue(Index[j])/iPF_pT);
+            h__eta_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_eta_->GetValue(Index[j]) - ak5PFJets_eta_->GetValue(i)));                 // Distancia en el ángulo ETA entre el jet y su electrón.
+            h__phi_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_phi_->GetValue(Index[j]) - ak5PFJets_phi_->GetValue(i)));                 // Distancia en el ángulo PHI entre el jet y su electrón.
+            h__D__gsfElectron_ak5PFJet -> Fill(D[Index[j]]); // Distancia angular total entre el jet y su electrón.
+            // printf(" Entrada : %i, Indice: %i, Distancia Angular: %f.\n", j, Index[j], D[Index[j]]);
+          // }
+        } // printf("\n");
       } // if loop
 
       // Muones
-      if (ak5PFJets_mMuonMultiplicity->GetValue(i) == 1) {   Float_t D=PI; Int_t j_D=-1;
+      if (ak5PFJets_mMuonMultiplicity->GetValue(i) > 0) {   Float_t D[100]; Int_t Index[100];
         for (Int_t j=0; j<Muons_pt_->GetLen(); j++) {
-          if ( sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(Muons_phi_->GetValue(j)-iPF_phi,2)) < D ) {
-            D = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(Muons_phi_->GetValue(j)-iPF_phi,2));
-            j_D = j;  }
-          if (sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(Muons_phi_->GetValue(j)-iPF_phi),2)) < D ) {
-            D = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(Muons_phi_->GetValue(j)-iPF_phi),2));
-            j_D = j;  }
+          if ( fabs(Muons_phi_->GetValue(j)-iPF_phi) <= PI ) {
+            D[j] = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(Muons_phi_->GetValue(j)-iPF_phi,2));
+          } else { D[j] = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(Muons_phi_->GetValue(j)-iPF_phi),2));  }
         }
-        if ( x_muon-sx_muon<Muons_fX_->GetValue(j_D) && Muons_fX_->GetValue(j_D)<x_muon+sx_muon && y_muon-sy_muon<Muons_fY_->GetValue(j_D)
-             && Muons_fY_->GetValue(j_D)<y_muon+sy_muon && z_muon-sz_muon<Muons_fZ_->GetValue(j_D) && Muons_fZ_->GetValue(j_D)<z_muon+sz_muon ) {
-          h_Muons_pt_ -> Fill(Muons_pt_->GetValue(j_D));
-          h_Muons_fX_ -> Fill(Muons_fX_->GetValue(j_D));
-          h_Muons_fY_ -> Fill(Muons_fY_->GetValue(j_D));
-          h_Muons_fZ_ -> Fill(Muons_fZ_->GetValue(j_D));
-          h__pTQuotient_Muon_ak5PFJet  -> Fill(Muons_pt_->GetValue(j_D)/iPF_pT);
-          h__eta_D__Muon_ak5PFJet -> Fill(fabs(Muons_eta_->GetValue(j_D) - ak5PFJets_eta_->GetValue(i)));
-          h__phi_D__Muon_ak5PFJet -> Fill(fabs(Muons_phi_->GetValue(j_D) - ak5PFJets_phi_->GetValue(i)));
-          h__D__Muon_ak5PFJet -> Fill(D);
+        TMath::Sort(Muons_phi_->GetLen(), D, Index, false);
+        for (Int_t j=0; j<ak5PFJets_mMuonMultiplicity->GetValue(i); j++) {
+          // if ( x_muon-sx_muon<Muons_fX_->GetValue(Index[j]) && Muons_fX_->GetValue(Index[j])<x_muon+sx_muon && y_muon-sy_muon<Muons_fY_->GetValue(Index[j])
+          // && Muons_fY_->GetValue(Index[j])<y_muon+sy_muon && z_muon-sz_muon<Muons_fZ_->GetValue(Index[j]) && Muons_fZ_->GetValue(Index[j])<z_muon+sz_muon ) {
+            h_Muons_pt_ -> Fill(Muons_pt_->GetValue(Index[j]));
+            h_Muons_fX_ -> Fill(Muons_fX_->GetValue(Index[j]));
+            h_Muons_fY_ -> Fill(Muons_fY_->GetValue(Index[j]));
+            h_Muons_fZ_ -> Fill(Muons_fZ_->GetValue(Index[j]));
+            h__pTQuotient_Muon_ak5PFJet  -> Fill(Muons_pt_->GetValue(Index[j])/iPF_pT);
+            h__eta_D__Muon_ak5PFJet -> Fill(fabs(Muons_eta_->GetValue(Index[j]) - ak5PFJets_eta_->GetValue(i)));
+            h__phi_D__Muon_ak5PFJet -> Fill(fabs(Muons_phi_->GetValue(Index[j]) - ak5PFJets_phi_->GetValue(i)));
+            h__D__Muon_ak5PFJet -> Fill(D[Index[j]]);
+          // }
         }
       }
     } // for loop i
@@ -308,7 +309,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
     if (Muons_pt_->GetLen() != 0)        h_Muons__Multiplicity        -> Fill(Muons_pt_->GetLen());
 
 
-      printf("\t \t Dont worry. Evento %i hecho. =D \n\n", e);
+      // printf("\t \t Dont worry. Evento %i hecho. =D \n\n", e);
 
   } // for loop e
   //---------------------------------------------------------------------------------------------------------------
@@ -378,7 +379,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   h_ak5PFJets_Multiplicity02__pT-> Write();
   // Cocientes
   h__pTQuotient_Muon_ak5PFJet       -> Write();
-  h__pTQuotient_Photon_ak5PFJet     -> Write();
+  // h__pTQuotient_Photon_ak5PFJet     -> Write();
   h__pTQuotient_gsfElectron_ak5PFJet-> Write();
   h_ak5PFJets__EnergyQuotient_ChaHad_Jet  -> Write();
   h_ak5PFJets__EnergyQuotient_NeuHad_Jet  -> Write();
