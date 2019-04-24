@@ -1,7 +1,7 @@
 void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   //Abrimos los archivos que nos interesan y los árboles que queremos leer.
-  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_AOD_12Oct2013-v1_20000/0002.root");
+  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_20000/0001.root");
   TTree *Eventos = (TTree*)InputFile->Get("Events");
   // TBranch *Muons = Eventos->GetBranch("recoMuons_muons__RECO.obj");
   // TBranch *gsfElectrons = Eventos->GetBranch("recoGsfElectrons_gsfElectrons__RECO.obj");
