@@ -1,17 +1,17 @@
 void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   //Abrimos los archivos que nos interesan y los árboles que queremos leer.
-  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_20000/0001.root");
+  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/BTag_20000/0001.root");
   TTree *Eventos = (TTree*)InputFile->Get("Events");
   // TBranch *Muons = Eventos->GetBranch("recoMuons_muons__RECO.obj");
   // TBranch *gsfElectrons = Eventos->GetBranch("recoGsfElectrons_gsfElectrons__RECO.obj");
   // TBranch *ak5PFJets = Eventos->GetBranch("recoPFJets_ak5PFJets__RECO.obj");
 
   //Crear el archivo de salida que queremos. Tiene que ir después del imputFile.
-  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF-0001.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF-0001.root", "RECREATE");
 
 
-    printf("\n\n InputFile: Jet_20000/0001.root, JCA: ak5PF. \n\n\n\t %i) Archivos abiertos. \n\n", nprint++);
+    printf("\n\n JCA: ak5PF, InputFile: BTag_20000/0001.root. \n\n\n\t %i) Archivos abiertos. \n\n", nprint++);
 
 
   // Muones
@@ -255,8 +255,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         }
         TMath::Sort(gsfElectrons_pt_->GetLen(), D, Index, false);
         for (Int_t j=0; j<ak5PFJets_mElectronMultiplicity->GetValue(i); j++) {
-          // if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(Index[j]) && gsfElectrons_fX_->GetValue(Index[j])<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(Index[j])
-          // && gsfElectrons_fY_->GetValue(Index[j])<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(Index[j]) && gsfElectrons_fZ_->GetValue(Index[j])<z_electron+sz_electron ) {
+          if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(Index[j]) && gsfElectrons_fX_->GetValue(Index[j])<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(Index[j])
+          && gsfElectrons_fY_->GetValue(Index[j])<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(Index[j]) && gsfElectrons_fZ_->GetValue(Index[j])<z_electron+sz_electron ) {
             h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(Index[j]));
             h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(Index[j]));
             h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(Index[j]));
@@ -266,7 +266,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             h__phi_D__gsfElectron_ak5PFJet -> Fill(fabs(gsfElectrons_phi_->GetValue(Index[j]) - ak5PFJets_phi_->GetValue(i)));                 // Distancia en el ángulo PHI entre el jet y su electrón.
             h__D__gsfElectron_ak5PFJet -> Fill(D[Index[j]]); // Distancia angular total entre el jet y su electrón.
             // printf(" Entrada : %i, Indice: %i, Distancia Angular: %f.\n", j, Index[j], D[Index[j]]);
-          // }
+          }
         } // printf("\n");
       } // if loop
 
@@ -279,8 +279,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         }
         TMath::Sort(Muons_phi_->GetLen(), D, Index, false);
         for (Int_t j=0; j<ak5PFJets_mMuonMultiplicity->GetValue(i); j++) {
-          // if ( x_muon-sx_muon<Muons_fX_->GetValue(Index[j]) && Muons_fX_->GetValue(Index[j])<x_muon+sx_muon && y_muon-sy_muon<Muons_fY_->GetValue(Index[j])
-          // && Muons_fY_->GetValue(Index[j])<y_muon+sy_muon && z_muon-sz_muon<Muons_fZ_->GetValue(Index[j]) && Muons_fZ_->GetValue(Index[j])<z_muon+sz_muon ) {
+          if ( x_muon-sx_muon<Muons_fX_->GetValue(Index[j]) && Muons_fX_->GetValue(Index[j])<x_muon+sx_muon && y_muon-sy_muon<Muons_fY_->GetValue(Index[j])
+          && Muons_fY_->GetValue(Index[j])<y_muon+sy_muon && z_muon-sz_muon<Muons_fZ_->GetValue(Index[j]) && Muons_fZ_->GetValue(Index[j])<z_muon+sz_muon ) {
             h_Muons_pt_ -> Fill(Muons_pt_->GetValue(Index[j]));
             h_Muons_fX_ -> Fill(Muons_fX_->GetValue(Index[j]));
             h_Muons_fY_ -> Fill(Muons_fY_->GetValue(Index[j]));
@@ -289,7 +289,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             h__eta_D__Muon_ak5PFJet -> Fill(fabs(Muons_eta_->GetValue(Index[j]) - ak5PFJets_eta_->GetValue(i)));
             h__phi_D__Muon_ak5PFJet -> Fill(fabs(Muons_phi_->GetValue(Index[j]) - ak5PFJets_phi_->GetValue(i)));
             h__D__Muon_ak5PFJet -> Fill(D[Index[j]]);
-          // }
+          }
         }
       }
     } // for loop i
