@@ -67,7 +67,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   TH1F *h_Muons_phi_= new TH1F("Muons_phi_", "recoMuones_muons__RECO.obj.phi_; #phi [Rad]; Probabilidad", 61, -3.1424, 3.1424);
   TH1D *h_Muons_fX_ = new TH1D("Muons_fX_", "Vertice en X de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
   TH1D *h_Muons_fY_ = new TH1D("Muons_fY_", "Vertice en Y de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
-  TH1D *h_Muons_fZ_ = new TH1D("Muons_fZ_", "Vertice en Z de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 249, -124.5, 124.5);
+  TH1D *h_Muons_fZ_ = new TH1D("Muons_fZ_", "Vertice en Z de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 1241, -124.1, 124.1);
   // gsfElectrons
   TH1F *h_gsfElectrons_pt_ = new TH1F("gsfElectrons_pt_",  "p_{T} de gsfElectrones contenidos en ak5PFJets; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
   TH1F *h_gsfElectrons_eta_= new TH1F("gsfElectrons_eta_", "recoGsfElectrons_gsfElectrons__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
@@ -253,10 +253,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             D[j] = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(gsfElectrons_phi_->GetValue(j)-iPF_phi,2));
           } else { D[j] = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi),2));  }
         }
-        TMath::Sort(gsfElectrons_pt_->GetLen(), D, Index, false);
+        TMath::Sort(gsfElectrons_pt_->GetLen(), D, Index, false); // TMath::Sort devuelve el ordenamiento a partir de ìndices, no de valores.
         for (Int_t j=0; j<ak5PFJets_mElectronMultiplicity->GetValue(i); j++) {
-          if ( x_electron-sx_electron<gsfElectrons_fX_->GetValue(Index[j]) && gsfElectrons_fX_->GetValue(Index[j])<x_electron+sx_electron && y_electron-sy_electron<gsfElectrons_fY_->GetValue(Index[j])
-          && gsfElectrons_fY_->GetValue(Index[j])<y_electron+sy_electron && z_electron-sz_electron<gsfElectrons_fZ_->GetValue(Index[j]) && gsfElectrons_fZ_->GetValue(Index[j])<z_electron+sz_electron ) {
+          if ( pow(gsfElectrons_fX_->GetValue(Index[j])-x_electron,2) + pow(gsfElectrons_fY_->GetValue(Index[j])-y_electron,2) + pow(gsfElectrons_fZ_->GetValue(Index[j])-z_electron,2) <= 0.25 ) {
             h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(Index[j]));
             h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(Index[j]));
             h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(Index[j]));
@@ -277,10 +276,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             D[j] = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(Muons_phi_->GetValue(j)-iPF_phi,2));
           } else { D[j] = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(Muons_phi_->GetValue(j)-iPF_phi),2));  }
         }
-        TMath::Sort(Muons_phi_->GetLen(), D, Index, false);
+        TMath::Sort(Muons_pt_->GetLen(), D, Index, false);
         for (Int_t j=0; j<ak5PFJets_mMuonMultiplicity->GetValue(i); j++) {
-          if ( x_muon-sx_muon<Muons_fX_->GetValue(Index[j]) && Muons_fX_->GetValue(Index[j])<x_muon+sx_muon && y_muon-sy_muon<Muons_fY_->GetValue(Index[j])
-          && Muons_fY_->GetValue(Index[j])<y_muon+sy_muon && z_muon-sz_muon<Muons_fZ_->GetValue(Index[j]) && Muons_fZ_->GetValue(Index[j])<z_muon+sz_muon ) {
+          if ( pow(Muons_fX_->GetValue(Index[j])-x_muon,2) + pow(Muons_fY_->GetValue(Index[j])-y_muon,2) + pow(Muons_fZ_->GetValue(Index[j])-z_muon,2) <= 0.25 ) {
             h_Muons_pt_ -> Fill(Muons_pt_->GetValue(Index[j]));
             h_Muons_fX_ -> Fill(Muons_fX_->GetValue(Index[j]));
             h_Muons_fY_ -> Fill(Muons_fY_->GetValue(Index[j]));
@@ -407,7 +405,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   // Cerramos y eliminamos los archivos abierto y creado.
   InputFile->Close();
   delete OutputFile;
-  new TBrowser();
+  // new TBrowser();
 
 
     printf("\t %i) Análisis terminado, Son of a bitch!\n\n", nprint++);
