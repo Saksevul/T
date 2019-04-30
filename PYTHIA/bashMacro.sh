@@ -5,29 +5,29 @@ start_time=$(date +%X)
 
 # Primero definimos los parámetros de entrada.
 MMN=Simulacion.cc	# Master Macro Name (MMN).
-PttMMD=/home/saksevul/T/PYTHIA/  # Path to the Master Macro Directory (pttMMD).
+PttMMD=/home/saksevul/T/PYTHIA/FastJet/  # Path to the Master Macro Directory (pttMMD).
 PttOrFD=$PttMMD	# Path to the Output root Files Directory (PttOrFD).
 
-IpTH=0 # Initial pT Hat Minimum (Ver y/o editar Master Macro).
-  pOF=\-$IpTH.root  # previous Output File (pOF).
+ipTHM=0 # Initial pT Hat Minimum (Ver y/o editar Master Macro).
+  pOF=\-$ipTHM.root  # previous Output File (pOF).
   fOF=$pOF  # final Output File (fOF).
-  ppTHM=pTHatMin\ =\ $IpTH.0	# previous pT Hat Minimum (ppTHM).
+  ppTHM=pTHatMin\ =\ $ipTHM.0	# previous pT Hat Minimum (ppTHM).
   fpTHM=$ppTHM	# final pT Hat Minimum (fpTHM).
 
-NoE=1000  # Number of Events.
-  pNoE=nEvent\ \ \ \ =\ $NoE\; # previous Number of Events.
+iNoE=1000  # Number of Events (Ver y/o editar Master Macro).
+  pNoE=nEvent\ \ \ \ =\ $iNoE\; # previous Number of Events.
   fNoE=$pNoE # final Number of Events.
 
 
 # Ahora corremos el macro para todos los pT Hat Minimum.. Así aumentamos la estadística.
 pwd=$PWD && cd $PttMMD  # Guardamos es directorio actual de trabajo y pasamos a MMD.
-for pTHM in {0..200..10}	# Ciclo sobre los distintos valores posibles de pT Hat Minimum.
+for pTHM in {0..450..1}	# Ciclo sobre los distintos valores posibles de pT Hat Minimum.
 do
   sed -i "s/$pOF/\-$pTHM.root/g" $PttMMD$MMN
 	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM.0/g" $PttMMD$MMN	# Cabiamos el valor del pTHatMin.
-  NoE=$(awk -vpTHM="$pTHM" 'BEGIN{x=1200*2.72^(-pTHM/200); print x}')  # Decrecimiento exponancial.
+  NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/150); print x}')  # Decrecimiento exponancial.
   sed -i "s/$pNoE/nEvent\ \ \ \ =\ $NoE\;/g" $PttMMD$MMN	# Cabiamos el valor del NoE.
-  make Simulacion && ./Simulacion # A CORRER ESA MADRE!
+  make -s Simulacion && ./Simulacion # A CORRER ESA MADRE!
   pOF=-$pTHM.root
 	ppTHM=pTHatMin\ =\ $pTHM.0
   pNoE=nEvent\ \ \ \ =\ $NoE\;
