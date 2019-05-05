@@ -27,7 +27,7 @@ do
 	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM.0/g" $PttMMD$MMN	# Cabiamos el valor del pTHatMin.
   NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/150); print x}')  # Decrecimiento exponancial.
   sed -i "s/$pNoE/nEvent\ \ \ \ =\ $NoE\;/g" $PttMMD$MMN	# Cabiamos el valor del NoE.
-  make -s Simulacion && ./Simulacion # A CORRER ESA MADRE!
+  make -s Simulacion && ./Simulacion > /dev/null # A CORRER ESA MADRE!
   pOF=-$pTHM.root
 	ppTHM=pTHatMin\ =\ $pTHM.0
   pNoE=nEvent\ \ \ \ =\ $NoE\;
