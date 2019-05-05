@@ -5,8 +5,8 @@ start_time=$(date +%X)
 
 # Primero definimos los parámetros de entrada.
 MMN=Simulacion.cc	# Master Macro Name (MMN).
-PttMMD=/home/saksevul/T/PYTHIA/FastJet/  # Path to the Master Macro Directory (pttMMD).
-PttOrFD=$PttMMD	# Path to the Output root Files Directory (PttOrFD).
+PttMMD=/home/saksevul/T/PYTHIA/  # Path to the Master Macro Directory (pttMMD).
+PttOrFD=$PttMMD/FastJet/	# Path to the Output root Files Directory (PttOrFD).
 
 ipTHM=0 # Initial pT Hat Minimum (Ver y/o editar Master Macro).
   pOF=\-$ipTHM.root  # previous Output File (pOF).

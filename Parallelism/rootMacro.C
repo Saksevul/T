@@ -109,7 +109,17 @@ void pT() {
        *Cociente_pT__Electron_ak5FastJet, *Cociente_pT__Muon_ak5FastJet,
        *Cociente_pT__gsfElectron_ak5PFJet, *Cociente_pT__Muon_ak5PFJet,
        *Cociente_pT__gsfElectron_ak5PFBTag, *Cociente_pT__Muon_ak5PFBTag,
-       *Cociente_pT__gsfElectron_ak5PFMultiJet, *Cociente_pT__Muon_ak5PFMultiJet;
+       *Cociente_pT__gsfElectron_ak5PFMultiJet, *Cociente_pT__Muon_ak5PFMultiJet,
+
+       *Cociente_pT100__1Electron_ak5FastJet, *Cociente_pT100__1Muon_ak5FastJet,
+       *Cociente_pT100__1gsfElectron_ak5PFJet, *Cociente_pT100__1Muon_ak5PFJet,
+       *Cociente_pT100__1gsfElectron_ak5PFBTag, *Cociente_pT100__1Muon_ak5PFBTag,
+       *Cociente_pT100__1gsfElectron_ak5PFMultiJet, *Cociente_pT100__1Muon_ak5PFMultiJet,
+
+       *Cociente_100pT__1Electron_ak5FastJet, *Cociente_100pT__1Muon_ak5FastJet,
+       *Cociente_100pT__1gsfElectron_ak5PFJet, *Cociente_100pT__1Muon_ak5PFJet,
+       *Cociente_100pT__1gsfElectron_ak5PFBTag, *Cociente_100pT__1Muon_ak5PFBTag,
+       *Cociente_100pT__1gsfElectron_ak5PFMultiJet, *Cociente_100pT__1Muon_ak5PFMultiJet;
 
   ak5FastJet__pT =(TH1F*)FastJetFile->Get("ak5FastJet__pT"); ak5FastJet__pT -> Scale(1.0/ak5FastJet__pT->Integral());
   ak5PFJet_pt_ =(TH1F*)JetFile->Get("ak5PFJets_pt_"); ak5PFJet_pt_ -> Scale(1.0/ak5PFJet_pt_->Integral());
@@ -121,10 +131,30 @@ void pT() {
   Cociente_pT__gsfElectron_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT__gsfElectron-ak5PFJet");   Cociente_pT__gsfElectron_ak5PFBTag-> Scale(1.0/Cociente_pT__gsfElectron_ak5PFBTag->Integral());
   Cociente_pT__gsfElectron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT__gsfElectron-ak5PFJet");   Cociente_pT__gsfElectron_ak5PFMultiJet-> Scale(1.0/Cociente_pT__gsfElectron_ak5PFMultiJet->Integral());
 
+  Cociente_pT100__1Electron_ak5FastJet =(TH1F*)FastJetFile->Get("Cociente_pT<100__1Electron-ak5FastJet");  Cociente_pT100__1Electron_ak5FastJet -> Scale(1.0/Cociente_pT100__1Electron_ak5FastJet->Integral());
+  Cociente_pT100__1gsfElectron_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT<100__1gsfElectron-ak5PFJet");   Cociente_pT100__1gsfElectron_ak5PFJet-> Scale(1.0/Cociente_pT100__1gsfElectron_ak5PFJet->Integral());
+  Cociente_pT100__1gsfElectron_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT<100__1gsfElectron-ak5PFJet");   Cociente_pT100__1gsfElectron_ak5PFBTag-> Scale(1.0/Cociente_pT100__1gsfElectron_ak5PFBTag->Integral());
+  Cociente_pT100__1gsfElectron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT<100__1gsfElectron-ak5PFJet");   Cociente_pT100__1gsfElectron_ak5PFMultiJet-> Scale(1.0/Cociente_pT100__1gsfElectron_ak5PFMultiJet->Integral());
+
+  Cociente_100pT__1Electron_ak5FastJet =(TH1F*)FastJetFile->Get("Cociente_pT>100__1Electron-ak5FastJet");  Cociente_100pT__1Electron_ak5FastJet -> Scale(1.0/Cociente_100pT__1Electron_ak5FastJet->Integral());
+  Cociente_100pT__1gsfElectron_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT>100__1gsfElectron-ak5PFJet");   Cociente_100pT__1gsfElectron_ak5PFJet-> Scale(1.0/Cociente_100pT__1gsfElectron_ak5PFJet->Integral());
+  Cociente_100pT__1gsfElectron_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT>100__1gsfElectron-ak5PFJet");   Cociente_100pT__1gsfElectron_ak5PFBTag-> Scale(1.0/Cociente_100pT__1gsfElectron_ak5PFBTag->Integral());
+  Cociente_100pT__1gsfElectron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT>100__1gsfElectron-ak5PFJet");   Cociente_100pT__1gsfElectron_ak5PFMultiJet-> Scale(1.0/Cociente_100pT__1gsfElectron_ak5PFMultiJet->Integral());
+
   Cociente_pT__Muon_ak5FastJet =(TH1F*)FastJetFile->Get("Cociente_pT__Muon-ak5FastJet"); Cociente_pT__Muon_ak5FastJet-> Scale(1.0/Cociente_pT__Muon_ak5FastJet->Integral());
   Cociente_pT__Muon_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT__Muon-ak5PFJet"); Cociente_pT__Muon_ak5PFJet-> Scale(1.0/Cociente_pT__Muon_ak5PFJet->Integral());
   Cociente_pT__Muon_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT__Muon-ak5PFJet"); Cociente_pT__Muon_ak5PFBTag-> Scale(1.0/Cociente_pT__Muon_ak5PFBTag->Integral());
   Cociente_pT__Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT__Muon-ak5PFJet"); Cociente_pT__Muon_ak5PFMultiJet-> Scale(1.0/Cociente_pT__Muon_ak5PFMultiJet->Integral());
+
+  Cociente_pT100__1Muon_ak5FastJet =(TH1F*)FastJetFile->Get("Cociente_pT<100__1Muon-ak5FastJet");  Cociente_pT100__1Muon_ak5FastJet -> Scale(1.0/Cociente_pT100__1Muon_ak5FastJet->Integral());
+  Cociente_pT100__1Muon_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT<100__1Muon-ak5PFJet");   Cociente_pT100__1Muon_ak5PFJet-> Scale(1.0/Cociente_pT100__1Muon_ak5PFJet->Integral());
+  Cociente_pT100__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT<100__1Muon-ak5PFJet");   Cociente_pT100__1Muon_ak5PFBTag-> Scale(1.0/Cociente_pT100__1Muon_ak5PFBTag->Integral());
+  Cociente_pT100__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT<100__1Muon-ak5PFJet");   Cociente_pT100__1Muon_ak5PFMultiJet-> Scale(1.0/Cociente_pT100__1Muon_ak5PFMultiJet->Integral());
+
+  Cociente_100pT__1Muon_ak5FastJet =(TH1F*)FastJetFile->Get("Cociente_pT>100__1Muon-ak5FastJet");  Cociente_100pT__1Muon_ak5FastJet -> Scale(1.0/Cociente_100pT__1Muon_ak5FastJet->Integral());
+  Cociente_100pT__1Muon_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT>100__1Muon-ak5PFJet");   Cociente_100pT__1Muon_ak5PFJet-> Scale(1.0/Cociente_100pT__1Muon_ak5PFJet->Integral());
+  Cociente_100pT__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT>100__1Muon-ak5PFJet");   Cociente_100pT__1Muon_ak5PFBTag-> Scale(1.0/Cociente_100pT__1Muon_ak5PFBTag->Integral());
+  Cociente_100pT__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT>100__1Muon-ak5PFJet");   Cociente_100pT__1Muon_ak5PFMultiJet-> Scale(1.0/Cociente_100pT__1Muon_ak5PFMultiJet->Integral());
 
 
   auto   legend = new TLegend(0.61,0.74,0.90,0.92);    legend->SetTextSize(0.04);
@@ -160,7 +190,7 @@ void pT() {
   Cociente_pT__Electron_Jet -> SetFillColor(0);  Cociente_pT__Electron_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
 
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT__Electron_ak5FastJet->SetTitle("Cociente pT para electrones; p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_pT__Electron_ak5FastJet->SetTitle("Cociente p_{T} para electrones; p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
   Cociente_pT__Electron_ak5FastJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Electron_ak5FastJet->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT__Electron_ak5FastJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Electron_ak5FastJet->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT__Electron_ak5FastJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Electron_ak5FastJet->GetYaxis()->SetTitleOffset(1.0);
@@ -177,11 +207,54 @@ void pT() {
   legend -> Draw();
 
 
+  TCanvas* Cociente_pT100__1Electron_Jet = new TCanvas("Cociente_pT100__1Electron_Jet","Cociente pT<100 FastJet y PFJets para electrones",10,10,1920,1080);
+  Cociente_pT100__1Electron_Jet -> SetFillColor(0);  Cociente_pT100__1Electron_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+  // Esto es para modificar las etiquetas del canvas.
+  Cociente_pT100__1Electron_ak5FastJet->SetTitle("Cociente p_{T} para electrones (p_{T}^{Jet} < 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_pT100__1Electron_ak5FastJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Electron_ak5FastJet->GetYaxis()->SetLabelSize(0.05);
+  Cociente_pT100__1Electron_ak5FastJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Electron_ak5FastJet->GetYaxis()->SetTitleSize(0.05);
+  Cociente_pT100__1Electron_ak5FastJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Electron_ak5FastJet->GetYaxis()->SetTitleOffset(1.0);
+  // Cociente_pT100__1Electron_ak5FastJet->SetAxisRange(0.0, 1.2, "X");
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Cociente_pT100__1Electron_ak5FastJet -> Draw("E1"); Cociente_pT100__1Electron_ak5FastJet -> SetLineColor(1);
+  Cociente_pT100__1Electron_ak5FastJet -> SetMarkerStyle(20); Cociente_pT100__1Electron_ak5FastJet -> SetMarkerColor(1);
+  Cociente_pT100__1gsfElectron_ak5PFJet -> Draw("E1 same"); Cociente_pT100__1gsfElectron_ak5PFJet -> SetLineColor(2);
+  Cociente_pT100__1gsfElectron_ak5PFJet -> SetMarkerStyle(23); Cociente_pT100__1gsfElectron_ak5PFJet -> SetMarkerColor(2);
+  Cociente_pT100__1gsfElectron_ak5PFBTag -> Draw("E1 same"); Cociente_pT100__1gsfElectron_ak5PFBTag -> SetLineColor(4);
+  Cociente_pT100__1gsfElectron_ak5PFBTag -> SetMarkerStyle(22); Cociente_pT100__1gsfElectron_ak5PFBTag -> SetMarkerColor(4);
+  Cociente_pT100__1gsfElectron_ak5PFMultiJet -> Draw("E1 same"); Cociente_pT100__1gsfElectron_ak5PFMultiJet -> SetLineColor(8);
+  Cociente_pT100__1gsfElectron_ak5PFMultiJet -> SetMarkerStyle(21); Cociente_pT100__1gsfElectron_ak5PFMultiJet -> SetMarkerColor(8);
+  legend -> Draw();
+
+
+  TCanvas* Cociente_100pT__1Electron_Jet = new TCanvas("Cociente_100pT__1Electron_Jet","Cociente pT>100 FastJet y PFJets para electrones",10,10,1920,1080);
+  Cociente_100pT__1Electron_Jet -> SetFillColor(0);  Cociente_100pT__1Electron_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+  // Esto es para modificar las etiquetas del canvas.
+  Cociente_100pT__1Electron_ak5FastJet->SetTitle("Cociente p_{T} para electrones (p_{T}^{Jet} > 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_100pT__1Electron_ak5FastJet->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Electron_ak5FastJet->GetYaxis()->SetLabelSize(0.05);
+  Cociente_100pT__1Electron_ak5FastJet->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Electron_ak5FastJet->GetYaxis()->SetTitleSize(0.05);
+  Cociente_100pT__1Electron_ak5FastJet->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Electron_ak5FastJet->GetYaxis()->SetTitleOffset(1.0);
+  // Cociente_100pT__1Electron_ak5FastJet->SetAxisRange(0.0, 1.2, "X");
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Cociente_100pT__1Electron_ak5FastJet -> Draw("E1"); Cociente_100pT__1Electron_ak5FastJet -> SetLineColor(1);
+  Cociente_100pT__1Electron_ak5FastJet -> SetMarkerStyle(20); Cociente_100pT__1Electron_ak5FastJet -> SetMarkerColor(1);
+  Cociente_100pT__1gsfElectron_ak5PFJet -> Draw("E1 same"); Cociente_100pT__1gsfElectron_ak5PFJet -> SetLineColor(2);
+  Cociente_100pT__1gsfElectron_ak5PFJet -> SetMarkerStyle(23); Cociente_100pT__1gsfElectron_ak5PFJet -> SetMarkerColor(2);
+  Cociente_100pT__1gsfElectron_ak5PFBTag -> Draw("E1 same"); Cociente_100pT__1gsfElectron_ak5PFBTag -> SetLineColor(4);
+  Cociente_100pT__1gsfElectron_ak5PFBTag -> SetMarkerStyle(22); Cociente_100pT__1gsfElectron_ak5PFBTag -> SetMarkerColor(4);
+  Cociente_100pT__1gsfElectron_ak5PFMultiJet -> Draw("E1 same"); Cociente_100pT__1gsfElectron_ak5PFMultiJet -> SetLineColor(8);
+  Cociente_100pT__1gsfElectron_ak5PFMultiJet -> SetMarkerStyle(21); Cociente_100pT__1gsfElectron_ak5PFMultiJet -> SetMarkerColor(8);
+  legend -> Draw();
+
+
+
   TCanvas* Cociente_pT__Muon_Jet = new TCanvas("Cociente_pT__Muon_Jet","Cociente pT FastJet y PFJets para muones",10,10,1920,1080);
   Cociente_pT__Muon_Jet -> SetFillColor(0);  Cociente_pT__Muon_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
 
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT__Muon_ak5FastJet->SetTitle("Cociente pT para muones; p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  Cociente_pT__Muon_ak5FastJet->SetTitle("Cociente p_{T} para muones; p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
   Cociente_pT__Muon_ak5FastJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Muon_ak5FastJet->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT__Muon_ak5FastJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Muon_ak5FastJet->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT__Muon_ak5FastJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Muon_ak5FastJet->GetYaxis()->SetTitleOffset(1.0);
@@ -198,9 +271,56 @@ void pT() {
   legend -> Draw();
 
 
+  TCanvas* Cociente_pT100__1Muon_Jet = new TCanvas("Cociente_pT100__1Muon_Jet","Cociente pT<100 FastJet y PFJets para muones",10,10,1920,1080);
+  Cociente_pT100__1Muon_Jet -> SetFillColor(0);  Cociente_pT100__1Muon_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+  // Esto es para modificar las etiquetas del canvas.
+  Cociente_pT100__1Muon_ak5FastJet->SetTitle("Cociente p_{T} para muones (p_{T}^{Jet} < 100); p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  Cociente_pT100__1Muon_ak5FastJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Muon_ak5FastJet->GetYaxis()->SetLabelSize(0.05);
+  Cociente_pT100__1Muon_ak5FastJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Muon_ak5FastJet->GetYaxis()->SetTitleSize(0.05);
+  Cociente_pT100__1Muon_ak5FastJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Muon_ak5FastJet->GetYaxis()->SetTitleOffset(1.0);
+  Cociente_pT100__1Muon_ak5FastJet->SetAxisRange(0.0, 1.2, "X");
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Cociente_pT100__1Muon_ak5FastJet -> Draw("E1"); Cociente_pT100__1Muon_ak5FastJet -> SetLineColor(1);
+  Cociente_pT100__1Muon_ak5FastJet -> SetMarkerStyle(20); Cociente_pT100__1Muon_ak5FastJet -> SetMarkerColor(1);
+  Cociente_pT100__1Muon_ak5PFJet -> Draw("E1 same"); Cociente_pT100__1Muon_ak5PFJet -> SetLineColor(2);
+  Cociente_pT100__1Muon_ak5PFJet -> SetMarkerStyle(23); Cociente_pT100__1Muon_ak5PFJet -> SetMarkerColor(2);
+  Cociente_pT100__1Muon_ak5PFBTag -> Draw("E1 same"); Cociente_pT100__1Muon_ak5PFBTag -> SetLineColor(4);
+  Cociente_pT100__1Muon_ak5PFBTag -> SetMarkerStyle(22); Cociente_pT100__1Muon_ak5PFBTag -> SetMarkerColor(4);
+  Cociente_pT100__1Muon_ak5PFMultiJet -> Draw("E1 same"); Cociente_pT100__1Muon_ak5PFMultiJet -> SetLineColor(8);
+  Cociente_pT100__1Muon_ak5PFMultiJet -> SetMarkerStyle(21); Cociente_pT100__1Muon_ak5PFMultiJet -> SetMarkerColor(8);
+  legend -> Draw();
+
+
+  TCanvas* Cociente_100pT__1Muon_Jet = new TCanvas("Cociente_100pT__1Muon_Jet","Cociente pT>100 FastJet y PFJets para muones",10,10,1920,1080);
+  Cociente_100pT__1Muon_Jet -> SetFillColor(0);  Cociente_100pT__1Muon_Jet -> SetFrameBorderMode(0);  gPad ->SetLogy();
+
+  // Esto es para modificar las etiquetas del canvas.
+  Cociente_100pT__1Muon_ak5FastJet->SetTitle("Cociente p_{T} para muones (p_{T}^{Jet} > 100); p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  Cociente_100pT__1Muon_ak5FastJet->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Muon_ak5FastJet->GetYaxis()->SetLabelSize(0.05);
+  Cociente_100pT__1Muon_ak5FastJet->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Muon_ak5FastJet->GetYaxis()->SetTitleSize(0.05);
+  Cociente_100pT__1Muon_ak5FastJet->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Muon_ak5FastJet->GetYaxis()->SetTitleOffset(1.0);
+  Cociente_100pT__1Muon_ak5FastJet->SetAxisRange(0.0, 1.2, "X");
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Cociente_100pT__1Muon_ak5FastJet -> Draw("E1"); Cociente_100pT__1Muon_ak5FastJet -> SetLineColor(1);
+  Cociente_100pT__1Muon_ak5FastJet -> SetMarkerStyle(20); Cociente_100pT__1Muon_ak5FastJet -> SetMarkerColor(1);
+  Cociente_100pT__1Muon_ak5PFJet -> Draw("E1 same"); Cociente_100pT__1Muon_ak5PFJet -> SetLineColor(2);
+  Cociente_100pT__1Muon_ak5PFJet -> SetMarkerStyle(23); Cociente_100pT__1Muon_ak5PFJet -> SetMarkerColor(2);
+  Cociente_100pT__1Muon_ak5PFBTag -> Draw("E1 same"); Cociente_100pT__1Muon_ak5PFBTag -> SetLineColor(4);
+  Cociente_100pT__1Muon_ak5PFBTag -> SetMarkerStyle(22); Cociente_100pT__1Muon_ak5PFBTag -> SetMarkerColor(4);
+  Cociente_100pT__1Muon_ak5PFMultiJet -> Draw("E1 same"); Cociente_100pT__1Muon_ak5PFMultiJet -> SetLineColor(8);
+  Cociente_100pT__1Muon_ak5PFMultiJet -> SetMarkerStyle(21); Cociente_100pT__1Muon_ak5PFMultiJet -> SetMarkerColor(8);
+  legend -> Draw();
+
+
+
   Espectro_pT__Jets -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/pT__FastJet_PFJets.png"); Espectro_pT__Jets -> Close();
   Cociente_pT__Electron_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Electron_Jet.png"); Cociente_pT__Electron_Jet -> Close();
+  Cociente_pT100__1Electron_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT100__1Electron_Jet.png"); Cociente_pT100__1Electron_Jet -> Close();
+  Cociente_100pT__1Electron_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_100pT__1Electron_Jet.png"); Cociente_100pT__1Electron_Jet -> Close();
   Cociente_pT__Muon_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Muon_Jet.png"); Cociente_pT__Muon_Jet -> Close();
+  Cociente_pT100__1Muon_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT100__1Muon_Jet.png"); Cociente_pT100__1Muon_Jet -> Close();
+  Cociente_100pT__1Muon_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_100pT__1Muon_Jet.png"); Cociente_100pT__1Muon_Jet -> Close();
 
 }
 
