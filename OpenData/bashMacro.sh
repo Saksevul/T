@@ -28,7 +28,7 @@ sed -i "s/$pJT\_20000/$JT\_20000/g" $PttMM
 		for rF in $(cat $PttrFL)	# Ciclo sobre: root Files List (rFL).
 		do
 			sed -i "s/$prF/$rF/g" $PttMM	# Cambiamos el root File de entrada del Master Macro (MM).
-			root -l -q $PttMM	2> /dev/null	# Corremos el Master Macro (MM).
+			root -l -q 2> /dev/null $PttMM	# Corremos el Master Macro (MM). (Eliminamos mensajes de error).
 			prF=$rF
 		done
 		# Finalmete juntamos todos los archivos root de salida, correspondientes a cada JCA, (1 por cada root File).

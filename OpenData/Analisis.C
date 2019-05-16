@@ -1,26 +1,26 @@
 void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   //Abrimos los archivos que nos interesan y los árboles que queremos leer.
-  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/BTag_20000/0001.root");
+  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_20000/0020.root");
   TTree *Eventos = (TTree*)InputFile->Get("Events");
   // TBranch *Muons = Eventos->GetBranch("recoMuons_muons__RECO.obj");
   // TBranch *gsfElectrons = Eventos->GetBranch("recoGsfElectrons_gsfElectrons__RECO.obj");
   // TBranch *ak5PFJets = Eventos->GetBranch("recoPFJets_ak5PFJets__RECO.obj");
 
   //Crear el archivo de salida que queremos. Tiene que ir después del imputFile.
-  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF-0001.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF-0020.root", "RECREATE");
 
 
-    printf("\n\n JCA: ak5PF, InputFile: BTag_20000/0001.root. \n\n\n\t %i) Archivos abiertos. \n\n", nprint++);
+    printf("\n JCA: ak5PF, InputFile: Jet_20000/0020.root. \n\n\t %i) Archivos abiertos. \n", nprint++);
 
 
   // Muones
   TLeaf *Muons_pt_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pt_" );
   TLeaf *Muons_eta_= Eventos->GetLeaf("recoMuons_muons__RECO.obj.eta_");
   TLeaf *Muons_phi_= Eventos->GetLeaf("recoMuons_muons__RECO.obj.phi_");
-  TLeaf *Muons_fX_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.vertex_.fCoordinates.fX");
-  TLeaf *Muons_fY_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.vertex_.fCoordinates.fY");
-  TLeaf *Muons_fZ_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.vertex_.fCoordinates.fZ");
+  TLeaf *Muons_fX_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pfP4_.fCoordinates.fX");
+  TLeaf *Muons_fY_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pfP4_.fCoordinates.fY");
+  TLeaf *Muons_fZ_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pfP4_.fCoordinates.fZ");
   // Fotones
   TLeaf *Photons_pt_ = Eventos->GetLeaf("recoPhotons_photons__RECO.obj.pt_" );
   TLeaf *Photons_eta_= Eventos->GetLeaf("recoPhotons_photons__RECO.obj.eta_");
@@ -32,9 +32,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   TLeaf *gsfElectrons_pt_ = Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.pt_");
   TLeaf *gsfElectrons_eta_= Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.eta_");
   TLeaf *gsfElectrons_phi_= Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.phi_");
-  TLeaf *gsfElectrons_fX_ = Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.vertex_.fCoordinates.fX");
-  TLeaf *gsfElectrons_fY_ = Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.vertex_.fCoordinates.fY");
-  TLeaf *gsfElectrons_fZ_ = Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.vertex_.fCoordinates.fZ");
+  TLeaf *gsfElectrons_fX_ = Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.corrections_.pflowP4.fCoordinates.fX");
+  TLeaf *gsfElectrons_fY_ = Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.corrections_.pflowP4.fCoordinates.fY");
+  TLeaf *gsfElectrons_fZ_ = Eventos->GetLeaf("recoGsfElectrons_gsfElectrons__RECO.obj.corrections_.pflowP4.fCoordinates.fZ");
   //ak5PFJets
   TLeaf *ak5PFJets_pt_                        = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.pt_");
   TLeaf *ak5PFJets_eta_                       = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.eta_");
@@ -56,25 +56,30 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   TLeaf *ak5PFJets_mMuonMultiplicity          = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.m_specific.mMuonMultiplicity");
   TLeaf *ak5PFJets_mHFHadronMultiplicity      = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.m_specific.mHFHadronMultiplicity");
   TLeaf *ak5PFJets_mHFEMMultiplicity          = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.m_specific.mHFEMMultiplicity");
+  // Beam Spot.
+  TLeaf *BeamSpot_fX_ = Eventos->GetLeaf("recoBeamSpot_offlineBeamSpot__RECO.obj.position_.fCoordinates.fX");
+  TLeaf *BeamSpot_fY_ = Eventos->GetLeaf("recoBeamSpot_offlineBeamSpot__RECO.obj.position_.fCoordinates.fY");
+  TLeaf *BeamSpot_fZ_ = Eventos->GetLeaf("recoBeamSpot_offlineBeamSpot__RECO.obj.position_.fCoordinates.fZ");
 
 
-    printf("\t %i) Ramas leidas. \n\n", nprint++);
+
+    printf("\t %i) Ramas leidas. \n", nprint++);
 
 
   // Muons
   TH1F *h_Muons_pt_ = new TH1F("Muons_pt_",  "p_{T} de Muones contenidos en ak5PFJets; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
   TH1F *h_Muons_eta_= new TH1F("Muons_eta_", "recoMuones_muons__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
   TH1F *h_Muons_phi_= new TH1F("Muons_phi_", "recoMuones_muons__RECO.obj.phi_; #phi [Rad]; Probabilidad", 61, -3.1424, 3.1424);
-  TH1D *h_Muons_fX_ = new TH1D("Muons_fX_", "Vertice en X de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
-  TH1D *h_Muons_fY_ = new TH1D("Muons_fY_", "Vertice en Y de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
-  TH1D *h_Muons_fZ_ = new TH1D("Muons_fZ_", "Vertice en Z de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 1241, -124.1, 124.1);
+  TH1D *h_Muons_fX_ = new TH1D("Muons_fX_", "Vertice en X de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 501, -50.1, 50.1);
+  TH1D *h_Muons_fY_ = new TH1D("Muons_fY_", "Vertice en Y de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 501, -50.1, 50.1);
+  TH1D *h_Muons_fZ_ = new TH1D("Muons_fZ_", "Vertice en Z de Muones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 501, -50.1, 50.1);
   // gsfElectrons
   TH1F *h_gsfElectrons_pt_ = new TH1F("gsfElectrons_pt_",  "p_{T} de gsfElectrones contenidos en ak5PFJets; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
   TH1F *h_gsfElectrons_eta_= new TH1F("gsfElectrons_eta_", "recoGsfElectrons_gsfElectrons__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
   TH1F *h_gsfElectrons_phi_= new TH1F("gsfElectrons_phi_", "recoGsfElectrons_gsfElectrons__RECO.obj.phi_; #phi [Rad]; Probabilidad", 61, -3.1424, 3.1424);
-  TH1D *h_gsfElectrons_fX_ = new TH1D("gsfElectrons_fX_", "Vertice en X de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
-  TH1D *h_gsfElectrons_fY_ = new TH1D("gsfElectrons_fY_", "Vertice en Y de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
-  TH1D *h_gsfElectrons_fZ_ = new TH1D("gsfElectrons_fZ_", "Vertice en Z de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 241, -24.1, 24.1);
+  TH1D *h_gsfElectrons_fX_ = new TH1D("gsfElectrons_fX_", "Vertice en X de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 251, -25.1, 25.1);
+  TH1D *h_gsfElectrons_fY_ = new TH1D("gsfElectrons_fY_", "Vertice en Y de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 251, -25.1, 25.1);
+  TH1D *h_gsfElectrons_fZ_ = new TH1D("gsfElectrons_fZ_", "Vertice en Z de gsfElectrones contenidos en ak5PFJets; Distancia [cm]; Frecuencia", 251, -25.1, 25.1);
   // ak5PFJets
   TH1F *h_ak5PFJets_pt_                       = new TH1F("ak5PFJets_pt_",  "recoPFJets_PFJets__RECO.obj.pt_; p_{T} [GeV]; Probabilidad",  3200, 0, 3200);
   // TH1F *h_ak5PFJets_eta_                      = new TH1F("ak5PFJets_eta_", "recoPFJets_PFJets__RECO.obj.eta_; #eta; Probabilidad", 59, -5.9, 5.9);
@@ -113,12 +118,15 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   TH1F *h_ak5PFJets_pT32__Multiplicity  = new TH1F("ak5PFJets_pT>32__Multiplicidad", "Multiplicidad de ak5PFJets, con p_{T} > 32 GeV, por Evento; Numero de Jets; Frecuencia", 120, 0, 120);
   TH1F *h_ak5PFJets_pT64__Multiplicity  = new TH1F("ak5PFJets_pT>64__Multiplicidad", "Multiplicidad de ak5PFJets, con p_{T} > 64 GeV, por Evento; Numero de Jets; Frecuencia", 120, 0, 120);
   // Espectro de p_T.
+  TH1F *h_Muons__pT = new TH1F("Muons__pT",  "p_{T} de Muones contenidos en ak5PFJets, con restricci#acute{o}n en el vertice; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
+  TH1F *h_gsfElectrons__pT = new TH1F("gsfElectrons__pT",  "p_{T} de gsfElectrones contenidos en ak5PFJets, con restricci#acute{o}n en el vertice; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
   TH1F *h_ak5PFJets_Multiplicity64__pT = new TH1F("ak5PFJets_Mult<=64__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 64, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   TH1F *h_ak5PFJets_Multiplicity32__pT = new TH1F("ak5PFJets_Mult<=32__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 32, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   TH1F *h_ak5PFJets_Multiplicity16__pT = new TH1F("ak5PFJets_Mult<=16__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 16, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   TH1F *h_ak5PFJets_Multiplicity08__pT = new TH1F("ak5PFJets_Mult<=08__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 08, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   TH1F *h_ak5PFJets_Multiplicity04__pT = new TH1F("ak5PFJets_Mult<=04__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 04, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   TH1F *h_ak5PFJets_Multiplicity02__pT = new TH1F("ak5PFJets_Mult<=02__pT", "Distribucion de pT de ak5PFJets, con Multilicidad <= 02, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
+
   // Cocientes.
   TH1F *h__pTQuotient_Muon_ak5PFJet         = new TH1F("Cociente_pT__Muon-ak5PFJet",  "Cociente p_{T}  Muon / ak5PFJet; Indice; Frecuencia", 100, 0, 2);
   TH1F *h__pTQuotient_1Muon_ak5PFJet        = new TH1F("Cociente_pT<100__1Muon-ak5PFJet",  "Cociente_{p_{T} < 100}  Muon_{MasEnergetico} / ak5PFJet; Indice; Frecuencia", 100, 0, 2);
@@ -154,27 +162,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   // TH1F *h__phi_D__jet_jet   = new TH1F("ak5PFJets_distancia_phi  jet jet", "Distancia angular #phi entre todos los jets de cada evento; Distancia angular; Frecuencia", 63, 0, 6.3);
 
 
-    printf("\t %i) Histogramas creados. \n\n", nprint++);
+    printf("\t %i) Histogramas creados. \n", nprint++);
 
-
-  //---------------------------------------------------------------------------------------------------------------
-  for (Int_t e=0; e<Eventos->GetEntries(); e++) {  //Creamos unos histogramas para conocer la distribución de los vértices.
-    gsfElectrons_fX_ ->GetBranch()->GetEntry(e);  Muons_fX_ ->GetBranch()->GetEntry(e);
-    gsfElectrons_fY_ ->GetBranch()->GetEntry(e);  Muons_fY_ ->GetBranch()->GetEntry(e);
-    gsfElectrons_fZ_ ->GetBranch()->GetEntry(e);  Muons_fZ_ ->GetBranch()->GetEntry(e);
-    for (Int_t i=0; i<gsfElectrons_fX_->GetLen(); i++) {
-      h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(i));  h_Muons_fX_ -> Fill(Muons_fX_->GetValue(i));
-      h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(i));  h_Muons_fY_ -> Fill(Muons_fY_->GetValue(i));
-      h_gsfElectrons_fZ_ -> Fill(gsfElectrons_fZ_->GetValue(i));  h_Muons_fZ_ -> Fill(Muons_fZ_->GetValue(i));
-  } }
-
-  TF1 *gauss = new TF1("gauss", "gaus");
-  h_gsfElectrons_fX_->Fit("gauss", "CNQ");  Float_t x_electron=gauss->GetParameter(1), sx_electron=0.5 /*gauss->GetParameter(2)*/;  h_gsfElectrons_fX_->Reset("ICESM");
-  h_gsfElectrons_fY_->Fit("gauss", "CNQ");  Float_t y_electron=gauss->GetParameter(1), sy_electron=0.5 /*gauss->GetParameter(2)*/;  h_gsfElectrons_fY_->Reset("ICESM");
-  h_gsfElectrons_fZ_->Fit("gauss", "CNQ");  Float_t z_electron=gauss->GetParameter(1), sz_electron=0.5 /*gauss->GetParameter(2)*/;  h_gsfElectrons_fZ_->Reset("ICESM");
-  h_Muons_fX_->Fit("gauss", "CNQ");  Float_t x_muon=gauss->GetParameter(1), sx_muon=0.5 /*gauss->GetParameter(2)*/;  h_Muons_fX_->Reset("ICESM");
-  h_Muons_fY_->Fit("gauss", "CNQ");  Float_t y_muon=gauss->GetParameter(1), sy_muon=0.5 /*gauss->GetParameter(2)*/;  h_Muons_fY_->Reset("ICESM");
-  h_Muons_fZ_->Fit("gauss", "CNQ");  Float_t z_muon=gauss->GetParameter(1), sz_muon=0.5 /*gauss->GetParameter(2)*/;  h_Muons_fZ_->Reset("ICESM");
 
   //---------------------------------------------------------------------------------------------------------------
   // Hacemos un loop respecto a todo el conjunto de datos de interés.
@@ -184,17 +173,18 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
     // Muons->GetEntry(e);
     // gsfElectrons->GetEntry(e);
     // ak5PFJets->GetEntry(e);
-    Muons_pt_ ->GetBranch()->GetEntry(e);  Photons_pt_ ->GetBranch()->GetEntry(e);  gsfElectrons_pt_ ->GetBranch()->GetEntry(e);  ak5PFJets_pt_  ->GetBranch()->GetEntry(e);
-    Muons_eta_->GetBranch()->GetEntry(e);  Photons_eta_->GetBranch()->GetEntry(e);  gsfElectrons_eta_->GetBranch()->GetEntry(e);  ak5PFJets_eta_ ->GetBranch()->GetEntry(e);
-    Muons_phi_->GetBranch()->GetEntry(e);  Photons_phi_->GetBranch()->GetEntry(e);  gsfElectrons_phi_->GetBranch()->GetEntry(e);  ak5PFJets_phi_ ->GetBranch()->GetEntry(e);
+    Muons_pt_ ->GetBranch()->GetEntry(e);  Photons_pt_ ->GetBranch()->GetEntry(e);  gsfElectrons_pt_ ->GetBranch()->GetEntry(e);  BeamSpot_fX_->GetBranch()->GetEntry(e);
+    Muons_eta_->GetBranch()->GetEntry(e);  Photons_eta_->GetBranch()->GetEntry(e);  gsfElectrons_eta_->GetBranch()->GetEntry(e);  BeamSpot_fY_->GetBranch()->GetEntry(e);
+    Muons_phi_->GetBranch()->GetEntry(e);  Photons_phi_->GetBranch()->GetEntry(e);  gsfElectrons_phi_->GetBranch()->GetEntry(e);  BeamSpot_fZ_->GetBranch()->GetEntry(e);
     Muons_fX_ ->GetBranch()->GetEntry(e);  Photons_fX_ ->GetBranch()->GetEntry(e);  gsfElectrons_fX_ ->GetBranch()->GetEntry(e);
     Muons_fY_ ->GetBranch()->GetEntry(e);  Photons_fY_ ->GetBranch()->GetEntry(e);  gsfElectrons_fY_ ->GetBranch()->GetEntry(e);
     Muons_fZ_ ->GetBranch()->GetEntry(e);  Photons_fZ_ ->GetBranch()->GetEntry(e);  gsfElectrons_fZ_ ->GetBranch()->GetEntry(e);
-    ak5PFJets_mChargedHadronEnergy->GetBranch()->GetEntry(e);  ak5PFJets_mChargedHadronMultiplicity->GetBranch()->GetEntry(e);
-    ak5PFJets_mNeutralHadronEnergy->GetBranch()->GetEntry(e);  ak5PFJets_mNeutralHadronMultiplicity->GetBranch()->GetEntry(e);
-    ak5PFJets_mElectronEnergy     ->GetBranch()->GetEntry(e);  ak5PFJets_mElectronMultiplicity     ->GetBranch()->GetEntry(e);
-    ak5PFJets_mPhotonEnergy       ->GetBranch()->GetEntry(e);  ak5PFJets_mPhotonMultiplicity       ->GetBranch()->GetEntry(e);
-    ak5PFJets_mMuonEnergy         ->GetBranch()->GetEntry(e);  ak5PFJets_mMuonMultiplicity         ->GetBranch()->GetEntry(e);
+
+    ak5PFJets_pt_ ->GetBranch()->GetEntry(e);  ak5PFJets_mChargedHadronEnergy->GetBranch()->GetEntry(e);  ak5PFJets_mChargedHadronMultiplicity->GetBranch()->GetEntry(e);
+    ak5PFJets_eta_->GetBranch()->GetEntry(e);  ak5PFJets_mNeutralHadronEnergy->GetBranch()->GetEntry(e);  ak5PFJets_mNeutralHadronMultiplicity->GetBranch()->GetEntry(e);
+    ak5PFJets_phi_->GetBranch()->GetEntry(e);  ak5PFJets_mElectronEnergy     ->GetBranch()->GetEntry(e);  ak5PFJets_mElectronMultiplicity     ->GetBranch()->GetEntry(e);
+                                               ak5PFJets_mPhotonEnergy       ->GetBranch()->GetEntry(e);  ak5PFJets_mPhotonMultiplicity       ->GetBranch()->GetEntry(e);
+                                               ak5PFJets_mMuonEnergy         ->GetBranch()->GetEntry(e);  ak5PFJets_mMuonMultiplicity         ->GetBranch()->GetEntry(e);
 
     for (Int_t i=0; i<ak5PFJets_pt_->GetLen(); i++) {      Float_t iPF_pT=ak5PFJets_pt_->GetValue(i), iPF_eta=ak5PFJets_eta_->GetValue(i), iPF_phi=ak5PFJets_phi_->GetValue(i);
       // Multiplicidad de ak5PFJets en cada Evento. Se tomo p_T como criterio de selección.
@@ -256,11 +246,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
           if ( fabs(Muons_phi_->GetValue(j)-iPF_phi) <= PI ) {
             D[j] = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(Muons_phi_->GetValue(j)-iPF_phi,2));
           } else { D[j] = sqrt(pow(Muons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(Muons_phi_->GetValue(j)-iPF_phi),2));  }
+          h_Muons_pt_ -> Fill(Muons_pt_->GetValue(j));
         }
         TMath::Sort(Muons_pt_->GetLen(), D, Index, false);                                                        // TMath::Sort devuelve el ordenamiento a partir de ìndices, no de valores.
         for (Int_t j=0; j<ak5PFJets_mMuonMultiplicity->GetValue(i); j++) {
-          if ( pow(Muons_fX_->GetValue(Index[j])-x_muon,2) + pow(Muons_fY_->GetValue(Index[j])-y_muon,2) + pow(Muons_fZ_->GetValue(Index[j])-z_muon,2) <= 0.25 ) {
-            h_Muons_pt_ -> Fill(Muons_pt_->GetValue(Index[j]));
+          if ( pow(Muons_fX_->GetValue(Index[j])-BeamSpot_fX_->GetValue(i),2) + pow(Muons_fY_->GetValue(Index[j])-BeamSpot_fY_->GetValue(i),2) + pow(Muons_fZ_->GetValue(Index[j])-BeamSpot_fZ_->GetValue(i),2) <= 0.25 ) {
+            h_Muons__pT -> Fill(Muons_pt_->GetValue(Index[j]));
             h_Muons_fX_ -> Fill(Muons_fX_->GetValue(Index[j]));
             h_Muons_fY_ -> Fill(Muons_fY_->GetValue(Index[j]));
             h_Muons_fZ_ -> Fill(Muons_fZ_->GetValue(Index[j]));
@@ -282,11 +273,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
           if ( fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi) <= PI ) {
             D[j] = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(gsfElectrons_phi_->GetValue(j)-iPF_phi,2));
           } else { D[j] = sqrt(pow(gsfElectrons_eta_->GetValue(j)-iPF_eta,2)+pow(2*PI-fabs(gsfElectrons_phi_->GetValue(j)-iPF_phi),2));  }
+          h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(j));
         }
         TMath::Sort(gsfElectrons_pt_->GetLen(), D, Index, false);
         for (Int_t j=0; j<ak5PFJets_mElectronMultiplicity->GetValue(i); j++) {
-          if ( pow(gsfElectrons_fX_->GetValue(Index[j])-x_electron,2) + pow(gsfElectrons_fY_->GetValue(Index[j])-y_electron,2) + pow(gsfElectrons_fZ_->GetValue(Index[j])-z_electron,2) <= 0.25 ) {
-            h_gsfElectrons_pt_ -> Fill(gsfElectrons_pt_->GetValue(Index[j]));
+          if ( pow(gsfElectrons_fX_->GetValue(Index[j])-BeamSpot_fX_->GetValue(i),2) + pow(gsfElectrons_fY_->GetValue(Index[j])-BeamSpot_fY_->GetValue(i),2) + pow(gsfElectrons_fZ_->GetValue(Index[j])-BeamSpot_fZ_->GetValue(i),2) <= 0.25 ) {
+            h_gsfElectrons__pT -> Fill(gsfElectrons_pt_->GetValue(Index[j]));
             h_gsfElectrons_fX_ -> Fill(gsfElectrons_fX_->GetValue(Index[j]));
             h_gsfElectrons_fY_ -> Fill(gsfElectrons_fY_->GetValue(Index[j]));
             h_gsfElectrons_fZ_ -> Fill(gsfElectrons_fZ_->GetValue(Index[j]));
@@ -323,12 +315,13 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   //---------------------------------------------------------------------------------------------------------------
 
 
-    printf("\t %i) Datos extraidos. \n\n", nprint++);
+    printf("\t %i) Datos extraidos. \n", nprint++);
 
 
   // Guardamos nustros histogramas en el archivo root que nos interesa.
   // Muons
   h_Muons_pt_ -> Write();
+  h_Muons__pT -> Write();
   // h_Muons_eta_-> Write();
   // h_Muons_phi_-> Write();
   h_Muons_fX_ -> Write();
@@ -336,6 +329,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   h_Muons_fZ_ -> Write();
   // gsfElectrons
   h_gsfElectrons_pt_ -> Write();
+  h_gsfElectrons__pT -> Write();
   // h_gsfElectrons_eta_-> Write();
   // h_gsfElectrons_phi_-> Write();
   h_gsfElectrons_fX_ -> Write();
