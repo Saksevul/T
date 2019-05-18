@@ -21,12 +21,12 @@ iNoE=1000  # Number of Events (Ver y/o editar Master Macro).
 
 # Ahora corremos el macro para todos los pT Hat Minimum.. Así aumentamos la estadística.
 pwd=$PWD && cd $PttMMD  # Guardamos es directorio actual de trabajo y pasamos a MMD.
-for pTHM in {0..450..1}	# Ciclo sobre los distintos valores posibles de pT Hat Minimum.
+for pTHM in {0..4800..1}	# Ciclo sobre los distintos valores posibles de pT Hat Minimum.
 do
   sed -i "s/$pOF/\-$pTHM.root/g" $PttMMD$MMN
 	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM.0/g" $PttMMD$MMN	# Cabiamos el valor del pTHatMin.
-  NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/150); print x}')  # Decrecimiento exponancial.
-  sed -i "s/$pNoE/nEvent\ \ \ \ =\ $NoE\;/g" $PttMMD$MMN	# Cabiamos el valor del NoE.
+  # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/150); print x}')  # Decrecimiento exponancial.
+  # sed -i "s/$pNoE/nEvent\ \ \ \ =\ $NoE\;/g" $PttMMD$MMN	# Cabiamos el valor del NoE.
   make -s Simulacion && ./Simulacion > /dev/null # A CORRER ESA MADRE!
   pOF=-$pTHM.root
 	ppTHM=pTHatMin\ =\ $pTHM.0

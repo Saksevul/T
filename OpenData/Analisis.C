@@ -1,26 +1,26 @@
 void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   //Abrimos los archivos que nos interesan y los árboles que queremos leer.
-  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/Jet_20000/0020.root");
+  TFile *InputFile = new TFile("/home/saksevul/CMS_1.3.0/CMS_Run2011A/BTag_20000/0001.root");
   TTree *Eventos = (TTree*)InputFile->Get("Events");
   // TBranch *Muons = Eventos->GetBranch("recoMuons_muons__RECO.obj");
   // TBranch *gsfElectrons = Eventos->GetBranch("recoGsfElectrons_gsfElectrons__RECO.obj");
   // TBranch *ak5PFJets = Eventos->GetBranch("recoPFJets_ak5PFJets__RECO.obj");
 
   //Crear el archivo de salida que queremos. Tiene que ir después del imputFile.
-  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF-0020.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF-0001.root", "RECREATE");
 
 
-    printf("\n JCA: ak5PF, InputFile: Jet_20000/0020.root. \n\n\t %i) Archivos abiertos. \n", nprint++);
+    printf("\n JCA: ak5PF, InputFile: BTag_20000/0001.root. \n\n\t %i) Archivos abiertos. \n", nprint++);
 
 
   // Muones
   TLeaf *Muons_pt_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pt_" );
   TLeaf *Muons_eta_= Eventos->GetLeaf("recoMuons_muons__RECO.obj.eta_");
   TLeaf *Muons_phi_= Eventos->GetLeaf("recoMuons_muons__RECO.obj.phi_");
-  TLeaf *Muons_fX_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pfP4_.fCoordinates.fX");
-  TLeaf *Muons_fY_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pfP4_.fCoordinates.fY");
-  TLeaf *Muons_fZ_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.pfP4_.fCoordinates.fZ");
+  TLeaf *Muons_fX_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.vertex_.fCoordinates.fX");
+  TLeaf *Muons_fY_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.vertex_.fCoordinates.fY");
+  TLeaf *Muons_fZ_ = Eventos->GetLeaf("recoMuons_muons__RECO.obj.vertex_.fCoordinates.fZ");
   // Fotones
   TLeaf *Photons_pt_ = Eventos->GetLeaf("recoPhotons_photons__RECO.obj.pt_" );
   TLeaf *Photons_eta_= Eventos->GetLeaf("recoPhotons_photons__RECO.obj.eta_");
@@ -151,7 +151,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   // Distancia angular.
   TH1F *h__D__Muon_ak5PFJet        = new TH1F("D__Muon-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Muon al ak5PFJet; Valor; Frecuencia", 120, 0, 1.2);
   TH1F *h__D__Photon_ak5PFJet      = new TH1F("D__Foton-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Foton al ak5PFJet; Valor; Frecuencia", 120, 0, 1.2);
-  TH1F *h__D__gsfElectron_ak5PFJet = new TH1F("D__gsfElectron-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del gsfElectron al ak5PFJet; Valor; Frecuencia", 480, 0, 1.2);
+  TH1F *h__D__gsfElectron_ak5PFJet = new TH1F("D__gsfElectron-ak5PFJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del gsfElectron al ak5PFJet; Valor; Frecuencia", 120, 0, 1.2);
   TH1F *h_ak5PFJets__D__Jet_Jet      = new TH1F("ak5PFJets__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Frecuencia", 120, 0, 12);
   TH1F *h_ak5PFJets_pT04__D__Jet_Jet = new TH1F("ak5PFJets_pT>04__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Frecuencia", 120, 0, 12);
   TH1F *h_ak5PFJets_pT08__D__Jet_Jet = new TH1F("ak5PFJets_pT>08__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del ak5PFJet_{i} al ak5PFJet_{j}, por Evento; Valor; Frecuencia", 120, 0, 12);
