@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-0.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ_Soft.root", "RECREATE");
   // Histograms.
   // Muones.
   TH1F *h_Muons_pt_ = new TH1F("Muons_pt_",  "p_{T} de Muones contenidos en ak5PFJets; p_{T} [GeV]; Frecuencia",  1200, 0, 1200);
@@ -81,29 +81,38 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   // Generator. Shorthand for event.
   Pythia pythia;
   Event& event = pythia.event;
-  // // Soft QCD processes.
-  // pythia.readString("SoftQCD:all = on");
-  // Process selection.
-  pythia.readString("HardQCD:all = on");
-  pythia.readString("PhaseSpace:pTHatMin = 0.0");
-  pythia.readString("HardQCD:hardccbar = on");
-  pythia.readString("HardQCD:hardbbbar = on");
-  // pythia.readString("HardQCD:3parton = on");
-  pythia.readString("PromptPhoton:all = on");
-  pythia.readString("WeakBosonExchange:all = on");
-  pythia.readString("SUSY:all = on");
-  pythia.readString("LeptoQuark:all = on");
+  // Soft QCD processes.
+  pythia.readString("SoftQCD:nonDiffractive = on");
+  pythia.readString("SoftQCD:singleDiffractive = on");
+  pythia.readString("SoftQCD:doubleDiffractive = on");
+  pythia.readString("PhaseSpace:pTHatMin = 0");
+  pythia.readString("PhaseSpace:pTHatMax = 900");
+  pythia.readString("PhaseSpace:mHatMin = 0");
+  pythia.readString("PhaseSpace:mHatMax = 900");
+  pythia.readString("ParticleDecays:limitTau0 = On");
+  pythia.readString("ParticleDecays:tau0Max = 10.0");
+
+  // // Process selection.
+  // pythia.readString("HardQCD:all = on");
+  // pythia.readString("PhaseSpace:pTHatMin = 0.0");
+  // pythia.readString("HardQCD:hardccbar = on");
+  // pythia.readString("HardQCD:hardbbbar = on");
+  // // pythia.readString("HardQCD:3parton = on");
+  // pythia.readString("PromptPhoton:all = on");
+  // pythia.readString("WeakBosonExchange:all = on");
+
   // No event record printout.
   pythia.readString("Next:numberShowInfo = 0");
   pythia.readString("Next:numberShowProcess = 0");
   pythia.readString("Next:numberShowEvent = 0");
+
   // LHC initialization.
   pythia.readString("Beams:eCM = 7000.0");
   pythia.init();
 
 
   // Number of events, generated and listed ones (for jets).
-  int nEvent    = 100;
+  int nEvent    = 2000000;
   printf("\n\n\n%i\n\n\n", nEvent);
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= - -1; C/A = 0; kT = 1.
