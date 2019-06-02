@@ -38,7 +38,193 @@ void DistanciaAngular() {
 
 }
 
-//################################################################################################################
+//###################################################################################################################################################################################
+
+void Limits() {
+  // Le damos algo de personalización al las gráficas.
+  gROOT->ForceStyle();
+  gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
+  gStyle->SetPadTopMargin(0.08);  gStyle->SetPadBottomMargin(0.12);
+  gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.10);
+  gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
+
+  //Abrimos el archivo que nos interesa y el árbol que queremos leer.
+  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
+  TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF_Limits.root");
+  TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF_Limits.root");
+  TFile *MinBiasFile = new TFile("/home/saksevul/T/OpenData/MinBias_20000/ak5PF_Limits.root");
+  TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF_Limits.root");
+
+
+  TH1F  *MuonsFJ_pt_,  *MuonsJet_pt_,  *MuonsBTag_pt_,  *MuonsMinBias_pt_,  *MuonsMultiJet_pt_,    *ak5FJ_pt_,  *ak5PFJet_pt_,  *ak5PFBTag_pt_,  *ak5PFMinBias_pt_,   *ak5PFMultiJet_pt_,
+        *MuonsFJ_eta_, *MuonsJet_eta_, *MuonsBTag_eta_, *MuonsMinBias_eta_, *MuonsMultiJet_eta_,   *ak5FJ_eta_, *ak5PFJet_eta_, *ak5PFBTag_eta_, *ak5PFMinBias_eta_,  *ak5PFMultiJet_eta_,
+        *ElectronsFJ_pt_,  *gsfElectronsJet_pt_,  *gsfElectronsBTag_pt_,  *gsfElectronsMinBias_pt_,  *gsfElectronsMultiJet_pt_,
+        *ElectronsFJ_eta_, *gsfElectronsJet_eta_, *gsfElectronsBTag_eta_, *gsfElectronsMinBias_eta_, *gsfElectronsMultiJet_eta_;
+
+
+  MuonsFJ_pt_ =(TH1F*)FJFile->Get("Muons_pt_"); MuonsFJ_pt_->Scale(1.0/MuonsFJ_pt_->Integral());
+  MuonsJet_pt_ =(TH1F*)JetFile->Get("Muons_pt_"); MuonsJet_pt_->Scale(1.0/MuonsJet_pt_->Integral());
+  MuonsBTag_pt_ =(TH1F*)BTagFile->Get("Muons_pt_"); MuonsBTag_pt_->Scale(1.0/MuonsBTag_pt_->Integral());
+  MuonsMinBias_pt_ =(TH1F*)MinBiasFile->Get("Muons_pt_"); MuonsMinBias_pt_->Scale(1.0/MuonsMinBias_pt_->Integral());
+  MuonsMultiJet_pt_ =(TH1F*)MultiJetFile->Get("Muons_pt_"); MuonsMultiJet_pt_->Scale(1.0/MuonsMultiJet_pt_->Integral());
+
+  MuonsFJ_eta_ =(TH1F*)FJFile->Get("Muons_eta_"); MuonsFJ_eta_->Scale(1.0/MuonsFJ_eta_->Integral());
+  MuonsJet_eta_ =(TH1F*)JetFile->Get("Muons_eta_"); MuonsJet_eta_->Scale(1.0/MuonsJet_eta_->Integral());
+  MuonsBTag_eta_ =(TH1F*)BTagFile->Get("Muons_eta_"); MuonsBTag_eta_->Scale(1.0/MuonsBTag_eta_->Integral());
+  MuonsMinBias_eta_ =(TH1F*)MinBiasFile->Get("Muons_eta_"); MuonsMinBias_eta_->Scale(1.0/MuonsMinBias_eta_->Integral());
+  MuonsMultiJet_eta_ =(TH1F*)MultiJetFile->Get("Muons_eta_"); MuonsMultiJet_eta_->Scale(1.0/MuonsMultiJet_eta_->Integral());
+
+
+  ElectronsFJ_pt_ =(TH1F*)FJFile->Get("Electrons_pt_"); ElectronsFJ_pt_->Scale(1.0/ElectronsFJ_pt_->Integral());
+  gsfElectronsJet_pt_ =(TH1F*)JetFile->Get("gsfElectrons_pt_"); gsfElectronsJet_pt_->Scale(1.0/gsfElectronsJet_pt_->Integral());
+  gsfElectronsBTag_pt_ =(TH1F*)BTagFile->Get("gsfElectrons_pt_"); gsfElectronsBTag_pt_->Scale(1.0/gsfElectronsBTag_pt_->Integral());
+  gsfElectronsMinBias_pt_ =(TH1F*)MinBiasFile->Get("gsfElectrons_pt_"); gsfElectronsMinBias_pt_->Scale(1.0/gsfElectronsMinBias_pt_->Integral());
+  gsfElectronsMultiJet_pt_ =(TH1F*)MultiJetFile->Get("gsfElectrons_pt_"); gsfElectronsMultiJet_pt_->Scale(1.0/gsfElectronsMultiJet_pt_->Integral());
+
+  ElectronsFJ_eta_ =(TH1F*)FJFile->Get("Electrons_eta_"); ElectronsFJ_eta_->Scale(1.0/ElectronsFJ_eta_->Integral());
+  gsfElectronsJet_eta_ =(TH1F*)JetFile->Get("gsfElectrons_eta_"); gsfElectronsJet_eta_->Scale(1.0/gsfElectronsJet_eta_->Integral());
+  gsfElectronsBTag_eta_ =(TH1F*)BTagFile->Get("gsfElectrons_eta_"); gsfElectronsBTag_eta_->Scale(1.0/gsfElectronsBTag_eta_->Integral());
+  gsfElectronsMinBias_eta_ =(TH1F*)MinBiasFile->Get("gsfElectrons_eta_"); gsfElectronsMinBias_eta_->Scale(1.0/gsfElectronsMinBias_eta_->Integral());
+  gsfElectronsMultiJet_eta_ =(TH1F*)MultiJetFile->Get("gsfElectrons_eta_"); gsfElectronsMultiJet_eta_->Scale(1.0/gsfElectronsMultiJet_eta_->Integral());
+
+
+  ak5FJ_pt_ =(TH1F*)FJFile->Get("ak5FastJet_pt_"); ak5FJ_pt_->Scale(1.0/ak5FJ_pt_->Integral());
+  ak5PFJet_pt_ =(TH1F*)JetFile->Get("ak5PFJets_pt_"); ak5PFJet_pt_->Scale(1.0/ak5PFJet_pt_->Integral());
+  ak5PFBTag_pt_ =(TH1F*)BTagFile->Get("ak5PFJets_pt_"); ak5PFBTag_pt_->Scale(1.0/ak5PFBTag_pt_->Integral());
+  ak5PFMinBias_pt_ =(TH1F*)MinBiasFile->Get("ak5PFJets_pt_"); ak5PFMinBias_pt_->Scale(1.0/ak5PFMinBias_pt_->Integral());
+  ak5PFMultiJet_pt_ =(TH1F*)MultiJetFile->Get("ak5PFJets_pt_"); ak5PFMultiJet_pt_->Scale(1.0/ak5PFMultiJet_pt_->Integral());
+
+  ak5FJ_eta_ =(TH1F*)FJFile->Get("ak5FastJet_eta_"); ak5FJ_eta_->Scale(1.0/ak5FJ_eta_->Integral());
+  ak5PFJet_eta_ =(TH1F*)JetFile->Get("ak5PFJets_eta_"); ak5PFJet_eta_->Scale(1.0/ak5PFJet_eta_->Integral());
+  ak5PFBTag_eta_ =(TH1F*)BTagFile->Get("ak5PFJets_eta_"); ak5PFBTag_eta_->Scale(1.0/ak5PFBTag_eta_->Integral());
+  ak5PFMinBias_eta_ =(TH1F*)MinBiasFile->Get("ak5PFJets_eta_"); ak5PFMinBias_eta_->Scale(1.0/ak5PFMinBias_eta_->Integral());
+  ak5PFMultiJet_eta_ =(TH1F*)MultiJetFile->Get("ak5PFJets_eta_"); ak5PFMultiJet_eta_->Scale(1.0/ak5PFMultiJet_eta_->Integral());
+
+
+
+  auto   legend = new TLegend(0.65,0.74,0.90,0.92);    legend->SetTextSize(0.04);
+    legend->AddEntry(MuonsJet_pt_, "Open-Data PF Jet", "l");
+    legend->AddEntry(MuonsBTag_pt_, "Open-Data PF BTag", "l");
+    legend->AddEntry(MuonsMinBias_pt_, "Open-Data PF MinBias", "l");
+    legend->AddEntry(MuonsMultiJet_pt_, "Open-Data PF MultiJet", "l");
+
+
+
+  TCanvas* Limite_Muones_pT = new TCanvas("Limite pT Muones","Limite de pT para Muones",10,10,1920,1080);
+  Limite_Muones_pT->SetFillColor(0);  Limite_Muones_pT->SetFrameBorderMode(0);  gPad->SetLogy();
+  // Esto es para modificar las etiquetas del canvas.
+  MuonsJet_pt_->SetTitle("Limite de p_{T} para Muones de Open-Data; p_{T} [GeV]; Probabilidad");
+  MuonsJet_pt_->GetXaxis()->SetLabelSize(0.05); MuonsJet_pt_->GetYaxis()->SetLabelSize(0.05);
+  MuonsJet_pt_->GetXaxis()->SetTitleSize(0.05); MuonsJet_pt_->GetYaxis()->SetTitleSize(0.05);
+  MuonsJet_pt_->GetXaxis()->SetTitleOffset(1.0);MuonsJet_pt_->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  MuonsJet_pt_ -> Draw("HIST"); MuonsJet_pt_->SetLineColor(2); MuonsJet_pt_->SetLineWidth(2);
+  MuonsJet_pt_->SetMarkerStyle(20); MuonsJet_pt_->SetMarkerColor(2); MuonsJet_pt_->SetMarkerSize(2);
+  MuonsBTag_pt_ -> Draw("HISTsame"); MuonsBTag_pt_->SetLineColor(4); MuonsBTag_pt_->SetLineWidth(2);
+  MuonsBTag_pt_->SetMarkerStyle(23); MuonsBTag_pt_->SetMarkerColor(4); MuonsBTag_pt_->SetMarkerSize(2);
+  MuonsMinBias_pt_ -> Draw("HISTsame"); MuonsMinBias_pt_->SetLineColor(7); MuonsMinBias_pt_->SetLineWidth(2);
+  MuonsMinBias_pt_->SetMarkerStyle(23); MuonsMinBias_pt_->SetMarkerColor(7); MuonsMinBias_pt_->SetMarkerSize(2);
+  MuonsMultiJet_pt_ -> Draw("HISTsame"); MuonsMultiJet_pt_->SetLineColor(8); MuonsMultiJet_pt_->SetLineWidth(2);
+  MuonsMultiJet_pt_->SetMarkerStyle(23); MuonsMultiJet_pt_->SetMarkerColor(8); MuonsMultiJet_pt_->SetMarkerSize(2);
+  legend -> Draw(); Limite_Muones_pT -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Muon_pT.png"); Limite_Muones_pT -> Close();
+
+
+  TCanvas* Limite_Muones_eta = new TCanvas("Limite eta Muones","Limite de #eta para Muones",10,10,1920,1080);
+  Limite_Muones_pT->SetFillColor(0);  Limite_Muones_pT->SetFrameBorderMode(0);  gPad->SetLogy();
+  // Esto es para modificar las etiquetas del canvas.
+  MuonsJet_eta_->SetTitle("Limites en #eta para Muones de Open-Data; p_{T} [GeV]; Probabilidad");
+  MuonsJet_eta_->GetXaxis()->SetLabelSize(0.05); MuonsJet_eta_->GetYaxis()->SetLabelSize(0.05);
+  MuonsJet_eta_->GetXaxis()->SetTitleSize(0.05); MuonsJet_eta_->GetYaxis()->SetTitleSize(0.05);
+  MuonsJet_eta_->GetXaxis()->SetTitleOffset(1.0);MuonsJet_eta_->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  MuonsJet_eta_ -> Draw("HIST"); MuonsJet_eta_->SetLineColor(2); MuonsJet_eta_->SetLineWidth(2);
+  MuonsJet_eta_->SetMarkerStyle(20); MuonsJet_eta_->SetMarkerColor(2); MuonsJet_eta_->SetMarkerSize(2);
+  MuonsBTag_eta_ -> Draw("HISTsame"); MuonsBTag_eta_->SetLineColor(4); MuonsBTag_eta_->SetLineWidth(2);
+  MuonsBTag_eta_->SetMarkerStyle(23); MuonsBTag_eta_->SetMarkerColor(4); MuonsBTag_eta_->SetMarkerSize(2);
+  MuonsMinBias_eta_ -> Draw("HISTsame"); MuonsMinBias_eta_->SetLineColor(7); MuonsMinBias_eta_->SetLineWidth(2);
+  MuonsMinBias_eta_->SetMarkerStyle(23); MuonsMinBias_eta_->SetMarkerColor(7); MuonsMinBias_eta_->SetMarkerSize(2);
+  MuonsMultiJet_eta_ -> Draw("HISTsame"); MuonsMultiJet_eta_->SetLineColor(8); MuonsMultiJet_eta_->SetLineWidth(2);
+  MuonsMultiJet_eta_->SetMarkerStyle(23); MuonsMultiJet_eta_->SetMarkerColor(8); MuonsMultiJet_eta_->SetMarkerSize(2);
+  legend -> Draw(); Limite_Muones_pT -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Muon_eta.png"); Limite_Muones_pT -> Close();
+
+
+  TCanvas* Limite_gsfElectrones_pT = new TCanvas("Limite pT gsfElectrones","Limite de pT para gsfElectrones",10,10,1920,1080);
+  Limite_gsfElectrones_pT->SetFillColor(0);  Limite_gsfElectrones_pT->SetFrameBorderMode(0);  gPad->SetLogy();
+  // Esto es para modificar las etiquetas del canvas.
+  gsfElectronsJet_pt_->SetTitle("Limite de p_{T} para gsfElectrones de Open-Data; p_{T} [GeV]; Probabilidad");
+  gsfElectronsJet_pt_->GetXaxis()->SetLabelSize(0.05); gsfElectronsJet_pt_->GetYaxis()->SetLabelSize(0.05);
+  gsfElectronsJet_pt_->GetXaxis()->SetTitleSize(0.05); gsfElectronsJet_pt_->GetYaxis()->SetTitleSize(0.05);
+  gsfElectronsJet_pt_->GetXaxis()->SetTitleOffset(1.0);gsfElectronsJet_pt_->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  gsfElectronsJet_pt_ -> Draw("HIST"); gsfElectronsJet_pt_->SetLineColor(2); gsfElectronsJet_pt_->SetLineWidth(2);
+  gsfElectronsJet_pt_->SetMarkerStyle(20); gsfElectronsJet_pt_->SetMarkerColor(2); gsfElectronsJet_pt_->SetMarkerSize(2);
+  gsfElectronsBTag_pt_ -> Draw("HISTsame"); gsfElectronsBTag_pt_->SetLineColor(4); gsfElectronsBTag_pt_->SetLineWidth(2);
+  gsfElectronsBTag_pt_->SetMarkerStyle(23); gsfElectronsBTag_pt_->SetMarkerColor(4); gsfElectronsBTag_pt_->SetMarkerSize(2);
+  gsfElectronsMinBias_pt_ -> Draw("HISTsame"); gsfElectronsMinBias_pt_->SetLineColor(7); gsfElectronsMinBias_pt_->SetLineWidth(2);
+  gsfElectronsMinBias_pt_->SetMarkerStyle(23); gsfElectronsMinBias_pt_->SetMarkerColor(7); gsfElectronsMinBias_pt_->SetMarkerSize(2);
+  gsfElectronsMultiJet_pt_ -> Draw("HISTsame"); gsfElectronsMultiJet_pt_->SetLineColor(8); gsfElectronsMultiJet_pt_->SetLineWidth(2);
+  gsfElectronsMultiJet_pt_->SetMarkerStyle(23); gsfElectronsMultiJet_pt_->SetMarkerColor(8); gsfElectronsMultiJet_pt_->SetMarkerSize(2);
+  legend -> Draw(); Limite_gsfElectrones_pT -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_gsfElectrons_pT.png"); Limite_gsfElectrones_pT -> Close();
+
+
+  TCanvas* Limite_gsfElectrones_eta = new TCanvas("Limite eta gsfElectrones","Limite de #eta para gsfElectrones",10,10,1920,1080);
+  Limite_gsfElectrones_pT->SetFillColor(0);  Limite_gsfElectrones_pT->SetFrameBorderMode(0);  gPad->SetLogy();
+  // Esto es para modificar las etiquetas del canvas.
+  gsfElectronsJet_eta_->SetTitle("Limites en #eta para gsfElectrones de Open-Data; p_{T} [GeV]; Probabilidad");
+  gsfElectronsJet_eta_->GetXaxis()->SetLabelSize(0.05); gsfElectronsJet_eta_->GetYaxis()->SetLabelSize(0.05);
+  gsfElectronsJet_eta_->GetXaxis()->SetTitleSize(0.05); gsfElectronsJet_eta_->GetYaxis()->SetTitleSize(0.05);
+  gsfElectronsJet_eta_->GetXaxis()->SetTitleOffset(1.0);gsfElectronsJet_eta_->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  gsfElectronsJet_eta_ -> Draw("HIST"); gsfElectronsJet_eta_->SetLineColor(2); gsfElectronsJet_eta_->SetLineWidth(2);
+  gsfElectronsJet_eta_->SetMarkerStyle(20); gsfElectronsJet_eta_->SetMarkerColor(2); gsfElectronsJet_eta_->SetMarkerSize(2);
+  gsfElectronsBTag_eta_ -> Draw("HISTsame"); gsfElectronsBTag_eta_->SetLineColor(4); gsfElectronsBTag_eta_->SetLineWidth(2);
+  gsfElectronsBTag_eta_->SetMarkerStyle(23); gsfElectronsBTag_eta_->SetMarkerColor(4); gsfElectronsBTag_eta_->SetMarkerSize(2);
+  gsfElectronsMinBias_eta_ -> Draw("HISTsame"); gsfElectronsMinBias_eta_->SetLineColor(7); gsfElectronsMinBias_eta_->SetLineWidth(2);
+  gsfElectronsMinBias_eta_->SetMarkerStyle(23); gsfElectronsMinBias_eta_->SetMarkerColor(7); gsfElectronsMinBias_eta_->SetMarkerSize(2);
+  gsfElectronsMultiJet_eta_ -> Draw("HISTsame"); gsfElectronsMultiJet_eta_->SetLineColor(8); gsfElectronsMultiJet_eta_->SetLineWidth(2);
+  gsfElectronsMultiJet_eta_->SetMarkerStyle(23); gsfElectronsMultiJet_eta_->SetMarkerColor(8); gsfElectronsMultiJet_eta_->SetMarkerSize(2);
+  legend -> Draw(); Limite_gsfElectrones_pT -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_gsfElectrons_eta.png"); Limite_gsfElectrones_pT -> Close();
+
+
+  TCanvas* Limite_Jets_pT = new TCanvas("Limite pT Jets","Limite de pT para Jets",10,10,1920,1080);
+  Limite_Jets_pT->SetFillColor(0);  Limite_Jets_pT->SetFrameBorderMode(0);  gPad->SetLogy();
+  // Esto es para modificar las etiquetas del canvas.
+  ak5PFJet_pt_->SetTitle("Limite de p_{T} para Jets de Open-Data; p_{T} [GeV]; Probabilidad");
+  ak5PFJet_pt_->GetXaxis()->SetLabelSize(0.05); ak5PFJet_pt_->GetYaxis()->SetLabelSize(0.05);
+  ak5PFJet_pt_->GetXaxis()->SetTitleSize(0.05); ak5PFJet_pt_->GetYaxis()->SetTitleSize(0.05);
+  ak5PFJet_pt_->GetXaxis()->SetTitleOffset(1.0);ak5PFJet_pt_->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  ak5PFJet_pt_ -> Draw("HIST"); ak5PFJet_pt_->SetLineColor(2); ak5PFJet_pt_->SetLineWidth(2);
+  ak5PFJet_pt_->SetMarkerStyle(20); ak5PFJet_pt_->SetMarkerColor(2); ak5PFJet_pt_->SetMarkerSize(2);
+  ak5PFBTag_pt_ -> Draw("HISTsame"); ak5PFBTag_pt_->SetLineColor(4); ak5PFBTag_pt_->SetLineWidth(2);
+  ak5PFBTag_pt_->SetMarkerStyle(23); ak5PFBTag_pt_->SetMarkerColor(4); ak5PFBTag_pt_->SetMarkerSize(2);
+  ak5PFMinBias_pt_ -> Draw("HISTsame"); ak5PFMinBias_pt_->SetLineColor(7); ak5PFMinBias_pt_->SetLineWidth(2);
+  ak5PFMinBias_pt_->SetMarkerStyle(23); ak5PFMinBias_pt_->SetMarkerColor(7); ak5PFMinBias_pt_->SetMarkerSize(2);
+  ak5PFMultiJet_pt_ -> Draw("HISTsame"); ak5PFMultiJet_pt_->SetLineColor(8); ak5PFMultiJet_pt_->SetLineWidth(2);
+  ak5PFMultiJet_pt_->SetMarkerStyle(23); ak5PFMultiJet_pt_->SetMarkerColor(8); ak5PFMultiJet_pt_->SetMarkerSize(2);
+  legend -> Draw(); Limite_Jets_pT -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Jets_pT.png"); Limite_Jets_pT -> Close();
+
+
+  TCanvas* Limite_Jets_eta = new TCanvas("Limite eta Jets","Limite de #eta para Jets",10,10,1920,1080);
+  Limite_Jets_pT->SetFillColor(0);  Limite_Jets_pT->SetFrameBorderMode(0);  gPad->SetLogy();
+  // Esto es para modificar las etiquetas del canvas.
+  ak5PFJet_eta_->SetTitle("Limites en #eta para Jets de Open-Data; p_{T} [GeV]; Probabilidad");
+  ak5PFJet_eta_->GetXaxis()->SetLabelSize(0.05); ak5PFJet_eta_->GetYaxis()->SetLabelSize(0.05);
+  ak5PFJet_eta_->GetXaxis()->SetTitleSize(0.05); ak5PFJet_eta_->GetYaxis()->SetTitleSize(0.05);
+  ak5PFJet_eta_->GetXaxis()->SetTitleOffset(1.0);ak5PFJet_eta_->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  ak5PFJet_eta_ -> Draw("HIST"); ak5PFJet_eta_->SetLineColor(2); ak5PFJet_eta_->SetLineWidth(2);
+  ak5PFJet_eta_->SetMarkerStyle(20); ak5PFJet_eta_->SetMarkerColor(2); ak5PFJet_eta_->SetMarkerSize(2);
+  ak5PFBTag_eta_ -> Draw("HISTsame"); ak5PFBTag_eta_->SetLineColor(4); ak5PFBTag_eta_->SetLineWidth(2);
+  ak5PFBTag_eta_->SetMarkerStyle(23); ak5PFBTag_eta_->SetMarkerColor(4); ak5PFBTag_eta_->SetMarkerSize(2);
+  ak5PFMinBias_eta_ -> Draw("HISTsame"); ak5PFMinBias_eta_->SetLineColor(7); ak5PFMinBias_eta_->SetLineWidth(2);
+  ak5PFMinBias_eta_->SetMarkerStyle(23); ak5PFMinBias_eta_->SetMarkerColor(7); ak5PFMinBias_eta_->SetMarkerSize(2);
+  ak5PFMultiJet_eta_ -> Draw("HISTsame"); ak5PFMultiJet_eta_->SetLineColor(8); ak5PFMultiJet_eta_->SetLineWidth(2);
+  ak5PFMultiJet_eta_->SetMarkerStyle(23); ak5PFMultiJet_eta_->SetMarkerColor(8); ak5PFMultiJet_eta_->SetMarkerSize(2);
+  legend -> Draw(); Limite_Jets_pT -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Jets_eta.png"); Limite_Jets_pT -> Close();
+}
+
+//###################################################################################################################################################################################
 
 void Multiplicidad() {
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
@@ -86,7 +272,7 @@ void Multiplicidad() {
 
 }
 
-//################################################################################################################
+//###################################################################################################################################################################################
 
 void pT() {
   // Le damos algo de personalización al las gráficas.
@@ -96,11 +282,12 @@ void pT() {
   gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.10);
   gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
+
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
   TFile *FastJetFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ_Soft.root");
-  TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
-  TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
-  TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF.root");
+  TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF_Limits.root");
+  TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF_Limits.root");
+  TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF_Limits.root");
 
   TH1F *Muons_pt_, *Electrons_pt_, *ak5FastJet__pT,
        *MuonsJet_pt_, *gsfElectronsJet_pt_, *ak5PFJet_pt_,
@@ -127,6 +314,7 @@ void pT() {
        *Cociente_100pT__1gsfElectron_ak5PFJet, *Cociente_100pT__1Muon_ak5PFJet,
        *Cociente_100pT__1gsfElectron_ak5PFBTag, *Cociente_100pT__1Muon_ak5PFBTag,
        *Cociente_100pT__1gsfElectron_ak5PFMultiJet, *Cociente_100pT__1Muon_ak5PFMultiJet;
+
 
   ak5FastJet__pT =(TH1F*)FastJetFile->Get("ak5FastJet__pT"); ak5FastJet__pT->Scale(1.0/ak5FastJet__pT->Integral());
   ak5PFJet_pt_ =(TH1F*)JetFile->Get("ak5PFJets_pt_"); ak5PFJet_pt_->Scale(1.0/ak5PFJet_pt_->Integral());
@@ -499,7 +687,7 @@ void pT() {
 }
 
 
-//################################################################################################################
+//###################################################################################################################################################################################
 
 void Vertice() {
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
@@ -689,7 +877,7 @@ void Vertice() {
   fZ_Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/fZ_Electrones__FastJe-PFJets.png"); fZ_Electrons -> Close();
 }
 
-//################################################################################################################
+//###################################################################################################################################################################################
 
 void rootMacro(){
   // // Le damos algo de personalización al las gráficas.
@@ -702,7 +890,8 @@ void rootMacro(){
 
   // Corremos los macros que nos interesan.
   // DistanciaAngular();
-  pT();
+  Limits();
+  // pT();
   // Multiplicidad();
   // Vertice();
 
