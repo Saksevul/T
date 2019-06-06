@@ -140,7 +140,7 @@ endif
 
 #-------------------------------------------------------------------------------
 # FASTJET3 and ROOT.
-Simulacion: $$@.cc $(PREFIX_LIB)/libpythia8.a
+Simulacion Simulation: $$@.cc $(PREFIX_LIB)/libpythia8.a
 ifeq ($(FASTJET3_USE)$(ROOT_USE),truetrue)
 	$(CXX) $< -o $@ -I$(FASTJET3_INCLUDE) -I$(ROOT_INCLUDE) $(CXX_COMMON)\
 	 `$(ROOTBIN)root-config --cflags`\

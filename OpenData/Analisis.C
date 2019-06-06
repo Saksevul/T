@@ -1,17 +1,17 @@
 void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
   //Abrimos los archivos que nos interesan y los árboles que queremos leer.
-  TFile *InputFile = new TFile("/home/saksevul/CMS_Run2011A/BTag_20000/0009.root");
+  TFile *InputFile = new TFile("/home/saksevul/CMS_Run2011A/BTag_20000/0001.root");
   TTree *Eventos = (TTree*)InputFile->Get("Events");
   // TBranch *Muons = Eventos->GetBranch("recoMuons_muons__RECO.obj");
   // TBranch *gsfElectrons = Eventos->GetBranch("recoGsfElectrons_gsfElectrons__RECO.obj");
   // TBranch *ak5PFJets = Eventos->GetBranch("recoPFJets_ak5PFJets__RECO.obj");
 
   //Crear el archivo de salida que queremos. Tiene que ir después del imputFile.
-  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF-0009.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF-0001.root", "RECREATE");
 
 
-    printf("\n\n JCA: ak5PF, InputFile: BTag_20000/0009.root. \n\n\n\t %i) Archivos abiertos. \n\n", nprint++);
+    printf("\n\n JCA: ak5PF, InputFile: BTag_20000/0001.root. \n\n\n\t %i) Archivos abiertos. \n\n", nprint++);
 
 
   // Muones
@@ -258,7 +258,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             }
           }
         } // printf("\n");
-        if ( iPF_pT <= 100 ) {  if (Flag == true) h__pTQuotient_1Muon_ak5PFJet -> Fill(pT/iPF_pT);  }              // Cociente_pT respecto al Muón más energético.
+        if ( iPF_pT <= 20 ) {  if (Flag == true) h__pTQuotient_1Muon_ak5PFJet -> Fill(pT/iPF_pT);  }              // Cociente_pT respecto al Muón más energético.
         else {  if (Flag == true) h__pTQuot100__1Muon_ak5PFJet -> Fill(pT/iPF_pT);  }
       } // if loop
 
@@ -284,7 +284,7 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
             }
           }
         }
-        if ( iPF_pT <= 100 ) {  if (Flag == true) h__pTQuotient_1gsfElectron_ak5PFJet -> Fill(pT/iPF_pT); }
+        if ( iPF_pT <= 20 ) {  if (Flag == true) h__pTQuotient_1gsfElectron_ak5PFJet -> Fill(pT/iPF_pT); }
         else {  if (Flag == true) h__pTQuot100__1gsfElectron_ak5PFJet -> Fill(pT/iPF_pT); }
       }
     } // for loop i
