@@ -46,39 +46,37 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   TH1D *h_Electrons__fY = new TH1D("Electrons__fY", "Vertice en Y de Electrones contenidos en ak5FastJet; Distancia [cm]; Frecuencia", 39, -1.95, 1.95);
   TH1D *h_Electrons__fZ = new TH1D("Electrons__fZ", "Vertice en Z de Electrones contenidos en ak5FastJet; Distancia [cm]; Frecuencia", 39, -1.95, 1.95);
   // FastJet.
-  TH1F* h_ak5FastJet_pt_         = new TH1F("ak5FastJet_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 300, 0, 30);
-  TH1F *h_ak5FastJet_eta_        = new TH1F("ak5FastJet_eta_", "Distribución en #eta de ak5FastJet; #eta; Ocurrencia", 119, -5.95, 5.95);
-  TH1F* h_ak5FastJet__Multipicity= new TH1F("ak5FastJet__Multiplicidad", "Multiplicidad, de ak5FastJet, por Evento; Multilicidad; Ocurrencia", 120, 0, 120);
+  TH1F* h_Jet_pt_         = new TH1F("ak5FastJet_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 300, 0, 30);
+  TH1F *h_Jet_eta_        = new TH1F("ak5FastJet_eta_", "Distribución en #eta de ak5FastJet; #eta; Ocurrencia", 119, -5.95, 5.95);
+  TH1F* h_Jet__Multipicity= new TH1F("ak5FastJet__Multiplicidad", "Multiplicidad, de ak5FastJet, por Evento; Multilicidad; Ocurrencia", 120, 0, 120);
   // Cocientes.
-  TH1F *h__pTQuotient_Muon_ak5FastJet  = new TH1F("Cociente_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient_1Muon_ak5FastJet = new TH1F("Cociente_pT<100__1Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuot100__1Muon_ak5FastJet = new TH1F("Cociente_pT>100__1Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient01_Muon_ak5FastJet  = new TH1F("Cociente01_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient02_Muon_ak5FastJet  = new TH1F("Cociente02_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient03_Muon_ak5FastJet  = new TH1F("Cociente03_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient04_Muon_ak5FastJet  = new TH1F("Cociente04_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient05_Muon_ak5FastJet  = new TH1F("Cociente05_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient21_Muon_ak5FastJet  = new TH1F("Cociente21_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotientOt_Muon_ak5FastJet  = new TH1F("CocienteOt_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient_Electron_ak5FastJet  = new TH1F("Cociente_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient_1Electron_ak5FastJet = new TH1F("Cociente_pT<100__1Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuot100__1Electron_ak5FastJet = new TH1F("Cociente_pT>100__1Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient01_Electron_ak5FastJet  = new TH1F("Cociente01_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient02_Electron_ak5FastJet  = new TH1F("Cociente02_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient03_Electron_ak5FastJet  = new TH1F("Cociente03_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient04_Electron_ak5FastJet  = new TH1F("Cociente04_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient05_Electron_ak5FastJet  = new TH1F("Cociente05_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotient21_Electron_ak5FastJet  = new TH1F("Cociente21_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
-  TH1F *h__pTQuotientOt_Electron_ak5FastJet  = new TH1F("CocienteOt_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient_Muon_Jet  = new TH1F("Cociente_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient_1Muon_Jet = new TH1F("Cociente_pT<100__1Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuot100__1Muon_Jet = new TH1F("Cociente_pT>100__1Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient01_Muon_Jet  = new TH1F("Cociente01_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient02_Muon_Jet  = new TH1F("Cociente02_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient03_Muon_Jet  = new TH1F("Cociente03_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient04_Muon_Jet  = new TH1F("Cociente04_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient05_Muon_Jet  = new TH1F("Cociente05_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient21_Muon_Jet  = new TH1F("Cociente21_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotientOt_Muon_Jet  = new TH1F("CocienteOt_pT__Muon-ak5FastJet",  "Cociente p_{T}  Muon / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient_Electron_Jet  = new TH1F("Cociente_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient_1Electron_Jet = new TH1F("Cociente_pT<100__1Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuot100__1Electron_Jet = new TH1F("Cociente_pT>100__1Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient01_Electron_Jet  = new TH1F("Cociente01_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient02_Electron_Jet  = new TH1F("Cociente02_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient03_Electron_Jet  = new TH1F("Cociente03_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient04_Electron_Jet  = new TH1F("Cociente04_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient05_Electron_Jet  = new TH1F("Cociente05_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotient21_Electron_Jet  = new TH1F("Cociente21_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
+  TH1F *h__pTQuotientOt_Electron_Jet  = new TH1F("CocienteOt_pT__Electron-ak5FastJet",  "Cociente p_{T}  Electron / ak5FastJet; Indice; Ocurrencia", 100, 0, 2);
   // Distancia angular.
-  TH1F *h__D__Muon_ak5FastJet     = new TH1F("_D__Muon-ak5FastJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Muon al ak5FastJet; Valor; Frecuencia", 120, 0, 1.2);
-  TH1F *h__D__Electron_ak5FastJet = new TH1F("_D__Electron-ak5FastJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Electron al ak5FastJet; Valor; Frecuencia", 120, 0, 1.2);
-  // TH1F* h_ak5FastJet__D__Jet_Jet  = new TH1F("ak5FastJet__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5FastJet_{i} al ak5FastJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
+  TH1F *h__D__Muon_Jet     = new TH1F("_D__Muon-ak5FastJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Muon al ak5FastJet; Valor; Frecuencia", 120, 0, 1.2);
+  TH1F *h__D__Electron_Jet = new TH1F("_D__Electron-ak5FastJet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Electron al ak5FastJet; Valor; Frecuencia", 120, 0, 1.2);
+  // TH1F* h_Jet__D__Jet_Jet  = new TH1F("ak5FastJet__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5FastJet_{i} al ak5FastJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
   // Madre de Jets.
   TH1I*h__JetMother = new TH1I("JetMother", "Madre de Jet; PDG id(); Frecuencia", 43, -21.5, 21.5);
   TH1I*h__OtherMother = new TH1I("OtherMother", "Madre de Jet distinta a Quark o Gluon; PDG id(); Frecuencia", 43, -21.5, 21.5);
-  // Id() de partículas.
-  TH1I*h__NeutralParticles = new TH1I("NeutralParticles", "Part#acute{i}culas neutras contenidas en Jets; U. A.; Frecuencia", 1, 0, 1);
 
   // Generator. Shorthand for event.
   Pythia pythia;
@@ -122,7 +120,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   int    JCA    = -1;     // anti-kT= -1; C/A = 0; kT = 1.
   double R      = 0.5;    // Jet size.
   double pTMin  = 3.0;    // Min jet pT.
-  double etaMax = 5.0;    // Pseudorapidity range of detector.
+  double etaMax = 1.479;    // Pseudorapidity range of detector.
   int    select = 2;      // Which particles are included?
   int    massSet= 2;      // Which mass are they assumed to have?
 
@@ -144,11 +142,12 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
       else if (select == 2 && !event[i].isVisible() ) continue;   // Particle with strong or electric charge, or composed of ones having it.
       if (/*etaMax < 20. &&*/ abs(event[i].eta()) > etaMax ) continue;
 
-      if ( abs(event[i].id()) == 11 && event[i].pT() < 2.5 ) continue;
-      else if ( abs(event[i].id()) == 13 && event[i].pT() < 1.0 ) continue;
-      else if ( abs(event[i].id()) == 22 && event[i].pT() < 10.0) continue;
+      if ( abs(event[i].id()) == 13 && event[i].E() < 6.0 ) continue;
+      else if ( abs(event[i].id()) == 22 && event[i].E() < 0.32) continue;
+      else if ( abs(event[i].id()) == 11 && event[i].E() < 3.0 ) continue;
+      else if ( abs(event[i].isNeutral()) && event[i].E() < 0.8) continue;
+      else if ( abs(event[i].isCharged()) && event[i].E() < 0.4) continue;
 
-      if ( event[i].pT() < 0.7 ) continue;
       // Create a PseudoJet from the complete Pythia particle.
       fastjet::PseudoJet particleTemp = event[i];
 
@@ -177,24 +176,25 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
     inclusiveJets = clustSeq.inclusive_jets(pTMin);
     sortedJets    = sorted_by_pt(inclusiveJets);
 
+
+
     // ###################################################################################################################################################
     // Esto ya es de mi propia cosecha.
     for (size_t i=0; i<sortedJets.size(); i++){   Bool_t FlagE=false, FlagM=false; Float_t JMpT = 0.0, pTE=0.0, pTM=0.0;  Int_t motherM, motherE; Int_t JMIndex;
+      if ( abs(sortedJets[i].eta()) > etaMax-0.7 ) continue;
 
-      h_ak5FastJet_pt_ -> Fill(sortedJets[i].pt());
-      h_ak5FastJet_eta_-> Fill(sortedJets[i].eta());
+      h_Jet_pt_ -> Fill(sortedJets[i].pt());
+      h_Jet_eta_-> Fill(sortedJets[i].eta());
 
       // // Distancia Angular entre Jets de un mismo Evento.
       // for (size_t j=i+1; j<sortedJets.size(); j++) {
       //   if ( abs(sortedJets[i].phi_std()-sortedJets[j].phi_std()) <= PI ) {
-      //     h_ak5FastJet__D__Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(sortedJets[i].phi_std()-sortedJets[j].phi_std())) );
+      //     h_Jet__D__Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(sortedJets[i].phi_std()-sortedJets[j].phi_std())) );
       //   } else {
-      //     h_ak5FastJet__D__Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(2*PI-abs(sortedJets[i].phi_std()-sortedJets[j].phi_std()))) );
+      //     h_Jet__D__Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(2*PI-abs(sortedJets[i].phi_std()-sortedJets[j].phi_std()))) );
       // } }-
 
       for (size_t j=0; j<sortedJets[i].constituents().size(); j++) {   Int_t JCIndex = sortedJets[i].constituents()[j].user_info<MyInfo>().Index(); // Event Index.
-
-        if ( event[JCIndex].isNeutral() )   h__NeutralParticles -> Fill(0);
 
         // Para conocer el partón madre el Jet en función de su partícula más energética.
         if ( JMpT < sortedJets[i].constituents()[j].pt() ) {  JMpT = sortedJets[i].constituents()[j].pt();  JMIndex = event[JCIndex].mother1();
@@ -204,28 +204,28 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
         if ( abs(event[JCIndex].id()) == 13 ) {  motherM=event[JCIndex].mother1();
           h_Muons_pt_ -> Fill(sortedJets[i].constituents()[j].pt());
           h_Muons_eta_-> Fill(sortedJets[i].constituents()[j].eta());
-          if ( event[JCIndex].pT() > 5.5 && abs(event[JCIndex].eta()) < 1.48 ) {
+          if ( abs(event[JCIndex].eta()) < etaMax ) {
             if ( pow2(event[JCIndex].xProd()) + pow2(event[JCIndex].yProd()) + pow2(event[JCIndex].zProd()) <= 25 ) {
               h_Muons__fX -> Fill(event[JCIndex].xProd()/10.0);
               h_Muons__fY -> Fill(event[JCIndex].yProd()/10.0);
               h_Muons__fZ -> Fill(event[JCIndex].zProd()/10.0);
-              h__pTQuotient_Muon_ak5FastJet -> Fill(sortedJets[i].constituents()[j].pt()/sortedJets[i].pt());
+              h__pTQuotient_Muon_Jet -> Fill(sortedJets[i].constituents()[j].pt()/sortedJets[i].pt());
               if ( abs(event[JCIndex].phi() - sortedJets[i].phi_std()) <= PI ) {
-                h__D__Muon_ak5FastJet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(event[JCIndex].phi()-sortedJets[i].phi_std()) ));
+                h__D__Muon_Jet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(event[JCIndex].phi()-sortedJets[i].phi_std()) ));
               } else {
-                h__D__Muon_ak5FastJet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(2*PI-abs(event[JCIndex].phi()-sortedJets[i].phi_std())) ));
+                h__D__Muon_Jet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(2*PI-abs(event[JCIndex].phi()-sortedJets[i].phi_std())) ));
               }
               if ( sortedJets[i].constituents()[j].pt() > pTM) { FlagM=true; pTM=sortedJets[i].constituents()[j].pt(); }  // Para obtener información del Muón màs energético.
           } }
           while ( abs(event[motherM].id()) > 21 ) motherM=event[motherM].mother1();
-          if ( abs(event[motherM].id()) == 21 ) {     h__pTQuotient21_Muon_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 1 ) { h__pTQuotient01_Muon_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 2 ) { h__pTQuotient02_Muon_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 3 ) { h__pTQuotient03_Muon_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 4 ) { h__pTQuotient04_Muon_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 5 ) { h__pTQuotient05_Muon_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          if ( abs(event[motherM].id()) == 21 ) {     h__pTQuotient21_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherM].id()) == 1 ) { h__pTQuotient01_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherM].id()) == 2 ) { h__pTQuotient02_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherM].id()) == 3 ) { h__pTQuotient03_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherM].id()) == 4 ) { h__pTQuotient04_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherM].id()) == 5 ) { h__pTQuotient05_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
           else {
-            h__pTQuotientOt_Muon_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );
+            h__pTQuotientOt_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );
             h__OtherMother -> Fill(event[motherM].id());
           }
         }
@@ -234,16 +234,16 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
         else if ( abs(event[JCIndex].id()) == 11 ) {  motherE=event[JCIndex].mother1();
           h_Electrons_pt_ -> Fill(sortedJets[i].constituents()[j].pt());
           h_Electrons_eta_-> Fill(sortedJets[i].constituents()[j].eta());
-          if ( event[JCIndex].pT() > 5.5 && abs(event[JCIndex].eta()) < 1.48 ) {
+          if ( abs(event[JCIndex].eta()) < etaMax ) {
             if ( pow2(event[JCIndex].xProd()) + pow2(event[JCIndex].yProd()) + pow2(event[JCIndex].zProd()) <= 25 ) {
               h_Electrons__fX -> Fill(event[JCIndex].xProd()/10.0);
               h_Electrons__fY -> Fill(event[JCIndex].yProd()/10.0);
               h_Electrons__fZ -> Fill(event[JCIndex].zProd()/10.0);
-              h__pTQuotient_Electron_ak5FastJet -> Fill(sortedJets[i].constituents()[j].pt()/sortedJets[i].pt());
+              h__pTQuotient_Electron_Jet -> Fill(sortedJets[i].constituents()[j].pt()/sortedJets[i].pt());
               if ( abs(event[JCIndex].phi() - sortedJets[i].phi_std()) <= PI ) {
-                h__D__Electron_ak5FastJet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(event[JCIndex].phi()-sortedJets[i].phi_std()) ));
+                h__D__Electron_Jet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(event[JCIndex].phi()-sortedJets[i].phi_std()) ));
               } else {
-                h__D__Electron_ak5FastJet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(2*PI-abs(event[JCIndex].phi()-sortedJets[i].phi_std())) ));
+                h__D__Electron_Jet -> Fill(sqrt( pow2(event[JCIndex].eta()-sortedJets[i].eta()) + pow2(2*PI-abs(event[JCIndex].phi()-sortedJets[i].phi_std())) ));
               }
               if ( sortedJets[i].constituents()[j].pt() > pTE) { FlagE=true; pTE=sortedJets[i].constituents()[j].pt(); }
               // if ( sortedJets[i].phi_std() < 0 ) printf("%f\n", sortedJets[i].phi_std());
@@ -251,14 +251,14 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
           while ( abs(event[motherE].id()) > 21 ) motherE=event[motherE].mother1();
           // const char * nombre; nombre=event[motherE].name().c_str();
           // printf(" Madre final de este Electron = %s.\n", nombre);
-          if ( abs(event[motherE].id()) == 21 ) {     h__pTQuotient21_Electron_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 1 ) { h__pTQuotient01_Electron_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 2 ) { h__pTQuotient02_Electron_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 3 ) { h__pTQuotient03_Electron_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 4 ) { h__pTQuotient04_Electron_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 5 ) { h__pTQuotient05_Electron_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          if ( abs(event[motherE].id()) == 21 ) {     h__pTQuotient21_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherE].id()) == 1 ) { h__pTQuotient01_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherE].id()) == 2 ) { h__pTQuotient02_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherE].id()) == 3 ) { h__pTQuotient03_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherE].id()) == 4 ) { h__pTQuotient04_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
+          else if ( abs(event[motherE].id()) == 5 ) { h__pTQuotient05_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
           else {
-            h__pTQuotientOt_Electron_ak5FastJet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );
+            h__pTQuotientOt_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );
             h__OtherMother -> Fill(event[motherE].id());
           }
         }
@@ -272,17 +272,17 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
 
       if ( sortedJets[i].pt() <= 100 ) {
-        if ( FlagM == true ) h__pTQuotient_1Muon_ak5FastJet     -> Fill ( pTM/sortedJets[i].pt() );
-        if ( FlagE == true ) h__pTQuotient_1Electron_ak5FastJet -> Fill ( pTE/sortedJets[i].pt() );
+        if ( FlagM == true ) h__pTQuotient_1Muon_Jet     -> Fill ( pTM/sortedJets[i].pt() );
+        if ( FlagE == true ) h__pTQuotient_1Electron_Jet -> Fill ( pTE/sortedJets[i].pt() );
       } else {
-        if ( FlagM == true ) h__pTQuot100__1Muon_ak5FastJet     -> Fill ( pTM/sortedJets[i].pt() );
-        if ( FlagE == true ) h__pTQuot100__1Electron_ak5FastJet -> Fill ( pTE/sortedJets[i].pt() );
+        if ( FlagM == true ) h__pTQuot100__1Muon_Jet     -> Fill ( pTM/sortedJets[i].pt() );
+        if ( FlagE == true ) h__pTQuot100__1Electron_Jet -> Fill ( pTE/sortedJets[i].pt() );
       }
 
       h__JetMother -> Fill(event[JMIndex].id());
     }
 
-    h_ak5FastJet__Multipicity -> Fill(sortedJets.size());
+    h_Jet__Multipicity -> Fill(sortedJets.size());
 
   }  // End of event loop.
 
@@ -307,40 +307,39 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   h_Electrons__fY -> Write();
   h_Electrons__fZ -> Write();
 
-  h_ak5FastJet_pt_         -> Write();
-  h_ak5FastJet_eta_        -> Write();
-  h_ak5FastJet__Multipicity-> Write();
+  h_Jet_pt_         -> Write();
+  h_Jet_eta_        -> Write();
+  h_Jet__Multipicity-> Write();
 
-  h__pTQuotient_Muon_ak5FastJet   -> Write();
-  h__pTQuotient_1Muon_ak5FastJet  -> Write();
-  h__pTQuot100__1Muon_ak5FastJet  -> Write();
-  h__pTQuotient01_Muon_ak5FastJet -> Write();
-  h__pTQuotient02_Muon_ak5FastJet -> Write();
-  h__pTQuotient03_Muon_ak5FastJet -> Write();
-  h__pTQuotient04_Muon_ak5FastJet -> Write();
-  h__pTQuotient05_Muon_ak5FastJet -> Write();
-  h__pTQuotient21_Muon_ak5FastJet -> Write();
-  h__pTQuotientOt_Muon_ak5FastJet -> Write();
+  h__pTQuotient_Muon_Jet   -> Write();
+  h__pTQuotient_1Muon_Jet  -> Write();
+  h__pTQuot100__1Muon_Jet  -> Write();
+  h__pTQuotient01_Muon_Jet -> Write();
+  h__pTQuotient02_Muon_Jet -> Write();
+  h__pTQuotient03_Muon_Jet -> Write();
+  h__pTQuotient04_Muon_Jet -> Write();
+  h__pTQuotient05_Muon_Jet -> Write();
+  h__pTQuotient21_Muon_Jet -> Write();
+  h__pTQuotientOt_Muon_Jet -> Write();
 
-  h__pTQuotient_Electron_ak5FastJet  -> Write();
-  h__pTQuotient_1Electron_ak5FastJet -> Write();
-  h__pTQuot100__1Electron_ak5FastJet -> Write();
-  h__pTQuotient01_Electron_ak5FastJet-> Write();
-  h__pTQuotient02_Electron_ak5FastJet-> Write();
-  h__pTQuotient03_Electron_ak5FastJet-> Write();
-  h__pTQuotient04_Electron_ak5FastJet-> Write();
-  h__pTQuotient05_Electron_ak5FastJet-> Write();
-  h__pTQuotient21_Electron_ak5FastJet-> Write();
-  h__pTQuotientOt_Electron_ak5FastJet-> Write();
+  h__pTQuotient_Electron_Jet  -> Write();
+  h__pTQuotient_1Electron_Jet -> Write();
+  h__pTQuot100__1Electron_Jet -> Write();
+  h__pTQuotient01_Electron_Jet-> Write();
+  h__pTQuotient02_Electron_Jet-> Write();
+  h__pTQuotient03_Electron_Jet-> Write();
+  h__pTQuotient04_Electron_Jet-> Write();
+  h__pTQuotient05_Electron_Jet-> Write();
+  h__pTQuotient21_Electron_Jet-> Write();
+  h__pTQuotientOt_Electron_Jet-> Write();
 
-  h__D__Muon_ak5FastJet    -> Write();
-  h__D__Electron_ak5FastJet-> Write();
-  // h_ak5FastJet__D__Jet_Jet -> Write();
+  h__D__Muon_Jet    -> Write();
+  h__D__Electron_Jet-> Write();
+  // h_Jet__D__Jet_Jet -> Write();
 
   // Madre de Jets.
   h__OtherMother -> Write();
   h__JetMother   -> Write();
-  h__NeutralParticles -> Write();
 
   // Done.
   delete OutputFile;
