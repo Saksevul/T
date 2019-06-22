@@ -14,7 +14,7 @@ ipTHM=1 # Initial pT Hat Minimum (Ver y/o editar Master Macro).
   ppTHM=pTHatMin\ =\ $ipTHM.0	# previous pT Hat Minimum (ppTHM).
   fpTHM=$ppTHM	# final pT Hat Minimum (fpTHM).
 
-iNoE=200000  # Number of Events (Ver y/o editar Master Macro).
+iNoE=100000  # Number of Events (Ver y/o editar Master Macro).
   pNoE=nEvent\ \ \ \ =\ $iNoE\; # previous Number of Events.
   fNoE=$pNoE # final Number of Events.
 

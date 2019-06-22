@@ -74,11 +74,11 @@ void Limits() {
   TH1F *ElectronsMinBias_pt_ =(TH1F*)MinBiasFile->Get("Electrons_pt_"); ElectronsMinBias_pt_->Scale(1.0/ElectronsMinBias_pt_->Integral());
   TH1F *ElectronsMultiJet_pt_ =(TH1F*)MultiJetFile->Get("Electrons_pt_"); ElectronsMultiJet_pt_->Scale(1.0/ElectronsMultiJet_pt_->Integral());
 
-  TH1F *ak5FJ_pt_ =(TH1F*)FJFile->Get("ak5FastJet_pt_"); ak5FJ_pt_->Scale(1.0/ak5FJ_pt_->Integral());
-  TH1F *ak5PFJet_pt_ =(TH1F*)JetFile->Get("ak5PFJets_pt_"); ak5PFJet_pt_->Scale(1.0/ak5PFJet_pt_->Integral());
-  TH1F *ak5PFBTag_pt_ =(TH1F*)BTagFile->Get("ak5PFJets_pt_"); ak5PFBTag_pt_->Scale(1.0/ak5PFBTag_pt_->Integral());
-  TH1F *ak5PFMinBias_pt_ =(TH1F*)MinBiasFile->Get("ak5PFJets_pt_"); ak5PFMinBias_pt_->Scale(1.0/ak5PFMinBias_pt_->Integral());
-  TH1F *ak5PFMultiJet_pt_ =(TH1F*)MultiJetFile->Get("ak5PFJets_pt_"); ak5PFMultiJet_pt_->Scale(1.0/ak5PFMultiJet_pt_->Integral());
+  TH1F *ak5FJ_pt_ =(TH1F*)FJFile->Get("Jets_pt_"); ak5FJ_pt_->Scale(1.0/ak5FJ_pt_->Integral());
+  TH1F *ak5PFJet_pt_ =(TH1F*)JetFile->Get("Jets_pt_"); ak5PFJet_pt_->Scale(1.0/ak5PFJet_pt_->Integral());
+  TH1F *ak5PFBTag_pt_ =(TH1F*)BTagFile->Get("Jets_pt_"); ak5PFBTag_pt_->Scale(1.0/ak5PFBTag_pt_->Integral());
+  TH1F *ak5PFMinBias_pt_ =(TH1F*)MinBiasFile->Get("Jets_pt_"); ak5PFMinBias_pt_->Scale(1.0/ak5PFMinBias_pt_->Integral());
+  TH1F *ak5PFMultiJet_pt_ =(TH1F*)MultiJetFile->Get("Jets_pt_"); ak5PFMultiJet_pt_->Scale(1.0/ak5PFMultiJet_pt_->Integral());
 
 
   TH1F *MuonsFJ_eta_ =(TH1F*)FJFile->Get("Muons_eta_"); MuonsFJ_eta_->Scale(1.0/MuonsFJ_eta_->Integral());
@@ -99,42 +99,42 @@ void Limits() {
   TH1F *ElectronsMinBias_eta_ =(TH1F*)MinBiasFile->Get("Electrons_eta_"); ElectronsMinBias_eta_->Scale(1.0/ElectronsMinBias_eta_->Integral());
   TH1F *ElectronsMultiJet_eta_ =(TH1F*)MultiJetFile->Get("Electrons_eta_"); ElectronsMultiJet_eta_->Scale(1.0/ElectronsMultiJet_eta_->Integral());
 
-  TH1F *ak5FJ_eta_ =(TH1F*)FJFile->Get("ak5FastJet_eta_"); ak5FJ_eta_->Scale(1.0/ak5FJ_eta_->Integral());
-  TH1F *ak5PFJet_eta_ =(TH1F*)JetFile->Get("ak5PFJets_eta_"); ak5PFJet_eta_->Scale(1.0/ak5PFJet_eta_->Integral());
-  TH1F *ak5PFBTag_eta_ =(TH1F*)BTagFile->Get("ak5PFJets_eta_"); ak5PFBTag_eta_->Scale(1.0/ak5PFBTag_eta_->Integral());
-  TH1F *ak5PFMinBias_eta_ =(TH1F*)MinBiasFile->Get("ak5PFJets_eta_"); ak5PFMinBias_eta_->Scale(1.0/ak5PFMinBias_eta_->Integral());
-  TH1F *ak5PFMultiJet_eta_ =(TH1F*)MultiJetFile->Get("ak5PFJets_eta_"); ak5PFMultiJet_eta_->Scale(1.0/ak5PFMultiJet_eta_->Integral());
+  TH1F *ak5FJ_eta_ =(TH1F*)FJFile->Get("Jets_eta_"); ak5FJ_eta_->Scale(1.0/ak5FJ_eta_->Integral());
+  TH1F *ak5PFJet_eta_ =(TH1F*)JetFile->Get("Jets_eta_"); ak5PFJet_eta_->Scale(1.0/ak5PFJet_eta_->Integral());
+  TH1F *ak5PFBTag_eta_ =(TH1F*)BTagFile->Get("Jets_eta_"); ak5PFBTag_eta_->Scale(1.0/ak5PFBTag_eta_->Integral());
+  TH1F *ak5PFMinBias_eta_ =(TH1F*)MinBiasFile->Get("Jets_eta_"); ak5PFMinBias_eta_->Scale(1.0/ak5PFMinBias_eta_->Integral());
+  TH1F *ak5PFMultiJet_eta_ =(TH1F*)MultiJetFile->Get("Jets_eta_"); ak5PFMultiJet_eta_->Scale(1.0/ak5PFMultiJet_eta_->Integral());
 
 
-  // TH1F *FJ_MuonEnergy =(TH1F*)FJFile->Get("ak5FastJet_MuonEnergy"); FJ_MuonEnergy->Scale(1.0/FJ_MuonEnergy->Integral());
-  TH1F *Jet_MuonEnergy =(TH1F*)JetFile->Get("ak5PFJets_1MuonEnergy"); Jet_MuonEnergy->Scale(1.0/Jet_MuonEnergy->Integral());
-  TH1F *BTag_MuonEnergy =(TH1F*)BTagFile->Get("ak5PFJets_1MuonEnergy"); BTag_MuonEnergy->Scale(1.0/BTag_MuonEnergy->Integral());
-  TH1F *MinBias_MuonEnergy =(TH1F*)MinBiasFile->Get("ak5PFJets_1MuonEnergy"); MinBias_MuonEnergy->Scale(1.0/MinBias_MuonEnergy->Integral());
-  TH1F *MultiJet_MuonEnergy =(TH1F*)MultiJetFile->Get("ak5PFJets_1MuonEnergy"); MultiJet_MuonEnergy->Scale(1.0/MultiJet_MuonEnergy->Integral());
+  // TH1F *FJ_MuonEnergy =(TH1F*)FJFile->Get("Jets_MuonEnergy"); FJ_MuonEnergy->Scale(1.0/FJ_MuonEnergy->Integral());
+  TH1F *Jet_MuonEnergy =(TH1F*)JetFile->Get("Jets_1MuonEnergy"); Jet_MuonEnergy->Scale(1.0/Jet_MuonEnergy->Integral());
+  TH1F *BTag_MuonEnergy =(TH1F*)BTagFile->Get("Jets_1MuonEnergy"); BTag_MuonEnergy->Scale(1.0/BTag_MuonEnergy->Integral());
+  TH1F *MinBias_MuonEnergy =(TH1F*)MinBiasFile->Get("Jets_1MuonEnergy"); MinBias_MuonEnergy->Scale(1.0/MinBias_MuonEnergy->Integral());
+  TH1F *MultiJet_MuonEnergy =(TH1F*)MultiJetFile->Get("Jets_1MuonEnergy"); MultiJet_MuonEnergy->Scale(1.0/MultiJet_MuonEnergy->Integral());
 
-  // TH1F *FJ_PhotonEnergy =(TH1F*)FJFile->Get("ak5FastJet_PhotonEnergy"); FJ_PhotonEnergy->Scale(1.0/FJ_PhotonEnergy->Integral());
-  TH1F *Jet_PhotonEnergy =(TH1F*)JetFile->Get("ak5PFJets_1PhotonEnergy"); Jet_PhotonEnergy->Scale(1.0/Jet_PhotonEnergy->Integral());
-  TH1F *BTag_PhotonEnergy =(TH1F*)BTagFile->Get("ak5PFJets_1PhotonEnergy"); BTag_PhotonEnergy->Scale(1.0/BTag_PhotonEnergy->Integral());
-  TH1F *MinBias_PhotonEnergy =(TH1F*)MinBiasFile->Get("ak5PFJets_1PhotonEnergy"); MinBias_PhotonEnergy->Scale(1.0/MinBias_PhotonEnergy->Integral());
-  TH1F *MultiJet_PhotonEnergy =(TH1F*)MultiJetFile->Get("ak5PFJets_1PhotonEnergy"); MultiJet_PhotonEnergy->Scale(1.0/MultiJet_PhotonEnergy->Integral());
+  // TH1F *FJ_PhotonEnergy =(TH1F*)FJFile->Get("Jets_PhotonEnergy"); FJ_PhotonEnergy->Scale(1.0/FJ_PhotonEnergy->Integral());
+  TH1F *Jet_PhotonEnergy =(TH1F*)JetFile->Get("Jets_1PhotonEnergy"); Jet_PhotonEnergy->Scale(1.0/Jet_PhotonEnergy->Integral());
+  TH1F *BTag_PhotonEnergy =(TH1F*)BTagFile->Get("Jets_1PhotonEnergy"); BTag_PhotonEnergy->Scale(1.0/BTag_PhotonEnergy->Integral());
+  TH1F *MinBias_PhotonEnergy =(TH1F*)MinBiasFile->Get("Jets_1PhotonEnergy"); MinBias_PhotonEnergy->Scale(1.0/MinBias_PhotonEnergy->Integral());
+  TH1F *MultiJet_PhotonEnergy =(TH1F*)MultiJetFile->Get("Jets_1PhotonEnergy"); MultiJet_PhotonEnergy->Scale(1.0/MultiJet_PhotonEnergy->Integral());
 
-  // TH1F *FJ_ElectronEnergy =(TH1F*)FJFile->Get("ak5FastJet_ElectronEnergy"); FJ_ElectronEnergy->Scale(1.0/FJ_ElectronEnergy->Integral());
-  TH1F *Jet_ElectronEnergy =(TH1F*)JetFile->Get("ak5PFJets_1ElectronEnergy"); Jet_ElectronEnergy->Scale(1.0/Jet_ElectronEnergy->Integral());
-  TH1F *BTag_ElectronEnergy =(TH1F*)BTagFile->Get("ak5PFJets_1ElectronEnergy"); BTag_ElectronEnergy->Scale(1.0/BTag_ElectronEnergy->Integral());
-  TH1F *MinBias_ElectronEnergy =(TH1F*)MinBiasFile->Get("ak5PFJets_1ElectronEnergy"); MinBias_ElectronEnergy->Scale(1.0/MinBias_ElectronEnergy->Integral());
-  TH1F *MultiJet_ElectronEnergy =(TH1F*)MultiJetFile->Get("ak5PFJets_1ElectronEnergy"); MultiJet_ElectronEnergy->Scale(1.0/MultiJet_ElectronEnergy->Integral());
+  // TH1F *FJ_ElectronEnergy =(TH1F*)FJFile->Get("Jets_ElectronEnergy"); FJ_ElectronEnergy->Scale(1.0/FJ_ElectronEnergy->Integral());
+  TH1F *Jet_ElectronEnergy =(TH1F*)JetFile->Get("Jets_1ElectronEnergy"); Jet_ElectronEnergy->Scale(1.0/Jet_ElectronEnergy->Integral());
+  TH1F *BTag_ElectronEnergy =(TH1F*)BTagFile->Get("Jets_1ElectronEnergy"); BTag_ElectronEnergy->Scale(1.0/BTag_ElectronEnergy->Integral());
+  TH1F *MinBias_ElectronEnergy =(TH1F*)MinBiasFile->Get("Jets_1ElectronEnergy"); MinBias_ElectronEnergy->Scale(1.0/MinBias_ElectronEnergy->Integral());
+  TH1F *MultiJet_ElectronEnergy =(TH1F*)MultiJetFile->Get("Jets_1ElectronEnergy"); MultiJet_ElectronEnergy->Scale(1.0/MultiJet_ElectronEnergy->Integral());
 
-  // TH1F *FJ_NeuHadEnergy =(TH1F*)FJFile->Get("ak5FastJet_NeutralHadronEnergy"); FJ_NeuHadEnergy->Scale(1.0/FJ_NeuHadEnergy->Integral());
-  TH1F *Jet_NeuHadEnergy =(TH1F*)JetFile->Get("ak5PFJets_1NeutralHadronEnergy"); Jet_NeuHadEnergy->Scale(1.0/Jet_NeuHadEnergy->Integral());
-  TH1F *BTag_NeuHadEnergy =(TH1F*)BTagFile->Get("ak5PFJets_1NeutralHadronEnergy"); BTag_NeuHadEnergy->Scale(1.0/BTag_NeuHadEnergy->Integral());
-  TH1F *MinBias_NeuHadEnergy =(TH1F*)MinBiasFile->Get("ak5PFJets_1NeutralHadronEnergy"); MinBias_NeuHadEnergy->Scale(1.0/MinBias_NeuHadEnergy->Integral());
-  TH1F *MultiJet_NeuHadEnergy =(TH1F*)MultiJetFile->Get("ak5PFJets_1NeutralHadronEnergy"); MultiJet_NeuHadEnergy->Scale(1.0/MultiJet_NeuHadEnergy->Integral());
+  // TH1F *FJ_NeuHadEnergy =(TH1F*)FJFile->Get("Jets_NeutralHadronEnergy"); FJ_NeuHadEnergy->Scale(1.0/FJ_NeuHadEnergy->Integral());
+  TH1F *Jet_NeuHadEnergy =(TH1F*)JetFile->Get("Jets_1NeutralHadronEnergy"); Jet_NeuHadEnergy->Scale(1.0/Jet_NeuHadEnergy->Integral());
+  TH1F *BTag_NeuHadEnergy =(TH1F*)BTagFile->Get("Jets_1NeutralHadronEnergy"); BTag_NeuHadEnergy->Scale(1.0/BTag_NeuHadEnergy->Integral());
+  TH1F *MinBias_NeuHadEnergy =(TH1F*)MinBiasFile->Get("Jets_1NeutralHadronEnergy"); MinBias_NeuHadEnergy->Scale(1.0/MinBias_NeuHadEnergy->Integral());
+  TH1F *MultiJet_NeuHadEnergy =(TH1F*)MultiJetFile->Get("Jets_1NeutralHadronEnergy"); MultiJet_NeuHadEnergy->Scale(1.0/MultiJet_NeuHadEnergy->Integral());
 
-  // TH1F *FJ_CharHadEnergy =(TH1F*)FJFile->Get("ak5FastJet_ChargedHadronEnergy"); FJ_CharHadEnergy->Scale(1.0/FJ_CharHadEnergy->Integral());
-  TH1F *Jet_CharHadEnergy =(TH1F*)JetFile->Get("ak5PFJets_1ChargedHadronEnergy"); Jet_CharHadEnergy->Scale(1.0/Jet_CharHadEnergy->Integral());
-  TH1F *BTag_CharHadEnergy =(TH1F*)BTagFile->Get("ak5PFJets_1ChargedHadronEnergy"); BTag_CharHadEnergy->Scale(1.0/BTag_CharHadEnergy->Integral());
-  TH1F *MinBias_CharHadEnergy =(TH1F*)MinBiasFile->Get("ak5PFJets_1ChargedHadronEnergy"); MinBias_CharHadEnergy->Scale(1.0/MinBias_CharHadEnergy->Integral());
-  TH1F *MultiJet_CharHadEnergy =(TH1F*)MultiJetFile->Get("ak5PFJets_1ChargedHadronEnergy"); MultiJet_CharHadEnergy->Scale(1.0/MultiJet_CharHadEnergy->Integral());
+  // TH1F *FJ_CharHadEnergy =(TH1F*)FJFile->Get("Jets_ChargedHadronEnergy"); FJ_CharHadEnergy->Scale(1.0/FJ_CharHadEnergy->Integral());
+  TH1F *Jet_CharHadEnergy =(TH1F*)JetFile->Get("Jets_1ChargedHadronEnergy"); Jet_CharHadEnergy->Scale(1.0/Jet_CharHadEnergy->Integral());
+  TH1F *BTag_CharHadEnergy =(TH1F*)BTagFile->Get("Jets_1ChargedHadronEnergy"); BTag_CharHadEnergy->Scale(1.0/BTag_CharHadEnergy->Integral());
+  TH1F *MinBias_CharHadEnergy =(TH1F*)MinBiasFile->Get("Jets_1ChargedHadronEnergy"); MinBias_CharHadEnergy->Scale(1.0/MinBias_CharHadEnergy->Integral());
+  TH1F *MultiJet_CharHadEnergy =(TH1F*)MultiJetFile->Get("Jets_1ChargedHadronEnergy"); MultiJet_CharHadEnergy->Scale(1.0/MultiJet_CharHadEnergy->Integral());
 
 
 
@@ -496,29 +496,11 @@ void pT() {
   TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF.root");
 
 
-/*
-  TH1F *ak5FastJet__pT =(TH1F*)FJFile->Get("ak5FastJet__pT"); ak5FastJet__pT->Scale(1.0/ak5FastJet__pT->Integral());
-  TH1F *ak5PFJet_pt_ =(TH1F*)JetFile->Get("ak5PFJets_pt_"); ak5PFJet_pt_->Scale(1.0/ak5PFJet_pt_->Integral());
-  TH1F *ak5PFBTag_pt_ =(TH1F*)BTagFile->Get("ak5PFJets_pt_"); ak5PFBTag_pt_->Scale(1.0/ak5PFBTag_pt_->Integral());
-  TH1F *ak5PFMultiJet_pt_ =(TH1F*)MultiJetFile->Get("ak5PFJets_pt_"); ak5PFMultiJet_pt_->Scale(1.0/ak5PFMultiJet_pt_->Integral());
-
-  TH1F *Muons_pt_ =(TH1F*)FJFile->Get("Muons_pt_"); Muons_pt_->Scale(1.0/Muons_pt_->Integral());
-  TH1F *MuonsJet_pt_ =(TH1F*)JetFile->Get("Muons_pt_"); MuonsJet_pt_->Scale(1.0/MuonsJet_pt_->Integral());
-  TH1F *MuonsBTag_pt_ =(TH1F*)BTagFile->Get("Muons_pt_"); MuonsBTag_pt_->Scale(1.0/MuonsBTag_pt_->Integral());
-  TH1F *MuonsMultiJet_pt_ =(TH1F*)MultiJetFile->Get("Muons_pt_"); MuonsMultiJet_pt_->Scale(1.0/MuonsMultiJet_pt_->Integral());
-
-  TH1F *Electrons_pt_ =(TH1F*)FJFile->Get("Electrons_pt_"); Electrons_pt_->Scale(1.0/Electrons_pt_->Integral());
-  TH1F *ElectronsJet_pt_ =(TH1F*)JetFile->Get("Electrons_pt_"); ElectronsJet_pt_->Scale(1.0/ElectronsJet_pt_->Integral());
-  TH1F *ElectronsBTag_pt_ =(TH1F*)BTagFile->Get("Electrons_pt_"); ElectronsBTag_pt_->Scale(1.0/ElectronsBTag_pt_->Integral());
-  TH1F *ElectronsMultiJet_pt_ =(TH1F*)MultiJetFile->Get("Electrons_pt_"); ElectronsMultiJet_pt_->Scale(1.0/ElectronsMultiJet_pt_->Integral());
-*/
-
-
-  TH1F *Cociente_pT__Muon_ak5FJ =(TH1F*)FJFile->Get("Cociente_pT__Muon-ak5FastJet"); Cociente_pT__Muon_ak5FJ->Scale(1.0/Cociente_pT__Muon_ak5FJ->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT__Muon-ak5PFJet"); Cociente_pT__Muon_ak5PFJet->Scale(1.0/Cociente_pT__Muon_ak5PFJet->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT__Muon-ak5PFJet"); Cociente_pT__Muon_ak5PFBTag->Scale(1.0/Cociente_pT__Muon_ak5PFBTag->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("Cociente_pT__Muon-ak5PFJet"); Cociente_pT__Muon_ak5PFMinBias->Scale(1.0/Cociente_pT__Muon_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT__Muon-ak5PFJet"); Cociente_pT__Muon_ak5PFMultiJet->Scale(1.0/Cociente_pT__Muon_ak5PFMultiJet->Integral());
+  TH1F *Cociente_pT__Muon_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5FJ->Scale(1.0/Cociente_pT__Muon_ak5FJ->Integral());
+  TH1F *Cociente_pT__Muon_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFJet->Scale(1.0/Cociente_pT__Muon_ak5PFJet->Integral());
+  TH1F *Cociente_pT__Muon_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFBTag->Scale(1.0/Cociente_pT__Muon_ak5PFBTag->Integral());
+  TH1F *Cociente_pT__Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFMinBias->Scale(1.0/Cociente_pT__Muon_ak5PFMinBias->Integral());
+  TH1F *Cociente_pT__Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFMultiJet->Scale(1.0/Cociente_pT__Muon_ak5PFMultiJet->Integral());
 
   TH1F *CLON_C_pT__Muon_ak5FJ =(TH1F*)Cociente_pT__Muon_ak5FJ->Clone();
   TH1F *CLON_C_pT__Muon_ak5PFJet =(TH1F*)Cociente_pT__Muon_ak5PFJet->Clone();
@@ -526,49 +508,81 @@ void pT() {
   TH1F *CLON_C_pT__Muon_ak5PFMinBias =(TH1F*)Cociente_pT__Muon_ak5PFMinBias->Clone();
   TH1F *CLON_C_pT__Muon_ak5PFMultiJet =(TH1F*)Cociente_pT__Muon_ak5PFMultiJet->Clone();
 
-  TH1F *Cociente_pT__Muon01_ak5FJ = (TH1F*)FJFile->Get("Cociente01_pT__Muon-ak5FastJet");Cociente_pT__Muon01_ak5FJ->Scale(1.0/Cociente_pT__Muon01_ak5FJ->Integral());
-  TH1F *Cociente_pT__Muon02_ak5FJ = (TH1F*)FJFile->Get("Cociente02_pT__Muon-ak5FastJet");Cociente_pT__Muon02_ak5FJ->Scale(1.0/Cociente_pT__Muon02_ak5FJ->Integral());
-  TH1F *Cociente_pT__Muon03_ak5FJ = (TH1F*)FJFile->Get("Cociente03_pT__Muon-ak5FastJet");Cociente_pT__Muon03_ak5FJ->Scale(1.0/Cociente_pT__Muon03_ak5FJ->Integral());
-  TH1F *Cociente_pT__Muon04_ak5FJ = (TH1F*)FJFile->Get("Cociente04_pT__Muon-ak5FastJet");Cociente_pT__Muon04_ak5FJ->Scale(1.0/Cociente_pT__Muon04_ak5FJ->Integral());
-  TH1F *Cociente_pT__Muon05_ak5FJ = (TH1F*)FJFile->Get("Cociente05_pT__Muon-ak5FastJet");Cociente_pT__Muon05_ak5FJ->Scale(1.0/Cociente_pT__Muon05_ak5FJ->Integral());
-  TH1F *Cociente_pT__Muon21_ak5FJ = (TH1F*)FJFile->Get("Cociente21_pT__Muon-ak5FastJet");Cociente_pT__Muon21_ak5FJ->Scale(1.0/Cociente_pT__Muon21_ak5FJ->Integral());
+  TH1F *Cociente_pT100__1Muon_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Muon-Jet<100");  Cociente_pT100__1Muon_ak5FJ->Scale(1.0/Cociente_pT100__1Muon_ak5FJ->Integral());
+  TH1F *Cociente_pT100__1Muon_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFJet->Scale(1.0/Cociente_pT100__1Muon_ak5PFJet->Integral());
+  TH1F *Cociente_pT100__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFBTag->Scale(1.0/Cociente_pT100__1Muon_ak5PFBTag->Integral());
+  TH1F *Cociente_pT100__1Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFMinBias->Scale(1.0/Cociente_pT100__1Muon_ak5PFMinBias->Integral());
+  TH1F *Cociente_pT100__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFMultiJet->Scale(1.0/Cociente_pT100__1Muon_ak5PFMultiJet->Integral());
 
-  TH1F *Cociente_pT100__1Muon_ak5FJ =(TH1F*)FJFile->Get("Cociente_pT<100__1Muon-ak5FastJet");  Cociente_pT100__1Muon_ak5FJ->Scale(1.0/Cociente_pT100__1Muon_ak5FJ->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT<100__1Muon-ak5PFJet");   Cociente_pT100__1Muon_ak5PFJet->Scale(1.0/Cociente_pT100__1Muon_ak5PFJet->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT<100__1Muon-ak5PFJet");   Cociente_pT100__1Muon_ak5PFBTag->Scale(1.0/Cociente_pT100__1Muon_ak5PFBTag->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("Cociente_pT<100__1Muon-ak5PFJet");   Cociente_pT100__1Muon_ak5PFMinBias->Scale(1.0/Cociente_pT100__1Muon_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT<100__1Muon-ak5PFJet");   Cociente_pT100__1Muon_ak5PFMultiJet->Scale(1.0/Cociente_pT100__1Muon_ak5PFMultiJet->Integral());
+  TH1F *Cociente_100pT__1Muon_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Muon-Jet>100");  Cociente_100pT__1Muon_ak5FJ->Scale(1.0/Cociente_100pT__1Muon_ak5FJ->Integral());
+  TH1F *Cociente_100pT__1Muon_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFJet->Scale(1.0/Cociente_100pT__1Muon_ak5PFJet->Integral());
+  TH1F *Cociente_100pT__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFBTag->Scale(1.0/Cociente_100pT__1Muon_ak5PFBTag->Integral());
+  TH1F *Cociente_100pT__1Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFMinBias->Scale(1.0/Cociente_100pT__1Muon_ak5PFMinBias->Integral());
+  TH1F *Cociente_100pT__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFMultiJet->Scale(1.0/Cociente_100pT__1Muon_ak5PFMultiJet->Integral());
 
-  TH1F *Cociente_100pT__1Muon_ak5FJ =(TH1F*)FJFile->Get("Cociente_pT>100__1Muon-ak5FastJet");  Cociente_100pT__1Muon_ak5FJ->Scale(1.0/Cociente_100pT__1Muon_ak5FJ->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT>100__1Muon-ak5PFJet");   Cociente_100pT__1Muon_ak5PFJet->Scale(1.0/Cociente_100pT__1Muon_ak5PFJet->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT>100__1Muon-ak5PFJet");   Cociente_100pT__1Muon_ak5PFBTag->Scale(1.0/Cociente_100pT__1Muon_ak5PFBTag->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("Cociente_pT>100__1Muon-ak5PFJet");   Cociente_100pT__1Muon_ak5PFMinBias->Scale(1.0/Cociente_100pT__1Muon_ak5PFMinBias->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT>100__1Muon-ak5PFJet");   Cociente_100pT__1Muon_ak5PFMultiJet->Scale(1.0/Cociente_100pT__1Muon_ak5PFMultiJet->Integral());
+  // TH1F *Cociente_pT__Muon01_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient01__Muon-Jet");Cociente_pT__Muon01_ak5FJ->Scale(1.0/Cociente_pT__Muon01_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Muon02_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient02__Muon-Jet");Cociente_pT__Muon02_ak5FJ->Scale(1.0/Cociente_pT__Muon02_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Muon03_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient03__Muon-Jet");Cociente_pT__Muon03_ak5FJ->Scale(1.0/Cociente_pT__Muon03_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Muon04_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient04__Muon-Jet");Cociente_pT__Muon04_ak5FJ->Scale(1.0/Cociente_pT__Muon04_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Muon05_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient05__Muon-Jet");Cociente_pT__Muon05_ak5FJ->Scale(1.0/Cociente_pT__Muon05_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Muon21_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient21__Muon-Jet");Cociente_pT__Muon21_ak5FJ->Scale(1.0/Cociente_pT__Muon21_ak5FJ->Integral());
 
-  TH1F *Cociente_pT__Electron_ak5FJ =(TH1F*)FJFile->Get("Cociente_pT__Electron-ak5FastJet");  Cociente_pT__Electron_ak5FJ->Scale(1.0/Cociente_pT__Electron_ak5FJ->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT__Electron-ak5PFJet");   Cociente_pT__Electron_ak5PFJet->Scale(1.0/Cociente_pT__Electron_ak5PFJet->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT__Electron-ak5PFJet");   Cociente_pT__Electron_ak5PFBTag->Scale(1.0/Cociente_pT__Electron_ak5PFBTag->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("Cociente_pT__Electron-ak5PFJet");   Cociente_pT__Electron_ak5PFMinBias->Scale(1.0/Cociente_pT__Electron_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT__Electron-ak5PFJet");   Cociente_pT__Electron_ak5PFMultiJet->Scale(1.0/Cociente_pT__Electron_ak5PFMultiJet->Integral());
+  TH1F *Cociente_pT__Electron_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__Electron-Jet");  Cociente_pT__Electron_ak5FJ->Scale(1.0/Cociente_pT__Electron_ak5FJ->Integral());
+  TH1F *Cociente_pT__Electron_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFJet->Scale(1.0/Cociente_pT__Electron_ak5PFJet->Integral());
+  TH1F *Cociente_pT__Electron_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFBTag->Scale(1.0/Cociente_pT__Electron_ak5PFBTag->Integral());
+  TH1F *Cociente_pT__Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFMinBias->Scale(1.0/Cociente_pT__Electron_ak5PFMinBias->Integral());
+  TH1F *Cociente_pT__Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFMultiJet->Scale(1.0/Cociente_pT__Electron_ak5PFMultiJet->Integral());
 
-  TH1F *Cociente_pT__Electron01_ak5FJ = (TH1F*)FJFile->Get("Cociente01_pT__Electron-ak5FastJet");Cociente_pT__Electron01_ak5FJ->Scale(1.0/Cociente_pT__Electron01_ak5FJ->Integral());
-  TH1F *Cociente_pT__Electron02_ak5FJ = (TH1F*)FJFile->Get("Cociente02_pT__Electron-ak5FastJet");Cociente_pT__Electron02_ak5FJ->Scale(1.0/Cociente_pT__Electron02_ak5FJ->Integral());
-  TH1F *Cociente_pT__Electron03_ak5FJ = (TH1F*)FJFile->Get("Cociente03_pT__Electron-ak5FastJet");Cociente_pT__Electron03_ak5FJ->Scale(1.0/Cociente_pT__Electron03_ak5FJ->Integral());
-  TH1F *Cociente_pT__Electron04_ak5FJ = (TH1F*)FJFile->Get("Cociente04_pT__Electron-ak5FastJet");Cociente_pT__Electron04_ak5FJ->Scale(1.0/Cociente_pT__Electron04_ak5FJ->Integral());
-  TH1F *Cociente_pT__Electron05_ak5FJ = (TH1F*)FJFile->Get("Cociente05_pT__Electron-ak5FastJet");Cociente_pT__Electron05_ak5FJ->Scale(1.0/Cociente_pT__Electron05_ak5FJ->Integral());
-  TH1F *Cociente_pT__Electron21_ak5FJ = (TH1F*)FJFile->Get("Cociente21_pT__Electron-ak5FastJet");Cociente_pT__Electron21_ak5FJ->Scale(1.0/Cociente_pT__Electron21_ak5FJ->Integral());
+  TH1F *Cociente_pT100__1Electron_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Electron-Jet<100");  Cociente_pT100__1Electron_ak5FJ->Scale(1.0/Cociente_pT100__1Electron_ak5FJ->Integral());
+  TH1F *Cociente_pT100__1Electron_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFJet->Scale(1.0/Cociente_pT100__1Electron_ak5PFJet->Integral());
+  TH1F *Cociente_pT100__1Electron_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFBTag->Scale(1.0/Cociente_pT100__1Electron_ak5PFBTag->Integral());
+  TH1F *Cociente_pT100__1Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFMinBias->Scale(1.0/Cociente_pT100__1Electron_ak5PFMinBias->Integral());
+  TH1F *Cociente_pT100__1Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFMultiJet->Scale(1.0/Cociente_pT100__1Electron_ak5PFMultiJet->Integral());
 
-  TH1F *Cociente_pT100__1Electron_ak5FJ =(TH1F*)FJFile->Get("Cociente_pT<100__1Electron-ak5FastJet");  Cociente_pT100__1Electron_ak5FJ->Scale(1.0/Cociente_pT100__1Electron_ak5FJ->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT<100__1Electron-ak5PFJet");   Cociente_pT100__1Electron_ak5PFJet->Scale(1.0/Cociente_pT100__1Electron_ak5PFJet->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT<100__1Electron-ak5PFJet");   Cociente_pT100__1Electron_ak5PFBTag->Scale(1.0/Cociente_pT100__1Electron_ak5PFBTag->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("Cociente_pT<100__1Electron-ak5PFJet");   Cociente_pT100__1Electron_ak5PFMinBias->Scale(1.0/Cociente_pT100__1Electron_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT<100__1Electron-ak5PFJet");   Cociente_pT100__1Electron_ak5PFMultiJet->Scale(1.0/Cociente_pT100__1Electron_ak5PFMultiJet->Integral());
+  TH1F *Cociente_100pT__1Electron_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Electron-Jet>100");  Cociente_100pT__1Electron_ak5FJ->Scale(1.0/Cociente_100pT__1Electron_ak5FJ->Integral());
+  TH1F *Cociente_100pT__1Electron_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFJet->Scale(1.0/Cociente_100pT__1Electron_ak5PFJet->Integral());
+  TH1F *Cociente_100pT__1Electron_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFBTag->Scale(1.0/Cociente_100pT__1Electron_ak5PFBTag->Integral());
+  TH1F *Cociente_100pT__1Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFMinBias->Scale(1.0/Cociente_100pT__1Electron_ak5PFMinBias->Integral());
+  TH1F *Cociente_100pT__1Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFMultiJet->Scale(1.0/Cociente_100pT__1Electron_ak5PFMultiJet->Integral());
 
-  TH1F *Cociente_100pT__1Electron_ak5FJ =(TH1F*)FJFile->Get("Cociente_pT>100__1Electron-ak5FastJet");  Cociente_100pT__1Electron_ak5FJ->Scale(1.0/Cociente_100pT__1Electron_ak5FJ->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFJet =(TH1F*)JetFile->Get("Cociente_pT>100__1Electron-ak5PFJet");   Cociente_100pT__1Electron_ak5PFJet->Scale(1.0/Cociente_100pT__1Electron_ak5PFJet->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFBTag =(TH1F*)BTagFile->Get("Cociente_pT>100__1Electron-ak5PFJet");   Cociente_100pT__1Electron_ak5PFBTag->Scale(1.0/Cociente_100pT__1Electron_ak5PFBTag->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("Cociente_pT>100__1Electron-ak5PFJet");   Cociente_100pT__1Electron_ak5PFMinBias->Scale(1.0/Cociente_100pT__1Electron_ak5PFMinBias->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("Cociente_pT>100__1Electron-ak5PFJet");   Cociente_100pT__1Electron_ak5PFMultiJet->Scale(1.0/Cociente_100pT__1Electron_ak5PFMultiJet->Integral());
+  // TH1F *Cociente_pT__Electron01_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient01__Electron-Jet");Cociente_pT__Electron01_ak5FJ->Scale(1.0/Cociente_pT__Electron01_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Electron02_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient02__Electron-Jet");Cociente_pT__Electron02_ak5FJ->Scale(1.0/Cociente_pT__Electron02_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Electron03_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient03__Electron-Jet");Cociente_pT__Electron03_ak5FJ->Scale(1.0/Cociente_pT__Electron03_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Electron04_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient04__Electron-Jet");Cociente_pT__Electron04_ak5FJ->Scale(1.0/Cociente_pT__Electron04_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Electron05_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient05__Electron-Jet");Cociente_pT__Electron05_ak5FJ->Scale(1.0/Cociente_pT__Electron05_ak5FJ->Integral());
+  // TH1F *Cociente_pT__Electron21_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient21__Electron-Jet");Cociente_pT__Electron21_ak5FJ->Scale(1.0/Cociente_pT__Electron21_ak5FJ->Integral());
+
+
+  TH1F *Energy_Quot__Muon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_FJ->Scale(1.0/Energy_Quot__Muon_FJ->Integral());
+  TH1F *Energy_Quot__Muon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_Jet->Scale(1.0/Energy_Quot__Muon_Jet->Integral());
+  TH1F *Energy_Quot__Muon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_BTag->Scale(1.0/Energy_Quot__Muon_BTag->Integral());
+  TH1F *Energy_Quot__Muon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MinBias->Scale(1.0/Energy_Quot__Muon_MinBias->Integral());
+  TH1F *Energy_Quot__Muon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MultiJet->Scale(1.0/Energy_Quot__Muon_MultiJet->Integral());
+
+  TH1F *Energy_Quot__Photon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_FJ->Scale(1.0/Energy_Quot__Photon_FJ->Integral());
+  TH1F *Energy_Quot__Photon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_Jet->Scale(1.0/Energy_Quot__Photon_Jet->Integral());
+  TH1F *Energy_Quot__Photon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_BTag->Scale(1.0/Energy_Quot__Photon_BTag->Integral());
+  TH1F *Energy_Quot__Photon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MinBias->Scale(1.0/Energy_Quot__Photon_MinBias->Integral());
+  TH1F *Energy_Quot__Photon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MultiJet->Scale(1.0/Energy_Quot__Photon_MultiJet->Integral());
+
+  TH1F *Energy_Quot__Electron_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_FJ->Scale(1.0/Energy_Quot__Electron_FJ->Integral());
+  TH1F *Energy_Quot__Electron_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_Jet->Scale(1.0/Energy_Quot__Electron_Jet->Integral());
+  TH1F *Energy_Quot__Electron_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_BTag->Scale(1.0/Energy_Quot__Electron_BTag->Integral());
+  TH1F *Energy_Quot__Electron_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MinBias->Scale(1.0/Energy_Quot__Electron_MinBias->Integral());
+  TH1F *Energy_Quot__Electron_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MultiJet->Scale(1.0/Energy_Quot__Electron_MultiJet->Integral());
+
+  TH1F *Energy_Quot__NeutralHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_FJ->Scale(1.0/Energy_Quot__NeutralHad_FJ->Integral());
+  TH1F *Energy_Quot__NeutralHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_Jet->Scale(1.0/Energy_Quot__NeutralHad_Jet->Integral());
+  TH1F *Energy_Quot__NeutralHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_BTag->Scale(1.0/Energy_Quot__NeutralHad_BTag->Integral());
+  TH1F *Energy_Quot__NeutralHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MinBias->Scale(1.0/Energy_Quot__NeutralHad_MinBias->Integral());
+  TH1F *Energy_Quot__NeutralHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MultiJet->Scale(1.0/Energy_Quot__NeutralHad_MultiJet->Integral());
+
+  TH1F *Energy_Quot__ChargedHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_FJ->Scale(1.0/Energy_Quot__ChargedHad_FJ->Integral());
+  TH1F *Energy_Quot__ChargedHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_Jet->Scale(1.0/Energy_Quot__ChargedHad_Jet->Integral());
+  TH1F *Energy_Quot__ChargedHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_BTag->Scale(1.0/Energy_Quot__ChargedHad_BTag->Integral());
+  TH1F *Energy_Quot__ChargedHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MinBias->Scale(1.0/Energy_Quot__ChargedHad_MinBias->Integral());
+  TH1F *Energy_Quot__ChargedHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MultiJet->Scale(1.0/Energy_Quot__ChargedHad_MultiJet->Integral());
+
 
 
   auto   Leg = new TLegend(0.62,0.70,0.90,0.92);    Leg->SetTextSize(0.04); Leg->SetFillStyle(0); Leg->SetBorderSize(0);
@@ -585,85 +599,25 @@ void pT() {
     legend->AddEntry(Cociente_pT__Muon_ak5PFMinBias, "Open-Data PF MinBias", "lep");
     legend->AddEntry(Cociente_pT__Muon_ak5PFMultiJet, "Open-Data PF MultiJet", "lep");
 
-  auto   QuarkLegend = new TLegend(0.75,0.60,0.90,0.92);    QuarkLegend->SetTextSize(0.04);
-    QuarkLegend->AddEntry(Cociente_pT__Muon_ak5FJ, "MC FastJet", "lp");
-    QuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
-    QuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
-    QuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
-    QuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
-    QuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
-    QuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
-
-  auto   ODQuarkLegend = new TLegend(0.68,0.60,0.90,0.92);    ODQuarkLegend->SetTextSize(0.04);
-    ODQuarkLegend->AddEntry(Cociente_pT__Muon_ak5PFJet, "Open-Data PF Jet", "lp");
-    ODQuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
-    ODQuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
-    ODQuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
-    ODQuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
-    ODQuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
-    ODQuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
-
-
-/*
-  TCanvas* Espectro_pT__Jets = new TCanvas("pT Jets","Espectro de pT de FastJet y PFJets",10,10,1920,1080);
-  Espectro_pT__Jets->SetFillColor(0);  Espectro_pT__Jets->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  ak5FastJet__pT->SetTitle("Espectro de p_{T} de Jets; p_{T} [GeV]; U. A.");
-  ak5FastJet__pT->GetXaxis()->SetLabelSize(0.05); ak5FastJet__pT->GetYaxis()->SetLabelSize(0.05);
-  ak5FastJet__pT->GetXaxis()->SetTitleSize(0.05); ak5FastJet__pT->GetYaxis()->SetTitleSize(0.05);
-  ak5FastJet__pT->GetXaxis()->SetTitleOffset(1.0);ak5FastJet__pT->GetYaxis()->SetTitleOffset(1.0);
-  ak5FastJet__pT->SetAxisRange(0.0, 600.0, "X");
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  ak5FastJet__pT -> Draw("E1"); ak5FastJet__pT->SetLineColor(1); ak5FastJet__pT->SetLineWidth(2);
-  ak5FastJet__pT->SetMarkerStyle(20); ak5FastJet__pT->SetMarkerColor(1); ak5FastJet__pT->SetMarkerSize(2);
-  ak5PFJet_pt_ -> Draw("Esame"); ak5PFJet_pt_->SetLineColor(2); ak5PFJet_pt_->SetLineWidth(2);
-  ak5PFJet_pt_->SetMarkerStyle(23); ak5PFJet_pt_->SetMarkerColor(2); ak5PFJet_pt_->SetMarkerSize(2);
-  ak5PFBTag_pt_ -> Draw("Esame"); ak5PFBTag_pt_->SetLineColor(9); ak5PFBTag_pt_->SetLineWidth(2);
-  ak5PFBTag_pt_->SetMarkerStyle(22); ak5PFBTag_pt_->SetMarkerColor(9); ak5PFBTag_pt_->SetMarkerSize(2);
-  ak5PFMultiJet_pt_ -> Draw("Esame"); ak5PFMultiJet_pt_->SetLineColor(32); ak5PFMultiJet_pt_->SetLineWidth(2);
-  ak5PFMultiJet_pt_->SetMarkerStyle(34); ak5PFMultiJet_pt_->SetMarkerColor(32); ak5PFMultiJet_pt_->SetMarkerSize(2);
-  legend -> Draw();  Espectro_pT__Jets -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/pT__FastJet_PFJets.png"); Espectro_pT__Jets -> Close();
+  // auto   QuarkLegend = new TLegend(0.75,0.60,0.90,0.92);    QuarkLegend->SetTextSize(0.04);
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon_ak5FJ, "MC FastJet", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
+  //
+  // auto   ODQuarkLegend = new TLegend(0.68,0.60,0.90,0.92);    ODQuarkLegend->SetTextSize(0.04);
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon_ak5PFJet, "Open-Data PF Jet", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
 
 
-  TCanvas* Espectro_pT__Muons = new TCanvas("pT Muones","Espectro de pT de Muones y Muons",10,10,1920,1080);
-  Espectro_pT__Muons->SetFillColor(0);  Espectro_pT__Muons->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  Muons_pt_->SetTitle("Espectro de p_{T} de Muones; p_{T} [GeV]; U. A.");
-  Muons_pt_->GetXaxis()->SetLabelSize(0.05); Muons_pt_->GetYaxis()->SetLabelSize(0.05);
-  Muons_pt_->GetXaxis()->SetTitleSize(0.05); Muons_pt_->GetYaxis()->SetTitleSize(0.05);
-  Muons_pt_->GetXaxis()->SetTitleOffset(1.0);Muons_pt_->GetYaxis()->SetTitleOffset(1.0);
-  Muons_pt_->SetAxisRange(0.0, 100.0, "X");
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Muons_pt_ -> Draw("E1"); Muons_pt_->SetLineColor(1); Muons_pt_->SetLineWidth(2);
-  Muons_pt_->SetMarkerStyle(20); Muons_pt_->SetMarkerColor(1); Muons_pt_->SetMarkerSize(2);
-  MuonsJet_pt_ -> Draw("Esame"); MuonsJet_pt_->SetLineColor(2); MuonsJet_pt_->SetLineWidth(2);
-  MuonsJet_pt_->SetMarkerStyle(23); MuonsJet_pt_->SetMarkerColor(2); MuonsJet_pt_->SetMarkerSize(2);
-  MuonsBTag_pt_ -> Draw("Esame"); MuonsBTag_pt_->SetLineColor(9); MuonsBTag_pt_->SetLineWidth(2);
-  MuonsBTag_pt_->SetMarkerStyle(22); MuonsBTag_pt_->SetMarkerColor(9); MuonsBTag_pt_->SetMarkerSize(2);
-  MuonsMultiJet_pt_ -> Draw("Esame"); MuonsMultiJet_pt_->SetLineColor(32); MuonsMultiJet_pt_->SetLineWidth(2);
-  MuonsMultiJet_pt_->SetMarkerStyle(34); MuonsMultiJet_pt_->SetMarkerColor(32); MuonsMultiJet_pt_->SetMarkerSize(2);
-  legend -> Draw();  Espectro_pT__Muons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/pT__Muons.png"); Espectro_pT__Muons -> Close();
-
-
-  TCanvas* Espectro_pT__Electrons = new TCanvas("pT Electrones","Espectro de pT de Electrones y Electrones",10,10,1920,1080);
-  Espectro_pT__Electrons->SetFillColor(0);  Espectro_pT__Electrons->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  Electrons_pt_->SetTitle("Espectro de p_{T} de Electrones; p_{T} [GeV]; U. A.");
-  Electrons_pt_->GetXaxis()->SetLabelSize(0.05); Electrons_pt_->GetYaxis()->SetLabelSize(0.05);
-  Electrons_pt_->GetXaxis()->SetTitleSize(0.05); Electrons_pt_->GetYaxis()->SetTitleSize(0.05);
-  Electrons_pt_->GetXaxis()->SetTitleOffset(1.0);Electrons_pt_->GetYaxis()->SetTitleOffset(1.0);
-  Electrons_pt_->SetAxisRange(0.0, 400.0, "X");
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Electrons_pt_ -> Draw("E1"); Electrons_pt_->SetLineColor(1); Electrons_pt_->SetLineWidth(2);
-  Electrons_pt_->SetMarkerStyle(20); Electrons_pt_->SetMarkerColor(1); Electrons_pt_->SetMarkerSize(2);
-  ElectronsJet_pt_ -> Draw("Esame"); ElectronsJet_pt_->SetLineColor(2); ElectronsJet_pt_->SetLineWidth(2);
-  ElectronsJet_pt_->SetMarkerStyle(23); ElectronsJet_pt_->SetMarkerColor(2); ElectronsJet_pt_->SetMarkerSize(2);
-  ElectronsBTag_pt_ -> Draw("Esame"); ElectronsBTag_pt_->SetLineColor(9); ElectronsBTag_pt_->SetLineWidth(2);
-  ElectronsBTag_pt_->SetMarkerStyle(22); ElectronsBTag_pt_->SetMarkerColor(9); ElectronsBTag_pt_->SetMarkerSize(2);
-  ElectronsMultiJet_pt_ -> Draw("Esame"); ElectronsMultiJet_pt_->SetLineColor(32); ElectronsMultiJet_pt_->SetLineWidth(2);
-  ElectronsMultiJet_pt_->SetMarkerStyle(34); ElectronsMultiJet_pt_->SetMarkerColor(32); ElectronsMultiJet_pt_->SetMarkerSize(2);
-  legend -> Draw();  Espectro_pT__Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/pT__Electrons.png"); Espectro_pT__Electrons -> Close();
-*/
 
   TCanvas* Cociente_pT__Muon_Jet = new TCanvas("Cociente_pT__Muon_Jet","Cociente pT FastJet y PFJets para muones",10,10,1920,1080);
   Cociente_pT__Muon_Jet->SetFillColor(0);  Cociente_pT__Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -751,7 +705,7 @@ void pT() {
   TCanvas* Cociente_pT100__1Muon_Jet = new TCanvas("Cociente_pT100__1Muon_Jet","Cociente pT<100 FastJet y PFJets para muones",10,10,1920,1080);
   Cociente_pT100__1Muon_Jet->SetFillColor(0);  Cociente_pT100__1Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT100__1Muon_ak5FJ->SetTitle("#mu^{#pm} m#acute{a}s energ#acute{e}tico  (p_{T}^{Jet} < 100); p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  Cociente_pT100__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} < 100);  p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
   Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -782,7 +736,7 @@ void pT() {
   TCanvas* Cociente_100pT__1Muon_Jet = new TCanvas("Cociente_100pT__1Muon_Jet","Cociente pT>100 FastJet y PFJets para muones",10,10,1920,1080);
   Cociente_100pT__1Muon_Jet->SetFillColor(0);  Cociente_100pT__1Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_100pT__1Muon_ak5FJ->SetTitle("#mu^{#pm} m#acute{a}s energ#acute{e}tico  (p_{T}^{Jet} > 100); p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  Cociente_100pT__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} > 100); p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
   Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -896,7 +850,7 @@ void pT() {
   TCanvas* Cociente_pT100__1Electron_Jet = new TCanvas("Cociente_pT100__1Electron_Jet","Cociente pT<100 FastJet y PFJets para electrones",10,10,1920,1080);
   Cociente_pT100__1Electron_Jet->SetFillColor(0);  Cociente_pT100__1Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT100__1Electron_ak5FJ->SetTitle("e^{#pm} m#acute{a}s energ#acute{e}tico  (p_{T}^{Jet} < 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_pT100__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} < 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
   Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -927,7 +881,7 @@ void pT() {
   TCanvas* Cociente_100pT__1Electron_Jet = new TCanvas("Cociente_100pT__1Electron_Jet","Cociente pT>100 FastJet y PFJets para electrones",10,10,1920,1080);
   Cociente_100pT__1Electron_Jet->SetFillColor(0);  Cociente_100pT__1Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_100pT__1Electron_ak5FJ->SetTitle("e^{#pm} m#acute{a}s energ#acute{e}tico  (p_{T}^{Jet} > 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_100pT__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} > 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
   Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -954,6 +908,152 @@ void pT() {
   Cociente_100pT__1Electron_ak5PFMultiJet->SetLineWidth(4);  Cociente_100pT__1Electron_ak5PFMultiJet->Draw("Esame");      Cociente_pT__Electron_ak5PFMultiJet->SetLineColor(32);
   Leg->Draw(); legend->Draw();  Cociente_100pT__1Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Electron1-Jet>100.png"); Cociente_100pT__1Electron_Jet->Close();
 
+
+
+  TCanvas* Energy_Quotient__Muon_Jet = new TCanvas("Energy_Quotient__Muon_Jet","Energy_Quotient__Muon_Jet",10,10,1920,1080);
+  Energy_Quotient__Muon_Jet->SetFillColor(0);  Energy_Quotient__Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
+  Energy_Quot__Muon_FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n / Jet; Energ#acute{i}a^{Muon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Muon_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetLabelSize(0.05);
+  Energy_Quot__Muon_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetTitleSize(0.05);
+  Energy_Quot__Muon_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Muon_FJ->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Energy_Quot__Muon_FJ->Rebin(); Energy_Quot__Muon_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Muon_FJ->SetMarkerSize(4);Energy_Quot__Muon_FJ->SetMarkerStyle(21); Energy_Quot__Muon_FJ->SetMarkerColor(14);
+  Energy_Quot__Muon_FJ->DrawCopy("P");   Energy_Quot__Muon_FJ->SetMarkerStyle(25); Energy_Quot__Muon_FJ->SetMarkerColor(1);
+  Energy_Quot__Muon_FJ->SetLineWidth(4); Energy_Quot__Muon_FJ->Draw("Esame");      Energy_Quot__Muon_FJ->SetLineColor(1);
+  Energy_Quot__Muon_Jet->Rebin();
+  Energy_Quot__Muon_Jet->SetMarkerSize(4); Energy_Quot__Muon_Jet->SetMarkerStyle(23); Energy_Quot__Muon_Jet->SetMarkerColor(42);
+  Energy_Quot__Muon_Jet->DrawCopy("Psame");Energy_Quot__Muon_Jet->SetMarkerStyle(32); Energy_Quot__Muon_Jet->SetMarkerColor(2);
+  Energy_Quot__Muon_Jet->SetLineWidth(4);  Energy_Quot__Muon_Jet->Draw("Esame");      Energy_Quot__Muon_Jet->SetLineColor(2);
+  Energy_Quot__Muon_BTag->Rebin();
+  Energy_Quot__Muon_BTag->SetMarkerSize(4); Energy_Quot__Muon_BTag->SetMarkerStyle(22); Energy_Quot__Muon_BTag->SetMarkerColor(33);
+  Energy_Quot__Muon_BTag->DrawCopy("Psame");Energy_Quot__Muon_BTag->SetMarkerStyle(26); Energy_Quot__Muon_BTag->SetMarkerColor(4);
+  Energy_Quot__Muon_BTag->SetLineWidth(4);  Energy_Quot__Muon_BTag->Draw("Esame");      Energy_Quot__Muon_BTag->SetLineColor(4);
+  Energy_Quot__Muon_MinBias->Rebin();
+  Energy_Quot__Muon_MinBias->SetMarkerSize(4); Energy_Quot__Muon_MinBias->SetMarkerStyle(20); Energy_Quot__Muon_MinBias->SetMarkerColor(5);
+  Energy_Quot__Muon_MinBias->DrawCopy("Psame");Energy_Quot__Muon_MinBias->SetMarkerStyle(24); Energy_Quot__Muon_MinBias->SetMarkerColor(41);
+  Energy_Quot__Muon_MinBias->SetLineWidth(4);  Energy_Quot__Muon_MinBias->Draw("Esame");      Energy_Quot__Muon_MinBias->SetLineColor(41);
+  Energy_Quot__Muon_MultiJet->Rebin();
+  Energy_Quot__Muon_MultiJet->SetMarkerSize(4); Energy_Quot__Muon_MultiJet->SetMarkerStyle(34); Energy_Quot__Muon_MultiJet->SetMarkerColor(8);
+  Energy_Quot__Muon_MultiJet->DrawCopy("Psame");Energy_Quot__Muon_MultiJet->SetMarkerStyle(28); Energy_Quot__Muon_MultiJet->SetMarkerColor(32);
+  Energy_Quot__Muon_MultiJet->SetLineWidth(4);  Energy_Quot__Muon_MultiJet->Draw("Esame");      Energy_Quot__Muon_MultiJet->SetLineColor(32);
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Muon-Jet.png"); Energy_Quotient__Muon_Jet->Close();
+
+  TCanvas* Energy_Quotient__Photon_Jet = new TCanvas("Energy_Quotient__Photon_Jet","Energy_Quotient__Photon_Jet",10,10,1920,1080);
+  Energy_Quotient__Photon_Jet->SetFillColor(0);  Energy_Quotient__Photon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
+  Energy_Quot__Photon_FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n / Jet; Energ#acute{i}a^{Photon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Photon_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetLabelSize(0.05);
+  Energy_Quot__Photon_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetTitleSize(0.05);
+  Energy_Quot__Photon_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Photon_FJ->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Energy_Quot__Photon_FJ->Rebin(); Energy_Quot__Photon_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Photon_FJ->SetMarkerSize(4);Energy_Quot__Photon_FJ->SetMarkerStyle(21); Energy_Quot__Photon_FJ->SetMarkerColor(14);
+  Energy_Quot__Photon_FJ->DrawCopy("P");   Energy_Quot__Photon_FJ->SetMarkerStyle(25); Energy_Quot__Photon_FJ->SetMarkerColor(1);
+  Energy_Quot__Photon_FJ->SetLineWidth(4); Energy_Quot__Photon_FJ->Draw("Esame");      Energy_Quot__Photon_FJ->SetLineColor(1);
+  Energy_Quot__Photon_Jet->Rebin();
+  Energy_Quot__Photon_Jet->SetMarkerSize(4); Energy_Quot__Photon_Jet->SetMarkerStyle(23); Energy_Quot__Photon_Jet->SetMarkerColor(42);
+  Energy_Quot__Photon_Jet->DrawCopy("Psame");Energy_Quot__Photon_Jet->SetMarkerStyle(32); Energy_Quot__Photon_Jet->SetMarkerColor(2);
+  Energy_Quot__Photon_Jet->SetLineWidth(4);  Energy_Quot__Photon_Jet->Draw("Esame");      Energy_Quot__Photon_Jet->SetLineColor(2);
+  Energy_Quot__Photon_BTag->Rebin();
+  Energy_Quot__Photon_BTag->SetMarkerSize(4); Energy_Quot__Photon_BTag->SetMarkerStyle(22); Energy_Quot__Photon_BTag->SetMarkerColor(33);
+  Energy_Quot__Photon_BTag->DrawCopy("Psame");Energy_Quot__Photon_BTag->SetMarkerStyle(26); Energy_Quot__Photon_BTag->SetMarkerColor(4);
+  Energy_Quot__Photon_BTag->SetLineWidth(4);  Energy_Quot__Photon_BTag->Draw("Esame");      Energy_Quot__Photon_BTag->SetLineColor(4);
+  Energy_Quot__Photon_MinBias->Rebin();
+  Energy_Quot__Photon_MinBias->SetMarkerSize(4); Energy_Quot__Photon_MinBias->SetMarkerStyle(20); Energy_Quot__Photon_MinBias->SetMarkerColor(5);
+  Energy_Quot__Photon_MinBias->DrawCopy("Psame");Energy_Quot__Photon_MinBias->SetMarkerStyle(24); Energy_Quot__Photon_MinBias->SetMarkerColor(41);
+  Energy_Quot__Photon_MinBias->SetLineWidth(4);  Energy_Quot__Photon_MinBias->Draw("Esame");      Energy_Quot__Photon_MinBias->SetLineColor(41);
+  Energy_Quot__Photon_MultiJet->Rebin();
+  Energy_Quot__Photon_MultiJet->SetMarkerSize(4); Energy_Quot__Photon_MultiJet->SetMarkerStyle(34); Energy_Quot__Photon_MultiJet->SetMarkerColor(8);
+  Energy_Quot__Photon_MultiJet->DrawCopy("Psame");Energy_Quot__Photon_MultiJet->SetMarkerStyle(28); Energy_Quot__Photon_MultiJet->SetMarkerColor(32);
+  Energy_Quot__Photon_MultiJet->SetLineWidth(4);  Energy_Quot__Photon_MultiJet->Draw("Esame");      Energy_Quot__Photon_MultiJet->SetLineColor(32);
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Photon_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Photon-Jet.png"); Energy_Quotient__Photon_Jet->Close();
+
+  TCanvas* Energy_Quotient__Electron_Jet = new TCanvas("Energy_Quotient__Electron_Jet","Energy_Quotient__Electron_Jet",10,10,1920,1080);
+  Energy_Quotient__Electron_Jet->SetFillColor(0);  Energy_Quotient__Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
+  Energy_Quot__Electron_FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n / Jet; Energ#acute{i}a^{Electron} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Electron_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetLabelSize(0.05);
+  Energy_Quot__Electron_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetTitleSize(0.05);
+  Energy_Quot__Electron_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Electron_FJ->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Energy_Quot__Electron_FJ->Rebin(); Energy_Quot__Electron_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Electron_FJ->SetMarkerSize(4);Energy_Quot__Electron_FJ->SetMarkerStyle(21); Energy_Quot__Electron_FJ->SetMarkerColor(14);
+  Energy_Quot__Electron_FJ->DrawCopy("P");   Energy_Quot__Electron_FJ->SetMarkerStyle(25); Energy_Quot__Electron_FJ->SetMarkerColor(1);
+  Energy_Quot__Electron_FJ->SetLineWidth(4); Energy_Quot__Electron_FJ->Draw("Esame");      Energy_Quot__Electron_FJ->SetLineColor(1);
+  Energy_Quot__Electron_Jet->Rebin();
+  Energy_Quot__Electron_Jet->SetMarkerSize(4); Energy_Quot__Electron_Jet->SetMarkerStyle(23); Energy_Quot__Electron_Jet->SetMarkerColor(42);
+  Energy_Quot__Electron_Jet->DrawCopy("Psame");Energy_Quot__Electron_Jet->SetMarkerStyle(32); Energy_Quot__Electron_Jet->SetMarkerColor(2);
+  Energy_Quot__Electron_Jet->SetLineWidth(4);  Energy_Quot__Electron_Jet->Draw("Esame");      Energy_Quot__Electron_Jet->SetLineColor(2);
+  Energy_Quot__Electron_BTag->Rebin();
+  Energy_Quot__Electron_BTag->SetMarkerSize(4); Energy_Quot__Electron_BTag->SetMarkerStyle(22); Energy_Quot__Electron_BTag->SetMarkerColor(33);
+  Energy_Quot__Electron_BTag->DrawCopy("Psame");Energy_Quot__Electron_BTag->SetMarkerStyle(26); Energy_Quot__Electron_BTag->SetMarkerColor(4);
+  Energy_Quot__Electron_BTag->SetLineWidth(4);  Energy_Quot__Electron_BTag->Draw("Esame");      Energy_Quot__Electron_BTag->SetLineColor(4);
+  Energy_Quot__Electron_MinBias->Rebin();
+  Energy_Quot__Electron_MinBias->SetMarkerSize(4); Energy_Quot__Electron_MinBias->SetMarkerStyle(20); Energy_Quot__Electron_MinBias->SetMarkerColor(5);
+  Energy_Quot__Electron_MinBias->DrawCopy("Psame");Energy_Quot__Electron_MinBias->SetMarkerStyle(24); Energy_Quot__Electron_MinBias->SetMarkerColor(41);
+  Energy_Quot__Electron_MinBias->SetLineWidth(4);  Energy_Quot__Electron_MinBias->Draw("Esame");      Energy_Quot__Electron_MinBias->SetLineColor(41);
+  Energy_Quot__Electron_MultiJet->Rebin();
+  Energy_Quot__Electron_MultiJet->SetMarkerSize(4); Energy_Quot__Electron_MultiJet->SetMarkerStyle(34); Energy_Quot__Electron_MultiJet->SetMarkerColor(8);
+  Energy_Quot__Electron_MultiJet->DrawCopy("Psame");Energy_Quot__Electron_MultiJet->SetMarkerStyle(28); Energy_Quot__Electron_MultiJet->SetMarkerColor(32);
+  Energy_Quot__Electron_MultiJet->SetLineWidth(4);  Energy_Quot__Electron_MultiJet->Draw("Esame");      Energy_Quot__Electron_MultiJet->SetLineColor(32);
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Electron-Jet.png"); Energy_Quotient__Electron_Jet->Close();
+
+  TCanvas* Energy_Quotient__NeutralHad_Jet = new TCanvas("Energy_Quotient__NeutralHad_Jet","Energy_Quotient__NeutralHad_Jet",10,10,1920,1080);
+  Energy_Quotient__NeutralHad_Jet->SetFillColor(0);  Energy_Quotient__NeutralHad_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
+  Energy_Quot__NeutralHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadron Neutro / Jet; Energ#acute{i}a^{NeutralHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__NeutralHad_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetLabelSize(0.05);
+  Energy_Quot__NeutralHad_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleSize(0.05);
+  Energy_Quot__NeutralHad_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Energy_Quot__NeutralHad_FJ->Rebin(); Energy_Quot__NeutralHad_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__NeutralHad_FJ->SetMarkerSize(4);Energy_Quot__NeutralHad_FJ->SetMarkerStyle(21); Energy_Quot__NeutralHad_FJ->SetMarkerColor(14);
+  Energy_Quot__NeutralHad_FJ->DrawCopy("P");   Energy_Quot__NeutralHad_FJ->SetMarkerStyle(25); Energy_Quot__NeutralHad_FJ->SetMarkerColor(1);
+  Energy_Quot__NeutralHad_FJ->SetLineWidth(4); Energy_Quot__NeutralHad_FJ->Draw("Esame");      Energy_Quot__NeutralHad_FJ->SetLineColor(1);
+  Energy_Quot__NeutralHad_Jet->Rebin();
+  Energy_Quot__NeutralHad_Jet->SetMarkerSize(4); Energy_Quot__NeutralHad_Jet->SetMarkerStyle(23); Energy_Quot__NeutralHad_Jet->SetMarkerColor(42);
+  Energy_Quot__NeutralHad_Jet->DrawCopy("Psame");Energy_Quot__NeutralHad_Jet->SetMarkerStyle(32); Energy_Quot__NeutralHad_Jet->SetMarkerColor(2);
+  Energy_Quot__NeutralHad_Jet->SetLineWidth(4);  Energy_Quot__NeutralHad_Jet->Draw("Esame");      Energy_Quot__NeutralHad_Jet->SetLineColor(2);
+  Energy_Quot__NeutralHad_BTag->Rebin();
+  Energy_Quot__NeutralHad_BTag->SetMarkerSize(4); Energy_Quot__NeutralHad_BTag->SetMarkerStyle(22); Energy_Quot__NeutralHad_BTag->SetMarkerColor(33);
+  Energy_Quot__NeutralHad_BTag->DrawCopy("Psame");Energy_Quot__NeutralHad_BTag->SetMarkerStyle(26); Energy_Quot__NeutralHad_BTag->SetMarkerColor(4);
+  Energy_Quot__NeutralHad_BTag->SetLineWidth(4);  Energy_Quot__NeutralHad_BTag->Draw("Esame");      Energy_Quot__NeutralHad_BTag->SetLineColor(4);
+  Energy_Quot__NeutralHad_MinBias->Rebin();
+  Energy_Quot__NeutralHad_MinBias->SetMarkerSize(4); Energy_Quot__NeutralHad_MinBias->SetMarkerStyle(20); Energy_Quot__NeutralHad_MinBias->SetMarkerColor(5);
+  Energy_Quot__NeutralHad_MinBias->DrawCopy("Psame");Energy_Quot__NeutralHad_MinBias->SetMarkerStyle(24); Energy_Quot__NeutralHad_MinBias->SetMarkerColor(41);
+  Energy_Quot__NeutralHad_MinBias->SetLineWidth(4);  Energy_Quot__NeutralHad_MinBias->Draw("Esame");      Energy_Quot__NeutralHad_MinBias->SetLineColor(41);
+  Energy_Quot__NeutralHad_MultiJet->Rebin();
+  Energy_Quot__NeutralHad_MultiJet->SetMarkerSize(4); Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(34); Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(8);
+  Energy_Quot__NeutralHad_MultiJet->DrawCopy("Psame");Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(28); Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(32);
+  Energy_Quot__NeutralHad_MultiJet->SetLineWidth(4);  Energy_Quot__NeutralHad_MultiJet->Draw("Esame");      Energy_Quot__NeutralHad_MultiJet->SetLineColor(32);
+  Leg->Draw(); legend->Draw();  Energy_Quotient__NeutralHad_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__NeutralHad-Jet.png"); Energy_Quotient__NeutralHad_Jet->Close();
+
+  TCanvas* Energy_Quotient__ChargedHad_Jet = new TCanvas("Energy_Quotient__ChargedHad_Jet","Energy_Quotient__ChargedHad_Jet",10,10,1920,1080);
+  Energy_Quotient__ChargedHad_Jet->SetFillColor(0);  Energy_Quotient__ChargedHad_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
+  Energy_Quot__ChargedHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadron Cargado / Jet; Energ#acute{i}a^{ChargedHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__ChargedHad_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetLabelSize(0.05);
+  Energy_Quot__ChargedHad_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleSize(0.05);
+  Energy_Quot__ChargedHad_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleOffset(1.0);
+  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
+  Energy_Quot__ChargedHad_FJ->Rebin(); Energy_Quot__ChargedHad_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__ChargedHad_FJ->SetMarkerSize(4);Energy_Quot__ChargedHad_FJ->SetMarkerStyle(21); Energy_Quot__ChargedHad_FJ->SetMarkerColor(14);
+  Energy_Quot__ChargedHad_FJ->DrawCopy("P");   Energy_Quot__ChargedHad_FJ->SetMarkerStyle(25); Energy_Quot__ChargedHad_FJ->SetMarkerColor(1);
+  Energy_Quot__ChargedHad_FJ->SetLineWidth(4); Energy_Quot__ChargedHad_FJ->Draw("Esame");      Energy_Quot__ChargedHad_FJ->SetLineColor(1);
+  Energy_Quot__ChargedHad_Jet->Rebin();
+  Energy_Quot__ChargedHad_Jet->SetMarkerSize(4); Energy_Quot__ChargedHad_Jet->SetMarkerStyle(23); Energy_Quot__ChargedHad_Jet->SetMarkerColor(42);
+  Energy_Quot__ChargedHad_Jet->DrawCopy("Psame");Energy_Quot__ChargedHad_Jet->SetMarkerStyle(32); Energy_Quot__ChargedHad_Jet->SetMarkerColor(2);
+  Energy_Quot__ChargedHad_Jet->SetLineWidth(4);  Energy_Quot__ChargedHad_Jet->Draw("Esame");      Energy_Quot__ChargedHad_Jet->SetLineColor(2);
+  Energy_Quot__ChargedHad_BTag->Rebin();
+  Energy_Quot__ChargedHad_BTag->SetMarkerSize(4); Energy_Quot__ChargedHad_BTag->SetMarkerStyle(22); Energy_Quot__ChargedHad_BTag->SetMarkerColor(33);
+  Energy_Quot__ChargedHad_BTag->DrawCopy("Psame");Energy_Quot__ChargedHad_BTag->SetMarkerStyle(26); Energy_Quot__ChargedHad_BTag->SetMarkerColor(4);
+  Energy_Quot__ChargedHad_BTag->SetLineWidth(4);  Energy_Quot__ChargedHad_BTag->Draw("Esame");      Energy_Quot__ChargedHad_BTag->SetLineColor(4);
+  Energy_Quot__ChargedHad_MinBias->Rebin();
+  Energy_Quot__ChargedHad_MinBias->SetMarkerSize(4); Energy_Quot__ChargedHad_MinBias->SetMarkerStyle(20); Energy_Quot__ChargedHad_MinBias->SetMarkerColor(5);
+  Energy_Quot__ChargedHad_MinBias->DrawCopy("Psame");Energy_Quot__ChargedHad_MinBias->SetMarkerStyle(24); Energy_Quot__ChargedHad_MinBias->SetMarkerColor(41);
+  Energy_Quot__ChargedHad_MinBias->SetLineWidth(4);  Energy_Quot__ChargedHad_MinBias->Draw("Esame");      Energy_Quot__ChargedHad_MinBias->SetLineColor(41);
+  Energy_Quot__ChargedHad_MultiJet->Rebin();
+  Energy_Quot__ChargedHad_MultiJet->SetMarkerSize(4); Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(34); Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(8);
+  Energy_Quot__ChargedHad_MultiJet->DrawCopy("Psame");Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(28); Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(32);
+  Energy_Quot__ChargedHad_MultiJet->SetLineWidth(4);  Energy_Quot__ChargedHad_MultiJet->Draw("Esame");      Energy_Quot__ChargedHad_MultiJet->SetLineColor(32);
+  Leg->Draw(); legend->Draw();  Energy_Quotient__ChargedHad_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__ChargedHad-Jet.png"); Energy_Quotient__ChargedHad_Jet->Close();
 }
 
 
@@ -1145,7 +1245,7 @@ void rootMacro(){
   // Corremos los macros que nos interesan.
   // DistanciaAngular();
   Limits();
-  // pT();``
+  pT();
   // Multiplicidad();
   // Vertice();
 

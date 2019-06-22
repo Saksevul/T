@@ -4,7 +4,7 @@ start_date=$(date +%x) && start_time=$(date +%X)
 
 # Primero definimos los parámetros de entrada.
 PttMM=/home/saksevul/T/OpenData/Analisis.C	# Path to the Master Macro (pttMM).
-PttrFL=/media/saksevul/Pawahtun/CMS_Run2011A/BTag_20000/rootFilesList	# Path to the root Files List (pttrFL).
+PttrFL=/home/saksevul/CMS_Run2011A/BTag_20000/rootFilesList	# Path to the root Files List (pttrFL).
 PttOrFD=/home/saksevul/T/OpenData/BTag_20000	# Path to the Output root Files Directory (PttOrFD).
 pJT=BTag	# previous Jet Type (pJT).
 	fJT=$pJT	# final Jet Type (fJT).
@@ -15,7 +15,7 @@ pJCA=ak5PF	# previous Jet Clustering Algorithm (pJCA).
 	fJCA=$pJCA	# final Jet Clustering Algorithm (fJCA).
 
 
-for JT in BTag # Jet MinBias MultiJet	# Ciclo sobre: Jet Type (JT).
+for JT in BTag Jet MinBias MultiJet	# Ciclo sobre: Jet Type (JT).
 do
 PttrFL=$(echo $PttrFL | sed "s/$pJT\_20000/$JT\_20000/g")
 PttOrFD=$(echo $PttOrFD | sed "s/$pJT\_20000/$JT\_20000/g")
