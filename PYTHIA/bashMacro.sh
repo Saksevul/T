@@ -1,53 +1,112 @@
-
-start_date=$(date +%x)
-start_time=$(date +%X)
-
-
-# Primero definimos los parámetros de entrada.
-MMN=Simulacion.cc	# Master Macro Name (MMN).
-PttMMD=/home/saksevul/T/PYTHIA/  # Path to the Master Macro Directory (pttMMD).
-PttOrFD=$PttMMD/FastJet/	# Path to the Output root Files Directory (PttOrFD).
-
-ipTHM=1 # Initial pT Hat Minimum (Ver y/o editar Master Macro).
-  pOF=\-$ipTHM.root  # previous Output File (pOF).
-  fOF=$pOF  # final Output File (fOF).
-  ppTHM=pTHatMin\ =\ $ipTHM.0	# previous pT Hat Minimum (ppTHM).
-  fpTHM=$ppTHM	# final pT Hat Minimum (fpTHM).
-
-iNoE=100000  # Number of Events (Ver y/o editar Master Macro).
-  pNoE=nEvent\ \ \ \ =\ $iNoE\; # previous Number of Events.
-  fNoE=$pNoE # final Number of Events.
+# 0.- Guardamos la fecha y hora de inicio del macro.
+start_date=$(date +%x) && start_time=$(date +%X)
 
 
-# Ahora corremos el macro para todos los pT Hat Minimum.. Así aumentamos la estadística.
-pwd=$PWD && cd $PttMMD  # Guardamos es directorio actual de trabajo y pasamos a MMD.
-for pTHM in {1..600..1}	# Ciclo sobre los distintos valores posibles de pT Hat Minimum.
+# 1.- Definir los parámetros de entrada.
+# Macro Maestro (MM).
+MM=Simulacion.cc
+# Ruta al Directorio del Macro Maestro (RutaDMM).
+RutaDMM=/home/saksevul/T/PYTHIA
+# Ruta al Directorio de Archivos de Salida (RutaDAS) (ver y/o editar MM 2 en total).
+RutaDAS=$RutaDMM/FastJet
+# inicial Algoritmo de Reconstrucción de Jets (pARJ).
+iARJ=ak5
+  # previo Algoritmo de Reconstrucción de Jets (iARJ).
+  pARJ=$iARJ
+# initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 4 en total).
+ipTHM=10
+  # previous pT Hat Minimum (ipTHM).
+  ppTHM=$ipTHM
+# initial Number of Events (ver y/o editar Master Macro, 2 en total).
+iNoE=12000
+  # previous Number of Events.
+  pNoE=$iNoE
+# Guardamos es directorio actual de trabajo y pasamos a la RutaDMM.
+pwd=$PWD && cd $RutaDMM
+
+# previous Jet Custering Algorithm (JCA).
+pJCA=\-1
+  ak=\-1;  kt=1
+  # FastJet (FJ). Será utilizado como sufijo.
+  FJ=FJ
+# previous Jet Size (JS).
+pJS=0.5
+
+
+# 2.- Realizar los ciclos for necesarios.
+# Hago en ciclo sobre los Jet Clustering Algorithms (ARJs).
+for ARJ in ak5 ak7 kt4 kt6
 do
-  sed -i "s/$pOF/\-$pTHM.root/g" $PttMMD$MMN
-	sed -i "s/$ppTHM/pTHatMin\ =\ $pTHM.0/g" $PttMMD$MMN	# Cabiamos el valor del pTHatMin.
-  NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/200); print x}')  # Decrecimiento exponancial.
-  sed -i "s/$pNoE/nEvent\ \ \ \ =\ $NoE\;/g" $PttMMD$MMN	# Cabiamos el valor del NoE.
-  make -s Simulacion && ./Simulacion > /dev/null # A CORRER ESA MADRE!
-  pOF=-$pTHM.root
-	ppTHM=pTHatMin\ =\ $pTHM.0
-  pNoE=nEvent\ \ \ \ =\ $NoE\;
-done
-cd $pwd  # Regresamos al directorio anterior de trabajo.
+  # Modificamos el MM para utilizar el ARJ actual.
+  sed -i "s/$pARJ/$ARJ/g" $MM
+  if [ $ARJ == 'ak5' ];  then
+    sed -i "s/JCA\ \ \ \ =\ $pJCA\;/JCA\ \ \ \ =\ $ak\;/g" $MM
+    sed -i "s/R\ \ \ \ \ \ =\ $pJS\;/R\ \ \ \ \ \ =\ 0.5\;/g" $MM
+    # Redefinios algunos parámetros para el siguiente ciclo for.
+    pARJ=ak5;    pJCA=$ak;    pJS=0.5
+  elif [ $ARJ == 'ak7' ];  then
+    sed -i "s/JCA\ \ \ \ =\ $pJCA\;/JCA\ \ \ \ =\ $ak\;/g" $MM
+    sed -i "s/R\ \ \ \ \ \ =\ $pJS\;/R\ \ \ \ \ \ =\ 0.7\;/g" $MM
+    # Redefinios algunos parámetros para el siguiente ciclo for.
+    pARJ=ak7;    pJCA=$ak;    pJS=0.7
+  elif [ $ARJ == 'kt4' ];  then
+    sed -i "s/JCA\ \ \ \ =\ $pJCA\;/JCA\ \ \ \ =\ $kt\;/g" $MM
+    sed -i "s/R\ \ \ \ \ \ =\ $pJS\;/R\ \ \ \ \ \ =\ 0.4\;/g" $MM
+    # Redefinios algunos parámetros para el siguiente ciclo for.
+    pARJ=kt4;    pJCA=$kt;    pJS=0.4
+  elif [ $ARJ == 'kt6' ];  then
+    sed -i "s/JCA\ \ \ \ =\ $pJCA\;/JCA\ \ \ \ =\ $kt\;/g" $MM
+    sed -i "s/R\ \ \ \ \ \ =\ $pJS\;/R\ \ \ \ \ \ =\ 0.6\;/g" $MM
+    # Redefinios algunos parámetros para el siguiente ciclo for.
+    pARJ=kt6;    pJCA=$kt;    pJS=0.6
+  fi
+  # Ciclo sobre distintos valores de pT Hat Minimum.
+  for pTHM in {10..600..1}
+  do
+    # Modificamos el Master Macro (MM) para utilizar el AS actual.
+    sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
+    # Cabiamos el valor del pTHatMin.
+  	sed -i "s/pTHatMin\ =\ $ppTHM.0/pTHatMin\ =\ $pTHM.0/g" $MM
+    # Decrecimiento exponancial.
+    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/200); print x}')
+    # Cabiamos el valor del NoE.
+    sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $NoE\;/g" $MM
+    # A CORRER ESA MADRE!
+    make -s Simulacion && ./Simulacion > /dev/null
+    # Redefinios ppTHM para el siguiente ciclo for.
+  	ppTHM=$pTHM
+    # Redefinios pNoE para el siguiente ciclo for.
+    pNoE=$NoE
+  done  # Fin del ciclo for para pTHatMax.
+
+  # Preparamos al MM par el siguiente ciclo for.
+  sed -i "s/\-$ppTHM.root/\-$ipTHM.root/g" $MM
+  sed -i "s/pTHatMin\ =\ $ppTHM.0/pTHatMin\ =\ $ipTHM.0/g" $MM
+  sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $iNoE\;/g" $MM
+  ppTHM=$ipTHM;  pNoE=$iNoE
+
+  # Eliminamos los archivos viejos, pues serán remplazados.
+	rm $RutaDAS/$ARJ$FJ.root
+  # Creamos un único archivo de salida para cada ARJ.
+	hadd $RutaDAS/$ARJ\FJ.root $RutaDAS/$ARJ$FJ-*.root
+  # Eliminamos los archivos individuales.
+	rm $RutaDAS/$ARJ$FJ-*.root
+done  # Fin del ciclo for para ARJ.
 
 
-# # Esta siguiente parte es para regresar al código a su estado original.
-sed -i "s/$pOF/$fOF/g" $PttMMD$MMN
-sed -i "s/$ppTHM/$fpTHM/g" $PttMM$MMN
-sed -i "s/$pNoE/$fNoE/g" $PttMM$MMN
+# 3.- Regresamos el MM a su estado inicial.
+sed -i "s/$pARJ/$iARJ/g" $MM
+sed -i "s/JCA\ \ \ \ =\ $pJCA\;/JCA\ \ \ \ =\ $ak\;/g" $MM
+sed -i "s/R\ \ \ \ \ \ =\ $pJS\;/R\ \ \ \ \ \ =\ 0.5\;/g" $MM
 
 
-# Finalmete juntamos todos los archivos root de salida, correspondientes a cada JCA, (1 por cada root File).
-for JCA in ak5FJ #ak7PF kt4PF kt6PF	# Hago en ciclo sobre los Jet Clustering Algorithms (JCAs).
-do
-	rm $PttOrFD/$JCA.root	# Eliminamos los archivos viejos, pues serán remplazados.
-	hadd $PttOrFD/$JCA.root $PttOrFD$JCA-*.root	# Creamos un único archivo root para cada JCA.
-	rm $PttOrFD/$JCA-*.root	# Eliminamos permanentemente los archivos que ya no necesitaremos más.
-done
+# 4.- Volvemos al directorio anterior de trabajo.
+cd $pwd
 
 
+# 5.- Mostrar la fecha y hora de inicio y término de este macro.
 printf "\n\n Inició  el  $start_date, a las  $start_time.\n\n Terminó el  $(date +%x), a las  $(date +%X).\n\n"
+
+
+# 6.- Eliminar todas las variables utilizadas.
+exec bash

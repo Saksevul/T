@@ -138,7 +138,7 @@ else
 	@echo "Error: $@ requires FASTJET3 and HEPMC2"
 endif
 
-#-------------------------------------------------------------------------------
+#------------------------------------------------------------------------------#
 # FASTJET3 and ROOT.
 Simulacion Simulation: $$@.cc $(PREFIX_LIB)/libpythia8.a
 ifeq ($(FASTJET3_USE)$(ROOT_USE),truetrue)
@@ -150,7 +150,7 @@ ifeq ($(FASTJET3_USE)$(ROOT_USE),truetrue)
 else
 	@echo "Error: $@ requires FASTJET3 and ROOT"
 endif
-#-------------------------------------------------------------------------------
+#------------------------------------------------------------------------------#
 
 # ROOT (turn off all warnings for readability).
 main91: $$@.cc $(PREFIX_LIB)/libpythia8.a

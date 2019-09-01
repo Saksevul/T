@@ -1,52 +1,78 @@
-
+# 0.- Guardamos la fecha y hora de inicio del macro.
 start_date=$(date +%x) && start_time=$(date +%X)
 
 
-# Primero definimos los parámetros de entrada.
-PttMM=/home/saksevul/T/OpenData/Analisis_Limits.C	# Path to the Master Macro (pttMM).
-PttrFL=/home/saksevul/CMS_Run2011A/BTag_20000/rootFilesList	# Path to the root Files List (pttrFL).
-PttOrFD=/home/saksevul/T/OpenData/BTag_20000	# Path to the Output root Files Directory (PttOrFD).
-pJT=BTag	# previous Jet Type (pJT).
-	fJT=$pJT	# final Jet Type (fJT).
+# 1.- Definir los parámetros de entrada.
 
-prF=0001.root	# previous root File (prF).
-	frF=$prF	# final root File (prF).
-pJCA=ak5PF	# previous Jet Clustering Algorithm (pJCA).
-	fJCA=$pJCA	# final Jet Clustering Algorithm (fJCA).
+# Ruta al Macro Maestro (RutaMM).
+RutaMM=/home/saksevul/T/OpenData/Analisis_Limits.C
+# Ruta a la Lista de AOD's. (RutaLAOD).
+RutaLAOD=/home/saksevul/CMS_Run2011A/BTag_20000/ListaAOD1024
+# Ruta al Directorio de Archivos de Salida (RutaDAS).
+RutaDAS=/home/saksevul/T/OpenData/BTag_20000
+# inicial Tipo de AOD (iTAOD).
+iTAOD=BTag
+  # previo Tipo de AOD (pTAOD).
+  pTAOD=$iTAOD
+# inicial Algoritmo de Reconstrucción de Jets (iARJ).
+iARJ=ak5PF
+  # previo Algoritmo de Reconstrucción de Jets (pARJ).
+  pARJ=$iARJ
+# inicial AOD (iAOD).
+iAOD=0001.root
+  # previo AOD (pAOD).
+  pAOD=$iAOD
 
 
-for JT in BTag Jet MinBias MultiJet	# Ciclo sobre: Jet Type (JT).
-do
-PttrFL=$(echo $PttrFL | sed "s/$pJT\_20000/$JT\_20000/g")
-PttOrFD=$(echo $PttOrFD | sed "s/$pJT\_20000/$JT\_20000/g")
-sed -i "s/$pJT\_20000/$JT\_20000/g" $PttMM
-	# Ahora corremos el macro para todos los archivos. Así aumentamos la estadística.
-	for JCA in ak5PF # ak7PF kt4PF kt6PF	# Hago en ciclo sobre los Jet Clustering Algorithms (JCAs).
+	# 2.- Realizar ciclos for para aumentar la estadística.
+
+	# Ciclo for sobre Jet Type (TAOD).
+	for TAOD in BTag Jet MinBias MultiJet
 	do
-		sed -i "s/$pJCA/$JCA/g" $PttMM	# Cambiamos el JCA de análisis.
-		for rF in $(cat $PttrFL)	# Ciclo sobre: root Files List (rFL).
-		do
-			sed -i "s/$prF/$rF/g" $PttMM	# Cambiamos el root File de entrada del Master Macro (MM).
-			root -l -q 2> /dev/null $PttMM	# Corremos el Master Macro (MM). (Eliminamos mensajes de error).
-			prF=$rF
-		done
-		# Finalmete juntamos todos los archivos root de salida, correspondientes a cada JCA, (1 por cada root File).
-		rm $PttOrFD/$JCA\_Limits.root	# Eliminamos los archivos viejos, pues serán remplazados.
-		hadd $PttOrFD/$JCA\_Limits.root $PttOrFD/$JCA\_Limits-*.root	# Creamos un único archivo root para cada JCA.
-		rm $PttOrFD/$JCA\_Limits-*.root	# Eliminamos permanentemente los archivos que ya no necesitamos.
-		pJCA=$JCA
-	done
-	pJT=$JT
-done
+	  # Modificamos RutaLAOD para utilizar el TAOD actual.
+	  RutaLAOD=$(echo $RutaLAOD | sed "s/$pTAOD\_20000/$TAOD\_20000/g")
+	  # Modificamos RutaDAS para utilizar el TAOD actual.
+	  RutaDAS=$(echo $RutaDAS | sed "s/$pTAOD\_20000/$TAOD\_20000/g")
+	  # Modificamos el Master Macro (MM) para utilizar el TAOD actual.
+	  sed -i "s/$pTAOD\_20000/$TAOD\_20000/g" $RutaMM
+	  # Ciclo for sobre los Algoritmos de Reconstrucción de Jets (ARJ).
+	  for ARJ in ak5PF ak7PF kt4PF kt6PF
+	  do
+	    # Modificamos el MM para utilizar el ARJ actual.
+	    sed -i "s/$pARJ/$ARJ/g" $RutaMM
+	    # Ciclo for sobre los archivos en root Files List (AODL).
+	    for AOD in $(cat $RutaLAOD)
+	    do
+	      # Cambiar el root File de entrada en el Master Macro (MM).
+	      sed -i "s/$pAOD/$AOD/g" $RutaMM
+	      # Correr el Master Macro (MM). (Sin mensajes de error).
+	      root -l -q 2> /dev/null $RutaMM
+	      # Redefinimos pAOD para el siguiente ciclo.
+	      pAOD=$AOD
+	    done  # Fin del ciclo for para AOD.
+	    # Eliminamos los archivos viejos, pues serán remplazados.
+	    rm $RutaDAS/$ARJ\_Limits.root
+	    # Creamos un único archivo root para el ARJ actual.
+	    hadd $RutaDAS/$ARJ\_Limits.root $RutaDAS/$ARJ\_Limits-*.root
+	    # Eliminamos permanentemente los archivos individuales.
+	    rm $RutaDAS/$ARJ\_Limits-*.root
+	    # Redefinios pARJ para el siguiente ciclo for.
+	    pARJ=$ARJ
+	  done  # Fin del ciclo for para ARJ.
+	  # Redefinimos pTAOD para el siguiente ciclo.
+	  pTAOD=$TAOD
+	done  # Fin del ciclo for para TAOD.
 
 
-# Esta siguiente parte es para regresar al código a su estado original.
-sed -i "s/$rF/$frF/g" $PttMM
-sed -i "s/$JCA/$fJCA/g" $PttMM
-sed -i "s/$JT\_20000/$fJT\_20000/g" $PttMM
+# Esta siguiente parte es para regresar al código a su estado inicial.
+sed -i "s/$AOD/$iAOD/g" $RutaMM
+sed -i "s/$ARJ/$iARJ/g" $RutaMM
+sed -i "s/$TAOD\_20000/$iTAOD\_20000/g" $RutaMM
 
 
-	printf "\n\n Inició  el  $start_date, a las  $start_time.\n\n Terminó el  $(date +%x), a las  $(date +%X).\n\n"
+# 4.- Mostrar la fecha y hora de inicio y término de este macro.
+printf "\n\n Inició  el  $start_date, a las  $start_time.\n\n Terminó el  $(date +%x), a las  $(date +%X).\n\n"
 
 
-exec bash # Elimina todas las variables. Pero deja el entorno ROOT activo.
+# 5.- Eliminar todas las variables utilizadas.
+exec bash

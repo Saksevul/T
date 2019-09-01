@@ -25,9 +25,9 @@ EVTGEN_LIB=
 
 # FASTJET3 configuration.
 FASTJET3_USE=true
-FASTJET3_BIN=/home/saksevul/fastjet322/bin
-FASTJET3_INCLUDE=/home/saksevul/fastjet322/include
-FASTJET3_LIB=/home/saksevul/fastjet322/lib
+FASTJET3_BIN=/home/saksevul/fastjet332/bin
+FASTJET3_INCLUDE=/home/saksevul/fastjet332/include
+FASTJET3_LIB=/home/saksevul/fastjet332/lib
 
 # HEPMC2 configuration.
 HEPMC2_USE=false

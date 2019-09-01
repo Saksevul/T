@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-1.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-10.root", "RECREATE");
   // Histograms.
   // Muones.
   TH1F *h_Muons_pt_ = new TH1F("Muons_pt_",  "p_{T} de Muones contenidos en ak5FastJet; p_{T} [GeV]; Frecuencia",  300, 0, 10);
@@ -119,7 +119,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
   // Process selection.
   pythia.readString("HardQCD:all = on");
-  pythia.readString("PhaseSpace:pTHatMin = 1.0");
+  pythia.readString("PhaseSpace:pTHatMin = 10.0");
   // pythia.readString("HardQCD:hardccbar = on");
   // pythia.readString("HardQCD:hardbbbar = on");
   // pythia.readString("HardQCD:3parton = on");
@@ -139,8 +139,8 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
 
   // Number of events, generated and listed ones (for jets).
-  int nEvent    = 100000;
-  // printf("\n\n\n%i\n\n\n", nEvent);
+  int nEvent    = 12000;
+  printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 10.0\n\n\t Salida:  ak5FJ-10.root \n\n\n\n", nEvent);
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= -1; C/A = 0; kT = 1.
   double R      = 0.5;    // Jet size.
@@ -187,8 +187,8 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
       // particleTemp.reset_momentum( event[i].px(), event[i].py(), event[i].pz(), event[i].e() );
 
-      // Esto es para poder conocer el pdg id de los constituyentes de Jet.
-      particleTemp.set_user_info(new MyInfo( i, event[i].xProd(), event[i].yProd(), event[i].zProd()));
+      // Esto es para poder conocer índice del evento de cada constituyentes del Jet.
+      particleTemp.set_user_info( new MyInfo( i ) );  // particleTemp son las partículas candidatas a formar parte del Jet.
 
       // Store acceptable particles as input to Fastjet.
       // Conversion to PseudoJet is performed automatically with the help of the code in FastJet3.h.

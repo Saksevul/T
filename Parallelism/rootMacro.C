@@ -34,7 +34,7 @@ void DistanciaAngular() {
   ak5FastJet__D_Jet_Jet->SetMarkerStyle(21); ak5FastJet__D_Jet_Jet->SetMarkerColor(9);
   legend -> Draw();
 
-  ak5PFJet__D_Jet_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/D_Jet-Jet FastJet y PFJets.png"); ak5PFJet__D_Jet_Jet -> Close();
+  ak5PFJet__D_Jet_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/D_Jet-Jet FastJet y PFJets.png"); ak5PFJet__D_Jet_Jet -> Close();
 
 }
 
@@ -138,8 +138,8 @@ void Limits() {
 
 
 
-  auto   legend = new TLegend(0.63,0.68,0.90,0.92);    legend->SetTextSize(0.04); legend->SetFillStyle(0); legend->SetBorderSize(0);
-    legend->AddEntry(MuonsFJ_pt_, "MC Simulaci#acute{o}n", "l");
+  auto   legend = new TLegend(0.63,0.18,0.90,0.42);    legend->SetTextSize(0.04); legend->SetFillStyle(0); legend->SetBorderSize(0);
+    // legend->AddEntry(MuonsFJ_pt_, "MC Simulaci#acute{o}n", "l");
     legend->AddEntry(MuonsJet_pt_, "Open-Data PF Jet", "l");
     legend->AddEntry(MuonsBTag_pt_, "Open-Data PF BTag", "l");
     legend->AddEntry(MuonsMinBias_pt_, "Open-Data PF MinBias", "l");
@@ -155,17 +155,17 @@ void Limits() {
   MuonsFJ_pt_->GetXaxis()->SetTitleSize(0.05); MuonsFJ_pt_->GetYaxis()->SetTitleSize(0.05);
   MuonsFJ_pt_->GetXaxis()->SetTitleOffset(1.0);MuonsFJ_pt_->GetYaxis()->SetTitleOffset(1.0);
   // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  MuonsFJ_pt_ -> Draw("HIST"); MuonsFJ_pt_->SetLineColor(1); MuonsFJ_pt_->SetLineWidth(2);
+  MuonsFJ_pt_ -> Draw("HIST"); MuonsFJ_pt_->SetLineColor(1); MuonsFJ_pt_->SetLineWidth(4);
   MuonsFJ_pt_->SetMarkerStyle(20); MuonsFJ_pt_->SetMarkerColor(1); MuonsFJ_pt_->SetMarkerSize(2);
-  MuonsJet_pt_ -> Draw("HISTsame"); MuonsJet_pt_->SetLineColor(2); MuonsJet_pt_->SetLineWidth(2);
+  MuonsJet_pt_ -> Draw("HISTsame"); MuonsJet_pt_->SetLineColor(2); MuonsJet_pt_->SetLineWidth(4);
   MuonsJet_pt_->SetMarkerStyle(20); MuonsJet_pt_->SetMarkerColor(2); MuonsJet_pt_->SetMarkerSize(2);
-  MuonsBTag_pt_ -> Draw("HISTsame"); MuonsBTag_pt_->SetLineColor(4); MuonsBTag_pt_->SetLineWidth(2);
+  MuonsBTag_pt_ -> Draw("HISTsame"); MuonsBTag_pt_->SetLineColor(4); MuonsBTag_pt_->SetLineWidth(4);
   MuonsBTag_pt_->SetMarkerStyle(23); MuonsBTag_pt_->SetMarkerColor(4); MuonsBTag_pt_->SetMarkerSize(2);
-  MuonsMinBias_pt_ -> Draw("HISTsame"); MuonsMinBias_pt_->SetLineColor(41); MuonsMinBias_pt_->SetLineWidth(2);
+  MuonsMinBias_pt_ -> Draw("HISTsame"); MuonsMinBias_pt_->SetLineColor(41); MuonsMinBias_pt_->SetLineWidth(4);
   MuonsMinBias_pt_->SetMarkerStyle(23); MuonsMinBias_pt_->SetMarkerColor(41); MuonsMinBias_pt_->SetMarkerSize(2);
-  MuonsMultiJet_pt_ -> Draw("HISTsame"); MuonsMultiJet_pt_->SetLineColor(32); MuonsMultiJet_pt_->SetLineWidth(2);
+  MuonsMultiJet_pt_ -> Draw("HISTsame"); MuonsMultiJet_pt_->SetLineColor(32); MuonsMultiJet_pt_->SetLineWidth(4);
   MuonsMultiJet_pt_->SetMarkerStyle(23); MuonsMultiJet_pt_->SetMarkerColor(32); MuonsMultiJet_pt_->SetMarkerSize(2);
-  legend->Draw(); Limite_pT_Muones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_pT_Muones.png"); Limite_pT_Muones->Close();
+  legend->Draw(); Limite_pT_Muones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_pT_Muones.png"); Limite_pT_Muones->Close();
 
   TCanvas* Limite_pT_Fotones = new TCanvas("Limite_pT_Fotones","Limite de pT para Fotones",10,10,1920,1080);
   Limite_pT_Fotones->SetFillColor(0);  Limite_pT_Fotones->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -185,7 +185,7 @@ void Limits() {
   PhotonsMinBias_pt_->SetMarkerStyle(23); PhotonsMinBias_pt_->SetMarkerColor(41); PhotonsMinBias_pt_->SetMarkerSize(2);
   PhotonsMultiJet_pt_ -> Draw("HISTsame"); PhotonsMultiJet_pt_->SetLineColor(32); PhotonsMultiJet_pt_->SetLineWidth(2);
   PhotonsMultiJet_pt_->SetMarkerStyle(23); PhotonsMultiJet_pt_->SetMarkerColor(32); PhotonsMultiJet_pt_->SetMarkerSize(2);
-  legend->Draw(); Limite_pT_Fotones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_pT_Fotones.png"); Limite_pT_Fotones->Close();
+  legend->Draw(); Limite_pT_Fotones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_pT_Fotones.png"); Limite_pT_Fotones->Close();
 
   TCanvas* Limite_pT_Electrones = new TCanvas("Limite_pT_Electrones","Limite de pT para Electrones",10,10,1920,1080);
   Limite_pT_Electrones->SetFillColor(0);  Limite_pT_Electrones->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -205,9 +205,9 @@ void Limits() {
   ElectronsMinBias_pt_->SetMarkerStyle(23); ElectronsMinBias_pt_->SetMarkerColor(41); ElectronsMinBias_pt_->SetMarkerSize(2);
   ElectronsMultiJet_pt_ -> Draw("HISTsame"); ElectronsMultiJet_pt_->SetLineColor(32); ElectronsMultiJet_pt_->SetLineWidth(2);
   ElectronsMultiJet_pt_->SetMarkerStyle(23); ElectronsMultiJet_pt_->SetMarkerColor(32); ElectronsMultiJet_pt_->SetMarkerSize(2);
-  legend->Draw(); Limite_pT_Electrones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_pT_Electrones.png"); Limite_pT_Electrones->Close();
+  legend->Draw(); Limite_pT_Electrones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_pT_Electrones.png"); Limite_pT_Electrones->Close();
 
-  TCanvas* Limite_pT_ak5PFJets = new TCanvas("Limite_pT_ak5PFJets","Limite de pT para Jets",10,10,1920,1080);
+  TCanvas* Limite_pT_ak5PFJets = new TCanvas("Limite_pT_ak5PFJets","Limite de pT para Jets",10,10,1920,1080);  Limite_pT_ak5PFJets->SetRightMargin(0.01);
   Limite_pT_ak5PFJets->SetFillColor(0);  Limite_pT_ak5PFJets->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
   ak5FJ_pt_->SetTitle("Espectro de p_{T} para Jets; p_{T} [GeV]; U. A.");
@@ -225,7 +225,7 @@ void Limits() {
   ak5PFMinBias_pt_->SetMarkerStyle(23); ak5PFMinBias_pt_->SetMarkerColor(41); ak5PFMinBias_pt_->SetMarkerSize(2);
   ak5PFMultiJet_pt_ -> Draw("HISTsame"); ak5PFMultiJet_pt_->SetLineColor(32); ak5PFMultiJet_pt_->SetLineWidth(2);
   ak5PFMultiJet_pt_->SetMarkerStyle(23); ak5PFMultiJet_pt_->SetMarkerColor(32); ak5PFMultiJet_pt_->SetMarkerSize(2);
-  legend->Draw(); Limite_pT_ak5PFJets->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_pT_ak5PFJets.png"); Limite_pT_ak5PFJets->Close();
+  legend->Draw(); Limite_pT_ak5PFJets->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_pT_ak5PFJets.png"); Limite_pT_ak5PFJets->Close();
 
 
 
@@ -247,7 +247,7 @@ void Limits() {
   MuonsMinBias_eta_->SetMarkerStyle(23); MuonsMinBias_eta_->SetMarkerColor(41); MuonsMinBias_eta_->SetMarkerSize(2);
   MuonsMultiJet_eta_ -> Draw("HISTsame"); MuonsMultiJet_eta_->SetLineColor(32); MuonsMultiJet_eta_->SetLineWidth(2);
   MuonsMultiJet_eta_->SetMarkerStyle(23); MuonsMultiJet_eta_->SetMarkerColor(32); MuonsMultiJet_eta_->SetMarkerSize(2);
-  legend->Draw(); Limite_eta_Muones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_eta_Muones.png"); Limite_eta_Muones->Close();
+  legend->Draw(); Limite_eta_Muones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_eta_Muones.png"); Limite_eta_Muones->Close();
 
   TCanvas* Limite_eta_Fotones = new TCanvas("Limite_eta_Fotones","Limite de #eta para Fotones",10,10,1920,1080);
   Limite_eta_Fotones->SetFillColor(0);  Limite_eta_Fotones->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -267,7 +267,7 @@ void Limits() {
   PhotonsMinBias_eta_->SetMarkerStyle(23); PhotonsMinBias_eta_->SetMarkerColor(41); PhotonsMinBias_eta_->SetMarkerSize(2);
   PhotonsMultiJet_eta_ -> Draw("HISTsame"); PhotonsMultiJet_eta_->SetLineColor(32); PhotonsMultiJet_eta_->SetLineWidth(2);
   PhotonsMultiJet_eta_->SetMarkerStyle(23); PhotonsMultiJet_eta_->SetMarkerColor(32); PhotonsMultiJet_eta_->SetMarkerSize(2);
-  legend->Draw(); Limite_eta_Fotones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_eta_Fotones.png"); Limite_eta_Fotones->Close();
+  legend->Draw(); Limite_eta_Fotones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_eta_Fotones.png"); Limite_eta_Fotones->Close();
 
   TCanvas* Limite_eta_Electrones = new TCanvas("Limite_eta_Electrones","Limite de #eta para Electrones",10,10,1920,1080);
   Limite_eta_Electrones->SetFillColor(0);  Limite_eta_Electrones->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -287,7 +287,7 @@ void Limits() {
   ElectronsMinBias_eta_->SetMarkerStyle(23); ElectronsMinBias_eta_->SetMarkerColor(41); ElectronsMinBias_eta_->SetMarkerSize(2);
   ElectronsMultiJet_eta_ -> Draw("HISTsame"); ElectronsMultiJet_eta_->SetLineColor(32); ElectronsMultiJet_eta_->SetLineWidth(2);
   ElectronsMultiJet_eta_->SetMarkerStyle(23); ElectronsMultiJet_eta_->SetMarkerColor(32); ElectronsMultiJet_eta_->SetMarkerSize(2);
-  legend->Draw(); Limite_eta_Electrones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_eta_Electrones.png"); Limite_eta_Electrones->Close();
+  legend->Draw(); Limite_eta_Electrones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_eta_Electrones.png"); Limite_eta_Electrones->Close();
 
   TCanvas* Limite_eta_Jets = new TCanvas("Limite_eta_Jets","Limite de #eta para Jets",10,10,1920,1080);
   Limite_eta_Jets->SetFillColor(0);  Limite_eta_Jets->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -307,14 +307,14 @@ void Limits() {
   ak5PFMinBias_eta_->SetMarkerStyle(23); ak5PFMinBias_eta_->SetMarkerColor(41); ak5PFMinBias_eta_->SetMarkerSize(2);
   ak5PFMultiJet_eta_ -> Draw("HISTsame"); ak5PFMultiJet_eta_->SetLineColor(32); ak5PFMultiJet_eta_->SetLineWidth(2);
   ak5PFMultiJet_eta_->SetMarkerStyle(23); ak5PFMultiJet_eta_->SetMarkerColor(32); ak5PFMultiJet_eta_->SetMarkerSize(2);
-  legend->Draw(); Limite_eta_Jets->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_eta_Jets.png"); Limite_eta_Jets->Close();
+  legend->Draw(); Limite_eta_Jets->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_eta_Jets.png"); Limite_eta_Jets->Close();
 
 
 
-  TCanvas* Limite_Energia_Muones = new TCanvas("Limite_Energia_Muones","Limite de #eta para Muones",10,10,1920,1080);
+  TCanvas* Limite_Energia_Muones = new TCanvas("Limite_Energia_Muones","Limite de Energ#acute{i}a para Muones",10,10,1920,1080);
   Limite_Energia_Muones->SetFillColor(0);  Limite_Energia_Muones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_MuonEnergy->SetTitle("Espectro de Energ#acute{i}a para Muones; E [GeV]; U. A.");
+  Jet_MuonEnergy->SetTitle("Espectro de Energ#acute{i}a para Muones en ak5PFJets; E [GeV]; U. A.");
   Jet_MuonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_MuonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_MuonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_MuonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -328,12 +328,12 @@ void Limits() {
   MinBias_MuonEnergy->SetMarkerStyle(23); MinBias_MuonEnergy->SetMarkerColor(41); MinBias_MuonEnergy->SetMarkerSize(2);
   MultiJet_MuonEnergy -> Draw("HISTsame"); MultiJet_MuonEnergy->SetLineColor(32); MultiJet_MuonEnergy->SetLineWidth(2);
   MultiJet_MuonEnergy->SetMarkerStyle(23); MultiJet_MuonEnergy->SetMarkerColor(32); MultiJet_MuonEnergy->SetMarkerSize(2);
-  legend->Draw(); Limite_Energia_Muones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Energia_Muones.png"); Limite_Energia_Muones->Close();
+  legend->Draw(); Limite_Energia_Muones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Muones.png"); Limite_Energia_Muones->Close();
 
   TCanvas* Limite_Energia_Fotones = new TCanvas("Limite_Energia_Fotones","Limite de Energ#acute{i}a para Fotones",10,10,1920,1080);
   Limite_Energia_Fotones->SetFillColor(0);  Limite_Energia_Fotones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_PhotonEnergy->SetTitle("Espectro de Energ#acute{i}a para Fotones; E [GeV]; U. A.");
+  Jet_PhotonEnergy->SetTitle("Espectro de Energ#acute{i}a para Fotones en ak5PFJets; E [GeV]; U. A.");
   Jet_PhotonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_PhotonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -347,31 +347,32 @@ void Limits() {
   MinBias_PhotonEnergy->SetMarkerStyle(23); MinBias_PhotonEnergy->SetMarkerColor(41); MinBias_PhotonEnergy->SetMarkerSize(2);
   MultiJet_PhotonEnergy -> Draw("HISTsame"); MultiJet_PhotonEnergy->SetLineColor(32); MultiJet_PhotonEnergy->SetLineWidth(2);
   MultiJet_PhotonEnergy->SetMarkerStyle(23); MultiJet_PhotonEnergy->SetMarkerColor(32); MultiJet_PhotonEnergy->SetMarkerSize(2);
-  legend->Draw(); Limite_Energia_Fotones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Energia_Fotones.png"); Limite_Energia_Fotones->Close();
+  legend->Draw(); Limite_Energia_Fotones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Fotones.png"); Limite_Energia_Fotones->Close();
 
-  TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite de #eta para Electrones",10,10,1920,1080);
-  Limite_Energia_Electrones->SetFillColor(0);  Limite_Energia_Electrones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
+  TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite Energ#acute{i}a para Electrones",10,10,1920,1080);
+  Limite_Energia_Electrones->SetFillColor(0);  Limite_Energia_Electrones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);  Limite_Energia_Electrones->SetRightMargin(0.01);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones; E [GeV]; U. A.");
+  Jet_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones en ak5PFJets; E [GeV]; U. A.");
   Jet_ElectronEnergy->GetXaxis()->SetLabelSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_ElectronEnergy->GetYaxis()->SetTitleOffset(1.0);
   Jet_ElectronEnergy->SetAxisRange(0.0, 5.0, "X");
   // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Jet_ElectronEnergy -> Draw("HIST"); Jet_ElectronEnergy->SetLineColor(2); Jet_ElectronEnergy->SetLineWidth(2);
+  Jet_ElectronEnergy -> Draw("HIST"); Jet_ElectronEnergy->SetLineColor(2); Jet_ElectronEnergy->SetLineWidth(4);
   Jet_ElectronEnergy->SetMarkerStyle(20); Jet_ElectronEnergy->SetMarkerColor(2); Jet_ElectronEnergy->SetMarkerSize(2);
-  BTag_ElectronEnergy -> Draw("HISTsame"); BTag_ElectronEnergy->SetLineColor(4); BTag_ElectronEnergy->SetLineWidth(2);
+  BTag_ElectronEnergy -> Draw("HISTsame"); BTag_ElectronEnergy->SetLineColor(4); BTag_ElectronEnergy->SetLineWidth(4);
   BTag_ElectronEnergy->SetMarkerStyle(23); BTag_ElectronEnergy->SetMarkerColor(4); BTag_ElectronEnergy->SetMarkerSize(2);
-  MinBias_ElectronEnergy -> Draw("HISTsame"); MinBias_ElectronEnergy->SetLineColor(41); MinBias_ElectronEnergy->SetLineWidth(2);
+  MinBias_ElectronEnergy -> Draw("HISTsame"); MinBias_ElectronEnergy->SetLineColor(41); MinBias_ElectronEnergy->SetLineWidth(4);
   MinBias_ElectronEnergy->SetMarkerStyle(23); MinBias_ElectronEnergy->SetMarkerColor(41); MinBias_ElectronEnergy->SetMarkerSize(2);
-  MultiJet_ElectronEnergy -> Draw("HISTsame"); MultiJet_ElectronEnergy->SetLineColor(32); MultiJet_ElectronEnergy->SetLineWidth(2);
+  MultiJet_ElectronEnergy -> Draw("HISTsame"); MultiJet_ElectronEnergy->SetLineColor(32); MultiJet_ElectronEnergy->SetLineWidth(4);
   MultiJet_ElectronEnergy->SetMarkerStyle(23); MultiJet_ElectronEnergy->SetMarkerColor(32); MultiJet_ElectronEnergy->SetMarkerSize(2);
-  legend->Draw(); Limite_Energia_Electrones->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Energia_Electrones.png"); Limite_Energia_Electrones->Close();
+  legend->Draw(); Limite_Energia_Electrones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Electrones.png");
+  legend->Draw(); Limite_Energia_Electrones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Electrones.pdf"); Limite_Energia_Electrones->Close();
 
-  TCanvas* Limite_Energia_HadNeutros = new TCanvas("Limite_Energia_HadNeutros","Limite de #eta para HadNeutros",10,10,1920,1080);
+  TCanvas* Limite_Energia_HadNeutros = new TCanvas("Limite_Energia_HadNeutros","Limite Energ#acute{i}a para HadNeutros",10,10,1920,1080);
   Limite_Energia_HadNeutros->SetFillColor(0);  Limite_Energia_HadNeutros->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_NeuHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadNeutros; E [GeV]; U. A.");
+  Jet_NeuHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadNeutros en ak5PFJets; E [GeV]; U. A.");
   Jet_NeuHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_NeuHadEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -385,12 +386,12 @@ void Limits() {
   MinBias_NeuHadEnergy->SetMarkerStyle(23); MinBias_NeuHadEnergy->SetMarkerColor(41); MinBias_NeuHadEnergy->SetMarkerSize(2);
   MultiJet_NeuHadEnergy -> Draw("HISTsame"); MultiJet_NeuHadEnergy->SetLineColor(32); MultiJet_NeuHadEnergy->SetLineWidth(2);
   MultiJet_NeuHadEnergy->SetMarkerStyle(23); MultiJet_NeuHadEnergy->SetMarkerColor(32); MultiJet_NeuHadEnergy->SetMarkerSize(2);
-  legend->Draw(); Limite_Energia_HadNeutros->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Energia_HadNeutros.png"); Limite_Energia_HadNeutros->Close();
+  legend->Draw(); Limite_Energia_HadNeutros->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_HadNeutros.png"); Limite_Energia_HadNeutros->Close();
 
-  TCanvas* Limite_Energia_HadCargados = new TCanvas("Limite_Energia_HadCargados","Limite de #eta para HadCargados",10,10,1920,1080);
+  TCanvas* Limite_Energia_HadCargados = new TCanvas("Limite_Energia_HadCargados","Limite Energ#acute{i}a para HadCargados",10,10,1920,1080);
   Limite_Energia_HadCargados->SetFillColor(0);  Limite_Energia_HadCargados->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_CharHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadCargados; E [GeV]; U. A.");
+  Jet_CharHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadCargados en ak5PFJets; E [GeV]; U. A.");
   Jet_CharHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_CharHadEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -404,7 +405,7 @@ void Limits() {
   MinBias_CharHadEnergy->SetMarkerStyle(23); MinBias_CharHadEnergy->SetMarkerColor(41); MinBias_CharHadEnergy->SetMarkerSize(2);
   MultiJet_CharHadEnergy -> Draw("HISTsame"); MultiJet_CharHadEnergy->SetLineColor(32); MultiJet_CharHadEnergy->SetLineWidth(2);
   MultiJet_CharHadEnergy->SetMarkerStyle(23); MultiJet_CharHadEnergy->SetMarkerColor(32); MultiJet_CharHadEnergy->SetMarkerSize(2);
-  legend->Draw(); Limite_Energia_HadCargados->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Energia_HadCargados.png"); Limite_Energia_HadCargados->Close();
+  legend->Draw(); Limite_Energia_HadCargados->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_HadCargados.png"); Limite_Energia_HadCargados->Close();
 /*
   TCanvas* Limite_Energia_Jets = new TCanvas("Limite_Energia_Jets","Limite de #eta para Jets",10,10,1920,1080);
   Limite_Energia_Jets->SetFillColor(0);  Limite_Energia_Jets->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
@@ -423,7 +424,7 @@ void Limits() {
   MinBias_JetEnergy->SetMarkerStyle(23); MinBias_JetEnergy->SetMarkerColor(41); MinBias_JetEnergy->SetMarkerSize(2);
   MultiJet_JetEnergy -> Draw("HISTsame"); MultiJet_JetEnergy->SetLineColor(32); MultiJet_JetEnergy->SetLineWidth(2);
   MultiJet_JetEnergy->SetMarkerStyle(23); MultiJet_JetEnergy->SetMarkerColor(32); MultiJet_JetEnergy->SetMarkerSize(2);
-  legend->Draw(); Limite_Energia_Jets->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Limite_Energia_Jets.png"); Limite_Energia_Jets->Close();
+  legend->Draw(); Limite_Energia_Jets->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Jets.png"); Limite_Energia_Jets->Close();
 */
 
 
@@ -473,7 +474,7 @@ void Multiplicidad() {
     ak5PFMultiJet__Multiplicidad->SetMarkerStyle(21); ak5PFMultiJet__Multiplicidad->SetMarkerColor(32);
     legend -> Draw();
 
-  Espectro_Multiplicidad__Jets -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Multiplicidad__FastJet-PFJets.png"); Espectro_Multiplicidad__Jets -> Close();
+  Espectro_Multiplicidad__Jets -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Multiplicidad__FastJet-PFJets.png"); Espectro_Multiplicidad__Jets -> Close();
 
 }
 
@@ -661,7 +662,7 @@ void EnergyQuotient() {
   Energy_Quot__Muon_MultiJet->SetMarkerSize(4); Energy_Quot__Muon_MultiJet->SetMarkerStyle(34); Energy_Quot__Muon_MultiJet->SetMarkerColor(8);
   Energy_Quot__Muon_MultiJet->DrawCopy("Psame");Energy_Quot__Muon_MultiJet->SetMarkerStyle(28); Energy_Quot__Muon_MultiJet->SetMarkerColor(32);
   Energy_Quot__Muon_MultiJet->SetLineWidth(4);  Energy_Quot__Muon_MultiJet->Draw("Esame");      Energy_Quot__Muon_MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Muon-Jet.png"); Energy_Quotient__Muon_Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-Jet.png"); Energy_Quotient__Muon_Jet->Close();
 
   TCanvas* Energy_Quotient__Muon_Jet200 = new TCanvas("Energy_Quotient__Muon_Jet200","Energy_Quotient__Muon_Jet200",10,10,1920,1080);
   Energy_Quotient__Muon_Jet200->SetFillColor(0);  Energy_Quotient__Muon_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -690,7 +691,7 @@ void EnergyQuotient() {
   Energy_Quot__Muon_MultiJet200->SetMarkerSize(4); Energy_Quot__Muon_MultiJet200->SetMarkerStyle(34); Energy_Quot__Muon_MultiJet200->SetMarkerColor(8);
   Energy_Quot__Muon_MultiJet200->DrawCopy("Psame");Energy_Quot__Muon_MultiJet200->SetMarkerStyle(28); Energy_Quot__Muon_MultiJet200->SetMarkerColor(32);
   Energy_Quot__Muon_MultiJet200->SetLineWidth(4);  Energy_Quot__Muon_MultiJet200->Draw("Esame");      Energy_Quot__Muon_MultiJet200->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Muon_Jet200->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Muon-Jet200.png"); Energy_Quotient__Muon_Jet200->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Muon_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-Jet200.png"); Energy_Quotient__Muon_Jet200->Close();
 
   TCanvas* Energy_Quotient__Muon_200Jet = new TCanvas("Energy_Quotient__Muon_200Jet","Energy_Quotient__Muon_200Jet",10,10,1920,1080);
   Energy_Quotient__Muon_200Jet->SetFillColor(0);  Energy_Quotient__Muon_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -719,7 +720,7 @@ void EnergyQuotient() {
   Energy_Quot__Muon_200MultiJet->SetMarkerSize(4); Energy_Quot__Muon_200MultiJet->SetMarkerStyle(34); Energy_Quot__Muon_200MultiJet->SetMarkerColor(8);
   Energy_Quot__Muon_200MultiJet->DrawCopy("Psame");Energy_Quot__Muon_200MultiJet->SetMarkerStyle(28); Energy_Quot__Muon_200MultiJet->SetMarkerColor(32);
   Energy_Quot__Muon_200MultiJet->SetLineWidth(4);  Energy_Quot__Muon_200MultiJet->Draw("Esame");      Energy_Quot__Muon_200MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Muon_200Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Muon-200Jet.png"); Energy_Quotient__Muon_200Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Muon_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-200Jet.png"); Energy_Quotient__Muon_200Jet->Close();
 
 
   TCanvas* Energy_Quotient__Photon_Jet = new TCanvas("Energy_Quotient__Photon_Jet","Energy_Quotient__Photon_Jet",10,10,1920,1080);
@@ -749,7 +750,7 @@ void EnergyQuotient() {
   Energy_Quot__Photon_MultiJet->SetMarkerSize(4); Energy_Quot__Photon_MultiJet->SetMarkerStyle(34); Energy_Quot__Photon_MultiJet->SetMarkerColor(8);
   Energy_Quot__Photon_MultiJet->DrawCopy("Psame");Energy_Quot__Photon_MultiJet->SetMarkerStyle(28); Energy_Quot__Photon_MultiJet->SetMarkerColor(32);
   Energy_Quot__Photon_MultiJet->SetLineWidth(4);  Energy_Quot__Photon_MultiJet->Draw("Esame");      Energy_Quot__Photon_MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Photon_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Photon-Jet.png"); Energy_Quotient__Photon_Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Photon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-Jet.png"); Energy_Quotient__Photon_Jet->Close();
 
   TCanvas* Energy_Quotient__Photon_Jet200 = new TCanvas("Energy_Quotient__Photon_Jet200","Energy_Quotient__Photon_Jet200",10,10,1920,1080);
   Energy_Quotient__Photon_Jet200->SetFillColor(0);  Energy_Quotient__Photon_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -778,7 +779,7 @@ void EnergyQuotient() {
   Energy_Quot__Photon_MultiJet200->SetMarkerSize(4); Energy_Quot__Photon_MultiJet200->SetMarkerStyle(34); Energy_Quot__Photon_MultiJet200->SetMarkerColor(8);
   Energy_Quot__Photon_MultiJet200->DrawCopy("Psame");Energy_Quot__Photon_MultiJet200->SetMarkerStyle(28); Energy_Quot__Photon_MultiJet200->SetMarkerColor(32);
   Energy_Quot__Photon_MultiJet200->SetLineWidth(4);  Energy_Quot__Photon_MultiJet200->Draw("Esame");      Energy_Quot__Photon_MultiJet200->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Photon_Jet200->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Photon-Jet200.png"); Energy_Quotient__Photon_Jet200->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Photon_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-Jet200.png"); Energy_Quotient__Photon_Jet200->Close();
 
   TCanvas* Energy_Quotient__Photon_200Jet = new TCanvas("Energy_Quotient__Photon_200Jet","Energy_Quotient__Photon_200Jet",10,10,1920,1080);
   Energy_Quotient__Photon_200Jet->SetFillColor(0);  Energy_Quotient__Photon_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -807,7 +808,7 @@ void EnergyQuotient() {
   Energy_Quot__Photon_200MultiJet->SetMarkerSize(4); Energy_Quot__Photon_200MultiJet->SetMarkerStyle(34); Energy_Quot__Photon_200MultiJet->SetMarkerColor(8);
   Energy_Quot__Photon_200MultiJet->DrawCopy("Psame");Energy_Quot__Photon_200MultiJet->SetMarkerStyle(28); Energy_Quot__Photon_200MultiJet->SetMarkerColor(32);
   Energy_Quot__Photon_200MultiJet->SetLineWidth(4);  Energy_Quot__Photon_200MultiJet->Draw("Esame");      Energy_Quot__Photon_200MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Photon_200Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Photon-200Jet.png"); Energy_Quotient__Photon_200Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Photon_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-200Jet.png"); Energy_Quotient__Photon_200Jet->Close();
 
 
   TCanvas* Energy_Quotient__Electron_Jet = new TCanvas("Energy_Quotient__Electron_Jet","Energy_Quotient__Electron_Jet",10,10,1920,1080);
@@ -837,7 +838,7 @@ void EnergyQuotient() {
   Energy_Quot__Electron_MultiJet->SetMarkerSize(4); Energy_Quot__Electron_MultiJet->SetMarkerStyle(34); Energy_Quot__Electron_MultiJet->SetMarkerColor(8);
   Energy_Quot__Electron_MultiJet->DrawCopy("Psame");Energy_Quot__Electron_MultiJet->SetMarkerStyle(28); Energy_Quot__Electron_MultiJet->SetMarkerColor(32);
   Energy_Quot__Electron_MultiJet->SetLineWidth(4);  Energy_Quot__Electron_MultiJet->Draw("Esame");      Energy_Quot__Electron_MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Electron-Jet.png"); Energy_Quotient__Electron_Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-Jet.png"); Energy_Quotient__Electron_Jet->Close();
 
   TCanvas* Energy_Quotient__Electron_Jet200 = new TCanvas("Energy_Quotient__Electron_Jet200","Energy_Quotient__Electron_Jet200",10,10,1920,1080);
   Energy_Quotient__Electron_Jet200->SetFillColor(0);  Energy_Quotient__Electron_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -866,7 +867,7 @@ void EnergyQuotient() {
   Energy_Quot__Electron_MultiJet200->SetMarkerSize(4); Energy_Quot__Electron_MultiJet200->SetMarkerStyle(34); Energy_Quot__Electron_MultiJet200->SetMarkerColor(8);
   Energy_Quot__Electron_MultiJet200->DrawCopy("Psame");Energy_Quot__Electron_MultiJet200->SetMarkerStyle(28); Energy_Quot__Electron_MultiJet200->SetMarkerColor(32);
   Energy_Quot__Electron_MultiJet200->SetLineWidth(4);  Energy_Quot__Electron_MultiJet200->Draw("Esame");      Energy_Quot__Electron_MultiJet200->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Electron_Jet200->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Electron-Jet200.png"); Energy_Quotient__Electron_Jet200->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Electron_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-Jet200.png"); Energy_Quotient__Electron_Jet200->Close();
 
   TCanvas* Energy_Quotient__Electron_200Jet = new TCanvas("Energy_Quotient__Electron_200Jet","Energy_Quotient__Electron_200Jet",10,10,1920,1080);
   Energy_Quotient__Electron_200Jet->SetFillColor(0);  Energy_Quotient__Electron_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -895,7 +896,7 @@ void EnergyQuotient() {
   Energy_Quot__Electron_200MultiJet->SetMarkerSize(4); Energy_Quot__Electron_200MultiJet->SetMarkerStyle(34); Energy_Quot__Electron_200MultiJet->SetMarkerColor(8);
   Energy_Quot__Electron_200MultiJet->DrawCopy("Psame");Energy_Quot__Electron_200MultiJet->SetMarkerStyle(28); Energy_Quot__Electron_200MultiJet->SetMarkerColor(32);
   Energy_Quot__Electron_200MultiJet->SetLineWidth(4);  Energy_Quot__Electron_200MultiJet->Draw("Esame");      Energy_Quot__Electron_200MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__Electron_200Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__Electron-200Jet.png"); Energy_Quotient__Electron_200Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__Electron_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-200Jet.png"); Energy_Quotient__Electron_200Jet->Close();
 
 
   TCanvas* Energy_Quotient__NeutralHad_Jet = new TCanvas("Energy_Quotient__NeutralHad_Jet","Energy_Quotient__NeutralHad_Jet",10,10,1920,1080);
@@ -925,7 +926,7 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_MultiJet->SetMarkerSize(4); Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(34); Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(8);
   Energy_Quot__NeutralHad_MultiJet->DrawCopy("Psame");Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(28); Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(32);
   Energy_Quot__NeutralHad_MultiJet->SetLineWidth(4);  Energy_Quot__NeutralHad_MultiJet->Draw("Esame");      Energy_Quot__NeutralHad_MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__NeutralHad_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__NeutralHad-Jet.png"); Energy_Quotient__NeutralHad_Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__NeutralHad_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-Jet.png"); Energy_Quotient__NeutralHad_Jet->Close();
 
   TCanvas* Energy_Quotient__NeutralHad_Jet200 = new TCanvas("Energy_Quotient__NeutralHad_Jet200","Energy_Quotient__NeutralHad_Jet200",10,10,1920,1080);
   Energy_Quotient__NeutralHad_Jet200->SetFillColor(0);  Energy_Quotient__NeutralHad_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -954,7 +955,7 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_MultiJet200->SetMarkerSize(4); Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(34); Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(8);
   Energy_Quot__NeutralHad_MultiJet200->DrawCopy("Psame");Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(28); Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(32);
   Energy_Quot__NeutralHad_MultiJet200->SetLineWidth(4);  Energy_Quot__NeutralHad_MultiJet200->Draw("Esame");      Energy_Quot__NeutralHad_MultiJet200->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__NeutralHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__NeutralHad-Jet200.png"); Energy_Quotient__NeutralHad_Jet200->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__NeutralHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-Jet200.png"); Energy_Quotient__NeutralHad_Jet200->Close();
 
   TCanvas* Energy_Quotient__NeutralHad_200Jet = new TCanvas("Energy_Quotient__NeutralHad_200Jet","Energy_Quotient__NeutralHad_200Jet",10,10,1920,1080);
   Energy_Quotient__NeutralHad_200Jet->SetFillColor(0);  Energy_Quotient__NeutralHad_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -983,7 +984,7 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_200MultiJet->SetMarkerSize(4); Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(34); Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(8);
   Energy_Quot__NeutralHad_200MultiJet->DrawCopy("Psame");Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(28); Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(32);
   Energy_Quot__NeutralHad_200MultiJet->SetLineWidth(4);  Energy_Quot__NeutralHad_200MultiJet->Draw("Esame");      Energy_Quot__NeutralHad_200MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__NeutralHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__NeutralHad-200Jet.png"); Energy_Quotient__NeutralHad_200Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__NeutralHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-200Jet.png"); Energy_Quotient__NeutralHad_200Jet->Close();
 
 
   TCanvas* Energy_Quotient__ChargedHad_Jet = new TCanvas("Energy_Quotient__ChargedHad_Jet","Energy_Quotient__ChargedHad_Jet",10,10,1920,1080);
@@ -1013,7 +1014,7 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_MultiJet->SetMarkerSize(4); Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(34); Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(8);
   Energy_Quot__ChargedHad_MultiJet->DrawCopy("Psame");Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(28); Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(32);
   Energy_Quot__ChargedHad_MultiJet->SetLineWidth(4);  Energy_Quot__ChargedHad_MultiJet->Draw("Esame");      Energy_Quot__ChargedHad_MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__ChargedHad_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__ChargedHad-Jet.png"); Energy_Quotient__ChargedHad_Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__ChargedHad_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-Jet.png"); Energy_Quotient__ChargedHad_Jet->Close();
 
   TCanvas* Energy_Quotient__ChargedHad_Jet200 = new TCanvas("Energy_Quotient__ChargedHad_Jet200","Energy_Quotient__ChargedHad_Jet200",10,10,1920,1080);
   Energy_Quotient__ChargedHad_Jet200->SetFillColor(0);  Energy_Quotient__ChargedHad_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -1042,7 +1043,7 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_MultiJet200->SetMarkerSize(4); Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(34); Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(8);
   Energy_Quot__ChargedHad_MultiJet200->DrawCopy("Psame");Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(28); Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(32);
   Energy_Quot__ChargedHad_MultiJet200->SetLineWidth(4);  Energy_Quot__ChargedHad_MultiJet200->Draw("Esame");      Energy_Quot__ChargedHad_MultiJet200->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__ChargedHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__ChargedHad-Jet200.png"); Energy_Quotient__ChargedHad_Jet200->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__ChargedHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-Jet200.png"); Energy_Quotient__ChargedHad_Jet200->Close();
 
   TCanvas* Energy_Quotient__ChargedHad_200Jet = new TCanvas("Energy_Quotient__ChargedHad_200Jet","Energy_Quotient__ChargedHad_200Jet",10,10,1920,1080);
   Energy_Quotient__ChargedHad_200Jet->SetFillColor(0);  Energy_Quotient__ChargedHad_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
@@ -1071,7 +1072,7 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_200MultiJet->SetMarkerSize(4); Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(34); Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(8);
   Energy_Quot__ChargedHad_200MultiJet->DrawCopy("Psame");Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(28); Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(32);
   Energy_Quot__ChargedHad_200MultiJet->SetLineWidth(4);  Energy_Quot__ChargedHad_200MultiJet->Draw("Esame");      Energy_Quot__ChargedHad_200MultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Energy_Quotient__ChargedHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Energy_Quotient__ChargedHad-200Jet.png"); Energy_Quotient__ChargedHad_200Jet->Close();
+  Leg->Draw(); legend->Draw();  Energy_Quotient__ChargedHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-200Jet.png"); Energy_Quotient__ChargedHad_200Jet->Close();
 
 }
 
@@ -1216,7 +1217,7 @@ void pTQuotient(){
   CLON_C_pT__Muon_ak5PFMultiJet->SetMarkerStyle(34); CLON_C_pT__Muon_ak5PFMultiJet->SetMarkerColor(8); CLON_C_pT__Muon_ak5PFMultiJet->SetMarkerSize(4);
   Cociente_pT__Muon_ak5PFMultiJet -> Draw("Esame"); Cociente_pT__Muon_ak5PFMultiJet->SetLineColor(32); Cociente_pT__Muon_ak5PFMultiJet->SetLineWidth(4);
   Cociente_pT__Muon_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT__Muon_ak5PFMultiJet->SetMarkerColor(32); Cociente_pT__Muon_ak5PFMultiJet->SetMarkerSize(4);
-  Leg->Draw(); legend->Draw();  Cociente_pT__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Muon-Jet.png"); Cociente_pT__Muon_Jet->Close();
+  Leg->Draw(); legend->Draw();  Cociente_pT__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Muon-Jet.png"); Cociente_pT__Muon_Jet->Close();
 
 
   /*    TCanvas* Cociente_pT__MuonQuark_Jet = new TCanvas("Cociente_pT__MuonQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1242,7 +1243,7 @@ void pTQuotient(){
       Cociente_pT__Muon05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon05_ak5FJ->SetMarkerColor(42); Cociente_pT__Muon05_ak5FJ->SetMarkerSize(2);
       Cociente_pT__Muon21_ak5FJ -> Draw("Esame"); Cociente_pT__Muon21_ak5FJ->SetLineColor(45); Cociente_pT__Muon21_ak5FJ->SetLineWidth(4);
       Cociente_pT__Muon21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon21_ak5FJ->SetMarkerColor(45); Cociente_pT__Muon21_ak5FJ->SetMarkerSize(2);
-      QuarkLegend -> Draw();  Cociente_pT__MuonQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__MuonQuark-Jet.png"); Cociente_pT__MuonQuark_Jet -> Close();
+      QuarkLegend -> Draw();  Cociente_pT__MuonQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__MuonQuark-Jet.png"); Cociente_pT__MuonQuark_Jet -> Close();
 
 
       TCanvas* Cociente_pT__ODMuonQuark_Jet = new TCanvas("Cociente_pT__ODMuonQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1268,7 +1269,7 @@ void pTQuotient(){
       Cociente_pT__Muon05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon05_ak5FJ->SetMarkerColor(42); Cociente_pT__Muon05_ak5FJ->SetMarkerSize(2);
       Cociente_pT__Muon21_ak5FJ -> Draw("Esame"); Cociente_pT__Muon21_ak5FJ->SetLineColor(45); Cociente_pT__Muon21_ak5FJ->SetLineWidth(4);
       Cociente_pT__Muon21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon21_ak5FJ->SetMarkerColor(45); Cociente_pT__Muon21_ak5FJ->SetMarkerSize(2);
-      ODQuarkLegend -> Draw();  Cociente_pT__ODMuonQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__MuonODQuark-Jet.png"); Cociente_pT__ODMuonQuark_Jet -> Close();*/
+      ODQuarkLegend -> Draw();  Cociente_pT__ODMuonQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__MuonODQuark-Jet.png"); Cociente_pT__ODMuonQuark_Jet -> Close();*/
 
 
   TCanvas* Cociente_pT100__1Muon_Jet = new TCanvas("Cociente_pT100__1Muon_Jet","Cociente pT<100 FastJet y PFJets para muones",10,10,1920,1080);
@@ -1299,7 +1300,7 @@ void pTQuotient(){
   Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerSize(4); Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerStyle(34); Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerColor(8);
   Cociente_pT100__1Muon_ak5PFMultiJet->DrawCopy("Psame");Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerColor(32);
   Cociente_pT100__1Muon_ak5PFMultiJet->SetLineWidth(4);  Cociente_pT100__1Muon_ak5PFMultiJet -> Draw("Esame");    Cociente_pT100__1Muon_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_pT100__1Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Muon1-Jet<100.png"); Cociente_pT100__1Muon_Jet->Close();
+  Leg->Draw(); legend->Draw();  Cociente_pT100__1Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Muon1-Jet<100.png"); Cociente_pT100__1Muon_Jet->Close();
 
 
   TCanvas* Cociente_100pT__1Muon_Jet = new TCanvas("Cociente_100pT__1Muon_Jet","Cociente pT>100 FastJet y PFJets para muones",10,10,1920,1080);
@@ -1330,7 +1331,7 @@ void pTQuotient(){
   Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerSize(4); Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerStyle(34); Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerColor(kSpring-9);
   Cociente_100pT__1Muon_ak5PFMultiJet->DrawCopy("Psame");Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerStyle(28); Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerColor(8);
   Cociente_100pT__1Muon_ak5PFMultiJet->SetLineWidth(4);  Cociente_100pT__1Muon_ak5PFMultiJet -> Draw("Esame");    Cociente_100pT__1Muon_ak5PFMultiJet->SetLineColor(8);
-  Leg->Draw(); legend->Draw();  Cociente_100pT__1Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Muon1-Jet>100.png"); Cociente_100pT__1Muon_Jet->Close();
+  Leg->Draw(); legend->Draw();  Cociente_100pT__1Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Muon1-Jet>100.png"); Cociente_100pT__1Muon_Jet->Close();
 
 
   TCanvas* Cociente_pT__Electron_Jet = new TCanvas("Cociente_pT__Electron_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1361,7 +1362,7 @@ void pTQuotient(){
   Cociente_pT__Electron_ak5PFMultiJet->SetMarkerSize(4); Cociente_pT__Electron_ak5PFMultiJet->SetMarkerStyle(34); Cociente_pT__Electron_ak5PFMultiJet->SetMarkerColor(8);
   Cociente_pT__Electron_ak5PFMultiJet->DrawCopy("Psame");Cociente_pT__Electron_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT__Electron_ak5PFMultiJet->SetMarkerColor(32);
   Cociente_pT__Electron_ak5PFMultiJet->SetLineWidth(4);  Cociente_pT__Electron_ak5PFMultiJet->Draw("Esame");      Cociente_pT__Electron_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_pT__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Electron-Jet.png"); Cociente_pT__Electron_Jet->Close();
+  Leg->Draw(); legend->Draw();  Cociente_pT__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Electron-Jet.png"); Cociente_pT__Electron_Jet->Close();
 
 /*
     TCanvas* Cociente_pT__ElecQuark_Jet = new TCanvas("Cociente_pT__ElecQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1387,7 +1388,7 @@ void pTQuotient(){
     Cociente_pT__Electron05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron05_ak5FJ->SetMarkerColor(42); Cociente_pT__Electron05_ak5FJ->SetMarkerSize(2);
     Cociente_pT__Electron21_ak5FJ -> Draw("Esame"); Cociente_pT__Electron21_ak5FJ->SetLineColor(45); Cociente_pT__Electron21_ak5FJ->SetLineWidth(4);
     Cociente_pT__Electron21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron21_ak5FJ->SetMarkerColor(45); Cociente_pT__Electron21_ak5FJ->SetMarkerSize(2);
-    QuarkLegend -> Draw();  Cociente_pT__ElecQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__ElectronQuark-Jet.png"); Cociente_pT__ElecQuark_Jet -> Close();
+    QuarkLegend -> Draw();  Cociente_pT__ElecQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__ElectronQuark-Jet.png"); Cociente_pT__ElecQuark_Jet -> Close();
 
 
     TCanvas* Cociente_pT__ElecQuark_Jet = new TCanvas("Cociente_pT__ElecQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1413,7 +1414,7 @@ void pTQuotient(){
     Cociente_pT__Electron05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron05_ak5FJ->SetMarkerColor(42); Cociente_pT__Electron05_ak5FJ->SetMarkerSize(2);
     Cociente_pT__Electron21_ak5FJ -> Draw("Esame"); Cociente_pT__Electron21_ak5FJ->SetLineColor(45); Cociente_pT__Electron21_ak5FJ->SetLineWidth(4);
     Cociente_pT__Electron21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron21_ak5FJ->SetMarkerColor(45); Cociente_pT__Electron21_ak5FJ->SetMarkerSize(2);
-    ODQuarkLegend -> Draw();  Cociente_pT__ElecQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__ElectronODQuark-Jet.png"); Cociente_pT__ElecQuark_Jet -> Close();
+    ODQuarkLegend -> Draw();  Cociente_pT__ElecQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__ElectronODQuark-Jet.png"); Cociente_pT__ElecQuark_Jet -> Close();
 */
 
   TCanvas* Cociente_pT100__1Electron_Jet = new TCanvas("Cociente_pT100__1Electron_Jet","Cociente pT<100 FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1444,7 +1445,7 @@ void pTQuotient(){
   Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerSize(4); Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerStyle(34); Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerColor(8);
   Cociente_pT100__1Electron_ak5PFMultiJet->DrawCopy("Psame");Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerColor(32);
   Cociente_pT100__1Electron_ak5PFMultiJet->SetLineWidth(4);  Cociente_pT100__1Electron_ak5PFMultiJet -> Draw("Esame");    Cociente_pT100__1Electron_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_pT100__1Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Electron1-Jet<100.png"); Cociente_pT100__1Electron_Jet->Close();
+  Leg->Draw(); legend->Draw();  Cociente_pT100__1Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Electron1-Jet<100.png"); Cociente_pT100__1Electron_Jet->Close();
 
 
   TCanvas* Cociente_100pT__1Electron_Jet = new TCanvas("Cociente_100pT__1Electron_Jet","Cociente pT>100 FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1475,7 +1476,7 @@ void pTQuotient(){
   Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerSize(4); Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerStyle(34); Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerColor(8);
   Cociente_100pT__1Electron_ak5PFMultiJet->DrawCopy("Psame");Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerStyle(28); Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerColor(32);
   Cociente_100pT__1Electron_ak5PFMultiJet->SetLineWidth(4);  Cociente_100pT__1Electron_ak5PFMultiJet->Draw("Esame");      Cociente_pT__Electron_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_100pT__1Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/Comparisons/Cociente_pT__Electron1-Jet>100.png"); Cociente_100pT__1Electron_Jet->Close();
+  Leg->Draw(); legend->Draw();  Cociente_100pT__1Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Electron1-Jet>100.png"); Cociente_100pT__1Electron_Jet->Close();
 
 }
 
@@ -1544,7 +1545,7 @@ void Vertice() {
     MuonsBTag_fX_->SetMarkerStyle(22); MuonsBTag_fX_->SetMarkerColor(9);
     MuonsMultiJet_fX_ -> Draw("Esame"); MuonsMultiJet_fX_->SetLineColor(32);
     MuonsMultiJet_fX_->SetMarkerStyle(21); MuonsMultiJet_fX_->SetMarkerColor(32);
-    legend -> Draw(); fX_Muons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Vertice_Muones_X__FastJet-PFJets.png"); fX_Muons -> Close();
+    legend -> Draw(); fX_Muons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Muones_X__FastJet-PFJets.png"); fX_Muons -> Close();
 
 
   TCanvas* fY_Muons = new TCanvas("fY_Muons","Y vertice de FastJet y PFJets para muones",10,10,1920,1080);
@@ -1565,7 +1566,7 @@ void Vertice() {
     MuonsBTag_fY_->SetMarkerStyle(22); MuonsBTag_fY_->SetMarkerColor(9);
     MuonsMultiJet_fY_ -> Draw("Esame"); MuonsMultiJet_fY_->SetLineColor(32);
     MuonsMultiJet_fY_->SetMarkerStyle(21); MuonsMultiJet_fY_->SetMarkerColor(32);
-    legend -> Draw(); fY_Muons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Vertice_Muones_Y__FastJet-PFJets.png"); fY_Muons -> Close();
+    legend -> Draw(); fY_Muons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Muones_Y__FastJet-PFJets.png"); fY_Muons -> Close();
 
 
   TCanvas* fZ_Muons = new TCanvas("fZ_Muons","X vertice de FastJet y PFJets para muones",10,10,1920,1080);
@@ -1586,7 +1587,7 @@ void Vertice() {
     MuonsBTag_fZ_->SetMarkerStyle(22); MuonsBTag_fZ_->SetMarkerColor(9);
     MuonsMultiJet_fZ_ -> Draw("Esame"); MuonsMultiJet_fZ_->SetLineColor(32);
     MuonsMultiJet_fZ_->SetMarkerStyle(21); MuonsMultiJet_fZ_->SetMarkerColor(32);
-    legend -> Draw(); fZ_Muons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Vertice_Muones_Z__FastJet-PFJets.png"); fZ_Muons -> Close();
+    legend -> Draw(); fZ_Muons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Muones_Z__FastJet-PFJets.png"); fZ_Muons -> Close();
 
 
 
@@ -1608,7 +1609,7 @@ void Vertice() {
     ElectronsBTag_fX_->SetMarkerStyle(22); ElectronsBTag_fX_->SetMarkerColor(9);
     ElectronsMultiJet_fX_ -> Draw("Esame"); ElectronsMultiJet_fX_->SetLineColor(32);
     ElectronsMultiJet_fX_->SetMarkerStyle(21); ElectronsMultiJet_fX_->SetMarkerColor(32);
-    legend -> Draw(); fX_Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Vertice_Electrones_X__FastJet-PFJets.png"); fX_Electrons -> Close();
+    legend -> Draw(); fX_Electrons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Electrones_X__FastJet-PFJets.png"); fX_Electrons -> Close();
 
 
   TCanvas* fY_Electrons = new TCanvas("fY_Electrons","Y vertice de FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1629,7 +1630,7 @@ void Vertice() {
     ElectronsBTag_fY_->SetMarkerStyle(22); ElectronsBTag_fY_->SetMarkerColor(9);
     ElectronsMultiJet_fY_ -> Draw("Esame"); ElectronsMultiJet_fY_->SetLineColor(32);
     ElectronsMultiJet_fY_->SetMarkerStyle(21); ElectronsMultiJet_fY_->SetMarkerColor(32);
-    legend -> Draw(); fY_Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Vertice_Electrones_Y__FastJet-PFJets.png"); fY_Electrons -> Close();
+    legend -> Draw(); fY_Electrons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Electrones_Y__FastJet-PFJets.png"); fY_Electrons -> Close();
 
 
   TCanvas* fZ_Electrons = new TCanvas("fZ_Electrons","X vertice de FastJet y PFJets para electrones",10,10,1920,1080);
@@ -1650,7 +1651,7 @@ void Vertice() {
     ElectronsBTag_fZ_->SetMarkerStyle(22); ElectronsBTag_fZ_->SetMarkerColor(9);
     ElectronsMultiJet_fZ_ -> Draw("Esame"); ElectronsMultiJet_fZ_->SetLineColor(32);
     ElectronsMultiJet_fZ_->SetMarkerStyle(21); ElectronsMultiJet_fZ_->SetMarkerColor(32);
-    legend -> Draw(); fZ_Electrons -> SaveAs("/home/saksevul/T/Parallelism/Comparisons/Vertice_Electrones_Z__FastJet-PFJets.png"); fZ_Electrons -> Close();
+    legend -> Draw(); fZ_Electrons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Electrones_Z__FastJet-PFJets.png"); fZ_Electrons -> Close();
 
 }
 
@@ -1667,8 +1668,8 @@ void rootMacro(){
 
   // Corremos los macros que nos interesan.
   // DistanciaAngular();
-  EnergyQuotient();
-  // Limits();
+  // EnergyQuotient();
+  Limits();
   // pTQuotient();
   // Multiplicidad();
   // Vertice();
