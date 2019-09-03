@@ -45,7 +45,7 @@ void Limits() {
   gROOT->ForceStyle();
   gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
   gStyle->SetPadTopMargin(0.08);  gStyle->SetPadBottomMargin(0.12);
-  gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.10);
+  gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.02);
   gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
@@ -207,7 +207,7 @@ void Limits() {
   ElectronsMultiJet_pt_->SetMarkerStyle(23); ElectronsMultiJet_pt_->SetMarkerColor(32); ElectronsMultiJet_pt_->SetMarkerSize(2);
   legend->Draw(); Limite_pT_Electrones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_pT_Electrones.png"); Limite_pT_Electrones->Close();
 
-  TCanvas* Limite_pT_ak5PFJets = new TCanvas("Limite_pT_ak5PFJets","Limite de pT para Jets",10,10,1920,1080);  Limite_pT_ak5PFJets->SetRightMargin(0.01);
+  TCanvas* Limite_pT_ak5PFJets = new TCanvas("Limite_pT_ak5PFJets","Limite de pT para Jets",10,10,1920,1080);
   Limite_pT_ak5PFJets->SetFillColor(0);  Limite_pT_ak5PFJets->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
   ak5FJ_pt_->SetTitle("Espectro de p_{T} para Jets; p_{T} [GeV]; U. A.");
@@ -350,7 +350,7 @@ void Limits() {
   legend->Draw(); Limite_Energia_Fotones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Fotones.png"); Limite_Energia_Fotones->Close();
 
   TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite Energ#acute{i}a para Electrones",10,10,1920,1080);
-  Limite_Energia_Electrones->SetFillColor(0);  Limite_Energia_Electrones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);  Limite_Energia_Electrones->SetRightMargin(0.01);
+  Limite_Energia_Electrones->SetFillColor(0);  Limite_Energia_Electrones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
   Jet_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones en ak5PFJets; E [GeV]; U. A.");
   Jet_ElectronEnergy->GetXaxis()->SetLabelSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetLabelSize(0.05);

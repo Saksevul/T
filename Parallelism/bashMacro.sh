@@ -6,6 +6,10 @@ start_date=$(date +%x) && start_time=$(date +%X)
 
 # Ruta al Macro Maestro (RutaMM).
 RutaMM=/home/saksevul/T/Parallelism/rootMacro.C
+# inicial Tipo de AOD (iTAOD).
+iTAOD=BTag
+  # previo Tipo de AOD (pTAOD).
+  pTAOD=$iTAOD
 # previo Algoritmo de Reconstrucción de Jets (pARJ).
 iARJ=ak5
   # final Algoritmo de Reconstrucción de Jets (iARJ).
@@ -25,9 +29,21 @@ do
   pARJ=$ARJ
 done  # Fin del ciclo for para ARJ.
 
+# Ciclo for sobre los Tipos de AODs (TAOD).
+for TAOD in BTag Jet MinBias MultiJet
+do
+  # Modificamos el MM para utilizar el TAOD actual.
+  sed -i "s/$pTAOD\_/$TAOD\_/g" /home/saksevul/T/Parallelism/LimiteEnergia.C
+  # Correr el Macro Maestro (MM). (Sin mensajes de error).
+  root -l -q /home/saksevul/T/Parallelism/LimiteEnergia.C # 2> /dev/null
+  # Redefinios pARJ para el siguiente ciclo for.
+  pTAOD=$TAOD
+done  # Fin del ciclo for para TAOD.
+
 
 # 3.- Regresar el Macro Maestro (MM) a su estado inicial.
 sed -i "s/$pARJ/$iARJ/g" $RutaMM
+sed -i "s/$pTAOD/$iTAOD/g" /home/saksevul/T/Parallelism/LimiteEnergia.C
 
 
 # 4.- Mostrar la fecha y hora de inicio y término de este macro.
