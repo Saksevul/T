@@ -26,7 +26,7 @@ iAOD=0001.root
 
 	# 2.- Realizar ciclos for para aumentar la estadística.
 
-	# Ciclo for sobre Jet Type (TAOD).
+	# Ciclo for sobre Tipo de AOD (TAOD).
 	for TAOD in BTag Jet MinBias MultiJet
 	do
 	  # Modificamos RutaLAOD para utilizar el TAOD actual.

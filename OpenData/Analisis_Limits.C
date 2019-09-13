@@ -40,16 +40,16 @@ void Analisis_Limits() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
 
   // Muons
-  TH1F *h_Muons_pt_ = new TH1F("Muons_pt_",  "recoMuons_muons__RECO.obj.pt_; p_{T} [GeV]; Frecuencia", 500, 0, 10);
+  TH1F *h_Muons_pt_ = new TH1F("Muons_pt_",  "recoMuons_muons__RECO.obj.pt_; p_{T} [GeV]; Frecuencia", 1152, 0, 48);
   TH1F *h_Muons_eta_= new TH1F("Muons_eta_", "recoMuones_muons__RECO.obj.eta_; #eta; Frecuencia", 599, -5.99, 5.99);
   // Photons
-  TH1F *h_Photons_pt_ = new TH1F("Photons_pt_",  "recoPhotons_photons__RECO.obj.pt_s; p_{T} [GeV]; Frecuencia", 2000, 0, 40);
+  TH1F *h_Photons_pt_ = new TH1F("Photons_pt_",  "recoPhotons_photons__RECO.obj.pt_s; p_{T} [GeV]; Frecuencia", 288, 0, 12);
   TH1F *h_Photons_eta_= new TH1F("Photons_eta_", "recoPhotons_photons__RECO.obj.eta_; #eta; Frecuencia", 599, -5.99, 5.99);
   // Electronns
-  TH1F *h_Electronns_pt_ = new TH1F("Electrons_pt_",  "recoGsfElectrons_gsfElectrons__RECO.obj.pt_; p_{T} [GeV]; Frecuencia", 1000, 0, 20);
+  TH1F *h_Electronns_pt_ = new TH1F("Electrons_pt_",  "recoGsfElectrons_gsfElectrons__RECO.obj.pt_; p_{T} [GeV]; Frecuencia", 864, 0, 36);
   TH1F *h_Electronns_eta_= new TH1F("Electrons_eta_", "recoGsfElectrons_gsfElectrons__RECO.obj.eta_; #eta; Frecuencia", 599, -5.99, 5.99);
   // ak5PFJets
-  TH1F *h_Jets_pt_ = new TH1F("Jets_pt_",  "recoPFJets_ak5PFJets__RECO.obj.pt_; p_{T} [GeV]; Frecuencia", 1500, 0, 30);
+  TH1F *h_Jets_pt_ = new TH1F("Jets_pt_",  "recoPFJets_ak5PFJets__RECO.obj.pt_; p_{T} [GeV]; Frecuencia", 1536, 0, 64);
   TH1F *h_Jets_eta_= new TH1F("Jets_eta_", "recoPFJets_PFJets__RECO.obj.eta_; #eta; Frecuencia", 599, -5.99, 5.99);
   TH1F *h_JetEnergy           = new TH1F("Jets_JetEnergy", "Energ#acute{i}a de ak5PFJets; Energ#acute{i}a [GeV]; Frecuencia", 2000, 0, 30);
   TH1F *h_MuonEnergy          = new TH1F("Jets_MuonEnergy", "recoPFJets_ak5PFJets__RECO.obj.m_specific.mMuonEnergy; Energ#acute{i}a [GeV]; Frecuencia", 500, 0, 10);

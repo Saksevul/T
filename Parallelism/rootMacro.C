@@ -23,7 +23,7 @@ void DistanciaAngular() {
   ak5PFJet__D_Jet_Jet->SetFillColor(0);  ak5PFJet__D_Jet_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
 
   // Esto es para modificar las etiquetas del canvas.
-  ak5PFBTag__D_Jet_Jet->SetTitle("Distancia Angular entre los Jets de cada Evento; Distancia Angular; U. A.");
+  ak5PFBTag__D_Jet_Jet->SetTitle("Distancia Angular entre los Jets de cada Evento; Distancia Angular; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5PFBTag__D_Jet_Jet->GetXaxis()->SetLabelSize(0.05); ak5PFBTag__D_Jet_Jet->GetYaxis()->SetLabelSize(0.05);
   ak5PFBTag__D_Jet_Jet->GetXaxis()->SetTitleSize(0.05); ak5PFBTag__D_Jet_Jet->GetYaxis()->SetTitleSize(0.05);
   ak5PFBTag__D_Jet_Jet->GetXaxis()->SetTitleOffset(1.0);ak5PFBTag__D_Jet_Jet->GetYaxis()->SetTitleOffset(1.0);
@@ -41,12 +41,6 @@ void DistanciaAngular() {
 //###################################################################################################################################################################################
 
 void Limits() {
-  // Le damos algo de personalización al las gráficas.
-  gROOT->ForceStyle();
-  gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
-  gStyle->SetPadTopMargin(0.08);  gStyle->SetPadBottomMargin(0.12);
-  gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.02);
-  gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
   TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
@@ -139,18 +133,18 @@ void Limits() {
 
 
   auto   legend = new TLegend(0.63,0.18,0.90,0.42);    legend->SetTextSize(0.04); legend->SetFillStyle(0); legend->SetBorderSize(0);
-    // legend->AddEntry(MuonsFJ_pt_, "MC Simulaci#acute{o}n", "l");
-    legend->AddEntry(MuonsJet_pt_, "Open-Data PF Jet", "l");
-    legend->AddEntry(MuonsBTag_pt_, "Open-Data PF BTag", "l");
-    legend->AddEntry(MuonsMinBias_pt_, "Open-Data PF MinBias", "l");
-    legend->AddEntry(MuonsMultiJet_pt_, "Open-Data PF MultiJet", "l");
+    legend->AddEntry(MuonsFJ_pt_, "Simulaci#acute{o}n MC", "l");
+    legend->AddEntry(MuonsBTag_pt_, "Open-Data BTag", "l");
+    legend->AddEntry(MuonsJet_pt_, "Open-Data Jet", "l");
+    legend->AddEntry(MuonsMinBias_pt_, "Open-Data MinBias", "l");
+    legend->AddEntry(MuonsMultiJet_pt_, "Open-Data MultiJet", "l");
 
 
 
   TCanvas* Limite_pT_Muones = new TCanvas("Limite_pT_Muones","Limite de pT para Muones",10,10,1920,1080);
   Limite_pT_Muones->SetFillColor(0);  Limite_pT_Muones->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  MuonsFJ_pt_->SetTitle("Espectro de p_{T} para Muones; p_{T} [GeV]; U. A.");
+  MuonsFJ_pt_->SetTitle("Espectro de p_{T} para Muones; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   MuonsFJ_pt_->GetXaxis()->SetLabelSize(0.05); MuonsFJ_pt_->GetYaxis()->SetLabelSize(0.05);
   MuonsFJ_pt_->GetXaxis()->SetTitleSize(0.05); MuonsFJ_pt_->GetYaxis()->SetTitleSize(0.05);
   MuonsFJ_pt_->GetXaxis()->SetTitleOffset(1.0);MuonsFJ_pt_->GetYaxis()->SetTitleOffset(1.0);
@@ -170,7 +164,7 @@ void Limits() {
   TCanvas* Limite_pT_Fotones = new TCanvas("Limite_pT_Fotones","Limite de pT para Fotones",10,10,1920,1080);
   Limite_pT_Fotones->SetFillColor(0);  Limite_pT_Fotones->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  PhotonsFJ_pt_->SetTitle("Espectro de p_{T} para Fotones; p_{T} [GeV]; U. A.");
+  PhotonsFJ_pt_->SetTitle("Espectro de p_{T} para Fotones; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   PhotonsFJ_pt_->GetXaxis()->SetLabelSize(0.05); PhotonsFJ_pt_->GetYaxis()->SetLabelSize(0.05);
   PhotonsFJ_pt_->GetXaxis()->SetTitleSize(0.05); PhotonsFJ_pt_->GetYaxis()->SetTitleSize(0.05);
   PhotonsFJ_pt_->GetXaxis()->SetTitleOffset(1.0);PhotonsFJ_pt_->GetYaxis()->SetTitleOffset(1.0);
@@ -190,7 +184,7 @@ void Limits() {
   TCanvas* Limite_pT_Electrones = new TCanvas("Limite_pT_Electrones","Limite de pT para Electrones",10,10,1920,1080);
   Limite_pT_Electrones->SetFillColor(0);  Limite_pT_Electrones->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  ElectronsFJ_pt_->SetTitle("Espectro de p_{T} para Electrones; p_{T} [GeV]; U. A.");
+  ElectronsFJ_pt_->SetTitle("Espectro de p_{T} para Electrones; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ElectronsFJ_pt_->GetXaxis()->SetLabelSize(0.05); ElectronsFJ_pt_->GetYaxis()->SetLabelSize(0.05);
   ElectronsFJ_pt_->GetXaxis()->SetTitleSize(0.05); ElectronsFJ_pt_->GetYaxis()->SetTitleSize(0.05);
   ElectronsFJ_pt_->GetXaxis()->SetTitleOffset(1.0);ElectronsFJ_pt_->GetYaxis()->SetTitleOffset(1.0);
@@ -210,7 +204,7 @@ void Limits() {
   TCanvas* Limite_pT_ak5PFJets = new TCanvas("Limite_pT_ak5PFJets","Limite de pT para Jets",10,10,1920,1080);
   Limite_pT_ak5PFJets->SetFillColor(0);  Limite_pT_ak5PFJets->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  ak5FJ_pt_->SetTitle("Espectro de p_{T} para Jets; p_{T} [GeV]; U. A.");
+  ak5FJ_pt_->SetTitle("Espectro de p_{T} para Jets; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5FJ_pt_->GetXaxis()->SetLabelSize(0.05); ak5FJ_pt_->GetYaxis()->SetLabelSize(0.05);
   ak5FJ_pt_->GetXaxis()->SetTitleSize(0.05); ak5FJ_pt_->GetYaxis()->SetTitleSize(0.05);
   ak5FJ_pt_->GetXaxis()->SetTitleOffset(1.0);ak5FJ_pt_->GetYaxis()->SetTitleOffset(1.0);
@@ -232,7 +226,7 @@ void Limits() {
   TCanvas* Limite_eta_Muones = new TCanvas("Limite_eta_Muones","Limite de #eta para Muones",10,10,1920,1080);
   Limite_eta_Muones->SetFillColor(0);  Limite_eta_Muones->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  MuonsFJ_eta_->SetTitle("Espectro de #eta para Muones; p_{T} [GeV]; U. A.");
+  MuonsFJ_eta_->SetTitle("Espectro de #eta para Muones; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   MuonsFJ_eta_->GetXaxis()->SetLabelSize(0.05); MuonsFJ_eta_->GetYaxis()->SetLabelSize(0.05);
   MuonsFJ_eta_->GetXaxis()->SetTitleSize(0.05); MuonsFJ_eta_->GetYaxis()->SetTitleSize(0.05);
   MuonsFJ_eta_->GetXaxis()->SetTitleOffset(1.0);MuonsFJ_eta_->GetYaxis()->SetTitleOffset(1.0);
@@ -252,7 +246,7 @@ void Limits() {
   TCanvas* Limite_eta_Fotones = new TCanvas("Limite_eta_Fotones","Limite de #eta para Fotones",10,10,1920,1080);
   Limite_eta_Fotones->SetFillColor(0);  Limite_eta_Fotones->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  PhotonsFJ_eta_->SetTitle("Espectro de #eta para Fotones; p_{T} [GeV]; U. A.");
+  PhotonsFJ_eta_->SetTitle("Espectro de #eta para Fotones; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   PhotonsFJ_eta_->GetXaxis()->SetLabelSize(0.05); PhotonsFJ_eta_->GetYaxis()->SetLabelSize(0.05);
   PhotonsFJ_eta_->GetXaxis()->SetTitleSize(0.05); PhotonsFJ_eta_->GetYaxis()->SetTitleSize(0.05);
   PhotonsFJ_eta_->GetXaxis()->SetTitleOffset(1.0);PhotonsFJ_eta_->GetYaxis()->SetTitleOffset(1.0);
@@ -272,7 +266,7 @@ void Limits() {
   TCanvas* Limite_eta_Electrones = new TCanvas("Limite_eta_Electrones","Limite de #eta para Electrones",10,10,1920,1080);
   Limite_eta_Electrones->SetFillColor(0);  Limite_eta_Electrones->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  ElectronsFJ_eta_->SetTitle("Espectro de #eta para Electrones; p_{T} [GeV]; U. A.");
+  ElectronsFJ_eta_->SetTitle("Espectro de #eta para Electrones; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ElectronsFJ_eta_->GetXaxis()->SetLabelSize(0.05); ElectronsFJ_eta_->GetYaxis()->SetLabelSize(0.05);
   ElectronsFJ_eta_->GetXaxis()->SetTitleSize(0.05); ElectronsFJ_eta_->GetYaxis()->SetTitleSize(0.05);
   ElectronsFJ_eta_->GetXaxis()->SetTitleOffset(1.0);ElectronsFJ_eta_->GetYaxis()->SetTitleOffset(1.0);
@@ -292,7 +286,7 @@ void Limits() {
   TCanvas* Limite_eta_Jets = new TCanvas("Limite_eta_Jets","Limite de #eta para Jets",10,10,1920,1080);
   Limite_eta_Jets->SetFillColor(0);  Limite_eta_Jets->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  ak5FJ_eta_->SetTitle("Espectro de #eta para Jets; p_{T} [GeV]; U. A.");
+  ak5FJ_eta_->SetTitle("Espectro de #eta para Jets; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5FJ_eta_->GetXaxis()->SetLabelSize(0.05); ak5FJ_eta_->GetYaxis()->SetLabelSize(0.05);
   ak5FJ_eta_->GetXaxis()->SetTitleSize(0.05); ak5FJ_eta_->GetYaxis()->SetTitleSize(0.05);
   ak5FJ_eta_->GetXaxis()->SetTitleOffset(1.0);ak5FJ_eta_->GetYaxis()->SetTitleOffset(1.0);
@@ -314,7 +308,7 @@ void Limits() {
   TCanvas* Limite_Energia_Muones = new TCanvas("Limite_Energia_Muones","Limite de Energ#acute{i}a para Muones",10,10,1920,1080);
   Limite_Energia_Muones->SetFillColor(0);  Limite_Energia_Muones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_MuonEnergy->SetTitle("Espectro de Energ#acute{i}a para Muones en ak5PFJets; E [GeV]; U. A.");
+  Jet_MuonEnergy->SetTitle("Espectro de Energ#acute{i}a para Muones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_MuonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_MuonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_MuonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_MuonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -333,7 +327,7 @@ void Limits() {
   TCanvas* Limite_Energia_Fotones = new TCanvas("Limite_Energia_Fotones","Limite de Energ#acute{i}a para Fotones",10,10,1920,1080);
   Limite_Energia_Fotones->SetFillColor(0);  Limite_Energia_Fotones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_PhotonEnergy->SetTitle("Espectro de Energ#acute{i}a para Fotones en ak5PFJets; E [GeV]; U. A.");
+  Jet_PhotonEnergy->SetTitle("Espectro de Energ#acute{i}a para Fotones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_PhotonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_PhotonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -352,7 +346,7 @@ void Limits() {
   TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite Energ#acute{i}a para Electrones",10,10,1920,1080);
   Limite_Energia_Electrones->SetFillColor(0);  Limite_Energia_Electrones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones en ak5PFJets; E [GeV]; U. A.");
+  Jet_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_ElectronEnergy->GetXaxis()->SetLabelSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_ElectronEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -372,7 +366,7 @@ void Limits() {
   TCanvas* Limite_Energia_HadNeutros = new TCanvas("Limite_Energia_HadNeutros","Limite Energ#acute{i}a para HadNeutros",10,10,1920,1080);
   Limite_Energia_HadNeutros->SetFillColor(0);  Limite_Energia_HadNeutros->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_NeuHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadNeutros en ak5PFJets; E [GeV]; U. A.");
+  Jet_NeuHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadNeutros en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_NeuHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_NeuHadEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -391,7 +385,7 @@ void Limits() {
   TCanvas* Limite_Energia_HadCargados = new TCanvas("Limite_Energia_HadCargados","Limite Energ#acute{i}a para HadCargados",10,10,1920,1080);
   Limite_Energia_HadCargados->SetFillColor(0);  Limite_Energia_HadCargados->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_CharHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadCargados en ak5PFJets; E [GeV]; U. A.");
+  Jet_CharHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadCargados en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_CharHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_CharHadEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -410,7 +404,7 @@ void Limits() {
   TCanvas* Limite_Energia_Jets = new TCanvas("Limite_Energia_Jets","Limite de #eta para Jets",10,10,1920,1080);
   Limite_Energia_Jets->SetFillColor(0);  Limite_Energia_Jets->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_JetEnergy->SetTitle("Espectro de Energ#acute{i}a para Jets; E [GeV]; U. A.");
+  Jet_JetEnergy->SetTitle("Espectro de Energ#acute{i}a para Jets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_JetEnergy->GetXaxis()->SetLabelSize(0.05); Jet_JetEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_JetEnergy->GetXaxis()->SetTitleSize(0.05); Jet_JetEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_JetEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_JetEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -459,7 +453,7 @@ void Multiplicidad() {
   Espectro_Multiplicidad__Jets->SetFillColor(0);  Espectro_Multiplicidad__Jets->SetFrameBorderMode(0);  gPad->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
-    ak5FastJet__Multiplicidad->SetTitle("Multiplicidad de Jets por Evento; Numero de Jets; U. A.");
+    ak5FastJet__Multiplicidad->SetTitle("Multiplicidad de Jets por Evento; Numero de Jets; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     ak5FastJet__Multiplicidad->GetXaxis()->SetLabelSize(0.05); ak5FastJet__Multiplicidad->GetYaxis()->SetLabelSize(0.05);
     ak5FastJet__Multiplicidad->GetXaxis()->SetTitleSize(0.05); ak5FastJet__Multiplicidad->GetYaxis()->SetTitleSize(0.05);
     ak5FastJet__Multiplicidad->GetXaxis()->SetTitleOffset(1.0);ak5FastJet__Multiplicidad->GetYaxis()->SetTitleOffset(1.0);
@@ -481,12 +475,6 @@ void Multiplicidad() {
 //###################################################################################################################################################################################
 
 void EnergyQuotient() {
-    // Le damos algo de personalización al las gráficas.
-    gROOT->ForceStyle();
-    gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
-    gStyle->SetPadTopMargin(0.08);  gStyle->SetPadBottomMargin(0.12);
-    gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.10);
-    gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
   TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
@@ -637,7 +625,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Muon_Jet = new TCanvas("Energy_Quotient__Muon_Jet","Energy_Quotient__Muon_Jet",10,10,1920,1080);
   Energy_Quotient__Muon_Jet->SetFillColor(0);  Energy_Quotient__Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Muon_FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet; Energ#acute{i}a^{Muon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Muon_FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet; Energ#acute{i}a^{Muon} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Muon_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Muon_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Muon_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Muon_FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -666,7 +654,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Muon_Jet200 = new TCanvas("Energy_Quotient__Muon_Jet200","Energy_Quotient__Muon_Jet200",10,10,1920,1080);
   Energy_Quotient__Muon_Jet200->SetFillColor(0);  Energy_Quotient__Muon_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Muon_FJ200->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{Muon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Muon_FJ200->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{Muon} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Muon_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Muon_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Muon_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleOffset(1.0);
@@ -695,7 +683,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Muon_200Jet = new TCanvas("Energy_Quotient__Muon_200Jet","Energy_Quotient__Muon_200Jet",10,10,1920,1080);
   Energy_Quotient__Muon_200Jet->SetFillColor(0);  Energy_Quotient__Muon_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Muon_200FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{Muon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Muon_200FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{Muon} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Muon_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Muon_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Muon_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Muon_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -725,7 +713,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Photon_Jet = new TCanvas("Energy_Quotient__Photon_Jet","Energy_Quotient__Photon_Jet",10,10,1920,1080);
   Energy_Quotient__Photon_Jet->SetFillColor(0);  Energy_Quotient__Photon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Photon_FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet; Energ#acute{i}a^{Photon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Photon_FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet; Energ#acute{i}a^{Photon} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Photon_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Photon_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Photon_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Photon_FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -754,7 +742,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Photon_Jet200 = new TCanvas("Energy_Quotient__Photon_Jet200","Energy_Quotient__Photon_Jet200",10,10,1920,1080);
   Energy_Quotient__Photon_Jet200->SetFillColor(0);  Energy_Quotient__Photon_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Photon_FJ200->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{Photon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Photon_FJ200->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{Photon} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Photon_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Photon_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Photon_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleOffset(1.0);
@@ -783,7 +771,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Photon_200Jet = new TCanvas("Energy_Quotient__Photon_200Jet","Energy_Quotient__Photon_200Jet",10,10,1920,1080);
   Energy_Quotient__Photon_200Jet->SetFillColor(0);  Energy_Quotient__Photon_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Photon_200FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{Photon} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Photon_200FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{Photon} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Photon_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Photon_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Photon_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Photon_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -813,7 +801,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Electron_Jet = new TCanvas("Energy_Quotient__Electron_Jet","Energy_Quotient__Electron_Jet",10,10,1920,1080);
   Energy_Quotient__Electron_Jet->SetFillColor(0);  Energy_Quotient__Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Electron_FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n / Jet; Energ#acute{i}a^{Electron} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Electron_FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n / Jet; Energ#acute{i}a^{Electron} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Electron_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Electron_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Electron_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Electron_FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -842,7 +830,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Electron_Jet200 = new TCanvas("Energy_Quotient__Electron_Jet200","Energy_Quotient__Electron_Jet200",10,10,1920,1080);
   Energy_Quotient__Electron_Jet200->SetFillColor(0);  Energy_Quotient__Electron_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Electron_FJ200->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{Electron} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Electron_FJ200->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{Electron} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Electron_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Electron_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Electron_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleOffset(1.0);
@@ -871,7 +859,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Electron_200Jet = new TCanvas("Energy_Quotient__Electron_200Jet","Energy_Quotient__Electron_200Jet",10,10,1920,1080);
   Energy_Quotient__Electron_200Jet->SetFillColor(0);  Energy_Quotient__Electron_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__Electron_200FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{Electron} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__Electron_200FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{Electron} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Electron_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Electron_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Electron_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Electron_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -901,7 +889,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__NeutralHad_Jet = new TCanvas("Energy_Quotient__NeutralHad_Jet","Energy_Quotient__NeutralHad_Jet",10,10,1920,1080);
   Energy_Quotient__NeutralHad_Jet->SetFillColor(0);  Energy_Quotient__NeutralHad_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__NeutralHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet; Energ#acute{i}a^{NeutralHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__NeutralHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet; Energ#acute{i}a^{NeutralHad} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__NeutralHad_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__NeutralHad_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__NeutralHad_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -930,7 +918,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__NeutralHad_Jet200 = new TCanvas("Energy_Quotient__NeutralHad_Jet200","Energy_Quotient__NeutralHad_Jet200",10,10,1920,1080);
   Energy_Quotient__NeutralHad_Jet200->SetFillColor(0);  Energy_Quotient__NeutralHad_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__NeutralHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{NeutralHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__NeutralHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{NeutralHad} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__NeutralHad_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__NeutralHad_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__NeutralHad_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
@@ -959,7 +947,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__NeutralHad_200Jet = new TCanvas("Energy_Quotient__NeutralHad_200Jet","Energy_Quotient__NeutralHad_200Jet",10,10,1920,1080);
   Energy_Quotient__NeutralHad_200Jet->SetFillColor(0);  Energy_Quotient__NeutralHad_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__NeutralHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{NeutralHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__NeutralHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{NeutralHad} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__NeutralHad_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__NeutralHad_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__NeutralHad_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -989,7 +977,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__ChargedHad_Jet = new TCanvas("Energy_Quotient__ChargedHad_Jet","Energy_Quotient__ChargedHad_Jet",10,10,1920,1080);
   Energy_Quotient__ChargedHad_Jet->SetFillColor(0);  Energy_Quotient__ChargedHad_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__ChargedHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet; Energ#acute{i}a^{ChargedHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__ChargedHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet; Energ#acute{i}a^{ChargedHad} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__ChargedHad_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__ChargedHad_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__ChargedHad_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1018,7 +1006,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__ChargedHad_Jet200 = new TCanvas("Energy_Quotient__ChargedHad_Jet200","Energy_Quotient__ChargedHad_Jet200",10,10,1920,1080);
   Energy_Quotient__ChargedHad_Jet200->SetFillColor(0);  Energy_Quotient__ChargedHad_Jet200->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__ChargedHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{ChargedHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__ChargedHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} < 200); Energ#acute{i}a^{ChargedHad} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__ChargedHad_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__ChargedHad_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__ChargedHad_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
@@ -1047,7 +1035,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__ChargedHad_200Jet = new TCanvas("Energy_Quotient__ChargedHad_200Jet","Energy_Quotient__ChargedHad_200Jet",10,10,1920,1080);
   Energy_Quotient__ChargedHad_200Jet->SetFillColor(0);  Energy_Quotient__ChargedHad_200Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  Energy_Quot__ChargedHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{ChargedHad} / Energ#acute{i}a^{Jet}; U. A.");
+  Energy_Quot__ChargedHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} > 200); Energ#acute{i}a^{ChargedHad} / Energ#acute{i}a^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__ChargedHad_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__ChargedHad_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__ChargedHad_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1082,11 +1070,6 @@ void EnergyQuotient() {
 
 void pTQuotient(){
   // Le damos algo de personalización al las gráficas.
-  gROOT->ForceStyle();
-  gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
-  gStyle->SetPadTopMargin(0.08);  gStyle->SetPadBottomMargin(0.12);
-  gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.10);
-  gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
@@ -1192,7 +1175,7 @@ void pTQuotient(){
   TCanvas* Cociente_pT__Muon_Jet = new TCanvas("Cociente_pT__Muon_Jet","Cociente pT FastJet y PFJets para muones",10,10,1920,1080);
   Cociente_pT__Muon_Jet->SetFillColor(0);  Cociente_pT__Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  CLON_C_pT__Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES; p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  CLON_C_pT__Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES; p_{T}^{Muon} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   CLON_C_pT__Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); CLON_C_pT__Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   CLON_C_pT__Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); CLON_C_pT__Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   CLON_C_pT__Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);CLON_C_pT__Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1223,7 +1206,7 @@ void pTQuotient(){
   /*    TCanvas* Cociente_pT__MuonQuark_Jet = new TCanvas("Cociente_pT__MuonQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
       Cociente_pT__MuonQuark_Jet->SetFillColor(0);  Cociente_pT__MuonQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
       // Esto es para modificar las etiquetas del canvas.
-      Cociente_pT__Muon_ak5FJ->SetTitle("Cociente p_{T} para muones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+      Cociente_pT__Muon_ak5FJ->SetTitle("Cociente p_{T} para muones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
       Cociente_pT__Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
       Cociente_pT__Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
       Cociente_pT__Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1249,7 +1232,7 @@ void pTQuotient(){
       TCanvas* Cociente_pT__ODMuonQuark_Jet = new TCanvas("Cociente_pT__ODMuonQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
       Cociente_pT__ODMuonQuark_Jet->SetFillColor(0);  Cociente_pT__ODMuonQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
       // Esto es para modificar las etiquetas del canvas.
-      Cociente_pT__Muon_ak5PFJet->SetTitle("Cociente p_{T} para muones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+      Cociente_pT__Muon_ak5PFJet->SetTitle("Cociente p_{T} para muones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
       Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetLabelSize(0.05);
       Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetTitleSize(0.05);
       Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetTitleOffset(1.0);
@@ -1275,7 +1258,7 @@ void pTQuotient(){
   TCanvas* Cociente_pT100__1Muon_Jet = new TCanvas("Cociente_pT100__1Muon_Jet","Cociente pT<100 FastJet y PFJets para muones",10,10,1920,1080);
   Cociente_pT100__1Muon_Jet->SetFillColor(0);  Cociente_pT100__1Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT100__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} < 100);  p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  Cociente_pT100__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} < 100);  p_{T}^{Muon} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1306,7 +1289,7 @@ void pTQuotient(){
   TCanvas* Cociente_100pT__1Muon_Jet = new TCanvas("Cociente_100pT__1Muon_Jet","Cociente pT>100 FastJet y PFJets para muones",10,10,1920,1080);
   Cociente_100pT__1Muon_Jet->SetFillColor(0);  Cociente_100pT__1Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_100pT__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} > 100); p_{T}^{Muon} / p_{T}^{Jet}; U. A.");
+  Cociente_100pT__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} > 100); p_{T}^{Muon} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1337,7 +1320,7 @@ void pTQuotient(){
   TCanvas* Cociente_pT__Electron_Jet = new TCanvas("Cociente_pT__Electron_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
   Cociente_pT__Electron_Jet->SetFillColor(0);  Cociente_pT__Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT__Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES; p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_pT__Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Cociente_pT__Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1368,7 +1351,7 @@ void pTQuotient(){
     TCanvas* Cociente_pT__ElecQuark_Jet = new TCanvas("Cociente_pT__ElecQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
     Cociente_pT__ElecQuark_Jet->SetFillColor(0);  Cociente_pT__ElecQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
     // Esto es para modificar las etiquetas del canvas.
-    Cociente_pT__Electron_ak5FJ->SetTitle("Cociente p_{T} para electrones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+    Cociente_pT__Electron_ak5FJ->SetTitle("Cociente p_{T} para electrones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Cociente_pT__Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
     Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
     Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1394,7 +1377,7 @@ void pTQuotient(){
     TCanvas* Cociente_pT__ElecQuark_Jet = new TCanvas("Cociente_pT__ElecQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
     Cociente_pT__ElecQuark_Jet->SetFillColor(0);  Cociente_pT__ElecQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
     // Esto es para modificar las etiquetas del canvas.
-    Cociente_pT__Electron_ak5PFJet->SetTitle("Cociente p_{T} para electrones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+    Cociente_pT__Electron_ak5PFJet->SetTitle("Cociente p_{T} para electrones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Cociente_pT__Electron_ak5PFJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Electron_ak5PFJet->GetYaxis()->SetLabelSize(0.05);
     Cociente_pT__Electron_ak5PFJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Electron_ak5PFJet->GetYaxis()->SetTitleSize(0.05);
     Cociente_pT__Electron_ak5PFJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Electron_ak5PFJet->GetYaxis()->SetTitleOffset(1.0);
@@ -1420,7 +1403,7 @@ void pTQuotient(){
   TCanvas* Cociente_pT100__1Electron_Jet = new TCanvas("Cociente_pT100__1Electron_Jet","Cociente pT<100 FastJet y PFJets para electrones",10,10,1920,1080);
   Cociente_pT100__1Electron_Jet->SetFillColor(0);  Cociente_pT100__1Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT100__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} < 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_pT100__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} < 100); p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1451,7 +1434,7 @@ void pTQuotient(){
   TCanvas* Cociente_100pT__1Electron_Jet = new TCanvas("Cociente_100pT__1Electron_Jet","Cociente pT>100 FastJet y PFJets para electrones",10,10,1920,1080);
   Cociente_100pT__1Electron_Jet->SetFillColor(0);  Cociente_100pT__1Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
   // Esto es para modificar las etiquetas del canvas.
-  Cociente_100pT__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} > 100); p_{T}^{Electron} / p_{T}^{Jet}; U. A.");
+  Cociente_100pT__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} > 100); p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
   Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
   Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -1531,7 +1514,7 @@ void Vertice() {
   fX_Muons->SetFillColor(0);  fX_Muons->SetFrameBorderMode(0);  gPad->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
-    Muons__fX->SetTitle("Vertice en el eje X para muones; Posicion [cm]; U. A.");
+    Muons__fX->SetTitle("Vertice en el eje X para muones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Muons__fX->GetXaxis()->SetLabelSize(0.05); Muons__fX->GetYaxis()->SetLabelSize(0.05);
     Muons__fX->GetXaxis()->SetTitleSize(0.05); Muons__fX->GetYaxis()->SetTitleSize(0.05);
     Muons__fX->GetXaxis()->SetTitleOffset(1.0);Muons__fX->GetYaxis()->SetTitleOffset(1.0);
@@ -1552,7 +1535,7 @@ void Vertice() {
   fY_Muons->SetFillColor(0);  fY_Muons->SetFrameBorderMode(0);  gPad->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
-    Muons__fY->SetTitle("Vertice en el eje Y para muones; Posicion [cm]; U. A.");
+    Muons__fY->SetTitle("Vertice en el eje Y para muones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Muons__fY->GetXaxis()->SetLabelSize(0.05); Muons__fY->GetYaxis()->SetLabelSize(0.05);
     Muons__fY->GetXaxis()->SetTitleSize(0.05); Muons__fY->GetYaxis()->SetTitleSize(0.05);
     Muons__fY->GetXaxis()->SetTitleOffset(1.0);Muons__fY->GetYaxis()->SetTitleOffset(1.0);
@@ -1573,7 +1556,7 @@ void Vertice() {
   fZ_Muons->SetFillColor(0);  fZ_Muons->SetFrameBorderMode(0);  gPad->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
-    Muons__fZ->SetTitle("Vertice en el eje Z para muones; Posicion [cm]; U. A.");
+    Muons__fZ->SetTitle("Vertice en el eje Z para muones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Muons__fZ->GetXaxis()->SetLabelSize(0.05); Muons__fZ->GetYaxis()->SetLabelSize(0.05);
     Muons__fZ->GetXaxis()->SetTitleSize(0.05); Muons__fZ->GetYaxis()->SetTitleSize(0.05);
     Muons__fZ->GetXaxis()->SetTitleOffset(1.0);Muons__fZ->GetYaxis()->SetTitleOffset(1.0);
@@ -1595,7 +1578,7 @@ void Vertice() {
   fX_Electrons->SetFillColor(0);  fX_Electrons->SetFrameBorderMode(0);  gPad->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
-    Electrons__fX->SetTitle("Vertice en el eje X para electrones; Posicion [cm]; U. A.");
+    Electrons__fX->SetTitle("Vertice en el eje X para electrones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Electrons__fX->GetXaxis()->SetLabelSize(0.05); Electrons__fX->GetYaxis()->SetLabelSize(0.05);
     Electrons__fX->GetXaxis()->SetTitleSize(0.05); Electrons__fX->GetYaxis()->SetTitleSize(0.05);
     Electrons__fX->GetXaxis()->SetTitleOffset(1.0);Electrons__fX->GetYaxis()->SetTitleOffset(1.0);
@@ -1616,7 +1599,7 @@ void Vertice() {
   fY_Electrons->SetFillColor(0);  fY_Electrons->SetFrameBorderMode(0);  gPad->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
-    Electrons__fY->SetTitle("Vertice en el eje Y para electrones; Posicion [cm]; U. A.");
+    Electrons__fY->SetTitle("Vertice en el eje Y para electrones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Electrons__fY->GetXaxis()->SetLabelSize(0.05); Electrons__fY->GetYaxis()->SetLabelSize(0.05);
     Electrons__fY->GetXaxis()->SetTitleSize(0.05); Electrons__fY->GetYaxis()->SetTitleSize(0.05);
     Electrons__fY->GetXaxis()->SetTitleOffset(1.0);Electrons__fY->GetYaxis()->SetTitleOffset(1.0);
@@ -1637,7 +1620,7 @@ void Vertice() {
   fZ_Electrons->SetFillColor(0);  fZ_Electrons->SetFrameBorderMode(0);  gPad->SetLogy();
 
     // Esto es para modificar las etiquetas del canvas.
-    Electrons__fZ->SetTitle("Vertice en el eje Z para electrones; Posicion [cm]; U. A.");
+    Electrons__fZ->SetTitle("Vertice en el eje Z para electrones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
     Electrons__fZ->GetXaxis()->SetLabelSize(0.05); Electrons__fZ->GetYaxis()->SetLabelSize(0.05);
     Electrons__fZ->GetXaxis()->SetTitleSize(0.05); Electrons__fZ->GetYaxis()->SetTitleSize(0.05);
     Electrons__fZ->GetXaxis()->SetTitleOffset(1.0);Electrons__fZ->GetYaxis()->SetTitleOffset(1.0);
@@ -1658,20 +1641,19 @@ void Vertice() {
 //###################################################################################################################################################################################
 
 void rootMacro(){
-  // // Le damos algo de personalización al las gráficas.
-  // gROOT->ForceStyle();
-  // gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
-  // gStyle->SetPadTopMargin(0.08);  gStyle->SetPadBottomMargin(0.12);
-  // gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.10);
-  // gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
+  // Le damos algo de personalización al las gráficas..
+  gROOT->ForceStyle();
+  gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
+  gStyle->SetPadTopMargin(0.082);  gStyle->SetPadBottomMargin(0.12);
+  gStyle->SetPadLeftMargin(0.11); gStyle->SetPadRightMargin(0.02);
+  gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
   // Corremos los macros que nos interesan.
   // DistanciaAngular();
-  // EnergyQuotient();
+  EnergyQuotient();
   Limits();
-  // pTQuotient();
+  pTQuotient();
   // Multiplicidad();
   // Vertice();
-
 }

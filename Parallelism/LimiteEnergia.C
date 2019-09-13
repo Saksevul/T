@@ -3,7 +3,7 @@ void LimiteEnergia() {
   gROOT->ForceStyle();
   gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
   gStyle->SetPadTopMargin(0.082);  gStyle->SetPadBottomMargin(0.12);
-  gStyle->SetPadLeftMargin(0.10); gStyle->SetPadRightMargin(0.02);
+  gStyle->SetPadLeftMargin(0.11); gStyle->SetPadRightMargin(0.02);
   gStyle->SetOptStat(0);          gStyle->SetOptTitle(1);
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
@@ -49,7 +49,7 @@ void LimiteEnergia() {
   TCanvas* Lim_BTag_Energia_Muones = new TCanvas("Lim_BTag_Energia_Muones","Lim_BTag_Energia_Muones",10,10,1920,1080);
   Lim_BTag_Energia_Muones->SetFillColor(0);  Lim_BTag_Energia_Muones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  ak5_MuonEnergy->SetTitle("Espectro de Energ#acute{i}a para Muones en AODs BTag_; E [GeV]; U. A.");
+  ak5_MuonEnergy->SetTitle("Espectro de Energ#acute{i}a para Muones en AODs BTag_; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5_MuonEnergy->GetXaxis()->SetLabelSize(0.05); ak5_MuonEnergy->GetYaxis()->SetLabelSize(0.05);
   ak5_MuonEnergy->GetXaxis()->SetTitleSize(0.05); ak5_MuonEnergy->GetYaxis()->SetTitleSize(0.05);
   ak5_MuonEnergy->GetXaxis()->SetTitleOffset(1.0);ak5_MuonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -69,7 +69,7 @@ void LimiteEnergia() {
   TCanvas* Lim_BTag_Energia_Fotones = new TCanvas("Lim_BTag_Energia_Fotones","Lim_BTag_Energia_Fotones",10,10,1920,1080);
   Lim_BTag_Energia_Fotones->SetFillColor(0);  Lim_BTag_Energia_Fotones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  ak5_PhotonEnergy->SetTitle("Espectro de Energ#acute{i}a para Fotones en AODs BTag_; E [GeV]; U. A.");
+  ak5_PhotonEnergy->SetTitle("Espectro de Energ#acute{i}a para Fotones en AODs BTag_; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5_PhotonEnergy->GetXaxis()->SetLabelSize(0.05); ak5_PhotonEnergy->GetYaxis()->SetLabelSize(0.05);
   ak5_PhotonEnergy->GetXaxis()->SetTitleSize(0.05); ak5_PhotonEnergy->GetYaxis()->SetTitleSize(0.05);
   ak5_PhotonEnergy->GetXaxis()->SetTitleOffset(1.0);ak5_PhotonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -89,7 +89,7 @@ void LimiteEnergia() {
   TCanvas* Lim_BTag_Energia_Electrones = new TCanvas("Lim_BTag_Energia_Electrones","Lim_BTag_Energia_Electrones",10,10,1920,1080);
   Lim_BTag_Energia_Electrones->SetFillColor(0);  Lim_BTag_Energia_Electrones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  ak5_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones en AODs BTag_; E [GeV]; U. A.");
+  ak5_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones en AODs BTag_; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5_ElectronEnergy->GetXaxis()->SetLabelSize(0.05); ak5_ElectronEnergy->GetYaxis()->SetLabelSize(0.05);
   ak5_ElectronEnergy->GetXaxis()->SetTitleSize(0.05); ak5_ElectronEnergy->GetYaxis()->SetTitleSize(0.05);
   ak5_ElectronEnergy->GetXaxis()->SetTitleOffset(1.0);ak5_ElectronEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -109,7 +109,7 @@ void LimiteEnergia() {
   TCanvas* Lim_BTag_Energia_HadNeutros = new TCanvas("Lim_BTag_Energia_HadNeutros","Lim_BTag_Energia_HadNeutros",10,10,1920,1080);
   Lim_BTag_Energia_HadNeutros->SetFillColor(0);  Lim_BTag_Energia_HadNeutros->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  ak5_NeuHadronEnergy->SetTitle("Espectro de Energ#acute{i}a para HadNeutros en AODs BTag_; E [GeV]; U. A.");
+  ak5_NeuHadronEnergy->SetTitle("Espectro de Energ#acute{i}a para HadNeutros en AODs BTag_; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5_NeuHadronEnergy->GetXaxis()->SetLabelSize(0.05); ak5_NeuHadronEnergy->GetYaxis()->SetLabelSize(0.05);
   ak5_NeuHadronEnergy->GetXaxis()->SetTitleSize(0.05); ak5_NeuHadronEnergy->GetYaxis()->SetTitleSize(0.05);
   ak5_NeuHadronEnergy->GetXaxis()->SetTitleOffset(1.0);ak5_NeuHadronEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -129,7 +129,7 @@ void LimiteEnergia() {
   TCanvas* Lim_BTag_Energia_HadCargados = new TCanvas("Lim_BTag_Energia_HadCargados","Lim_BTag_Energia_HadCargados",10,10,1920,1080);
   Lim_BTag_Energia_HadCargados->SetFillColor(0);  Lim_BTag_Energia_HadCargados->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  ak5_CharHadronEnergy->SetTitle("Espectro de Energ#acute{i}a para HadCargados en AODs BTag_; E [GeV]; U. A.");
+  ak5_CharHadronEnergy->SetTitle("Espectro de Energ#acute{i}a para HadCargados en AODs BTag_; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   ak5_CharHadronEnergy->GetXaxis()->SetLabelSize(0.05); ak5_CharHadronEnergy->GetYaxis()->SetLabelSize(0.05);
   ak5_CharHadronEnergy->GetXaxis()->SetTitleSize(0.05); ak5_CharHadronEnergy->GetYaxis()->SetTitleSize(0.05);
   ak5_CharHadronEnergy->GetXaxis()->SetTitleOffset(1.0);ak5_CharHadronEnergy->GetYaxis()->SetTitleOffset(1.0);

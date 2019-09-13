@@ -35,7 +35,7 @@ do
   # Modificamos el MM para utilizar el TAOD actual.
   sed -i "s/$pTAOD\_/$TAOD\_/g" /home/saksevul/T/Parallelism/LimiteEnergia.C
   # Correr el Macro Maestro (MM). (Sin mensajes de error).
-  root -l -q /home/saksevul/T/Parallelism/LimiteEnergia.C # 2> /dev/null
+  # root -l -q /home/saksevul/T/Parallelism/LimiteEnergia.C # 2> /dev/null
   # Redefinios pARJ para el siguiente ciclo for.
   pTAOD=$TAOD
 done  # Fin del ciclo for para TAOD.

@@ -309,24 +309,22 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
       // Electrones.
       if (Jets_mElectronMultiplicity->GetValue(i) > 0) {   Int_t Index[100]; Float_t D[100]; Bool_t Flag=false; Float_t pT=0.0;
-        for (Int_t j=0; j<Electrons_pt_->GetLen(); j++) {
+        for (Int_t j=0; j<Electrons_pt_->GetLen(); j++) { Float_t vE = pow(Electrons_fX_->GetValue(j),2) + pow(Electrons_fY_->GetValue(j),2) + pow(Electrons_fZ_->GetValue(j),2);
           if ( fabs(Electrons_phi_->GetValue(j)-iJet_phi) <= PI ) {
-            D[j] = sqrt(pow(Electrons_eta_->GetValue(j)-iJet_eta,2)+pow(Electrons_phi_->GetValue(j)-iJet_phi,2));
-          } else { D[j] = sqrt(pow(Electrons_eta_->GetValue(j)-iJet_eta,2)+pow(2*PI-fabs(Electrons_phi_->GetValue(j)-iJet_phi),2));  }
+            D[j] = sqrt(pow(Electrons_eta_->GetValue(j)-iJet_eta,2)+pow(Electrons_phi_->GetValue(j)-iJet_phi,2)) + vE;
+          } else { D[j] = sqrt(pow(Electrons_eta_->GetValue(j)-iJet_eta,2)+pow(2*PI-fabs(Electrons_phi_->GetValue(j)-iJet_phi),2)) + vE;  }
         }
         TMath::Sort(Electrons_pt_->GetLen(), D, Index, false);
         for (Int_t j=0; j<Jets_mElectronMultiplicity->GetValue(i); j++) {
           if ( fabs(Electrons_eta_->GetValue(Index[j])) < etaMax ) {
-            if ( pow(Electrons_fX_->GetValue(Index[j])-x_e,2) + pow(Electrons_fY_->GetValue(Index[j])-y_e,2) + pow(Electrons_fZ_->GetValue(Index[j])-z_e,2) <= 0.25 ) {
-              h_Electrons_fX_  -> Fill(Electrons_fX_->GetValue(Index[j]));
-              h_Electrons_fY_  -> Fill(Electrons_fY_->GetValue(Index[j]));
-              h_Electrons_fZ_  -> Fill(Electrons_fZ_->GetValue(Index[j]));
-              h__pTQuotient_Electron_Jet -> Fill(Electrons_pt_->GetValue(Index[j])/iJet_pT);
-              h__eta_D__Electron_Jet -> Fill(fabs(Electrons_eta_->GetValue(Index[j]) - Jets_eta_->GetValue(i)));
-              h__phi_D__Electron_Jet -> Fill(fabs(Electrons_phi_->GetValue(Index[j]) - Jets_phi_->GetValue(i)));
-              h__D__Electron_Jet -> Fill(D[Index[j]]);
-              if (Electrons_pt_->GetValue(Index[j]) > pT) { Flag=true; pT=Electrons_pt_->GetValue(Index[j]); }
-            }
+            h_Electrons_fX_  -> Fill(Electrons_fX_->GetValue(Index[j]));
+            h_Electrons_fY_  -> Fill(Electrons_fY_->GetValue(Index[j]));
+            h_Electrons_fZ_  -> Fill(Electrons_fZ_->GetValue(Index[j]));
+            h__pTQuotient_Electron_Jet -> Fill(Electrons_pt_->GetValue(Index[j])/iJet_pT);
+            h__eta_D__Electron_Jet -> Fill(fabs(Electrons_eta_->GetValue(Index[j]) - Jets_eta_->GetValue(i)));
+            h__phi_D__Electron_Jet -> Fill(fabs(Electrons_phi_->GetValue(Index[j]) - Jets_phi_->GetValue(i)));
+            h__D__Electron_Jet -> Fill(D[Index[j]]);
+            if (Electrons_pt_->GetValue(Index[j]) > pT) { Flag=true; pT=Electrons_pt_->GetValue(Index[j]); }
           }
         }
         if ( iJet_pT <= 100.0 && Flag == true ) h__pTQuotient_1Electron_Jet -> Fill(pT/iJet_pT);
