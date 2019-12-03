@@ -485,101 +485,101 @@ void EnergyQuotient() {
 
 
 
-  TH1F *Energy_Quot__Muon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_FJ->Scale(1.0/Energy_Quot__Muon_FJ->Integral());
-  TH1F *Energy_Quot__Muon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_Jet->Scale(1.0/Energy_Quot__Muon_Jet->Integral());
-  TH1F *Energy_Quot__Muon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_BTag->Scale(1.0/Energy_Quot__Muon_BTag->Integral());
-  TH1F *Energy_Quot__Muon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MinBias->Scale(1.0/Energy_Quot__Muon_MinBias->Integral());
-  TH1F *Energy_Quot__Muon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MultiJet->Scale(1.0/Energy_Quot__Muon_MultiJet->Integral());
+  TH1F *Energy_Quot__Muon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_FJ->Scale(1.0/Energy_Quot__Muon_FJ->Integral()); Energy_Quot__Muon_FJ->Rebin());
+  TH1F *Energy_Quot__Muon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_Jet->Scale(1.0/Energy_Quot__Muon_Jet->Integral()); Energy_Quot__Muon_Jet->Rebin());
+  TH1F *Energy_Quot__Muon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_BTag->Scale(1.0/Energy_Quot__Muon_BTag->Integral()); Energy_Quot__Muon_BTag->Rebin());
+  TH1F *Energy_Quot__Muon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MinBias->Scale(1.0/Energy_Quot__Muon_MinBias->Integral()); Energy_Quot__Muon_MinBias->Rebin());
+  TH1F *Energy_Quot__Muon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MultiJet->Scale(1.0/Energy_Quot__Muon_MultiJet->Integral()); Energy_Quot__Muon_MultiJet->Rebin());
 
-    TH1F *CLONE_E_Q__Muon_FJ =(TH1F*)Energy_Quot__Muon_FJ->Clone();
-    TH1F *CLONE_E_Q__Muon_Jet =(TH1F*)Energy_Quot__Muon_Jet->Clone();
-    TH1F *CLONE_E_Q__Muon_BTag =(TH1F*)Energy_Quot__Muon_BTag->Clone();
-    TH1F *CLONE_E_Q__Muon_MinBias =(TH1F*)Energy_Quot__Muon_MinBias->Clone();
-    TH1F *CLONE_E_Q__Muon_MultiJet =(TH1F*)Energy_Quot__Muon_MultiJet->Clone();
+  TH1F *CLONE_E_Q__Muon_FJ =(TH1F*)Energy_Quot__Muon_FJ->Clone(); CLONE_E_Q__Muon_FJ->SetMarkerSize(6); CLONE_E_Q__Muon_FJ->SetMarkerStyle(21); CLONE_E_Q__Muon_FJ->SetMarkerColor(14);
+  TH1F *CLONE_E_Q__Muon_Jet =(TH1F*)Energy_Quot__Muon_Jet->Clone(); CLONE_E_Q__Muon_Jet->SetMarkerSize(6); CLONE_E_Q__Muon_Jet->SetMarkerStyle(23); CLONE_E_Q__Muon_Jet->SetMarkerColor(42);
+  TH1F *CLONE_E_Q__Muon_BTag =(TH1F*)Energy_Quot__Muon_BTag->Clone(); CLONE_E_Q__Muon_BTag->SetMarkerSize(6); CLONE_E_Q__Muon_BTag->SetMarkerStyle(22); CLONE_E_Q__Muon_BTag->SetMarkerColor(33);
+  TH1F *CLONE_E_Q__Muon_MinBias =(TH1F*)Energy_Quot__Muon_MinBias->Clone(); CLONE_E_Q__Muon_MinBias->SetMarkerSize(6); CLONE_E_Q__Muon_MinBias->SetMarkerStyle(20); CLONE_E_Q__Muon_MinBias->SetMarkerColor(5);
+  TH1F *CLONE_E_Q__Muon_MultiJet =(TH1F*)Energy_Quot__Muon_MultiJet->Clone(); CLONE_E_Q__Muon_MultiJet->SetMarkerSize(6); CLONE_E_Q__Muon_MultiJet->SetMarkerStyle(34); CLONE_E_Q__Muon_MultiJet->SetMarkerColor(8);
 
-  TH1F *Energy_Quot__Muon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_FJ200->Scale(1.0/Energy_Quot__Muon_FJ200->Integral());
-  TH1F *Energy_Quot__Muon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_Jet200->Scale(1.0/Energy_Quot__Muon_Jet200->Integral());
-  TH1F *Energy_Quot__Muon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_BTag200->Scale(1.0/Energy_Quot__Muon_BTag200->Integral());
-  TH1F *Energy_Quot__Muon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MinBias200->Scale(1.0/Energy_Quot__Muon_MinBias200->Integral());
-  TH1F *Energy_Quot__Muon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MultiJet200->Scale(1.0/Energy_Quot__Muon_MultiJet200->Integral());
+  TH1F *Energy_Quot__Muon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_FJ200->Scale(1.0/Energy_Quot__Muon_FJ200->Integral()); Energy_Quot__Muon_FJ200->Rebin();
+  TH1F *Energy_Quot__Muon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_Jet200->Scale(1.0/Energy_Quot__Muon_Jet200->Integral()); Energy_Quot__Muon_Jet200->Rebin();
+  TH1F *Energy_Quot__Muon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_BTag200->Scale(1.0/Energy_Quot__Muon_BTag200->Integral()); Energy_Quot__Muon_BTag200->Rebin();
+  TH1F *Energy_Quot__Muon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MinBias200->Scale(1.0/Energy_Quot__Muon_MinBias200->Integral()); Energy_Quot__Muon_MinBias200->Rebin();
+  TH1F *Energy_Quot__Muon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MultiJet200->Scale(1.0/Energy_Quot__Muon_MultiJet200->Integral()); Energy_Quot__Muon_MultiJet200->Rebin();
 
-  TH1F *Energy_Quot__Muon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200FJ->Scale(1.0/Energy_Quot__Muon_200FJ->Integral());
-  TH1F *Energy_Quot__Muon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200Jet->Scale(1.0/Energy_Quot__Muon_200Jet->Integral());
-  TH1F *Energy_Quot__Muon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200BTag->Scale(1.0/Energy_Quot__Muon_200BTag->Integral());
-  TH1F *Energy_Quot__Muon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MinBias->Scale(1.0/Energy_Quot__Muon_200MinBias->Integral());
-  TH1F *Energy_Quot__Muon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MultiJet->Scale(1.0/Energy_Quot__Muon_200MultiJet->Integral());
+  TH1F *Energy_Quot__Muon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200FJ->Scale(1.0/Energy_Quot__Muon_200FJ->Integral()); Energy_Quot__Muon_200FJ->Rebin();
+  TH1F *Energy_Quot__Muon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200Jet->Scale(1.0/Energy_Quot__Muon_200Jet->Integral()); Energy_Quot__Muon_200Jet->Rebin();
+  TH1F *Energy_Quot__Muon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200BTag->Scale(1.0/Energy_Quot__Muon_200BTag->Integral()); Energy_Quot__Muon_200BTag->Rebin();
+  TH1F *Energy_Quot__Muon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MinBias->Scale(1.0/Energy_Quot__Muon_200MinBias->Integral()); Energy_Quot__Muon_200MinBias->Rebin();
+  TH1F *Energy_Quot__Muon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MultiJet->Scale(1.0/Energy_Quot__Muon_200MultiJet->Integral()); Energy_Quot__Muon_200MultiJet->Rebin();
 
-  TH1F *Energy_Quot__Photon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_FJ->Scale(1.0/Energy_Quot__Photon_FJ->Integral());
-  TH1F *Energy_Quot__Photon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_Jet->Scale(1.0/Energy_Quot__Photon_Jet->Integral());
-  TH1F *Energy_Quot__Photon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_BTag->Scale(1.0/Energy_Quot__Photon_BTag->Integral());
-  TH1F *Energy_Quot__Photon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MinBias->Scale(1.0/Energy_Quot__Photon_MinBias->Integral());
-  TH1F *Energy_Quot__Photon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MultiJet->Scale(1.0/Energy_Quot__Photon_MultiJet->Integral());
+  TH1F *Energy_Quot__Photon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_FJ->Scale(1.0/Energy_Quot__Photon_FJ->Integral()); Energy_Quot__Photon_FJ->Rebin();
+  TH1F *Energy_Quot__Photon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_Jet->Scale(1.0/Energy_Quot__Photon_Jet->Integral()); Energy_Quot__Photon_Jet->Rebin();
+  TH1F *Energy_Quot__Photon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_BTag->Scale(1.0/Energy_Quot__Photon_BTag->Integral()); Energy_Quot__Photon_BTag->Rebin();
+  TH1F *Energy_Quot__Photon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MinBias->Scale(1.0/Energy_Quot__Photon_MinBias->Integral()); Energy_Quot__Photon_MinBias->Rebin();
+  TH1F *Energy_Quot__Photon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MultiJet->Scale(1.0/Energy_Quot__Photon_MultiJet->Integral()); Energy_Quot__Photon_MultiJet->Rebin();
 
-  TH1F *Energy_Quot__Photon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_FJ200->Scale(1.0/Energy_Quot__Photon_FJ200->Integral());
-  TH1F *Energy_Quot__Photon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_Jet200->Scale(1.0/Energy_Quot__Photon_Jet200->Integral());
-  TH1F *Energy_Quot__Photon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_BTag200->Scale(1.0/Energy_Quot__Photon_BTag200->Integral());
-  TH1F *Energy_Quot__Photon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MinBias200->Scale(1.0/Energy_Quot__Photon_MinBias200->Integral());
-  TH1F *Energy_Quot__Photon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MultiJet200->Scale(1.0/Energy_Quot__Photon_MultiJet200->Integral());
+  TH1F *Energy_Quot__Photon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_FJ200->Scale(1.0/Energy_Quot__Photon_FJ200->Integral()); Energy_Quot__Photon_FJ200->Rebin();
+  TH1F *Energy_Quot__Photon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_Jet200->Scale(1.0/Energy_Quot__Photon_Jet200->Integral()); Energy_Quot__Photon_Jet200->Rebin();
+  TH1F *Energy_Quot__Photon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_BTag200->Scale(1.0/Energy_Quot__Photon_BTag200->Integral()); Energy_Quot__Photon_BTag200->Rebin();
+  TH1F *Energy_Quot__Photon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MinBias200->Scale(1.0/Energy_Quot__Photon_MinBias200->Integral()); Energy_Quot__Photon_MinBias200->Rebin();
+  TH1F *Energy_Quot__Photon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MultiJet200->Scale(1.0/Energy_Quot__Photon_MultiJet200->Integral()); Energy_Quot__Photon_MultiJet200->Rebin();
 
-  TH1F *Energy_Quot__Photon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200FJ->Scale(1.0/Energy_Quot__Photon_200FJ->Integral());
-  TH1F *Energy_Quot__Photon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200Jet->Scale(1.0/Energy_Quot__Photon_200Jet->Integral());
-  TH1F *Energy_Quot__Photon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200BTag->Scale(1.0/Energy_Quot__Photon_200BTag->Integral());
-  TH1F *Energy_Quot__Photon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MinBias->Scale(1.0/Energy_Quot__Photon_200MinBias->Integral());
-  TH1F *Energy_Quot__Photon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MultiJet->Scale(1.0/Energy_Quot__Photon_200MultiJet->Integral());
+  TH1F *Energy_Quot__Photon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200FJ->Scale(1.0/Energy_Quot__Photon_200FJ->Integral()); Energy_Quot__Photon_200FJ->Rebin();
+  TH1F *Energy_Quot__Photon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200Jet->Scale(1.0/Energy_Quot__Photon_200Jet->Integral()); Energy_Quot__Photon_200Jet->Rebin();
+  TH1F *Energy_Quot__Photon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200BTag->Scale(1.0/Energy_Quot__Photon_200BTag->Integral()); Energy_Quot__Photon_200BTag->Rebin();
+  TH1F *Energy_Quot__Photon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MinBias->Scale(1.0/Energy_Quot__Photon_200MinBias->Integral()); Energy_Quot__Photon_200MinBias->Rebin();
+  TH1F *Energy_Quot__Photon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MultiJet->Scale(1.0/Energy_Quot__Photon_200MultiJet->Integral()); Energy_Quot__Photon_200MultiJet->Rebin();
 
-  TH1F *Energy_Quot__Electron_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_FJ->Scale(1.0/Energy_Quot__Electron_FJ->Integral());
-  TH1F *Energy_Quot__Electron_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_Jet->Scale(1.0/Energy_Quot__Electron_Jet->Integral());
-  TH1F *Energy_Quot__Electron_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_BTag->Scale(1.0/Energy_Quot__Electron_BTag->Integral());
-  TH1F *Energy_Quot__Electron_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MinBias->Scale(1.0/Energy_Quot__Electron_MinBias->Integral());
-  TH1F *Energy_Quot__Electron_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MultiJet->Scale(1.0/Energy_Quot__Electron_MultiJet->Integral());
+  TH1F *Energy_Quot__Electron_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_FJ->Scale(1.0/Energy_Quot__Electron_FJ->Integral()); Energy_Quot__Electron_FJ->Rebin();
+  TH1F *Energy_Quot__Electron_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_Jet->Scale(1.0/Energy_Quot__Electron_Jet->Integral()); Energy_Quot__Electron_Jet->Rebin();
+  TH1F *Energy_Quot__Electron_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_BTag->Scale(1.0/Energy_Quot__Electron_BTag->Integral()); Energy_Quot__Electron_BTag->Rebin();
+  TH1F *Energy_Quot__Electron_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MinBias->Scale(1.0/Energy_Quot__Electron_MinBias->Integral()); Energy_Quot__Electron_MinBias->Rebin();
+  TH1F *Energy_Quot__Electron_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MultiJet->Scale(1.0/Energy_Quot__Electron_MultiJet->Integral()); Energy_Quot__Electron_MultiJet->Rebin();
 
-  TH1F *Energy_Quot__Electron_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_FJ200->Scale(1.0/Energy_Quot__Electron_FJ200->Integral());
-  TH1F *Energy_Quot__Electron_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_Jet200->Scale(1.0/Energy_Quot__Electron_Jet200->Integral());
-  TH1F *Energy_Quot__Electron_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_BTag200->Scale(1.0/Energy_Quot__Electron_BTag200->Integral());
-  TH1F *Energy_Quot__Electron_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MinBias200->Scale(1.0/Energy_Quot__Electron_MinBias200->Integral());
-  TH1F *Energy_Quot__Electron_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MultiJet200->Scale(1.0/Energy_Quot__Electron_MultiJet200->Integral());
+  TH1F *Energy_Quot__Electron_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_FJ200->Scale(1.0/Energy_Quot__Electron_FJ200->Integral()); Energy_Quot__Electron_FJ200->Rebin();
+  TH1F *Energy_Quot__Electron_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_Jet200->Scale(1.0/Energy_Quot__Electron_Jet200->Integral()); Energy_Quot__Electron_Jet200->Rebin();
+  TH1F *Energy_Quot__Electron_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_BTag200->Scale(1.0/Energy_Quot__Electron_BTag200->Integral()); Energy_Quot__Electron_BTag200->Rebin();
+  TH1F *Energy_Quot__Electron_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MinBias200->Scale(1.0/Energy_Quot__Electron_MinBias200->Integral()); Energy_Quot__Electron_MinBias200->Rebin();
+  TH1F *Energy_Quot__Electron_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MultiJet200->Scale(1.0/Energy_Quot__Electron_MultiJet200->Integral()); Energy_Quot__Electron_MultiJet200->Rebin();
 
-  TH1F *Energy_Quot__Electron_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200FJ->Scale(1.0/Energy_Quot__Electron_200FJ->Integral());
-  TH1F *Energy_Quot__Electron_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200Jet->Scale(1.0/Energy_Quot__Electron_200Jet->Integral());
-  TH1F *Energy_Quot__Electron_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200BTag->Scale(1.0/Energy_Quot__Electron_200BTag->Integral());
-  TH1F *Energy_Quot__Electron_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MinBias->Scale(1.0/Energy_Quot__Electron_200MinBias->Integral());
-  TH1F *Energy_Quot__Electron_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MultiJet->Scale(1.0/Energy_Quot__Electron_200MultiJet->Integral());
+  TH1F *Energy_Quot__Electron_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200FJ->Scale(1.0/Energy_Quot__Electron_200FJ->Integral()); Energy_Quot__Electron_200FJ->Rebin();
+  TH1F *Energy_Quot__Electron_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200Jet->Scale(1.0/Energy_Quot__Electron_200Jet->Integral()); Energy_Quot__Electron_200Jet->Rebin();
+  TH1F *Energy_Quot__Electron_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200BTag->Scale(1.0/Energy_Quot__Electron_200BTag->Integral()); Energy_Quot__Electron_200BTag->Rebin();
+  TH1F *Energy_Quot__Electron_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MinBias->Scale(1.0/Energy_Quot__Electron_200MinBias->Integral()); Energy_Quot__Electron_200MinBias->Rebin();
+  TH1F *Energy_Quot__Electron_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MultiJet->Scale(1.0/Energy_Quot__Electron_200MultiJet->Integral()); Energy_Quot__Electron_200MultiJet->Rebin();
 
-  TH1F *Energy_Quot__NeutralHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_FJ->Scale(1.0/Energy_Quot__NeutralHad_FJ->Integral());
-  TH1F *Energy_Quot__NeutralHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_Jet->Scale(1.0/Energy_Quot__NeutralHad_Jet->Integral());
-  TH1F *Energy_Quot__NeutralHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_BTag->Scale(1.0/Energy_Quot__NeutralHad_BTag->Integral());
-  TH1F *Energy_Quot__NeutralHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MinBias->Scale(1.0/Energy_Quot__NeutralHad_MinBias->Integral());
-  TH1F *Energy_Quot__NeutralHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MultiJet->Scale(1.0/Energy_Quot__NeutralHad_MultiJet->Integral());
+  TH1F *Energy_Quot__NeutralHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_FJ->Scale(1.0/Energy_Quot__NeutralHad_FJ->Integral()); Energy_Quot__NeutralHad_FJ->Rebin();
+  TH1F *Energy_Quot__NeutralHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_Jet->Scale(1.0/Energy_Quot__NeutralHad_Jet->Integral()); Energy_Quot__NeutralHad_Jet->Rebin();
+  TH1F *Energy_Quot__NeutralHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_BTag->Scale(1.0/Energy_Quot__NeutralHad_BTag->Integral()); Energy_Quot__NeutralHad_BTag->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MinBias->Scale(1.0/Energy_Quot__NeutralHad_MinBias->Integral()); Energy_Quot__NeutralHad_MinBias->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MultiJet->Scale(1.0/Energy_Quot__NeutralHad_MultiJet->Integral()); Energy_Quot__NeutralHad_MultiJet->Rebin();
 
-  TH1F *Energy_Quot__NeutralHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_FJ200->Scale(1.0/Energy_Quot__NeutralHad_FJ200->Integral());
-  TH1F *Energy_Quot__NeutralHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_Jet200->Scale(1.0/Energy_Quot__NeutralHad_Jet200->Integral());
-  TH1F *Energy_Quot__NeutralHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_BTag200->Scale(1.0/Energy_Quot__NeutralHad_BTag200->Integral());
-  TH1F *Energy_Quot__NeutralHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MinBias200->Scale(1.0/Energy_Quot__NeutralHad_MinBias200->Integral());
-  TH1F *Energy_Quot__NeutralHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MultiJet200->Scale(1.0/Energy_Quot__NeutralHad_MultiJet200->Integral());
+  TH1F *Energy_Quot__NeutralHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_FJ200->Scale(1.0/Energy_Quot__NeutralHad_FJ200->Integral()); Energy_Quot__NeutralHad_FJ200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_Jet200->Scale(1.0/Energy_Quot__NeutralHad_Jet200->Integral()); Energy_Quot__NeutralHad_Jet200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_BTag200->Scale(1.0/Energy_Quot__NeutralHad_BTag200->Integral()); Energy_Quot__NeutralHad_BTag200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MinBias200->Scale(1.0/Energy_Quot__NeutralHad_MinBias200->Integral()); Energy_Quot__NeutralHad_MinBias200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MultiJet200->Scale(1.0/Energy_Quot__NeutralHad_MultiJet200->Integral()); Energy_Quot__NeutralHad_MultiJet200->Rebin();
 
-  TH1F *Energy_Quot__NeutralHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200FJ->Scale(1.0/Energy_Quot__NeutralHad_200FJ->Integral());
-  TH1F *Energy_Quot__NeutralHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200Jet->Scale(1.0/Energy_Quot__NeutralHad_200Jet->Integral());
-  TH1F *Energy_Quot__NeutralHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200BTag->Scale(1.0/Energy_Quot__NeutralHad_200BTag->Integral());
-  TH1F *Energy_Quot__NeutralHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MinBias->Scale(1.0/Energy_Quot__NeutralHad_200MinBias->Integral());
-  TH1F *Energy_Quot__NeutralHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MultiJet->Scale(1.0/Energy_Quot__NeutralHad_200MultiJet->Integral());
+  TH1F *Energy_Quot__NeutralHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200FJ->Scale(1.0/Energy_Quot__NeutralHad_200FJ->Integral()); Energy_Quot__NeutralHad_200FJ->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200Jet->Scale(1.0/Energy_Quot__NeutralHad_200Jet->Integral()); Energy_Quot__NeutralHad_200Jet->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200BTag->Scale(1.0/Energy_Quot__NeutralHad_200BTag->Integral()); Energy_Quot__NeutralHad_200BTag->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MinBias->Scale(1.0/Energy_Quot__NeutralHad_200MinBias->Integral()); Energy_Quot__NeutralHad_200MinBias->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MultiJet->Scale(1.0/Energy_Quot__NeutralHad_200MultiJet->Integral()); Energy_Quot__NeutralHad_200MultiJet->Rebin();
 
-  TH1F *Energy_Quot__ChargedHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_FJ->Scale(1.0/Energy_Quot__ChargedHad_FJ->Integral());
-  TH1F *Energy_Quot__ChargedHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_Jet->Scale(1.0/Energy_Quot__ChargedHad_Jet->Integral());
-  TH1F *Energy_Quot__ChargedHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_BTag->Scale(1.0/Energy_Quot__ChargedHad_BTag->Integral());
-  TH1F *Energy_Quot__ChargedHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MinBias->Scale(1.0/Energy_Quot__ChargedHad_MinBias->Integral());
-  TH1F *Energy_Quot__ChargedHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MultiJet->Scale(1.0/Energy_Quot__ChargedHad_MultiJet->Integral());
+  TH1F *Energy_Quot__ChargedHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_FJ->Scale(1.0/Energy_Quot__ChargedHad_FJ->Integral()); Energy_Quot__ChargedHad_FJ->Rebin();
+  TH1F *Energy_Quot__ChargedHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_Jet->Scale(1.0/Energy_Quot__ChargedHad_Jet->Integral()); Energy_Quot__ChargedHad_Jet->Rebin();
+  TH1F *Energy_Quot__ChargedHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_BTag->Scale(1.0/Energy_Quot__ChargedHad_BTag->Integral()); Energy_Quot__ChargedHad_BTag->Rebin();
+  TH1F *Energy_Quot__ChargedHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MinBias->Scale(1.0/Energy_Quot__ChargedHad_MinBias->Integral()); Energy_Quot__ChargedHad_MinBias->Rebin();
+  TH1F *Energy_Quot__ChargedHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MultiJet->Scale(1.0/Energy_Quot__ChargedHad_MultiJet->Integral()); Energy_Quot__ChargedHad_MultiJet->Rebin();
 
-  TH1F *Energy_Quot__ChargedHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_FJ200->Scale(1.0/Energy_Quot__ChargedHad_FJ200->Integral());
-  TH1F *Energy_Quot__ChargedHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_Jet200->Scale(1.0/Energy_Quot__ChargedHad_Jet200->Integral());
-  TH1F *Energy_Quot__ChargedHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_BTag200->Scale(1.0/Energy_Quot__ChargedHad_BTag200->Integral());
-  TH1F *Energy_Quot__ChargedHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MinBias200->Scale(1.0/Energy_Quot__ChargedHad_MinBias200->Integral());
-  TH1F *Energy_Quot__ChargedHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MultiJet200->Scale(1.0/Energy_Quot__ChargedHad_MultiJet200->Integral());
+  TH1F *Energy_Quot__ChargedHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_FJ200->Scale(1.0/Energy_Quot__ChargedHad_FJ200->Integral()); Energy_Quot__ChargedHad_FJ200->Rebin()
+  TH1F *Energy_Quot__ChargedHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_Jet200->Scale(1.0/Energy_Quot__ChargedHad_Jet200->Integral()); Energy_Quot__ChargedHad_Jet200->Rebin()
+  TH1F *Energy_Quot__ChargedHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_BTag200->Scale(1.0/Energy_Quot__ChargedHad_BTag200->Integral()); Energy_Quot__ChargedHad_BTag200->Rebin()
+  TH1F *Energy_Quot__ChargedHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MinBias200->Scale(1.0/Energy_Quot__ChargedHad_MinBias200->Integral()); Energy_Quot__ChargedHad_MinBias200->Rebin()
+  TH1F *Energy_Quot__ChargedHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MultiJet200->Scale(1.0/Energy_Quot__ChargedHad_MultiJet200->Integral()); Energy_Quot__ChargedHad_MultiJet200->Rebin()
 
-  TH1F *Energy_Quot__ChargedHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200FJ->Scale(1.0/Energy_Quot__ChargedHad_200FJ->Integral());
-  TH1F *Energy_Quot__ChargedHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200Jet->Scale(1.0/Energy_Quot__ChargedHad_200Jet->Integral());
-  TH1F *Energy_Quot__ChargedHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200BTag->Scale(1.0/Energy_Quot__ChargedHad_200BTag->Integral());
-  TH1F *Energy_Quot__ChargedHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MinBias->Scale(1.0/Energy_Quot__ChargedHad_200MinBias->Integral());
-  TH1F *Energy_Quot__ChargedHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MultiJet->Scale(1.0/Energy_Quot__ChargedHad_200MultiJet->Integral());
+  TH1F *Energy_Quot__ChargedHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200FJ->Scale(1.0/Energy_Quot__ChargedHad_200FJ->Integral()); Energy_Quot__ChargedHad_200FJ->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200Jet->Scale(1.0/Energy_Quot__ChargedHad_200Jet->Integral()); Energy_Quot__ChargedHad_200Jet->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200BTag->Scale(1.0/Energy_Quot__ChargedHad_200BTag->Integral()); Energy_Quot__ChargedHad_200BTag->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MinBias->Scale(1.0/Energy_Quot__ChargedHad_200MinBias->Integral()); Energy_Quot__ChargedHad_200MinBias->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MultiJet->Scale(1.0/Energy_Quot__ChargedHad_200MultiJet->Integral()); Energy_Quot__ChargedHad_200MultiJet->Rebin();
 
 
 
@@ -589,13 +589,6 @@ void EnergyQuotient() {
     Leg->AddEntry(CLONE_E_Q__Muon_BTag, "Open-Data PF BTag", "p");
     Leg->AddEntry(CLONE_E_Q__Muon_MinBias, "Open-Data PF MinBias", "p");
     Leg->AddEntry(CLONE_E_Q__Muon_MultiJet, "Open-Data PF MultiJet", "p");
-
-    CLONE_E_Q__Muon_FJ->SetMarkerSize(4); CLONE_E_Q__Muon_FJ->SetMarkerStyle(21); CLONE_E_Q__Muon_FJ->SetMarkerColor(14);
-    CLONE_E_Q__Muon_Jet->SetMarkerSize(4); CLONE_E_Q__Muon_Jet->SetMarkerStyle(23); CLONE_E_Q__Muon_Jet->SetMarkerColor(42);
-    CLONE_E_Q__Muon_BTag->SetMarkerSize(4); CLONE_E_Q__Muon_BTag->SetMarkerStyle(22); CLONE_E_Q__Muon_BTag->SetMarkerColor(33);
-    CLONE_E_Q__Muon_MinBias->SetMarkerSize(4); CLONE_E_Q__Muon_MinBias->SetMarkerStyle(20); CLONE_E_Q__Muon_MinBias->SetMarkerColor(5);
-    CLONE_E_Q__Muon_MultiJet->SetMarkerSize(4); CLONE_E_Q__Muon_MultiJet->SetMarkerStyle(34); CLONE_E_Q__Muon_MultiJet->SetMarkerColor(8);
-
 
   auto   legend = new TLegend(0.62,0.70,0.90,0.92);    legend->SetTextSize(0.04); legend->SetFillStyle(0); legend->SetBorderSize(0);
     legend->AddEntry(Energy_Quot__Muon_FJ, "MC FastJet", "lep");
@@ -630,23 +623,19 @@ void EnergyQuotient() {
   Energy_Quot__Muon_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Muon_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Muon_FJ->GetYaxis()->SetTitleOffset(1.0);
   // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Muon_FJ->Rebin(); Energy_Quot__Muon_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Muon_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Muon_FJ->SetMarkerSize(4);Energy_Quot__Muon_FJ->SetMarkerStyle(21); Energy_Quot__Muon_FJ->SetMarkerColor(14);
   Energy_Quot__Muon_FJ->DrawCopy("P");   Energy_Quot__Muon_FJ->SetMarkerStyle(25); Energy_Quot__Muon_FJ->SetMarkerColor(1);
   Energy_Quot__Muon_FJ->SetLineWidth(4); Energy_Quot__Muon_FJ->Draw("Esame");      Energy_Quot__Muon_FJ->SetLineColor(1);
-  Energy_Quot__Muon_Jet->Rebin();
   Energy_Quot__Muon_Jet->SetMarkerSize(4); Energy_Quot__Muon_Jet->SetMarkerStyle(23); Energy_Quot__Muon_Jet->SetMarkerColor(42);
   Energy_Quot__Muon_Jet->DrawCopy("Psame");Energy_Quot__Muon_Jet->SetMarkerStyle(32); Energy_Quot__Muon_Jet->SetMarkerColor(2);
   Energy_Quot__Muon_Jet->SetLineWidth(4);  Energy_Quot__Muon_Jet->Draw("Esame");      Energy_Quot__Muon_Jet->SetLineColor(2);
-  Energy_Quot__Muon_BTag->Rebin();
   Energy_Quot__Muon_BTag->SetMarkerSize(4); Energy_Quot__Muon_BTag->SetMarkerStyle(22); Energy_Quot__Muon_BTag->SetMarkerColor(33);
   Energy_Quot__Muon_BTag->DrawCopy("Psame");Energy_Quot__Muon_BTag->SetMarkerStyle(26); Energy_Quot__Muon_BTag->SetMarkerColor(4);
   Energy_Quot__Muon_BTag->SetLineWidth(4);  Energy_Quot__Muon_BTag->Draw("Esame");      Energy_Quot__Muon_BTag->SetLineColor(4);
-  Energy_Quot__Muon_MinBias->Rebin();
   Energy_Quot__Muon_MinBias->SetMarkerSize(4); Energy_Quot__Muon_MinBias->SetMarkerStyle(20); Energy_Quot__Muon_MinBias->SetMarkerColor(5);
   Energy_Quot__Muon_MinBias->DrawCopy("Psame");Energy_Quot__Muon_MinBias->SetMarkerStyle(24); Energy_Quot__Muon_MinBias->SetMarkerColor(41);
   Energy_Quot__Muon_MinBias->SetLineWidth(4);  Energy_Quot__Muon_MinBias->Draw("Esame");      Energy_Quot__Muon_MinBias->SetLineColor(41);
-  Energy_Quot__Muon_MultiJet->Rebin();
   Energy_Quot__Muon_MultiJet->SetMarkerSize(4); Energy_Quot__Muon_MultiJet->SetMarkerStyle(34); Energy_Quot__Muon_MultiJet->SetMarkerColor(8);
   Energy_Quot__Muon_MultiJet->DrawCopy("Psame");Energy_Quot__Muon_MultiJet->SetMarkerStyle(28); Energy_Quot__Muon_MultiJet->SetMarkerColor(32);
   Energy_Quot__Muon_MultiJet->SetLineWidth(4);  Energy_Quot__Muon_MultiJet->Draw("Esame");      Energy_Quot__Muon_MultiJet->SetLineColor(32);
@@ -658,24 +647,19 @@ void EnergyQuotient() {
   Energy_Quot__Muon_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Muon_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Muon_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Muon_FJ200->Rebin(); Energy_Quot__Muon_FJ200->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Muon_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Muon_FJ200->SetMarkerSize(4);Energy_Quot__Muon_FJ200->SetMarkerStyle(21); Energy_Quot__Muon_FJ200->SetMarkerColor(14);
   Energy_Quot__Muon_FJ200->DrawCopy("P");   Energy_Quot__Muon_FJ200->SetMarkerStyle(25); Energy_Quot__Muon_FJ200->SetMarkerColor(1);
   Energy_Quot__Muon_FJ200->SetLineWidth(4); Energy_Quot__Muon_FJ200->Draw("Esame");      Energy_Quot__Muon_FJ200->SetLineColor(1);
-  Energy_Quot__Muon_Jet200->Rebin();
   Energy_Quot__Muon_Jet200->SetMarkerSize(4); Energy_Quot__Muon_Jet200->SetMarkerStyle(23); Energy_Quot__Muon_Jet200->SetMarkerColor(42);
   Energy_Quot__Muon_Jet200->DrawCopy("Psame");Energy_Quot__Muon_Jet200->SetMarkerStyle(32); Energy_Quot__Muon_Jet200->SetMarkerColor(2);
   Energy_Quot__Muon_Jet200->SetLineWidth(4);  Energy_Quot__Muon_Jet200->Draw("Esame");      Energy_Quot__Muon_Jet200->SetLineColor(2);
-  Energy_Quot__Muon_BTag200->Rebin();
   Energy_Quot__Muon_BTag200->SetMarkerSize(4); Energy_Quot__Muon_BTag200->SetMarkerStyle(22); Energy_Quot__Muon_BTag200->SetMarkerColor(33);
   Energy_Quot__Muon_BTag200->DrawCopy("Psame");Energy_Quot__Muon_BTag200->SetMarkerStyle(26); Energy_Quot__Muon_BTag200->SetMarkerColor(4);
   Energy_Quot__Muon_BTag200->SetLineWidth(4);  Energy_Quot__Muon_BTag200->Draw("Esame");      Energy_Quot__Muon_BTag200->SetLineColor(4);
-  Energy_Quot__Muon_MinBias200->Rebin();
   Energy_Quot__Muon_MinBias200->SetMarkerSize(4); Energy_Quot__Muon_MinBias200->SetMarkerStyle(20); Energy_Quot__Muon_MinBias200->SetMarkerColor(5);
   Energy_Quot__Muon_MinBias200->DrawCopy("Psame");Energy_Quot__Muon_MinBias200->SetMarkerStyle(24); Energy_Quot__Muon_MinBias200->SetMarkerColor(41);
   Energy_Quot__Muon_MinBias200->SetLineWidth(4);  Energy_Quot__Muon_MinBias200->Draw("Esame");      Energy_Quot__Muon_MinBias200->SetLineColor(41);
-  Energy_Quot__Muon_MultiJet200->Rebin();
   Energy_Quot__Muon_MultiJet200->SetMarkerSize(4); Energy_Quot__Muon_MultiJet200->SetMarkerStyle(34); Energy_Quot__Muon_MultiJet200->SetMarkerColor(8);
   Energy_Quot__Muon_MultiJet200->DrawCopy("Psame");Energy_Quot__Muon_MultiJet200->SetMarkerStyle(28); Energy_Quot__Muon_MultiJet200->SetMarkerColor(32);
   Energy_Quot__Muon_MultiJet200->SetLineWidth(4);  Energy_Quot__Muon_MultiJet200->Draw("Esame");      Energy_Quot__Muon_MultiJet200->SetLineColor(32);
@@ -687,8 +671,7 @@ void EnergyQuotient() {
   Energy_Quot__Muon_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Muon_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Muon_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Muon_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Muon_200FJ->Rebin(); Energy_Quot__Muon_200FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Muon_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Muon_200FJ->SetMarkerSize(4);Energy_Quot__Muon_200FJ->SetMarkerStyle(21); Energy_Quot__Muon_200FJ->SetMarkerColor(14);
   Energy_Quot__Muon_200FJ->DrawCopy("P");   Energy_Quot__Muon_200FJ->SetMarkerStyle(25); Energy_Quot__Muon_200FJ->SetMarkerColor(1);
   Energy_Quot__Muon_200FJ->SetLineWidth(4); Energy_Quot__Muon_200FJ->Draw("Esame");      Energy_Quot__Muon_200FJ->SetLineColor(1);
@@ -717,8 +700,7 @@ void EnergyQuotient() {
   Energy_Quot__Photon_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Photon_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Photon_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Photon_FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Photon_FJ->Rebin(); Energy_Quot__Photon_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Photon_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Photon_FJ->SetMarkerSize(4);Energy_Quot__Photon_FJ->SetMarkerStyle(21); Energy_Quot__Photon_FJ->SetMarkerColor(14);
   Energy_Quot__Photon_FJ->DrawCopy("P");   Energy_Quot__Photon_FJ->SetMarkerStyle(25); Energy_Quot__Photon_FJ->SetMarkerColor(1);
   Energy_Quot__Photon_FJ->SetLineWidth(4); Energy_Quot__Photon_FJ->Draw("Esame");      Energy_Quot__Photon_FJ->SetLineColor(1);
@@ -746,8 +728,7 @@ void EnergyQuotient() {
   Energy_Quot__Photon_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Photon_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Photon_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Photon_FJ200->Rebin(); Energy_Quot__Photon_FJ200->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Photon_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Photon_FJ200->SetMarkerSize(4);Energy_Quot__Photon_FJ200->SetMarkerStyle(21); Energy_Quot__Photon_FJ200->SetMarkerColor(14);
   Energy_Quot__Photon_FJ200->DrawCopy("P");   Energy_Quot__Photon_FJ200->SetMarkerStyle(25); Energy_Quot__Photon_FJ200->SetMarkerColor(1);
   Energy_Quot__Photon_FJ200->SetLineWidth(4); Energy_Quot__Photon_FJ200->Draw("Esame");      Energy_Quot__Photon_FJ200->SetLineColor(1);
@@ -775,8 +756,7 @@ void EnergyQuotient() {
   Energy_Quot__Photon_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Photon_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Photon_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Photon_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Photon_200FJ->Rebin(); Energy_Quot__Photon_200FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Photon_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Photon_200FJ->SetMarkerSize(4);Energy_Quot__Photon_200FJ->SetMarkerStyle(21); Energy_Quot__Photon_200FJ->SetMarkerColor(14);
   Energy_Quot__Photon_200FJ->DrawCopy("P");   Energy_Quot__Photon_200FJ->SetMarkerStyle(25); Energy_Quot__Photon_200FJ->SetMarkerColor(1);
   Energy_Quot__Photon_200FJ->SetLineWidth(4); Energy_Quot__Photon_200FJ->Draw("Esame");      Energy_Quot__Photon_200FJ->SetLineColor(1);
@@ -805,8 +785,7 @@ void EnergyQuotient() {
   Energy_Quot__Electron_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Electron_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Electron_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Electron_FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Electron_FJ->Rebin(); Energy_Quot__Electron_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Electron_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Electron_FJ->SetMarkerSize(4);Energy_Quot__Electron_FJ->SetMarkerStyle(21); Energy_Quot__Electron_FJ->SetMarkerColor(14);
   Energy_Quot__Electron_FJ->DrawCopy("P");   Energy_Quot__Electron_FJ->SetMarkerStyle(25); Energy_Quot__Electron_FJ->SetMarkerColor(1);
   Energy_Quot__Electron_FJ->SetLineWidth(4); Energy_Quot__Electron_FJ->Draw("Esame");      Energy_Quot__Electron_FJ->SetLineColor(1);
@@ -834,8 +813,7 @@ void EnergyQuotient() {
   Energy_Quot__Electron_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Electron_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Electron_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Electron_FJ200->Rebin(); Energy_Quot__Electron_FJ200->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Electron_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Electron_FJ200->SetMarkerSize(4);Energy_Quot__Electron_FJ200->SetMarkerStyle(21); Energy_Quot__Electron_FJ200->SetMarkerColor(14);
   Energy_Quot__Electron_FJ200->DrawCopy("P");   Energy_Quot__Electron_FJ200->SetMarkerStyle(25); Energy_Quot__Electron_FJ200->SetMarkerColor(1);
   Energy_Quot__Electron_FJ200->SetLineWidth(4); Energy_Quot__Electron_FJ200->Draw("Esame");      Energy_Quot__Electron_FJ200->SetLineColor(1);
@@ -863,8 +841,7 @@ void EnergyQuotient() {
   Energy_Quot__Electron_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__Electron_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__Electron_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Electron_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__Electron_200FJ->Rebin(); Energy_Quot__Electron_200FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__Electron_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Electron_200FJ->SetMarkerSize(4);Energy_Quot__Electron_200FJ->SetMarkerStyle(21); Energy_Quot__Electron_200FJ->SetMarkerColor(14);
   Energy_Quot__Electron_200FJ->DrawCopy("P");   Energy_Quot__Electron_200FJ->SetMarkerStyle(25); Energy_Quot__Electron_200FJ->SetMarkerColor(1);
   Energy_Quot__Electron_200FJ->SetLineWidth(4); Energy_Quot__Electron_200FJ->Draw("Esame");      Energy_Quot__Electron_200FJ->SetLineColor(1);
@@ -893,8 +870,7 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__NeutralHad_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__NeutralHad_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__NeutralHad_FJ->Rebin(); Energy_Quot__NeutralHad_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__NeutralHad_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__NeutralHad_FJ->SetMarkerSize(4);Energy_Quot__NeutralHad_FJ->SetMarkerStyle(21); Energy_Quot__NeutralHad_FJ->SetMarkerColor(14);
   Energy_Quot__NeutralHad_FJ->DrawCopy("P");   Energy_Quot__NeutralHad_FJ->SetMarkerStyle(25); Energy_Quot__NeutralHad_FJ->SetMarkerColor(1);
   Energy_Quot__NeutralHad_FJ->SetLineWidth(4); Energy_Quot__NeutralHad_FJ->Draw("Esame");      Energy_Quot__NeutralHad_FJ->SetLineColor(1);
@@ -922,8 +898,7 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__NeutralHad_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__NeutralHad_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__NeutralHad_FJ200->Rebin(); Energy_Quot__NeutralHad_FJ200->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__NeutralHad_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__NeutralHad_FJ200->SetMarkerSize(4);Energy_Quot__NeutralHad_FJ200->SetMarkerStyle(21); Energy_Quot__NeutralHad_FJ200->SetMarkerColor(14);
   Energy_Quot__NeutralHad_FJ200->DrawCopy("P");   Energy_Quot__NeutralHad_FJ200->SetMarkerStyle(25); Energy_Quot__NeutralHad_FJ200->SetMarkerColor(1);
   Energy_Quot__NeutralHad_FJ200->SetLineWidth(4); Energy_Quot__NeutralHad_FJ200->Draw("Esame");      Energy_Quot__NeutralHad_FJ200->SetLineColor(1);
@@ -951,8 +926,7 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__NeutralHad_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__NeutralHad_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__NeutralHad_200FJ->Rebin(); Energy_Quot__NeutralHad_200FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__NeutralHad_200FJ->Rebin(); Energy_Quot__NeutralHad_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__NeutralHad_200FJ->SetMarkerSize(4);Energy_Quot__NeutralHad_200FJ->SetMarkerStyle(21); Energy_Quot__NeutralHad_200FJ->SetMarkerColor(14);
   Energy_Quot__NeutralHad_200FJ->DrawCopy("P");   Energy_Quot__NeutralHad_200FJ->SetMarkerStyle(25); Energy_Quot__NeutralHad_200FJ->SetMarkerColor(1);
   Energy_Quot__NeutralHad_200FJ->SetLineWidth(4); Energy_Quot__NeutralHad_200FJ->Draw("Esame");      Energy_Quot__NeutralHad_200FJ->SetLineColor(1);
@@ -981,8 +955,7 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__ChargedHad_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__ChargedHad_FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__ChargedHad_FJ->Rebin(); Energy_Quot__ChargedHad_FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__ChargedHad_FJ->Rebin(); Energy_Quot__ChargedHad_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__ChargedHad_FJ->SetMarkerSize(4);Energy_Quot__ChargedHad_FJ->SetMarkerStyle(21); Energy_Quot__ChargedHad_FJ->SetMarkerColor(14);
   Energy_Quot__ChargedHad_FJ->DrawCopy("P");   Energy_Quot__ChargedHad_FJ->SetMarkerStyle(25); Energy_Quot__ChargedHad_FJ->SetMarkerColor(1);
   Energy_Quot__ChargedHad_FJ->SetLineWidth(4); Energy_Quot__ChargedHad_FJ->Draw("Esame");      Energy_Quot__ChargedHad_FJ->SetLineColor(1);
@@ -1010,8 +983,7 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_FJ200->GetXaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__ChargedHad_FJ200->GetXaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__ChargedHad_FJ200->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__ChargedHad_FJ200->Rebin(); Energy_Quot__ChargedHad_FJ200->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__ChargedHad_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__ChargedHad_FJ200->SetMarkerSize(4);Energy_Quot__ChargedHad_FJ200->SetMarkerStyle(21); Energy_Quot__ChargedHad_FJ200->SetMarkerColor(14);
   Energy_Quot__ChargedHad_FJ200->DrawCopy("P");   Energy_Quot__ChargedHad_FJ200->SetMarkerStyle(25); Energy_Quot__ChargedHad_FJ200->SetMarkerColor(1);
   Energy_Quot__ChargedHad_FJ200->SetLineWidth(4); Energy_Quot__ChargedHad_FJ200->Draw("Esame");      Energy_Quot__ChargedHad_FJ200->SetLineColor(1);
@@ -1039,8 +1011,7 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_200FJ->GetXaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetLabelSize(0.05);
   Energy_Quot__ChargedHad_200FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__ChargedHad_200FJ->GetXaxis()->SetTitleOffset(1.0);Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Energy_Quot__ChargedHad_200FJ->Rebin(); Energy_Quot__ChargedHad_200FJ->SetAxisRange(0.0, 1.09, "X");
+  Energy_Quot__ChargedHad_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__ChargedHad_200FJ->SetMarkerSize(4);Energy_Quot__ChargedHad_200FJ->SetMarkerStyle(21); Energy_Quot__ChargedHad_200FJ->SetMarkerColor(14);
   Energy_Quot__ChargedHad_200FJ->DrawCopy("P");   Energy_Quot__ChargedHad_200FJ->SetMarkerStyle(25); Energy_Quot__ChargedHad_200FJ->SetMarkerColor(1);
   Energy_Quot__ChargedHad_200FJ->SetLineWidth(4); Energy_Quot__ChargedHad_200FJ->Draw("Esame");      Energy_Quot__ChargedHad_200FJ->SetLineColor(1);
