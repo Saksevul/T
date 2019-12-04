@@ -1,40 +1,839 @@
-void DistanciaAngular() {
+void EnergyQuotient() {
+
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
   TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
   TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
   TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
+  TFile *MinBiasFile = new TFile("/home/saksevul/T/OpenData/MinBias_20000/ak5PF.root");
   TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF.root");
 
-  TH1F *D__Muon_ak5FJ, *D__Electron_ak5FJ, *ak5FastJet__D_Jet_Jet,
-       *D__Muon_ak5PFJet, *D__Electron_ak5PFJet, *ak5PFBTag__D_Jet_Jet;
 
-  ak5FastJet__D_Jet_Jet =(TH1F*)FJFile->Get("ak5FastJet__D__Jet_Jet"); ak5PFBTag__D_Jet_Jet->Scale(1.0/ak5PFBTag__D_Jet_Jet->Integral());
-  ak5PFBTag__D_Jet_Jet =(TH1F*)BTagFile->Get("ak5PFJets__D__Jet_Jet"); ak5PFBTag__D_Jet_Jet->Scale(1.0/ak5PFBTag__D_Jet_Jet->Integral());
+  TH1F *Energy_Quot__Muon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_FJ->Scale(1.0/Energy_Quot__Muon_FJ->Integral()); Energy_Quot__Muon_FJ->Rebin();
+  TH1F *Energy_Quot__Muon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_Jet->Scale(1.0/Energy_Quot__Muon_Jet->Integral()); Energy_Quot__Muon_Jet->Rebin();
+  TH1F *Energy_Quot__Muon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_BTag->Scale(1.0/Energy_Quot__Muon_BTag->Integral()); Energy_Quot__Muon_BTag->Rebin();
+  TH1F *Energy_Quot__Muon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MinBias->Scale(1.0/Energy_Quot__Muon_MinBias->Integral()); Energy_Quot__Muon_MinBias->Rebin();
+  TH1F *Energy_Quot__Muon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MultiJet->Scale(1.0/Energy_Quot__Muon_MultiJet->Integral()); Energy_Quot__Muon_MultiJet->Rebin();
+
+  TH1F *CLONE_E_Q__Muon_FJ =(TH1F*)Energy_Quot__Muon_FJ->Clone(); CLONE_E_Q__Muon_FJ->SetMarkerSize(6); CLONE_E_Q__Muon_FJ->SetMarkerStyle(21); CLONE_E_Q__Muon_FJ->SetMarkerColor(14);
+  TH1F *CLONE_E_Q__Muon_Jet =(TH1F*)Energy_Quot__Muon_Jet->Clone(); CLONE_E_Q__Muon_Jet->SetMarkerSize(6); CLONE_E_Q__Muon_Jet->SetMarkerStyle(23); CLONE_E_Q__Muon_Jet->SetMarkerColor(42);
+  TH1F *CLONE_E_Q__Muon_BTag =(TH1F*)Energy_Quot__Muon_BTag->Clone(); CLONE_E_Q__Muon_BTag->SetMarkerSize(6); CLONE_E_Q__Muon_BTag->SetMarkerStyle(22); CLONE_E_Q__Muon_BTag->SetMarkerColor(33);
+  TH1F *CLONE_E_Q__Muon_MinBias =(TH1F*)Energy_Quot__Muon_MinBias->Clone(); CLONE_E_Q__Muon_MinBias->SetMarkerSize(6); CLONE_E_Q__Muon_MinBias->SetMarkerStyle(20); CLONE_E_Q__Muon_MinBias->SetMarkerColor(5);
+  TH1F *CLONE_E_Q__Muon_MultiJet =(TH1F*)Energy_Quot__Muon_MultiJet->Clone(); CLONE_E_Q__Muon_MultiJet->SetMarkerSize(6); CLONE_E_Q__Muon_MultiJet->SetMarkerStyle(34); CLONE_E_Q__Muon_MultiJet->SetMarkerColor(8);
+
+  TH1F *Energy_Quot__Muon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_FJ200->Scale(1.0/Energy_Quot__Muon_FJ200->Integral()); Energy_Quot__Muon_FJ200->Rebin();
+  TH1F *Energy_Quot__Muon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_Jet200->Scale(1.0/Energy_Quot__Muon_Jet200->Integral()); Energy_Quot__Muon_Jet200->Rebin();
+  TH1F *Energy_Quot__Muon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_BTag200->Scale(1.0/Energy_Quot__Muon_BTag200->Integral()); Energy_Quot__Muon_BTag200->Rebin();
+  TH1F *Energy_Quot__Muon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MinBias200->Scale(1.0/Energy_Quot__Muon_MinBias200->Integral()); Energy_Quot__Muon_MinBias200->Rebin();
+  TH1F *Energy_Quot__Muon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MultiJet200->Scale(1.0/Energy_Quot__Muon_MultiJet200->Integral()); Energy_Quot__Muon_MultiJet200->Rebin();
+
+  TH1F *Energy_Quot__Muon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200FJ->Scale(1.0/Energy_Quot__Muon_200FJ->Integral()); Energy_Quot__Muon_200FJ->Rebin();
+  TH1F *Energy_Quot__Muon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200Jet->Scale(1.0/Energy_Quot__Muon_200Jet->Integral()); Energy_Quot__Muon_200Jet->Rebin();
+  TH1F *Energy_Quot__Muon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200BTag->Scale(1.0/Energy_Quot__Muon_200BTag->Integral()); Energy_Quot__Muon_200BTag->Rebin();
+  TH1F *Energy_Quot__Muon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MinBias->Scale(1.0/Energy_Quot__Muon_200MinBias->Integral()); Energy_Quot__Muon_200MinBias->Rebin();
+  TH1F *Energy_Quot__Muon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MultiJet->Scale(1.0/Energy_Quot__Muon_200MultiJet->Integral()); Energy_Quot__Muon_200MultiJet->Rebin();
+
+  TH1F *Energy_Quot__Photon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_FJ->Scale(1.0/Energy_Quot__Photon_FJ->Integral()); Energy_Quot__Photon_FJ->Rebin();
+  TH1F *Energy_Quot__Photon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_Jet->Scale(1.0/Energy_Quot__Photon_Jet->Integral()); Energy_Quot__Photon_Jet->Rebin();
+  TH1F *Energy_Quot__Photon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_BTag->Scale(1.0/Energy_Quot__Photon_BTag->Integral()); Energy_Quot__Photon_BTag->Rebin();
+  TH1F *Energy_Quot__Photon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MinBias->Scale(1.0/Energy_Quot__Photon_MinBias->Integral()); Energy_Quot__Photon_MinBias->Rebin();
+  TH1F *Energy_Quot__Photon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MultiJet->Scale(1.0/Energy_Quot__Photon_MultiJet->Integral()); Energy_Quot__Photon_MultiJet->Rebin();
+
+  TH1F *Energy_Quot__Photon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_FJ200->Scale(1.0/Energy_Quot__Photon_FJ200->Integral()); Energy_Quot__Photon_FJ200->Rebin();
+  TH1F *Energy_Quot__Photon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_Jet200->Scale(1.0/Energy_Quot__Photon_Jet200->Integral()); Energy_Quot__Photon_Jet200->Rebin();
+  TH1F *Energy_Quot__Photon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_BTag200->Scale(1.0/Energy_Quot__Photon_BTag200->Integral()); Energy_Quot__Photon_BTag200->Rebin();
+  TH1F *Energy_Quot__Photon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MinBias200->Scale(1.0/Energy_Quot__Photon_MinBias200->Integral()); Energy_Quot__Photon_MinBias200->Rebin();
+  TH1F *Energy_Quot__Photon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MultiJet200->Scale(1.0/Energy_Quot__Photon_MultiJet200->Integral()); Energy_Quot__Photon_MultiJet200->Rebin();
+
+  TH1F *Energy_Quot__Photon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200FJ->Scale(1.0/Energy_Quot__Photon_200FJ->Integral()); Energy_Quot__Photon_200FJ->Rebin();
+  TH1F *Energy_Quot__Photon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200Jet->Scale(1.0/Energy_Quot__Photon_200Jet->Integral()); Energy_Quot__Photon_200Jet->Rebin();
+  TH1F *Energy_Quot__Photon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200BTag->Scale(1.0/Energy_Quot__Photon_200BTag->Integral()); Energy_Quot__Photon_200BTag->Rebin();
+  TH1F *Energy_Quot__Photon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MinBias->Scale(1.0/Energy_Quot__Photon_200MinBias->Integral()); Energy_Quot__Photon_200MinBias->Rebin();
+  TH1F *Energy_Quot__Photon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MultiJet->Scale(1.0/Energy_Quot__Photon_200MultiJet->Integral()); Energy_Quot__Photon_200MultiJet->Rebin();
+
+  TH1F *Energy_Quot__Electron_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_FJ->Scale(1.0/Energy_Quot__Electron_FJ->Integral()); Energy_Quot__Electron_FJ->Rebin();
+  TH1F *Energy_Quot__Electron_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_Jet->Scale(1.0/Energy_Quot__Electron_Jet->Integral()); Energy_Quot__Electron_Jet->Rebin();
+  TH1F *Energy_Quot__Electron_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_BTag->Scale(1.0/Energy_Quot__Electron_BTag->Integral()); Energy_Quot__Electron_BTag->Rebin();
+  TH1F *Energy_Quot__Electron_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MinBias->Scale(1.0/Energy_Quot__Electron_MinBias->Integral()); Energy_Quot__Electron_MinBias->Rebin();
+  TH1F *Energy_Quot__Electron_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MultiJet->Scale(1.0/Energy_Quot__Electron_MultiJet->Integral()); Energy_Quot__Electron_MultiJet->Rebin();
+
+  TH1F *Energy_Quot__Electron_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_FJ200->Scale(1.0/Energy_Quot__Electron_FJ200->Integral()); Energy_Quot__Electron_FJ200->Rebin();
+  TH1F *Energy_Quot__Electron_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_Jet200->Scale(1.0/Energy_Quot__Electron_Jet200->Integral()); Energy_Quot__Electron_Jet200->Rebin();
+  TH1F *Energy_Quot__Electron_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_BTag200->Scale(1.0/Energy_Quot__Electron_BTag200->Integral()); Energy_Quot__Electron_BTag200->Rebin();
+  TH1F *Energy_Quot__Electron_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MinBias200->Scale(1.0/Energy_Quot__Electron_MinBias200->Integral()); Energy_Quot__Electron_MinBias200->Rebin();
+  TH1F *Energy_Quot__Electron_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MultiJet200->Scale(1.0/Energy_Quot__Electron_MultiJet200->Integral()); Energy_Quot__Electron_MultiJet200->Rebin();
+
+  TH1F *Energy_Quot__Electron_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200FJ->Scale(1.0/Energy_Quot__Electron_200FJ->Integral()); Energy_Quot__Electron_200FJ->Rebin();
+  TH1F *Energy_Quot__Electron_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200Jet->Scale(1.0/Energy_Quot__Electron_200Jet->Integral()); Energy_Quot__Electron_200Jet->Rebin();
+  TH1F *Energy_Quot__Electron_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200BTag->Scale(1.0/Energy_Quot__Electron_200BTag->Integral()); Energy_Quot__Electron_200BTag->Rebin();
+  TH1F *Energy_Quot__Electron_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MinBias->Scale(1.0/Energy_Quot__Electron_200MinBias->Integral()); Energy_Quot__Electron_200MinBias->Rebin();
+  TH1F *Energy_Quot__Electron_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MultiJet->Scale(1.0/Energy_Quot__Electron_200MultiJet->Integral()); Energy_Quot__Electron_200MultiJet->Rebin();
+
+  TH1F *Energy_Quot__NeutralHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_FJ->Scale(1.0/Energy_Quot__NeutralHad_FJ->Integral()); Energy_Quot__NeutralHad_FJ->Rebin();
+  TH1F *Energy_Quot__NeutralHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_Jet->Scale(1.0/Energy_Quot__NeutralHad_Jet->Integral()); Energy_Quot__NeutralHad_Jet->Rebin();
+  TH1F *Energy_Quot__NeutralHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_BTag->Scale(1.0/Energy_Quot__NeutralHad_BTag->Integral()); Energy_Quot__NeutralHad_BTag->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MinBias->Scale(1.0/Energy_Quot__NeutralHad_MinBias->Integral()); Energy_Quot__NeutralHad_MinBias->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MultiJet->Scale(1.0/Energy_Quot__NeutralHad_MultiJet->Integral()); Energy_Quot__NeutralHad_MultiJet->Rebin();
+
+  TH1F *Energy_Quot__NeutralHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_FJ200->Scale(1.0/Energy_Quot__NeutralHad_FJ200->Integral()); Energy_Quot__NeutralHad_FJ200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_Jet200->Scale(1.0/Energy_Quot__NeutralHad_Jet200->Integral()); Energy_Quot__NeutralHad_Jet200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_BTag200->Scale(1.0/Energy_Quot__NeutralHad_BTag200->Integral()); Energy_Quot__NeutralHad_BTag200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MinBias200->Scale(1.0/Energy_Quot__NeutralHad_MinBias200->Integral()); Energy_Quot__NeutralHad_MinBias200->Rebin();
+  TH1F *Energy_Quot__NeutralHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MultiJet200->Scale(1.0/Energy_Quot__NeutralHad_MultiJet200->Integral()); Energy_Quot__NeutralHad_MultiJet200->Rebin();
+
+  TH1F *Energy_Quot__NeutralHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200FJ->Scale(1.0/Energy_Quot__NeutralHad_200FJ->Integral()); Energy_Quot__NeutralHad_200FJ->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200Jet->Scale(1.0/Energy_Quot__NeutralHad_200Jet->Integral()); Energy_Quot__NeutralHad_200Jet->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200BTag->Scale(1.0/Energy_Quot__NeutralHad_200BTag->Integral()); Energy_Quot__NeutralHad_200BTag->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MinBias->Scale(1.0/Energy_Quot__NeutralHad_200MinBias->Integral()); Energy_Quot__NeutralHad_200MinBias->Rebin();
+  TH1F *Energy_Quot__NeutralHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MultiJet->Scale(1.0/Energy_Quot__NeutralHad_200MultiJet->Integral()); Energy_Quot__NeutralHad_200MultiJet->Rebin();
+
+  TH1F *Energy_Quot__ChargedHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_FJ->Scale(1.0/Energy_Quot__ChargedHad_FJ->Integral()); Energy_Quot__ChargedHad_FJ->Rebin();
+  TH1F *Energy_Quot__ChargedHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_Jet->Scale(1.0/Energy_Quot__ChargedHad_Jet->Integral()); Energy_Quot__ChargedHad_Jet->Rebin();
+  TH1F *Energy_Quot__ChargedHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_BTag->Scale(1.0/Energy_Quot__ChargedHad_BTag->Integral()); Energy_Quot__ChargedHad_BTag->Rebin();
+  TH1F *Energy_Quot__ChargedHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MinBias->Scale(1.0/Energy_Quot__ChargedHad_MinBias->Integral()); Energy_Quot__ChargedHad_MinBias->Rebin();
+  TH1F *Energy_Quot__ChargedHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MultiJet->Scale(1.0/Energy_Quot__ChargedHad_MultiJet->Integral()); Energy_Quot__ChargedHad_MultiJet->Rebin();
+
+  TH1F *Energy_Quot__ChargedHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_FJ200->Scale(1.0/Energy_Quot__ChargedHad_FJ200->Integral()); Energy_Quot__ChargedHad_FJ200->Rebin();
+  TH1F *Energy_Quot__ChargedHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_Jet200->Scale(1.0/Energy_Quot__ChargedHad_Jet200->Integral()); Energy_Quot__ChargedHad_Jet200->Rebin();
+  TH1F *Energy_Quot__ChargedHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_BTag200->Scale(1.0/Energy_Quot__ChargedHad_BTag200->Integral()); Energy_Quot__ChargedHad_BTag200->Rebin();
+  TH1F *Energy_Quot__ChargedHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MinBias200->Scale(1.0/Energy_Quot__ChargedHad_MinBias200->Integral()); Energy_Quot__ChargedHad_MinBias200->Rebin();
+  TH1F *Energy_Quot__ChargedHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MultiJet200->Scale(1.0/Energy_Quot__ChargedHad_MultiJet200->Integral()); Energy_Quot__ChargedHad_MultiJet200->Rebin();
+
+  TH1F *Energy_Quot__ChargedHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200FJ->Scale(1.0/Energy_Quot__ChargedHad_200FJ->Integral()); Energy_Quot__ChargedHad_200FJ->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200Jet->Scale(1.0/Energy_Quot__ChargedHad_200Jet->Integral()); Energy_Quot__ChargedHad_200Jet->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200BTag->Scale(1.0/Energy_Quot__ChargedHad_200BTag->Integral()); Energy_Quot__ChargedHad_200BTag->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MinBias->Scale(1.0/Energy_Quot__ChargedHad_200MinBias->Integral()); Energy_Quot__ChargedHad_200MinBias->Rebin();
+  TH1F *Energy_Quot__ChargedHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MultiJet->Scale(1.0/Energy_Quot__ChargedHad_200MultiJet->Integral()); Energy_Quot__ChargedHad_200MultiJet->Rebin();
 
 
-    auto   legend = new TLegend(0.61,0.74,0.90,0.92);
-      legend->SetTextSize(0.04);
-      legend->AddEntry(ak5PFBTag__D_Jet_Jet, "Open-Data PFJets", "lp");
-      legend->AddEntry(ak5FastJet__D_Jet_Jet, "MC FastJet", "lp");
+
+  auto   Leg = new TLegend(0.74,0.76,1,1);    Leg->SetTextSize(0.04); Leg->SetFillStyle(0); Leg->SetBorderSize(0);
+  Leg->AddEntry(CLONE_E_Q__Muon_FJ, "MC FastJet", "p");
+  Leg->AddEntry(CLONE_E_Q__Muon_Jet, "Open-Data PF Jet", "p");
+  Leg->AddEntry(CLONE_E_Q__Muon_BTag, "Open-Data PF BTag", "p");
+  Leg->AddEntry(CLONE_E_Q__Muon_MinBias, "Open-Data PF MinBias", "p");
+  Leg->AddEntry(CLONE_E_Q__Muon_MultiJet, "Open-Data PF MultiJet", "p");
+
+  auto   Legend = new TLegend(0.74,0.76,1,1);    Legend->SetTextSize(0.04); Legend->SetFillStyle(0); Legend->SetBorderSize(0);
+  Legend->AddEntry(Energy_Quot__Muon_FJ, "MC FastJet", "lep");
+  Legend->AddEntry(Energy_Quot__Muon_Jet, "Open-Data PF Jet", "lep");
+  Legend->AddEntry(Energy_Quot__Muon_BTag, "Open-Data PF BTag", "lep");
+  Legend->AddEntry(Energy_Quot__Muon_MinBias, "Open-Data PF MinBias", "lep");
+  Legend->AddEntry(Energy_Quot__Muon_MultiJet, "Open-Data PF MultiJet", "lep");
 
 
-  //Creamos un liezo en el cual dibujarémos los histogramas sin modificar.
-  TCanvas* ak5PFJet__D_Jet_Jet = new TCanvas("DistanciaAngular","Distancia Angular de FastJet y PFJets por Evento",10,10,1920,1080);
-  ak5PFJet__D_Jet_Jet->SetFillColor(0);  ak5PFJet__D_Jet_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
 
-  // Esto es para modificar las etiquetas del canvas.
-  ak5PFBTag__D_Jet_Jet->SetTitle("Distancia Angular entre los Jets de cada Evento; Distancia Angular; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  ak5PFBTag__D_Jet_Jet->GetXaxis()->SetLabelSize(0.05); ak5PFBTag__D_Jet_Jet->GetYaxis()->SetLabelSize(0.05);
-  ak5PFBTag__D_Jet_Jet->GetXaxis()->SetTitleSize(0.05); ak5PFBTag__D_Jet_Jet->GetYaxis()->SetTitleSize(0.05);
-  ak5PFBTag__D_Jet_Jet->GetXaxis()->SetTitleOffset(1.0);ak5PFBTag__D_Jet_Jet->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  ak5PFBTag__D_Jet_Jet -> Draw("E1"); ak5PFBTag__D_Jet_Jet->SetLineColor(2);
-  ak5PFBTag__D_Jet_Jet->SetMarkerStyle(20); ak5PFBTag__D_Jet_Jet->SetMarkerColor(2);
-  ak5FastJet__D_Jet_Jet -> Draw("Esame"); ak5FastJet__D_Jet_Jet->SetLineColor(9);
-  ak5FastJet__D_Jet_Jet->SetMarkerStyle(21); ak5FastJet__D_Jet_Jet->SetMarkerColor(9);
-  legend -> Draw();
+  TF1 *Cero = new TF1("Cero","0",0,1.08); Cero->GetYaxis()->SetRangeUser(-2,2); Cero->SetLineColor(14); Cero->SetLineStyle(2); Cero->SetLineWidth(2);
+  Cero->GetXaxis()->SetTitleSize(0.15); Cero->GetYaxis()->SetTitleSize(0.12); Cero->GetYaxis()->SetTitleOffset(0.4);
+  Cero->GetXaxis()->SetLabelSize(0.15); Cero->GetYaxis()->SetLabelSize(0.1);
 
-  ak5PFJet__D_Jet_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/D_Jet-Jet FastJet y PFJets.png"); ak5PFJet__D_Jet_Jet -> Close();
+  TH1F *Energy_Quot__Error = new TH1F("", "", 100, 0, 2); Energy_Quot__Error->Reset("ICES"); Energy_Quot__Error->Rebin();
+  Energy_Quot__Error->SetMarkerSize(4); Energy_Quot__Error->SetLineWidth(2);
+
+
+
+  // auto   QuarkLegend = new TLegend(0.75,0.60,0.90,0.92);    QuarkLegend->SetTextSize(0.04);
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon_ak5FJ, "MC FastJet", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
+  //   QuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
+  //
+  // auto   ODQuarkLegend = new TLegend(0.68,0.60,0.90,0.92);    ODQuarkLegend->SetTextSize(0.04);
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon_ak5PFJet, "Open-Data PF Jet", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
+  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
+
+
+
+  TCanvas* Energy_Quotient__Muon_Jet  = new TCanvas("Energy_Quotient__Muon_Jet ","Energy_Quotient__Muon_Jet ",0,0,3240,2160);
+  TPad *H__Muon_Jet = new TPad("H__Muon_Jet","", 0, 0.25, 1, 1); H__Muon_Jet->SetMargin(0.11,0,0,0); H__Muon_Jet->SetLogy(); H__Muon_Jet->Draw();
+  TPad *E__Muon_Jet = new TPad("E__Muon_Jet","", 0, 0, 1, 0.25); E__Muon_Jet->SetMargin(0.11,0,0.33,0); E__Muon_Jet->Draw(); H__Muon_Jet->cd();
+  Energy_Quot__Muon_FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Muon_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Muon_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Muon_FJ->SetMarkerSize(6); Energy_Quot__Muon_FJ->SetMarkerColor(14); Energy_Quot__Muon_FJ->SetMarkerStyle(21);
+  Energy_Quot__Muon_FJ->DrawCopy("P");    Energy_Quot__Muon_FJ->SetMarkerColor(1);  Energy_Quot__Muon_FJ->SetMarkerStyle(25);
+  Energy_Quot__Muon_FJ->SetLineWidth(2);  Energy_Quot__Muon_FJ->SetLineColor(1);    Energy_Quot__Muon_FJ->DrawCopy("Esame");
+  Energy_Quot__Muon_Jet ->SetMarkerSize(6);  Energy_Quot__Muon_Jet ->SetMarkerColor(42);Energy_Quot__Muon_Jet ->SetMarkerStyle(23);
+  Energy_Quot__Muon_Jet ->DrawCopy("Psame"); Energy_Quot__Muon_Jet ->SetMarkerColor(2); Energy_Quot__Muon_Jet ->SetMarkerStyle(32);
+  Energy_Quot__Muon_Jet ->SetLineWidth(2);   Energy_Quot__Muon_Jet ->SetLineColor(2);   Energy_Quot__Muon_Jet ->DrawCopy("Esame");
+  Energy_Quot__Muon_BTag->SetMarkerSize(6);  Energy_Quot__Muon_BTag->SetMarkerColor(33);Energy_Quot__Muon_BTag->SetMarkerStyle(22);
+  Energy_Quot__Muon_BTag->DrawCopy("Psame"); Energy_Quot__Muon_BTag->SetMarkerColor(4); Energy_Quot__Muon_BTag->SetMarkerStyle(26);
+  Energy_Quot__Muon_BTag->SetLineWidth(2);   Energy_Quot__Muon_BTag->SetLineColor(4);   Energy_Quot__Muon_BTag->DrawCopy("Esame");
+  Energy_Quot__Muon_MinBias->SetMarkerSize(6);  Energy_Quot__Muon_MinBias->SetMarkerColor(5); Energy_Quot__Muon_MinBias->SetMarkerStyle(20);
+  Energy_Quot__Muon_MinBias->DrawCopy("Psame"); Energy_Quot__Muon_MinBias->SetMarkerColor(41);Energy_Quot__Muon_MinBias->SetMarkerStyle(24);
+  Energy_Quot__Muon_MinBias->SetLineWidth(2);   Energy_Quot__Muon_MinBias->SetLineColor(41);  Energy_Quot__Muon_MinBias->DrawCopy("Esame");
+  Energy_Quot__Muon_MultiJet->SetMarkerSize(6);  Energy_Quot__Muon_MultiJet->SetMarkerColor(8); Energy_Quot__Muon_MultiJet->SetMarkerStyle(34);
+  Energy_Quot__Muon_MultiJet->DrawCopy("Psame"); Energy_Quot__Muon_MultiJet->SetMarkerColor(32);Energy_Quot__Muon_MultiJet->SetMarkerStyle(28);
+  Energy_Quot__Muon_MultiJet->SetLineWidth(2);   Energy_Quot__Muon_MultiJet->SetLineColor(32);  Energy_Quot__Muon_MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Muon_Jet->cd();
+  Cero->SetTitle(";Energ#acute{i}a^{Mu#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_Jet );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Muon_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf(","pdf");
+  Energy_Quotient__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-Jet.pdf"); Energy_Quotient__Muon_Jet->Close();
+
+  TCanvas* Energy_Quotient__Muon_Jet200  = new TCanvas("Energy_Quotient__Muon_Jet200 ","Energy_Quotient__Muon_Jet200 ",0,0,3240,2160);
+  TPad *H__Muon_Jet200 = new TPad("H__Muon_Jet200","", 0, 0.25, 1, 1); H__Muon_Jet200->SetMargin(0.11,0,0,0); H__Muon_Jet200->SetLogy(); H__Muon_Jet200->Draw();
+  TPad *E__Muon_Jet200 = new TPad("E__Muon_Jet200","", 0, 0, 1, 0.25); E__Muon_Jet200->SetMargin(0.11,0,0.33,0); E__Muon_Jet200->Draw(); H__Muon_Jet200->cd();
+  Energy_Quot__Muon_FJ200->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Muon_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ200->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Muon_FJ200->SetMarkerSize(6); Energy_Quot__Muon_FJ200->SetMarkerColor(14); Energy_Quot__Muon_FJ200->SetMarkerStyle(21);
+  Energy_Quot__Muon_FJ200->DrawCopy("P");    Energy_Quot__Muon_FJ200->SetMarkerColor(1);  Energy_Quot__Muon_FJ200->SetMarkerStyle(25);
+  Energy_Quot__Muon_FJ200->SetLineWidth(2);  Energy_Quot__Muon_FJ200->SetLineColor(1);    Energy_Quot__Muon_FJ200->DrawCopy("Esame");
+  Energy_Quot__Muon_Jet200 ->SetMarkerSize(6);  Energy_Quot__Muon_Jet200 ->SetMarkerColor(42);Energy_Quot__Muon_Jet200 ->SetMarkerStyle(23);
+  Energy_Quot__Muon_Jet200 ->DrawCopy("Psame"); Energy_Quot__Muon_Jet200 ->SetMarkerColor(2); Energy_Quot__Muon_Jet200 ->SetMarkerStyle(32);
+  Energy_Quot__Muon_Jet200 ->SetLineWidth(2);   Energy_Quot__Muon_Jet200 ->SetLineColor(2);   Energy_Quot__Muon_Jet200 ->DrawCopy("Esame");
+  Energy_Quot__Muon_BTag200->SetMarkerSize(6);  Energy_Quot__Muon_BTag200->SetMarkerColor(33);Energy_Quot__Muon_BTag200->SetMarkerStyle(22);
+  Energy_Quot__Muon_BTag200->DrawCopy("Psame"); Energy_Quot__Muon_BTag200->SetMarkerColor(4); Energy_Quot__Muon_BTag200->SetMarkerStyle(26);
+  Energy_Quot__Muon_BTag200->SetLineWidth(2);   Energy_Quot__Muon_BTag200->SetLineColor(4);   Energy_Quot__Muon_BTag200->DrawCopy("Esame");
+  Energy_Quot__Muon_MinBias200->SetMarkerSize(6);  Energy_Quot__Muon_MinBias200->SetMarkerColor(5); Energy_Quot__Muon_MinBias200->SetMarkerStyle(20);
+  Energy_Quot__Muon_MinBias200->DrawCopy("Psame"); Energy_Quot__Muon_MinBias200->SetMarkerColor(41);Energy_Quot__Muon_MinBias200->SetMarkerStyle(24);
+  Energy_Quot__Muon_MinBias200->SetLineWidth(2);   Energy_Quot__Muon_MinBias200->SetLineColor(41);  Energy_Quot__Muon_MinBias200->DrawCopy("Esame");
+  Energy_Quot__Muon_MultiJet200->SetMarkerSize(6);  Energy_Quot__Muon_MultiJet200->SetMarkerColor(8); Energy_Quot__Muon_MultiJet200->SetMarkerStyle(34);
+  Energy_Quot__Muon_MultiJet200->DrawCopy("Psame"); Energy_Quot__Muon_MultiJet200->SetMarkerColor(32);Energy_Quot__Muon_MultiJet200->SetMarkerStyle(28);
+  Energy_Quot__Muon_MultiJet200->SetLineWidth(2);   Energy_Quot__Muon_MultiJet200->SetLineColor(32);  Energy_Quot__Muon_MultiJet200->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Muon_Jet200->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_Jet200 );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_BTag200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MinBias200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MultiJet200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Muon_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Muon_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-Jet200.pdf"); Energy_Quotient__Muon_Jet200->Close();
+
+  TCanvas* Energy_Quotient__Muon_200Jet = new TCanvas("Energy_Quotient__Muon_200Jet","Energy_Quotient__Muon_200Jet",0,0,3240,2160);
+  TPad *H__Muon_200Jet = new TPad("H__Muon_200Jet","", 0, 0.25, 1, 1); H__Muon_200Jet->SetMargin(0.11,0,0,0); H__Muon_200Jet->SetLogy(); H__Muon_200Jet->Draw();
+  TPad *E__Muon_200Jet = new TPad("E__Muon_200Jet","", 0, 0, 1, 0.25); E__Muon_200Jet->SetMargin(0.11,0,0.33,0); E__Muon_200Jet->Draw(); H__Muon_200Jet->cd();
+  Energy_Quot__Muon_200FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Muon_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_200FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Muon_200FJ->SetMarkerSize(6); Energy_Quot__Muon_200FJ->SetMarkerColor(14); Energy_Quot__Muon_200FJ->SetMarkerStyle(21);
+  Energy_Quot__Muon_200FJ->DrawCopy("P");    Energy_Quot__Muon_200FJ->SetMarkerColor(1);  Energy_Quot__Muon_200FJ->SetMarkerStyle(25);
+  Energy_Quot__Muon_200FJ->SetLineWidth(2);  Energy_Quot__Muon_200FJ->SetLineColor(1);    Energy_Quot__Muon_200FJ->DrawCopy("Esame");
+  Energy_Quot__Muon_200Jet->SetMarkerSize(6);  Energy_Quot__Muon_200Jet->SetMarkerColor(42);Energy_Quot__Muon_200Jet->SetMarkerStyle(23);
+  Energy_Quot__Muon_200Jet->DrawCopy("Psame"); Energy_Quot__Muon_200Jet->SetMarkerColor(2); Energy_Quot__Muon_200Jet->SetMarkerStyle(32);
+  Energy_Quot__Muon_200Jet->SetLineWidth(2);   Energy_Quot__Muon_200Jet->SetLineColor(2);   Energy_Quot__Muon_200Jet->DrawCopy("Esame");
+  Energy_Quot__Muon_200BTag->SetMarkerSize(6);  Energy_Quot__Muon_200BTag->SetMarkerColor(33);Energy_Quot__Muon_200BTag->SetMarkerStyle(22);
+  Energy_Quot__Muon_200BTag->DrawCopy("Psame"); Energy_Quot__Muon_200BTag->SetMarkerColor(4); Energy_Quot__Muon_200BTag->SetMarkerStyle(26);
+  Energy_Quot__Muon_200BTag->SetLineWidth(2);   Energy_Quot__Muon_200BTag->SetLineColor(4);   Energy_Quot__Muon_200BTag->DrawCopy("Esame");
+  Energy_Quot__Muon_200MinBias->SetMarkerSize(6);  Energy_Quot__Muon_200MinBias->SetMarkerColor(5); Energy_Quot__Muon_200MinBias->SetMarkerStyle(20);
+  Energy_Quot__Muon_200MinBias->DrawCopy("Psame"); Energy_Quot__Muon_200MinBias->SetMarkerColor(41);Energy_Quot__Muon_200MinBias->SetMarkerStyle(24);
+  Energy_Quot__Muon_200MinBias->SetLineWidth(2);   Energy_Quot__Muon_200MinBias->SetLineColor(41);  Energy_Quot__Muon_200MinBias->DrawCopy("Esame");
+  Energy_Quot__Muon_200MultiJet->SetMarkerSize(6);  Energy_Quot__Muon_200MultiJet->SetMarkerColor(8); Energy_Quot__Muon_200MultiJet->SetMarkerStyle(34);
+  Energy_Quot__Muon_200MultiJet->DrawCopy("Psame"); Energy_Quot__Muon_200MultiJet->SetMarkerColor(32);Energy_Quot__Muon_200MultiJet->SetMarkerStyle(28);
+  Energy_Quot__Muon_200MultiJet->SetLineWidth(2);   Energy_Quot__Muon_200MultiJet->SetLineColor(32);  Energy_Quot__Muon_200MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Muon_200Jet->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200Jet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Muon_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Muon_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-200Jet.pdf"); Energy_Quotient__Muon_200Jet->Close();
+
+
+  TCanvas* Energy_Quotient__Photon_Jet  = new TCanvas("Energy_Quotient__Photon_Jet ","Energy_Quotient__Photon_Jet ",0,0,3240,2160);
+  TPad *H__Photon_Jet = new TPad("H__Photon_Jet","", 0, 0.25, 1, 1); H__Photon_Jet->SetMargin(0.11,0,0,0); H__Photon_Jet->SetLogy(); H__Photon_Jet->Draw();
+  TPad *E__Photon_Jet = new TPad("E__Photon_Jet","", 0, 0, 1, 0.25); E__Photon_Jet->SetMargin(0.11,0,0.33,0); E__Photon_Jet->Draw(); H__Photon_Jet->cd();
+  Energy_Quot__Photon_FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Photon_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Photon_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Photon_FJ->SetMarkerSize(6); Energy_Quot__Photon_FJ->SetMarkerColor(14); Energy_Quot__Photon_FJ->SetMarkerStyle(21);
+  Energy_Quot__Photon_FJ->DrawCopy("P");    Energy_Quot__Photon_FJ->SetMarkerColor(1);  Energy_Quot__Photon_FJ->SetMarkerStyle(25);
+  Energy_Quot__Photon_FJ->SetLineWidth(2);  Energy_Quot__Photon_FJ->SetLineColor(1);    Energy_Quot__Photon_FJ->DrawCopy("Esame");
+  Energy_Quot__Photon_Jet ->SetMarkerSize(6);  Energy_Quot__Photon_Jet ->SetMarkerColor(42);Energy_Quot__Photon_Jet ->SetMarkerStyle(23);
+  Energy_Quot__Photon_Jet ->DrawCopy("Psame"); Energy_Quot__Photon_Jet ->SetMarkerColor(2); Energy_Quot__Photon_Jet ->SetMarkerStyle(32);
+  Energy_Quot__Photon_Jet ->SetLineWidth(2);   Energy_Quot__Photon_Jet ->SetLineColor(2);   Energy_Quot__Photon_Jet ->DrawCopy("Esame");
+  Energy_Quot__Photon_BTag->SetMarkerSize(6);  Energy_Quot__Photon_BTag->SetMarkerColor(33);Energy_Quot__Photon_BTag->SetMarkerStyle(22);
+  Energy_Quot__Photon_BTag->DrawCopy("Psame"); Energy_Quot__Photon_BTag->SetMarkerColor(4); Energy_Quot__Photon_BTag->SetMarkerStyle(26);
+  Energy_Quot__Photon_BTag->SetLineWidth(2);   Energy_Quot__Photon_BTag->SetLineColor(4);   Energy_Quot__Photon_BTag->DrawCopy("Esame");
+  Energy_Quot__Photon_MinBias->SetMarkerSize(6);  Energy_Quot__Photon_MinBias->SetMarkerColor(5); Energy_Quot__Photon_MinBias->SetMarkerStyle(20);
+  Energy_Quot__Photon_MinBias->DrawCopy("Psame"); Energy_Quot__Photon_MinBias->SetMarkerColor(41);Energy_Quot__Photon_MinBias->SetMarkerStyle(24);
+  Energy_Quot__Photon_MinBias->SetLineWidth(2);   Energy_Quot__Photon_MinBias->SetLineColor(41);  Energy_Quot__Photon_MinBias->DrawCopy("Esame");
+  Energy_Quot__Photon_MultiJet->SetMarkerSize(6);  Energy_Quot__Photon_MultiJet->SetMarkerColor(8); Energy_Quot__Photon_MultiJet->SetMarkerStyle(34);
+  Energy_Quot__Photon_MultiJet->DrawCopy("Psame"); Energy_Quot__Photon_MultiJet->SetMarkerColor(32);Energy_Quot__Photon_MultiJet->SetMarkerStyle(28);
+  Energy_Quot__Photon_MultiJet->SetLineWidth(2);   Energy_Quot__Photon_MultiJet->SetLineColor(32);  Energy_Quot__Photon_MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Photon_Jet->cd();
+  Cero->SetTitle(";Energ#acute{i}a^{Fot#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.4,0.4);
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_Jet );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Photon_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Photon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-Jet.pdf"); Energy_Quotient__Photon_Jet->Close();
+
+  TCanvas* Energy_Quotient__Photon_Jet200  = new TCanvas("Energy_Quotient__Photon_Jet200 ","Energy_Quotient__Photon_Jet200 ",0,0,3240,2160);
+  TPad *H__Photon_Jet200 = new TPad("H__Photon_Jet200","", 0, 0.25, 1, 1); H__Photon_Jet200->SetMargin(0.11,0,0,0); H__Photon_Jet200->SetLogy(); H__Photon_Jet200->Draw();
+  TPad *E__Photon_Jet200 = new TPad("E__Photon_Jet200","", 0, 0, 1, 0.25); E__Photon_Jet200->SetMargin(0.11,0,0.33,0); E__Photon_Jet200->Draw(); H__Photon_Jet200->cd();
+  Energy_Quot__Photon_FJ200->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Photon_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ200->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Photon_FJ200->SetMarkerSize(6); Energy_Quot__Photon_FJ200->SetMarkerColor(14); Energy_Quot__Photon_FJ200->SetMarkerStyle(21);
+  Energy_Quot__Photon_FJ200->DrawCopy("P");    Energy_Quot__Photon_FJ200->SetMarkerColor(1);  Energy_Quot__Photon_FJ200->SetMarkerStyle(25);
+  Energy_Quot__Photon_FJ200->SetLineWidth(2);  Energy_Quot__Photon_FJ200->SetLineColor(1);    Energy_Quot__Photon_FJ200->DrawCopy("Esame");
+  Energy_Quot__Photon_Jet200 ->SetMarkerSize(6);  Energy_Quot__Photon_Jet200 ->SetMarkerColor(42);Energy_Quot__Photon_Jet200 ->SetMarkerStyle(23);
+  Energy_Quot__Photon_Jet200 ->DrawCopy("Psame"); Energy_Quot__Photon_Jet200 ->SetMarkerColor(2); Energy_Quot__Photon_Jet200 ->SetMarkerStyle(32);
+  Energy_Quot__Photon_Jet200 ->SetLineWidth(2);   Energy_Quot__Photon_Jet200 ->SetLineColor(2);   Energy_Quot__Photon_Jet200 ->DrawCopy("Esame");
+  Energy_Quot__Photon_BTag200->SetMarkerSize(6);  Energy_Quot__Photon_BTag200->SetMarkerColor(33);Energy_Quot__Photon_BTag200->SetMarkerStyle(22);
+  Energy_Quot__Photon_BTag200->DrawCopy("Psame"); Energy_Quot__Photon_BTag200->SetMarkerColor(4); Energy_Quot__Photon_BTag200->SetMarkerStyle(26);
+  Energy_Quot__Photon_BTag200->SetLineWidth(2);   Energy_Quot__Photon_BTag200->SetLineColor(4);   Energy_Quot__Photon_BTag200->DrawCopy("Esame");
+  Energy_Quot__Photon_MinBias200->SetMarkerSize(6);  Energy_Quot__Photon_MinBias200->SetMarkerColor(5); Energy_Quot__Photon_MinBias200->SetMarkerStyle(20);
+  Energy_Quot__Photon_MinBias200->DrawCopy("Psame"); Energy_Quot__Photon_MinBias200->SetMarkerColor(41);Energy_Quot__Photon_MinBias200->SetMarkerStyle(24);
+  Energy_Quot__Photon_MinBias200->SetLineWidth(2);   Energy_Quot__Photon_MinBias200->SetLineColor(41);  Energy_Quot__Photon_MinBias200->DrawCopy("Esame");
+  Energy_Quot__Photon_MultiJet200->SetMarkerSize(6);  Energy_Quot__Photon_MultiJet200->SetMarkerColor(8); Energy_Quot__Photon_MultiJet200->SetMarkerStyle(34);
+  Energy_Quot__Photon_MultiJet200->DrawCopy("Psame"); Energy_Quot__Photon_MultiJet200->SetMarkerColor(32);Energy_Quot__Photon_MultiJet200->SetMarkerStyle(28);
+  Energy_Quot__Photon_MultiJet200->SetLineWidth(2);   Energy_Quot__Photon_MultiJet200->SetLineColor(32);  Energy_Quot__Photon_MultiJet200->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Photon_Jet200->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_Jet200 );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_BTag200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MinBias200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MultiJet200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Photon_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Photon_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-Jet200.pdf"); Energy_Quotient__Photon_Jet200->Close();
+
+  TCanvas* Energy_Quotient__Photon_200Jet = new TCanvas("Energy_Quotient__Photon_200Jet","Energy_Quotient__Photon_200Jet",0,0,3240,2160);
+  TPad *H__Photon_200Jet = new TPad("H__Photon_200Jet","", 0, 0.25, 1, 1); H__Photon_200Jet->SetMargin(0.11,0,0,0); H__Photon_200Jet->SetLogy(); H__Photon_200Jet->Draw();
+  TPad *E__Photon_200Jet = new TPad("E__Photon_200Jet","", 0, 0, 1, 0.25); E__Photon_200Jet->SetMargin(0.11,0,0.33,0); E__Photon_200Jet->Draw(); H__Photon_200Jet->cd();
+  Energy_Quot__Photon_200FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Photon_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_200FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Photon_200FJ->SetMarkerSize(6); Energy_Quot__Photon_200FJ->SetMarkerColor(14); Energy_Quot__Photon_200FJ->SetMarkerStyle(21);
+  Energy_Quot__Photon_200FJ->DrawCopy("P");    Energy_Quot__Photon_200FJ->SetMarkerColor(1);  Energy_Quot__Photon_200FJ->SetMarkerStyle(25);
+  Energy_Quot__Photon_200FJ->SetLineWidth(2);  Energy_Quot__Photon_200FJ->SetLineColor(1);    Energy_Quot__Photon_200FJ->DrawCopy("Esame");
+  Energy_Quot__Photon_200Jet->SetMarkerSize(6);  Energy_Quot__Photon_200Jet->SetMarkerColor(42);Energy_Quot__Photon_200Jet->SetMarkerStyle(23);
+  Energy_Quot__Photon_200Jet->DrawCopy("Psame"); Energy_Quot__Photon_200Jet->SetMarkerColor(2); Energy_Quot__Photon_200Jet->SetMarkerStyle(32);
+  Energy_Quot__Photon_200Jet->SetLineWidth(2);   Energy_Quot__Photon_200Jet->SetLineColor(2);   Energy_Quot__Photon_200Jet->DrawCopy("Esame");
+  Energy_Quot__Photon_200BTag->SetMarkerSize(6);  Energy_Quot__Photon_200BTag->SetMarkerColor(33);Energy_Quot__Photon_200BTag->SetMarkerStyle(22);
+  Energy_Quot__Photon_200BTag->DrawCopy("Psame"); Energy_Quot__Photon_200BTag->SetMarkerColor(4); Energy_Quot__Photon_200BTag->SetMarkerStyle(26);
+  Energy_Quot__Photon_200BTag->SetLineWidth(2);   Energy_Quot__Photon_200BTag->SetLineColor(4);   Energy_Quot__Photon_200BTag->DrawCopy("Esame");
+  Energy_Quot__Photon_200MinBias->SetMarkerSize(6);  Energy_Quot__Photon_200MinBias->SetMarkerColor(5); Energy_Quot__Photon_200MinBias->SetMarkerStyle(20);
+  Energy_Quot__Photon_200MinBias->DrawCopy("Psame"); Energy_Quot__Photon_200MinBias->SetMarkerColor(41);Energy_Quot__Photon_200MinBias->SetMarkerStyle(24);
+  Energy_Quot__Photon_200MinBias->SetLineWidth(2);   Energy_Quot__Photon_200MinBias->SetLineColor(41);  Energy_Quot__Photon_200MinBias->DrawCopy("Esame");
+  Energy_Quot__Photon_200MultiJet->SetMarkerSize(6);  Energy_Quot__Photon_200MultiJet->SetMarkerColor(8); Energy_Quot__Photon_200MultiJet->SetMarkerStyle(34);
+  Energy_Quot__Photon_200MultiJet->DrawCopy("Psame"); Energy_Quot__Photon_200MultiJet->SetMarkerColor(32);Energy_Quot__Photon_200MultiJet->SetMarkerStyle(28);
+  Energy_Quot__Photon_200MultiJet->SetLineWidth(2);   Energy_Quot__Photon_200MultiJet->SetLineColor(32);  Energy_Quot__Photon_200MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Photon_200Jet->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200Jet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Photon_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Photon_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-200Jet.pdf"); Energy_Quotient__Photon_200Jet->Close();
+
+
+  TCanvas* Energy_Quotient__Electron_Jet  = new TCanvas("Energy_Quotient__Electron_Jet ","Energy_Quotient__Electron_Jet ",0,0,3240,2160);
+  TPad *H__Electron_Jet = new TPad("H__Electron_Jet","", 0, 0.25, 1, 1); H__Electron_Jet->SetMargin(0.11,0,0,0); H__Electron_Jet->SetLogy(); H__Electron_Jet->Draw();
+  TPad *E__Electron_Jet = new TPad("E__Electron_Jet","", 0, 0, 1, 0.25); E__Electron_Jet->SetMargin(0.11,0,0.33,0); E__Electron_Jet->Draw(); H__Electron_Jet->cd();
+  Energy_Quot__Electron_FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Electron_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Electron_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Electron_FJ->SetMarkerSize(6); Energy_Quot__Electron_FJ->SetMarkerColor(14); Energy_Quot__Electron_FJ->SetMarkerStyle(21);
+  Energy_Quot__Electron_FJ->DrawCopy("P");    Energy_Quot__Electron_FJ->SetMarkerColor(1);  Energy_Quot__Electron_FJ->SetMarkerStyle(25);
+  Energy_Quot__Electron_FJ->SetLineWidth(2);  Energy_Quot__Electron_FJ->SetLineColor(1);    Energy_Quot__Electron_FJ->DrawCopy("Esame");
+  Energy_Quot__Electron_Jet ->SetMarkerSize(6);  Energy_Quot__Electron_Jet ->SetMarkerColor(42);Energy_Quot__Electron_Jet ->SetMarkerStyle(23);
+  Energy_Quot__Electron_Jet ->DrawCopy("Psame"); Energy_Quot__Electron_Jet ->SetMarkerColor(2); Energy_Quot__Electron_Jet ->SetMarkerStyle(32);
+  Energy_Quot__Electron_Jet ->SetLineWidth(2);   Energy_Quot__Electron_Jet ->SetLineColor(2);   Energy_Quot__Electron_Jet ->DrawCopy("Esame");
+  Energy_Quot__Electron_BTag->SetMarkerSize(6);  Energy_Quot__Electron_BTag->SetMarkerColor(33);Energy_Quot__Electron_BTag->SetMarkerStyle(22);
+  Energy_Quot__Electron_BTag->DrawCopy("Psame"); Energy_Quot__Electron_BTag->SetMarkerColor(4); Energy_Quot__Electron_BTag->SetMarkerStyle(26);
+  Energy_Quot__Electron_BTag->SetLineWidth(2);   Energy_Quot__Electron_BTag->SetLineColor(4);   Energy_Quot__Electron_BTag->DrawCopy("Esame");
+  Energy_Quot__Electron_MinBias->SetMarkerSize(6);  Energy_Quot__Electron_MinBias->SetMarkerColor(5); Energy_Quot__Electron_MinBias->SetMarkerStyle(20);
+  Energy_Quot__Electron_MinBias->DrawCopy("Psame"); Energy_Quot__Electron_MinBias->SetMarkerColor(41);Energy_Quot__Electron_MinBias->SetMarkerStyle(24);
+  Energy_Quot__Electron_MinBias->SetLineWidth(2);   Energy_Quot__Electron_MinBias->SetLineColor(41);  Energy_Quot__Electron_MinBias->DrawCopy("Esame");
+  Energy_Quot__Electron_MultiJet->SetMarkerSize(6);  Energy_Quot__Electron_MultiJet->SetMarkerColor(8); Energy_Quot__Electron_MultiJet->SetMarkerStyle(34);
+  Energy_Quot__Electron_MultiJet->DrawCopy("Psame"); Energy_Quot__Electron_MultiJet->SetMarkerColor(32);Energy_Quot__Electron_MultiJet->SetMarkerStyle(28);
+  Energy_Quot__Electron_MultiJet->SetLineWidth(2);   Energy_Quot__Electron_MultiJet->SetLineColor(32);  Energy_Quot__Electron_MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Electron_Jet->cd();
+  Cero->SetTitle(";Energ#acute{i}a^{Electr#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_Jet );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Electron_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-Jet.pdf"); Energy_Quotient__Electron_Jet->Close();
+
+  TCanvas* Energy_Quotient__Electron_Jet200  = new TCanvas("Energy_Quotient__Electron_Jet200 ","Energy_Quotient__Electron_Jet200 ",0,0,3240,2160);
+  TPad *H__Electron_Jet200 = new TPad("H__Electron_Jet200","", 0, 0.25, 1, 1); H__Electron_Jet200->SetMargin(0.11,0,0,0); H__Electron_Jet200->SetLogy(); H__Electron_Jet200->Draw();
+  TPad *E__Electron_Jet200 = new TPad("E__Electron_Jet200","", 0, 0, 1, 0.25); E__Electron_Jet200->SetMargin(0.11,0,0.33,0); E__Electron_Jet200->Draw(); H__Electron_Jet200->cd();
+  Energy_Quot__Electron_FJ200->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Electron_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ200->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Electron_FJ200->SetMarkerSize(6); Energy_Quot__Electron_FJ200->SetMarkerColor(14); Energy_Quot__Electron_FJ200->SetMarkerStyle(21);
+  Energy_Quot__Electron_FJ200->DrawCopy("P");    Energy_Quot__Electron_FJ200->SetMarkerColor(1);  Energy_Quot__Electron_FJ200->SetMarkerStyle(25);
+  Energy_Quot__Electron_FJ200->SetLineWidth(2);  Energy_Quot__Electron_FJ200->SetLineColor(1);    Energy_Quot__Electron_FJ200->DrawCopy("Esame");
+  Energy_Quot__Electron_Jet200 ->SetMarkerSize(6);  Energy_Quot__Electron_Jet200 ->SetMarkerColor(42);Energy_Quot__Electron_Jet200 ->SetMarkerStyle(23);
+  Energy_Quot__Electron_Jet200 ->DrawCopy("Psame"); Energy_Quot__Electron_Jet200 ->SetMarkerColor(2); Energy_Quot__Electron_Jet200 ->SetMarkerStyle(32);
+  Energy_Quot__Electron_Jet200 ->SetLineWidth(2);   Energy_Quot__Electron_Jet200 ->SetLineColor(2);   Energy_Quot__Electron_Jet200 ->DrawCopy("Esame");
+  Energy_Quot__Electron_BTag200->SetMarkerSize(6);  Energy_Quot__Electron_BTag200->SetMarkerColor(33);Energy_Quot__Electron_BTag200->SetMarkerStyle(22);
+  Energy_Quot__Electron_BTag200->DrawCopy("Psame"); Energy_Quot__Electron_BTag200->SetMarkerColor(4); Energy_Quot__Electron_BTag200->SetMarkerStyle(26);
+  Energy_Quot__Electron_BTag200->SetLineWidth(2);   Energy_Quot__Electron_BTag200->SetLineColor(4);   Energy_Quot__Electron_BTag200->DrawCopy("Esame");
+  Energy_Quot__Electron_MinBias200->SetMarkerSize(6);  Energy_Quot__Electron_MinBias200->SetMarkerColor(5); Energy_Quot__Electron_MinBias200->SetMarkerStyle(20);
+  Energy_Quot__Electron_MinBias200->DrawCopy("Psame"); Energy_Quot__Electron_MinBias200->SetMarkerColor(41);Energy_Quot__Electron_MinBias200->SetMarkerStyle(24);
+  Energy_Quot__Electron_MinBias200->SetLineWidth(2);   Energy_Quot__Electron_MinBias200->SetLineColor(41);  Energy_Quot__Electron_MinBias200->DrawCopy("Esame");
+  Energy_Quot__Electron_MultiJet200->SetMarkerSize(6);  Energy_Quot__Electron_MultiJet200->SetMarkerColor(8); Energy_Quot__Electron_MultiJet200->SetMarkerStyle(34);
+  Energy_Quot__Electron_MultiJet200->DrawCopy("Psame"); Energy_Quot__Electron_MultiJet200->SetMarkerColor(32);Energy_Quot__Electron_MultiJet200->SetMarkerStyle(28);
+  Energy_Quot__Electron_MultiJet200->SetLineWidth(2);   Energy_Quot__Electron_MultiJet200->SetLineColor(32);  Energy_Quot__Electron_MultiJet200->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Electron_Jet200->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_Jet200 );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_BTag200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MinBias200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MultiJet200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Electron_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Electron_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-Jet200.pdf"); Energy_Quotient__Electron_Jet200->Close();
+
+  TCanvas* Energy_Quotient__Electron_200Jet = new TCanvas("Energy_Quotient__Electron_200Jet","Energy_Quotient__Electron_200Jet",0,0,3240,2160);
+  TPad *H__Electron_200Jet = new TPad("H__Electron_200Jet","", 0, 0.25, 1, 1); H__Electron_200Jet->SetMargin(0.11,0,0,0); H__Electron_200Jet->SetLogy(); H__Electron_200Jet->Draw();
+  TPad *E__Electron_200Jet = new TPad("E__Electron_200Jet","", 0, 0, 1, 0.25); E__Electron_200Jet->SetMargin(0.11,0,0.33,0); E__Electron_200Jet->Draw(); H__Electron_200Jet->cd();
+  Energy_Quot__Electron_200FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__Electron_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_200FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__Electron_200FJ->SetMarkerSize(6); Energy_Quot__Electron_200FJ->SetMarkerColor(14); Energy_Quot__Electron_200FJ->SetMarkerStyle(21);
+  Energy_Quot__Electron_200FJ->DrawCopy("P");    Energy_Quot__Electron_200FJ->SetMarkerColor(1);  Energy_Quot__Electron_200FJ->SetMarkerStyle(25);
+  Energy_Quot__Electron_200FJ->SetLineWidth(2);  Energy_Quot__Electron_200FJ->SetLineColor(1);    Energy_Quot__Electron_200FJ->DrawCopy("Esame");
+  Energy_Quot__Electron_200Jet->SetMarkerSize(6);  Energy_Quot__Electron_200Jet->SetMarkerColor(42);Energy_Quot__Electron_200Jet->SetMarkerStyle(23);
+  Energy_Quot__Electron_200Jet->DrawCopy("Psame"); Energy_Quot__Electron_200Jet->SetMarkerColor(2); Energy_Quot__Electron_200Jet->SetMarkerStyle(32);
+  Energy_Quot__Electron_200Jet->SetLineWidth(2);   Energy_Quot__Electron_200Jet->SetLineColor(2);   Energy_Quot__Electron_200Jet->DrawCopy("Esame");
+  Energy_Quot__Electron_200BTag->SetMarkerSize(6);  Energy_Quot__Electron_200BTag->SetMarkerColor(33);Energy_Quot__Electron_200BTag->SetMarkerStyle(22);
+  Energy_Quot__Electron_200BTag->DrawCopy("Psame"); Energy_Quot__Electron_200BTag->SetMarkerColor(4); Energy_Quot__Electron_200BTag->SetMarkerStyle(26);
+  Energy_Quot__Electron_200BTag->SetLineWidth(2);   Energy_Quot__Electron_200BTag->SetLineColor(4);   Energy_Quot__Electron_200BTag->DrawCopy("Esame");
+  Energy_Quot__Electron_200MinBias->SetMarkerSize(6);  Energy_Quot__Electron_200MinBias->SetMarkerColor(5); Energy_Quot__Electron_200MinBias->SetMarkerStyle(20);
+  Energy_Quot__Electron_200MinBias->DrawCopy("Psame"); Energy_Quot__Electron_200MinBias->SetMarkerColor(41);Energy_Quot__Electron_200MinBias->SetMarkerStyle(24);
+  Energy_Quot__Electron_200MinBias->SetLineWidth(2);   Energy_Quot__Electron_200MinBias->SetLineColor(41);  Energy_Quot__Electron_200MinBias->DrawCopy("Esame");
+  Energy_Quot__Electron_200MultiJet->SetMarkerSize(6);  Energy_Quot__Electron_200MultiJet->SetMarkerColor(8); Energy_Quot__Electron_200MultiJet->SetMarkerStyle(34);
+  Energy_Quot__Electron_200MultiJet->DrawCopy("Psame"); Energy_Quot__Electron_200MultiJet->SetMarkerColor(32);Energy_Quot__Electron_200MultiJet->SetMarkerStyle(28);
+  Energy_Quot__Electron_200MultiJet->SetLineWidth(2);   Energy_Quot__Electron_200MultiJet->SetLineColor(32);  Energy_Quot__Electron_200MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__Electron_200Jet->cd(); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.6,1.2);
+  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200Jet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__Electron_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__Electron_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-200Jet.pdf"); Energy_Quotient__Electron_200Jet->Close();
+
+
+  TCanvas* Energy_Quotient__NeutralHad_Jet  = new TCanvas("Energy_Quotient__NeutralHad_Jet ","Energy_Quotient__NeutralHad_Jet ",0,0,3240,2160);
+  TPad *H__NeutralHad_Jet = new TPad("H__NeutralHad_Jet","", 0, 0.25, 1, 1); H__NeutralHad_Jet->SetMargin(0.11,0,0,0); H__NeutralHad_Jet->SetLogy(); H__NeutralHad_Jet->Draw();
+  TPad *E__NeutralHad_Jet = new TPad("E__NeutralHad_Jet","", 0, 0, 1, 0.25); E__NeutralHad_Jet->SetMargin(0.11,0,0.33,0); E__NeutralHad_Jet->Draw(); H__NeutralHad_Jet->cd();
+  Energy_Quot__NeutralHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__NeutralHad_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__NeutralHad_FJ->SetMarkerSize(6); Energy_Quot__NeutralHad_FJ->SetMarkerColor(14); Energy_Quot__NeutralHad_FJ->SetMarkerStyle(21);
+  Energy_Quot__NeutralHad_FJ->DrawCopy("P");    Energy_Quot__NeutralHad_FJ->SetMarkerColor(1);  Energy_Quot__NeutralHad_FJ->SetMarkerStyle(25);
+  Energy_Quot__NeutralHad_FJ->SetLineWidth(2);  Energy_Quot__NeutralHad_FJ->SetLineColor(1);    Energy_Quot__NeutralHad_FJ->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_Jet ->SetMarkerSize(6);  Energy_Quot__NeutralHad_Jet ->SetMarkerColor(42);Energy_Quot__NeutralHad_Jet ->SetMarkerStyle(23);
+  Energy_Quot__NeutralHad_Jet ->DrawCopy("Psame"); Energy_Quot__NeutralHad_Jet ->SetMarkerColor(2); Energy_Quot__NeutralHad_Jet ->SetMarkerStyle(32);
+  Energy_Quot__NeutralHad_Jet ->SetLineWidth(2);   Energy_Quot__NeutralHad_Jet ->SetLineColor(2);   Energy_Quot__NeutralHad_Jet ->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_BTag->SetMarkerSize(6);  Energy_Quot__NeutralHad_BTag->SetMarkerColor(33);Energy_Quot__NeutralHad_BTag->SetMarkerStyle(22);
+  Energy_Quot__NeutralHad_BTag->DrawCopy("Psame"); Energy_Quot__NeutralHad_BTag->SetMarkerColor(4); Energy_Quot__NeutralHad_BTag->SetMarkerStyle(26);
+  Energy_Quot__NeutralHad_BTag->SetLineWidth(2);   Energy_Quot__NeutralHad_BTag->SetLineColor(4);   Energy_Quot__NeutralHad_BTag->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_MinBias->SetMarkerSize(6);  Energy_Quot__NeutralHad_MinBias->SetMarkerColor(5); Energy_Quot__NeutralHad_MinBias->SetMarkerStyle(20);
+  Energy_Quot__NeutralHad_MinBias->DrawCopy("Psame"); Energy_Quot__NeutralHad_MinBias->SetMarkerColor(41);Energy_Quot__NeutralHad_MinBias->SetMarkerStyle(24);
+  Energy_Quot__NeutralHad_MinBias->SetLineWidth(2);   Energy_Quot__NeutralHad_MinBias->SetLineColor(41);  Energy_Quot__NeutralHad_MinBias->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_MultiJet->SetMarkerSize(6);  Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(8); Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(34);
+  Energy_Quot__NeutralHad_MultiJet->DrawCopy("Psame"); Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(32);Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(28);
+  Energy_Quot__NeutralHad_MultiJet->SetLineWidth(2);   Energy_Quot__NeutralHad_MultiJet->SetLineColor(32);  Energy_Quot__NeutralHad_MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__NeutralHad_Jet->cd();
+  Cero->SetTitle(";Energ#acute{i}a^{Hadr#acute{o}nNeutro} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.8,0.8);
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_Jet );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__NeutralHad_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__NeutralHad_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-Jet.pdf"); Energy_Quotient__NeutralHad_Jet->Close();
+
+  TCanvas* Energy_Quotient__NeutralHad_Jet200  = new TCanvas("Energy_Quotient__NeutralHad_Jet200 ","Energy_Quotient__NeutralHad_Jet200 ",0,0,3240,2160);
+  TPad *H__NeutralHad_Jet200 = new TPad("H__NeutralHad_Jet200","", 0, 0.25, 1, 1); H__NeutralHad_Jet200->SetMargin(0.11,0,0,0); H__NeutralHad_Jet200->SetLogy(); H__NeutralHad_Jet200->Draw();
+  TPad *E__NeutralHad_Jet200 = new TPad("E__NeutralHad_Jet200","", 0, 0, 1, 0.25); E__NeutralHad_Jet200->SetMargin(0.11,0,0.33,0); E__NeutralHad_Jet200->Draw(); H__NeutralHad_Jet200->cd();
+  Energy_Quot__NeutralHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ200->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__NeutralHad_FJ200->SetMarkerSize(6); Energy_Quot__NeutralHad_FJ200->SetMarkerColor(14); Energy_Quot__NeutralHad_FJ200->SetMarkerStyle(21);
+  Energy_Quot__NeutralHad_FJ200->DrawCopy("P");    Energy_Quot__NeutralHad_FJ200->SetMarkerColor(1);  Energy_Quot__NeutralHad_FJ200->SetMarkerStyle(25);
+  Energy_Quot__NeutralHad_FJ200->SetLineWidth(2);  Energy_Quot__NeutralHad_FJ200->SetLineColor(1);    Energy_Quot__NeutralHad_FJ200->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_Jet200 ->SetMarkerSize(6);  Energy_Quot__NeutralHad_Jet200 ->SetMarkerColor(42);Energy_Quot__NeutralHad_Jet200 ->SetMarkerStyle(23);
+  Energy_Quot__NeutralHad_Jet200 ->DrawCopy("Psame"); Energy_Quot__NeutralHad_Jet200 ->SetMarkerColor(2); Energy_Quot__NeutralHad_Jet200 ->SetMarkerStyle(32);
+  Energy_Quot__NeutralHad_Jet200 ->SetLineWidth(2);   Energy_Quot__NeutralHad_Jet200 ->SetLineColor(2);   Energy_Quot__NeutralHad_Jet200 ->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_BTag200->SetMarkerSize(6);  Energy_Quot__NeutralHad_BTag200->SetMarkerColor(33);Energy_Quot__NeutralHad_BTag200->SetMarkerStyle(22);
+  Energy_Quot__NeutralHad_BTag200->DrawCopy("Psame"); Energy_Quot__NeutralHad_BTag200->SetMarkerColor(4); Energy_Quot__NeutralHad_BTag200->SetMarkerStyle(26);
+  Energy_Quot__NeutralHad_BTag200->SetLineWidth(2);   Energy_Quot__NeutralHad_BTag200->SetLineColor(4);   Energy_Quot__NeutralHad_BTag200->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_MinBias200->SetMarkerSize(6);  Energy_Quot__NeutralHad_MinBias200->SetMarkerColor(5); Energy_Quot__NeutralHad_MinBias200->SetMarkerStyle(20);
+  Energy_Quot__NeutralHad_MinBias200->DrawCopy("Psame"); Energy_Quot__NeutralHad_MinBias200->SetMarkerColor(41);Energy_Quot__NeutralHad_MinBias200->SetMarkerStyle(24);
+  Energy_Quot__NeutralHad_MinBias200->SetLineWidth(2);   Energy_Quot__NeutralHad_MinBias200->SetLineColor(41);  Energy_Quot__NeutralHad_MinBias200->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_MultiJet200->SetMarkerSize(6);  Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(8); Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(34);
+  Energy_Quot__NeutralHad_MultiJet200->DrawCopy("Psame"); Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(32);Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(28);
+  Energy_Quot__NeutralHad_MultiJet200->SetLineWidth(2);   Energy_Quot__NeutralHad_MultiJet200->SetLineColor(32);  Energy_Quot__NeutralHad_MultiJet200->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__NeutralHad_Jet200->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_Jet200 );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_BTag200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MinBias200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MultiJet200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__NeutralHad_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__NeutralHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-Jet200.pdf"); Energy_Quotient__NeutralHad_Jet200->Close();
+
+  TCanvas* Energy_Quotient__NeutralHad_200Jet = new TCanvas("Energy_Quotient__NeutralHad_200Jet","Energy_Quotient__NeutralHad_200Jet",0,0,3240,2160);
+  TPad *H__NeutralHad_200Jet = new TPad("H__NeutralHad_200Jet","", 0, 0.25, 1, 1); H__NeutralHad_200Jet->SetMargin(0.11,0,0,0); H__NeutralHad_200Jet->SetLogy(); H__NeutralHad_200Jet->Draw();
+  TPad *E__NeutralHad_200Jet = new TPad("E__NeutralHad_200Jet","", 0, 0, 1, 0.25); E__NeutralHad_200Jet->SetMargin(0.11,0,0.33,0); E__NeutralHad_200Jet->Draw(); H__NeutralHad_200Jet->cd();
+  Energy_Quot__NeutralHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_200FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__NeutralHad_200FJ->SetMarkerSize(6); Energy_Quot__NeutralHad_200FJ->SetMarkerColor(14); Energy_Quot__NeutralHad_200FJ->SetMarkerStyle(21);
+  Energy_Quot__NeutralHad_200FJ->DrawCopy("P");    Energy_Quot__NeutralHad_200FJ->SetMarkerColor(1);  Energy_Quot__NeutralHad_200FJ->SetMarkerStyle(25);
+  Energy_Quot__NeutralHad_200FJ->SetLineWidth(2);  Energy_Quot__NeutralHad_200FJ->SetLineColor(1);    Energy_Quot__NeutralHad_200FJ->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_200Jet->SetMarkerSize(6);  Energy_Quot__NeutralHad_200Jet->SetMarkerColor(42);Energy_Quot__NeutralHad_200Jet->SetMarkerStyle(23);
+  Energy_Quot__NeutralHad_200Jet->DrawCopy("Psame"); Energy_Quot__NeutralHad_200Jet->SetMarkerColor(2); Energy_Quot__NeutralHad_200Jet->SetMarkerStyle(32);
+  Energy_Quot__NeutralHad_200Jet->SetLineWidth(2);   Energy_Quot__NeutralHad_200Jet->SetLineColor(2);   Energy_Quot__NeutralHad_200Jet->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_200BTag->SetMarkerSize(6);  Energy_Quot__NeutralHad_200BTag->SetMarkerColor(33);Energy_Quot__NeutralHad_200BTag->SetMarkerStyle(22);
+  Energy_Quot__NeutralHad_200BTag->DrawCopy("Psame"); Energy_Quot__NeutralHad_200BTag->SetMarkerColor(4); Energy_Quot__NeutralHad_200BTag->SetMarkerStyle(26);
+  Energy_Quot__NeutralHad_200BTag->SetLineWidth(2);   Energy_Quot__NeutralHad_200BTag->SetLineColor(4);   Energy_Quot__NeutralHad_200BTag->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_200MinBias->SetMarkerSize(6);  Energy_Quot__NeutralHad_200MinBias->SetMarkerColor(5); Energy_Quot__NeutralHad_200MinBias->SetMarkerStyle(20);
+  Energy_Quot__NeutralHad_200MinBias->DrawCopy("Psame"); Energy_Quot__NeutralHad_200MinBias->SetMarkerColor(41);Energy_Quot__NeutralHad_200MinBias->SetMarkerStyle(24);
+  Energy_Quot__NeutralHad_200MinBias->SetLineWidth(2);   Energy_Quot__NeutralHad_200MinBias->SetLineColor(41);  Energy_Quot__NeutralHad_200MinBias->DrawCopy("Esame");
+  Energy_Quot__NeutralHad_200MultiJet->SetMarkerSize(6);  Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(8); Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(34);
+  Energy_Quot__NeutralHad_200MultiJet->DrawCopy("Psame"); Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(32);Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(28);
+  Energy_Quot__NeutralHad_200MultiJet->SetLineWidth(2);   Energy_Quot__NeutralHad_200MultiJet->SetLineColor(32);  Energy_Quot__NeutralHad_200MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__NeutralHad_200Jet->cd(); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-2.6,1.2);
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200Jet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__NeutralHad_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__NeutralHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-200Jet.pdf"); Energy_Quotient__NeutralHad_200Jet->Close();
+
+
+  TCanvas* Energy_Quotient__ChargedHad_Jet  = new TCanvas("Energy_Quotient__ChargedHad_Jet ","Energy_Quotient__ChargedHad_Jet ",0,0,3240,2160);
+  TPad *H__ChargedHad_Jet = new TPad("H__ChargedHad_Jet","", 0, 0.25, 1, 1); H__ChargedHad_Jet->SetMargin(0.11,0,0,0); H__ChargedHad_Jet->SetLogy(); H__ChargedHad_Jet->Draw();
+  TPad *E__ChargedHad_Jet = new TPad("E__ChargedHad_Jet","", 0, 0, 1, 0.25); E__ChargedHad_Jet->SetMargin(0.11,0,0.33,0); E__ChargedHad_Jet->Draw(); H__ChargedHad_Jet->cd();
+  Energy_Quot__ChargedHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__ChargedHad_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__ChargedHad_FJ->SetMarkerSize(6); Energy_Quot__ChargedHad_FJ->SetMarkerColor(14); Energy_Quot__ChargedHad_FJ->SetMarkerStyle(21);
+  Energy_Quot__ChargedHad_FJ->DrawCopy("P");    Energy_Quot__ChargedHad_FJ->SetMarkerColor(1);  Energy_Quot__ChargedHad_FJ->SetMarkerStyle(25);
+  Energy_Quot__ChargedHad_FJ->SetLineWidth(2);  Energy_Quot__ChargedHad_FJ->SetLineColor(1);    Energy_Quot__ChargedHad_FJ->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_Jet ->SetMarkerSize(6);  Energy_Quot__ChargedHad_Jet ->SetMarkerColor(42);Energy_Quot__ChargedHad_Jet ->SetMarkerStyle(23);
+  Energy_Quot__ChargedHad_Jet ->DrawCopy("Psame"); Energy_Quot__ChargedHad_Jet ->SetMarkerColor(2); Energy_Quot__ChargedHad_Jet ->SetMarkerStyle(32);
+  Energy_Quot__ChargedHad_Jet ->SetLineWidth(2);   Energy_Quot__ChargedHad_Jet ->SetLineColor(2);   Energy_Quot__ChargedHad_Jet ->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_BTag->SetMarkerSize(6);  Energy_Quot__ChargedHad_BTag->SetMarkerColor(33);Energy_Quot__ChargedHad_BTag->SetMarkerStyle(22);
+  Energy_Quot__ChargedHad_BTag->DrawCopy("Psame"); Energy_Quot__ChargedHad_BTag->SetMarkerColor(4); Energy_Quot__ChargedHad_BTag->SetMarkerStyle(26);
+  Energy_Quot__ChargedHad_BTag->SetLineWidth(2);   Energy_Quot__ChargedHad_BTag->SetLineColor(4);   Energy_Quot__ChargedHad_BTag->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_MinBias->SetMarkerSize(6);  Energy_Quot__ChargedHad_MinBias->SetMarkerColor(5); Energy_Quot__ChargedHad_MinBias->SetMarkerStyle(20);
+  Energy_Quot__ChargedHad_MinBias->DrawCopy("Psame"); Energy_Quot__ChargedHad_MinBias->SetMarkerColor(41);Energy_Quot__ChargedHad_MinBias->SetMarkerStyle(24);
+  Energy_Quot__ChargedHad_MinBias->SetLineWidth(2);   Energy_Quot__ChargedHad_MinBias->SetLineColor(41);  Energy_Quot__ChargedHad_MinBias->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_MultiJet->SetMarkerSize(6);  Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(8); Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(34);
+  Energy_Quot__ChargedHad_MultiJet->DrawCopy("Psame"); Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(32);Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(28);
+  Energy_Quot__ChargedHad_MultiJet->SetLineWidth(2);   Energy_Quot__ChargedHad_MultiJet->SetLineColor(32);  Energy_Quot__ChargedHad_MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__ChargedHad_Jet->cd();
+  Cero->SetTitle(";Energ#acute{i}a^{Hadr#acute{o}nCargado} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.6,0.6);
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_Jet );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__ChargedHad_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__ChargedHad_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-Jet.pdf"); Energy_Quotient__ChargedHad_Jet->Close();
+
+  TCanvas* Energy_Quotient__ChargedHad_Jet200  = new TCanvas("Energy_Quotient__ChargedHad_Jet200 ","Energy_Quotient__ChargedHad_Jet200 ",0,0,3240,2160);
+  TPad *H__ChargedHad_Jet200 = new TPad("H__ChargedHad_Jet200","", 0, 0.25, 1, 1); H__ChargedHad_Jet200->SetMargin(0.11,0,0,0); H__ChargedHad_Jet200->SetLogy(); H__ChargedHad_Jet200->Draw();
+  TPad *E__ChargedHad_Jet200 = new TPad("E__ChargedHad_Jet200","", 0, 0, 1, 0.25); E__ChargedHad_Jet200->SetMargin(0.11,0,0.33,0); E__ChargedHad_Jet200->Draw(); H__ChargedHad_Jet200->cd();
+  Energy_Quot__ChargedHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ200->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__ChargedHad_FJ200->SetMarkerSize(6); Energy_Quot__ChargedHad_FJ200->SetMarkerColor(14); Energy_Quot__ChargedHad_FJ200->SetMarkerStyle(21);
+  Energy_Quot__ChargedHad_FJ200->DrawCopy("P");    Energy_Quot__ChargedHad_FJ200->SetMarkerColor(1);  Energy_Quot__ChargedHad_FJ200->SetMarkerStyle(25);
+  Energy_Quot__ChargedHad_FJ200->SetLineWidth(2);  Energy_Quot__ChargedHad_FJ200->SetLineColor(1);    Energy_Quot__ChargedHad_FJ200->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_Jet200 ->SetMarkerSize(6);  Energy_Quot__ChargedHad_Jet200 ->SetMarkerColor(42);Energy_Quot__ChargedHad_Jet200 ->SetMarkerStyle(23);
+  Energy_Quot__ChargedHad_Jet200 ->DrawCopy("Psame"); Energy_Quot__ChargedHad_Jet200 ->SetMarkerColor(2); Energy_Quot__ChargedHad_Jet200 ->SetMarkerStyle(32);
+  Energy_Quot__ChargedHad_Jet200 ->SetLineWidth(2);   Energy_Quot__ChargedHad_Jet200 ->SetLineColor(2);   Energy_Quot__ChargedHad_Jet200 ->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_BTag200->SetMarkerSize(6);  Energy_Quot__ChargedHad_BTag200->SetMarkerColor(33);Energy_Quot__ChargedHad_BTag200->SetMarkerStyle(22);
+  Energy_Quot__ChargedHad_BTag200->DrawCopy("Psame"); Energy_Quot__ChargedHad_BTag200->SetMarkerColor(4); Energy_Quot__ChargedHad_BTag200->SetMarkerStyle(26);
+  Energy_Quot__ChargedHad_BTag200->SetLineWidth(2);   Energy_Quot__ChargedHad_BTag200->SetLineColor(4);   Energy_Quot__ChargedHad_BTag200->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_MinBias200->SetMarkerSize(6);  Energy_Quot__ChargedHad_MinBias200->SetMarkerColor(5); Energy_Quot__ChargedHad_MinBias200->SetMarkerStyle(20);
+  Energy_Quot__ChargedHad_MinBias200->DrawCopy("Psame"); Energy_Quot__ChargedHad_MinBias200->SetMarkerColor(41);Energy_Quot__ChargedHad_MinBias200->SetMarkerStyle(24);
+  Energy_Quot__ChargedHad_MinBias200->SetLineWidth(2);   Energy_Quot__ChargedHad_MinBias200->SetLineColor(41);  Energy_Quot__ChargedHad_MinBias200->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_MultiJet200->SetMarkerSize(6);  Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(8); Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(34);
+  Energy_Quot__ChargedHad_MultiJet200->DrawCopy("Psame"); Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(32);Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(28);
+  Energy_Quot__ChargedHad_MultiJet200->SetLineWidth(2);   Energy_Quot__ChargedHad_MultiJet200->SetLineColor(32);  Energy_Quot__ChargedHad_MultiJet200->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__ChargedHad_Jet200->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_Jet200 );
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_BTag200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MinBias200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MultiJet200);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__ChargedHad_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
+  Energy_Quotient__ChargedHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-Jet200.pdf"); Energy_Quotient__ChargedHad_Jet200->Close();
+
+  TCanvas* Energy_Quotient__ChargedHad_200Jet = new TCanvas("Energy_Quotient__ChargedHad_200Jet","Energy_Quotient__ChargedHad_200Jet",0,0,3240,2160);
+  TPad *H__ChargedHad_200Jet = new TPad("H__ChargedHad_200Jet","", 0, 0.25, 1, 1); H__ChargedHad_200Jet->SetMargin(0.11,0,0,0); H__ChargedHad_200Jet->SetLogy(); H__ChargedHad_200Jet->Draw();
+  TPad *E__ChargedHad_200Jet = new TPad("E__ChargedHad_200Jet","", 0, 0, 1, 0.25); E__ChargedHad_200Jet->SetMargin(0.11,0,0.33,0); E__ChargedHad_200Jet->Draw(); H__ChargedHad_200Jet->cd();
+  Energy_Quot__ChargedHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
+  Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_200FJ->SetAxisRange(0.0, 1.04, "X");
+  Energy_Quot__ChargedHad_200FJ->SetMarkerSize(6); Energy_Quot__ChargedHad_200FJ->SetMarkerColor(14); Energy_Quot__ChargedHad_200FJ->SetMarkerStyle(21);
+  Energy_Quot__ChargedHad_200FJ->DrawCopy("P");    Energy_Quot__ChargedHad_200FJ->SetMarkerColor(1);  Energy_Quot__ChargedHad_200FJ->SetMarkerStyle(25);
+  Energy_Quot__ChargedHad_200FJ->SetLineWidth(2);  Energy_Quot__ChargedHad_200FJ->SetLineColor(1);    Energy_Quot__ChargedHad_200FJ->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_200Jet->SetMarkerSize(6);  Energy_Quot__ChargedHad_200Jet->SetMarkerColor(42);Energy_Quot__ChargedHad_200Jet->SetMarkerStyle(23);
+  Energy_Quot__ChargedHad_200Jet->DrawCopy("Psame"); Energy_Quot__ChargedHad_200Jet->SetMarkerColor(2); Energy_Quot__ChargedHad_200Jet->SetMarkerStyle(32);
+  Energy_Quot__ChargedHad_200Jet->SetLineWidth(2);   Energy_Quot__ChargedHad_200Jet->SetLineColor(2);   Energy_Quot__ChargedHad_200Jet->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_200BTag->SetMarkerSize(6);  Energy_Quot__ChargedHad_200BTag->SetMarkerColor(33);Energy_Quot__ChargedHad_200BTag->SetMarkerStyle(22);
+  Energy_Quot__ChargedHad_200BTag->DrawCopy("Psame"); Energy_Quot__ChargedHad_200BTag->SetMarkerColor(4); Energy_Quot__ChargedHad_200BTag->SetMarkerStyle(26);
+  Energy_Quot__ChargedHad_200BTag->SetLineWidth(2);   Energy_Quot__ChargedHad_200BTag->SetLineColor(4);   Energy_Quot__ChargedHad_200BTag->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_200MinBias->SetMarkerSize(6);  Energy_Quot__ChargedHad_200MinBias->SetMarkerColor(5); Energy_Quot__ChargedHad_200MinBias->SetMarkerStyle(20);
+  Energy_Quot__ChargedHad_200MinBias->DrawCopy("Psame"); Energy_Quot__ChargedHad_200MinBias->SetMarkerColor(41);Energy_Quot__ChargedHad_200MinBias->SetMarkerStyle(24);
+  Energy_Quot__ChargedHad_200MinBias->SetLineWidth(2);   Energy_Quot__ChargedHad_200MinBias->SetLineColor(41);  Energy_Quot__ChargedHad_200MinBias->DrawCopy("Esame");
+  Energy_Quot__ChargedHad_200MultiJet->SetMarkerSize(6);  Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(8); Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(34);
+  Energy_Quot__ChargedHad_200MultiJet->DrawCopy("Psame"); Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(32);Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(28);
+  Energy_Quot__ChargedHad_200MultiJet->SetLineWidth(2);   Energy_Quot__ChargedHad_200MultiJet->SetLineColor(32);  Energy_Quot__ChargedHad_200MultiJet->DrawCopy("Esame");
+  Leg->Draw(); Legend->Draw(); E__ChargedHad_200Jet->cd(); Cero->Draw();
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200Jet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
+  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200BTag);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
+  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200MinBias);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
+  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200MultiJet);
+  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
+  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
+  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
+  Energy_Quot__Error->Reset("ICES");
+  Energy_Quotient__ChargedHad_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf)","pdf");
+  Energy_Quotient__ChargedHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-200Jet.pdf"); Energy_Quotient__ChargedHad_200Jet->Close();
 
 }
 
@@ -474,1420 +1273,6 @@ void Multiplicidad() {
 
 //###################################################################################################################################################################################
 
-void EnergyQuotient() {
-
-  //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
-  TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
-  TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
-  TFile *MinBiasFile = new TFile("/home/saksevul/T/OpenData/MinBias_20000/ak5PF.root");
-  TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF.root");
-
-
-  TH1F *Energy_Quot__Muon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_FJ->Scale(1.0/Energy_Quot__Muon_FJ->Integral()); Energy_Quot__Muon_FJ->Rebin();
-  TH1F *Energy_Quot__Muon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_Jet->Scale(1.0/Energy_Quot__Muon_Jet->Integral()); Energy_Quot__Muon_Jet->Rebin();
-  TH1F *Energy_Quot__Muon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_BTag->Scale(1.0/Energy_Quot__Muon_BTag->Integral()); Energy_Quot__Muon_BTag->Rebin();
-  TH1F *Energy_Quot__Muon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MinBias->Scale(1.0/Energy_Quot__Muon_MinBias->Integral()); Energy_Quot__Muon_MinBias->Rebin();
-  TH1F *Energy_Quot__Muon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet"); Energy_Quot__Muon_MultiJet->Scale(1.0/Energy_Quot__Muon_MultiJet->Integral()); Energy_Quot__Muon_MultiJet->Rebin();
-
-  TH1F *CLONE_E_Q__Muon_FJ =(TH1F*)Energy_Quot__Muon_FJ->Clone(); CLONE_E_Q__Muon_FJ->SetMarkerSize(6); CLONE_E_Q__Muon_FJ->SetMarkerStyle(21); CLONE_E_Q__Muon_FJ->SetMarkerColor(14);
-  TH1F *CLONE_E_Q__Muon_Jet =(TH1F*)Energy_Quot__Muon_Jet->Clone(); CLONE_E_Q__Muon_Jet->SetMarkerSize(6); CLONE_E_Q__Muon_Jet->SetMarkerStyle(23); CLONE_E_Q__Muon_Jet->SetMarkerColor(42);
-  TH1F *CLONE_E_Q__Muon_BTag =(TH1F*)Energy_Quot__Muon_BTag->Clone(); CLONE_E_Q__Muon_BTag->SetMarkerSize(6); CLONE_E_Q__Muon_BTag->SetMarkerStyle(22); CLONE_E_Q__Muon_BTag->SetMarkerColor(33);
-  TH1F *CLONE_E_Q__Muon_MinBias =(TH1F*)Energy_Quot__Muon_MinBias->Clone(); CLONE_E_Q__Muon_MinBias->SetMarkerSize(6); CLONE_E_Q__Muon_MinBias->SetMarkerStyle(20); CLONE_E_Q__Muon_MinBias->SetMarkerColor(5);
-  TH1F *CLONE_E_Q__Muon_MultiJet =(TH1F*)Energy_Quot__Muon_MultiJet->Clone(); CLONE_E_Q__Muon_MultiJet->SetMarkerSize(6); CLONE_E_Q__Muon_MultiJet->SetMarkerStyle(34); CLONE_E_Q__Muon_MultiJet->SetMarkerColor(8);
-
-  TH1F *Energy_Quot__Muon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_FJ200->Scale(1.0/Energy_Quot__Muon_FJ200->Integral()); Energy_Quot__Muon_FJ200->Rebin();
-  TH1F *Energy_Quot__Muon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_Jet200->Scale(1.0/Energy_Quot__Muon_Jet200->Integral()); Energy_Quot__Muon_Jet200->Rebin();
-  TH1F *Energy_Quot__Muon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_BTag200->Scale(1.0/Energy_Quot__Muon_BTag200->Integral()); Energy_Quot__Muon_BTag200->Rebin();
-  TH1F *Energy_Quot__Muon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MinBias200->Scale(1.0/Energy_Quot__Muon_MinBias200->Integral()); Energy_Quot__Muon_MinBias200->Rebin();
-  TH1F *Energy_Quot__Muon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet<200"); Energy_Quot__Muon_MultiJet200->Scale(1.0/Energy_Quot__Muon_MultiJet200->Integral()); Energy_Quot__Muon_MultiJet200->Rebin();
-
-  TH1F *Energy_Quot__Muon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200FJ->Scale(1.0/Energy_Quot__Muon_200FJ->Integral()); Energy_Quot__Muon_200FJ->Rebin();
-  TH1F *Energy_Quot__Muon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200Jet->Scale(1.0/Energy_Quot__Muon_200Jet->Integral()); Energy_Quot__Muon_200Jet->Rebin();
-  TH1F *Energy_Quot__Muon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200BTag->Scale(1.0/Energy_Quot__Muon_200BTag->Integral()); Energy_Quot__Muon_200BTag->Rebin();
-  TH1F *Energy_Quot__Muon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MinBias->Scale(1.0/Energy_Quot__Muon_200MinBias->Integral()); Energy_Quot__Muon_200MinBias->Rebin();
-  TH1F *Energy_Quot__Muon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Muon-Jet>200"); Energy_Quot__Muon_200MultiJet->Scale(1.0/Energy_Quot__Muon_200MultiJet->Integral()); Energy_Quot__Muon_200MultiJet->Rebin();
-
-  TH1F *Energy_Quot__Photon_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_FJ->Scale(1.0/Energy_Quot__Photon_FJ->Integral()); Energy_Quot__Photon_FJ->Rebin();
-  TH1F *Energy_Quot__Photon_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_Jet->Scale(1.0/Energy_Quot__Photon_Jet->Integral()); Energy_Quot__Photon_Jet->Rebin();
-  TH1F *Energy_Quot__Photon_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_BTag->Scale(1.0/Energy_Quot__Photon_BTag->Integral()); Energy_Quot__Photon_BTag->Rebin();
-  TH1F *Energy_Quot__Photon_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MinBias->Scale(1.0/Energy_Quot__Photon_MinBias->Integral()); Energy_Quot__Photon_MinBias->Rebin();
-  TH1F *Energy_Quot__Photon_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet"); Energy_Quot__Photon_MultiJet->Scale(1.0/Energy_Quot__Photon_MultiJet->Integral()); Energy_Quot__Photon_MultiJet->Rebin();
-
-  TH1F *Energy_Quot__Photon_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_FJ200->Scale(1.0/Energy_Quot__Photon_FJ200->Integral()); Energy_Quot__Photon_FJ200->Rebin();
-  TH1F *Energy_Quot__Photon_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_Jet200->Scale(1.0/Energy_Quot__Photon_Jet200->Integral()); Energy_Quot__Photon_Jet200->Rebin();
-  TH1F *Energy_Quot__Photon_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_BTag200->Scale(1.0/Energy_Quot__Photon_BTag200->Integral()); Energy_Quot__Photon_BTag200->Rebin();
-  TH1F *Energy_Quot__Photon_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MinBias200->Scale(1.0/Energy_Quot__Photon_MinBias200->Integral()); Energy_Quot__Photon_MinBias200->Rebin();
-  TH1F *Energy_Quot__Photon_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet<200"); Energy_Quot__Photon_MultiJet200->Scale(1.0/Energy_Quot__Photon_MultiJet200->Integral()); Energy_Quot__Photon_MultiJet200->Rebin();
-
-  TH1F *Energy_Quot__Photon_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200FJ->Scale(1.0/Energy_Quot__Photon_200FJ->Integral()); Energy_Quot__Photon_200FJ->Rebin();
-  TH1F *Energy_Quot__Photon_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200Jet->Scale(1.0/Energy_Quot__Photon_200Jet->Integral()); Energy_Quot__Photon_200Jet->Rebin();
-  TH1F *Energy_Quot__Photon_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200BTag->Scale(1.0/Energy_Quot__Photon_200BTag->Integral()); Energy_Quot__Photon_200BTag->Rebin();
-  TH1F *Energy_Quot__Photon_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MinBias->Scale(1.0/Energy_Quot__Photon_200MinBias->Integral()); Energy_Quot__Photon_200MinBias->Rebin();
-  TH1F *Energy_Quot__Photon_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Photon-Jet>200"); Energy_Quot__Photon_200MultiJet->Scale(1.0/Energy_Quot__Photon_200MultiJet->Integral()); Energy_Quot__Photon_200MultiJet->Rebin();
-
-  TH1F *Energy_Quot__Electron_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_FJ->Scale(1.0/Energy_Quot__Electron_FJ->Integral()); Energy_Quot__Electron_FJ->Rebin();
-  TH1F *Energy_Quot__Electron_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_Jet->Scale(1.0/Energy_Quot__Electron_Jet->Integral()); Energy_Quot__Electron_Jet->Rebin();
-  TH1F *Energy_Quot__Electron_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_BTag->Scale(1.0/Energy_Quot__Electron_BTag->Integral()); Energy_Quot__Electron_BTag->Rebin();
-  TH1F *Energy_Quot__Electron_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MinBias->Scale(1.0/Energy_Quot__Electron_MinBias->Integral()); Energy_Quot__Electron_MinBias->Rebin();
-  TH1F *Energy_Quot__Electron_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet"); Energy_Quot__Electron_MultiJet->Scale(1.0/Energy_Quot__Electron_MultiJet->Integral()); Energy_Quot__Electron_MultiJet->Rebin();
-
-  TH1F *Energy_Quot__Electron_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_FJ200->Scale(1.0/Energy_Quot__Electron_FJ200->Integral()); Energy_Quot__Electron_FJ200->Rebin();
-  TH1F *Energy_Quot__Electron_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_Jet200->Scale(1.0/Energy_Quot__Electron_Jet200->Integral()); Energy_Quot__Electron_Jet200->Rebin();
-  TH1F *Energy_Quot__Electron_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_BTag200->Scale(1.0/Energy_Quot__Electron_BTag200->Integral()); Energy_Quot__Electron_BTag200->Rebin();
-  TH1F *Energy_Quot__Electron_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MinBias200->Scale(1.0/Energy_Quot__Electron_MinBias200->Integral()); Energy_Quot__Electron_MinBias200->Rebin();
-  TH1F *Energy_Quot__Electron_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet<200"); Energy_Quot__Electron_MultiJet200->Scale(1.0/Energy_Quot__Electron_MultiJet200->Integral()); Energy_Quot__Electron_MultiJet200->Rebin();
-
-  TH1F *Energy_Quot__Electron_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200FJ->Scale(1.0/Energy_Quot__Electron_200FJ->Integral()); Energy_Quot__Electron_200FJ->Rebin();
-  TH1F *Energy_Quot__Electron_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200Jet->Scale(1.0/Energy_Quot__Electron_200Jet->Integral()); Energy_Quot__Electron_200Jet->Rebin();
-  TH1F *Energy_Quot__Electron_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200BTag->Scale(1.0/Energy_Quot__Electron_200BTag->Integral()); Energy_Quot__Electron_200BTag->Rebin();
-  TH1F *Energy_Quot__Electron_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MinBias->Scale(1.0/Energy_Quot__Electron_200MinBias->Integral()); Energy_Quot__Electron_200MinBias->Rebin();
-  TH1F *Energy_Quot__Electron_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__Electron-Jet>200"); Energy_Quot__Electron_200MultiJet->Scale(1.0/Energy_Quot__Electron_200MultiJet->Integral()); Energy_Quot__Electron_200MultiJet->Rebin();
-
-  TH1F *Energy_Quot__NeutralHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_FJ->Scale(1.0/Energy_Quot__NeutralHad_FJ->Integral()); Energy_Quot__NeutralHad_FJ->Rebin();
-  TH1F *Energy_Quot__NeutralHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_Jet->Scale(1.0/Energy_Quot__NeutralHad_Jet->Integral()); Energy_Quot__NeutralHad_Jet->Rebin();
-  TH1F *Energy_Quot__NeutralHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_BTag->Scale(1.0/Energy_Quot__NeutralHad_BTag->Integral()); Energy_Quot__NeutralHad_BTag->Rebin();
-  TH1F *Energy_Quot__NeutralHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MinBias->Scale(1.0/Energy_Quot__NeutralHad_MinBias->Integral()); Energy_Quot__NeutralHad_MinBias->Rebin();
-  TH1F *Energy_Quot__NeutralHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet"); Energy_Quot__NeutralHad_MultiJet->Scale(1.0/Energy_Quot__NeutralHad_MultiJet->Integral()); Energy_Quot__NeutralHad_MultiJet->Rebin();
-
-  TH1F *Energy_Quot__NeutralHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_FJ200->Scale(1.0/Energy_Quot__NeutralHad_FJ200->Integral()); Energy_Quot__NeutralHad_FJ200->Rebin();
-  TH1F *Energy_Quot__NeutralHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_Jet200->Scale(1.0/Energy_Quot__NeutralHad_Jet200->Integral()); Energy_Quot__NeutralHad_Jet200->Rebin();
-  TH1F *Energy_Quot__NeutralHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_BTag200->Scale(1.0/Energy_Quot__NeutralHad_BTag200->Integral()); Energy_Quot__NeutralHad_BTag200->Rebin();
-  TH1F *Energy_Quot__NeutralHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MinBias200->Scale(1.0/Energy_Quot__NeutralHad_MinBias200->Integral()); Energy_Quot__NeutralHad_MinBias200->Rebin();
-  TH1F *Energy_Quot__NeutralHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet<200"); Energy_Quot__NeutralHad_MultiJet200->Scale(1.0/Energy_Quot__NeutralHad_MultiJet200->Integral()); Energy_Quot__NeutralHad_MultiJet200->Rebin();
-
-  TH1F *Energy_Quot__NeutralHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200FJ->Scale(1.0/Energy_Quot__NeutralHad_200FJ->Integral()); Energy_Quot__NeutralHad_200FJ->Rebin();
-  TH1F *Energy_Quot__NeutralHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200Jet->Scale(1.0/Energy_Quot__NeutralHad_200Jet->Integral()); Energy_Quot__NeutralHad_200Jet->Rebin();
-  TH1F *Energy_Quot__NeutralHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200BTag->Scale(1.0/Energy_Quot__NeutralHad_200BTag->Integral()); Energy_Quot__NeutralHad_200BTag->Rebin();
-  TH1F *Energy_Quot__NeutralHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MinBias->Scale(1.0/Energy_Quot__NeutralHad_200MinBias->Integral()); Energy_Quot__NeutralHad_200MinBias->Rebin();
-  TH1F *Energy_Quot__NeutralHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__NeutralHad-Jet>200"); Energy_Quot__NeutralHad_200MultiJet->Scale(1.0/Energy_Quot__NeutralHad_200MultiJet->Integral()); Energy_Quot__NeutralHad_200MultiJet->Rebin();
-
-  TH1F *Energy_Quot__ChargedHad_FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_FJ->Scale(1.0/Energy_Quot__ChargedHad_FJ->Integral()); Energy_Quot__ChargedHad_FJ->Rebin();
-  TH1F *Energy_Quot__ChargedHad_Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_Jet->Scale(1.0/Energy_Quot__ChargedHad_Jet->Integral()); Energy_Quot__ChargedHad_Jet->Rebin();
-  TH1F *Energy_Quot__ChargedHad_BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_BTag->Scale(1.0/Energy_Quot__ChargedHad_BTag->Integral()); Energy_Quot__ChargedHad_BTag->Rebin();
-  TH1F *Energy_Quot__ChargedHad_MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MinBias->Scale(1.0/Energy_Quot__ChargedHad_MinBias->Integral()); Energy_Quot__ChargedHad_MinBias->Rebin();
-  TH1F *Energy_Quot__ChargedHad_MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet"); Energy_Quot__ChargedHad_MultiJet->Scale(1.0/Energy_Quot__ChargedHad_MultiJet->Integral()); Energy_Quot__ChargedHad_MultiJet->Rebin();
-
-  TH1F *Energy_Quot__ChargedHad_FJ200 =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_FJ200->Scale(1.0/Energy_Quot__ChargedHad_FJ200->Integral()); Energy_Quot__ChargedHad_FJ200->Rebin();
-  TH1F *Energy_Quot__ChargedHad_Jet200 =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_Jet200->Scale(1.0/Energy_Quot__ChargedHad_Jet200->Integral()); Energy_Quot__ChargedHad_Jet200->Rebin();
-  TH1F *Energy_Quot__ChargedHad_BTag200 =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_BTag200->Scale(1.0/Energy_Quot__ChargedHad_BTag200->Integral()); Energy_Quot__ChargedHad_BTag200->Rebin();
-  TH1F *Energy_Quot__ChargedHad_MinBias200 =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MinBias200->Scale(1.0/Energy_Quot__ChargedHad_MinBias200->Integral()); Energy_Quot__ChargedHad_MinBias200->Rebin();
-  TH1F *Energy_Quot__ChargedHad_MultiJet200 =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet<200"); Energy_Quot__ChargedHad_MultiJet200->Scale(1.0/Energy_Quot__ChargedHad_MultiJet200->Integral()); Energy_Quot__ChargedHad_MultiJet200->Rebin();
-
-  TH1F *Energy_Quot__ChargedHad_200FJ =(TH1F*)FJFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200FJ->Scale(1.0/Energy_Quot__ChargedHad_200FJ->Integral()); Energy_Quot__ChargedHad_200FJ->Rebin();
-  TH1F *Energy_Quot__ChargedHad_200Jet =(TH1F*)JetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200Jet->Scale(1.0/Energy_Quot__ChargedHad_200Jet->Integral()); Energy_Quot__ChargedHad_200Jet->Rebin();
-  TH1F *Energy_Quot__ChargedHad_200BTag =(TH1F*)BTagFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200BTag->Scale(1.0/Energy_Quot__ChargedHad_200BTag->Integral()); Energy_Quot__ChargedHad_200BTag->Rebin();
-  TH1F *Energy_Quot__ChargedHad_200MinBias =(TH1F*)MinBiasFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MinBias->Scale(1.0/Energy_Quot__ChargedHad_200MinBias->Integral()); Energy_Quot__ChargedHad_200MinBias->Rebin();
-  TH1F *Energy_Quot__ChargedHad_200MultiJet =(TH1F*)MultiJetFile->Get("Jets_Energy_Quotient__ChargedHad-Jet>200"); Energy_Quot__ChargedHad_200MultiJet->Scale(1.0/Energy_Quot__ChargedHad_200MultiJet->Integral()); Energy_Quot__ChargedHad_200MultiJet->Rebin();
-
-
-
-  auto   Leg = new TLegend(0.74,0.76,1,1);    Leg->SetTextSize(0.04); Leg->SetFillStyle(0); Leg->SetBorderSize(0);
-  Leg->AddEntry(CLONE_E_Q__Muon_FJ, "MC FastJet", "p");
-  Leg->AddEntry(CLONE_E_Q__Muon_Jet, "Open-Data PF Jet", "p");
-  Leg->AddEntry(CLONE_E_Q__Muon_BTag, "Open-Data PF BTag", "p");
-  Leg->AddEntry(CLONE_E_Q__Muon_MinBias, "Open-Data PF MinBias", "p");
-  Leg->AddEntry(CLONE_E_Q__Muon_MultiJet, "Open-Data PF MultiJet", "p");
-
-  auto   Legend = new TLegend(0.74,0.76,1,1);    Legend->SetTextSize(0.04); Legend->SetFillStyle(0); Legend->SetBorderSize(0);
-  Legend->AddEntry(Energy_Quot__Muon_FJ, "MC FastJet", "lep");
-  Legend->AddEntry(Energy_Quot__Muon_Jet, "Open-Data PF Jet", "lep");
-  Legend->AddEntry(Energy_Quot__Muon_BTag, "Open-Data PF BTag", "lep");
-  Legend->AddEntry(Energy_Quot__Muon_MinBias, "Open-Data PF MinBias", "lep");
-  Legend->AddEntry(Energy_Quot__Muon_MultiJet, "Open-Data PF MultiJet", "lep");
-
-
-
-  TF1 *Cero = new TF1("Cero","0",0,1.08); Cero->GetYaxis()->SetRangeUser(-2,2); Cero->SetLineColor(14); Cero->SetLineStyle(2); Cero->SetLineWidth(2);
-  Cero->GetXaxis()->SetTitleSize(0.15); Cero->GetYaxis()->SetTitleSize(0.12); Cero->GetYaxis()->SetTitleOffset(0.4);
-  Cero->GetXaxis()->SetLabelSize(0.15); Cero->GetYaxis()->SetLabelSize(0.1);
-
-  TH1F *Energy_Quot__Error = new TH1F("", "", 100, 0, 2); Energy_Quot__Error->Reset("ICES"); Energy_Quot__Error->Rebin();
-  Energy_Quot__Error->SetMarkerSize(4); Energy_Quot__Error->SetLineWidth(2);
-
-
-
-  // auto   QuarkLegend = new TLegend(0.75,0.60,0.90,0.92);    QuarkLegend->SetTextSize(0.04);
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon_ak5FJ, "MC FastJet", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
-  //
-  // auto   ODQuarkLegend = new TLegend(0.68,0.60,0.90,0.92);    ODQuarkLegend->SetTextSize(0.04);
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon_ak5PFJet, "Open-Data PF Jet", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
-
-
-
-  TCanvas* Energy_Quotient__Muon_Jet  = new TCanvas("Energy_Quotient__Muon_Jet ","Energy_Quotient__Muon_Jet ",0,0,3240,2160);
-  TPad *H__Muon_Jet = new TPad("H__Muon_Jet","", 0, 0.25, 1, 1); H__Muon_Jet->SetMargin(0.11,0,0,0); H__Muon_Jet->SetLogy(); H__Muon_Jet->Draw();
-  TPad *E__Muon_Jet = new TPad("E__Muon_Jet","", 0, 0, 1, 0.25); E__Muon_Jet->SetMargin(0.11,0,0.33,0); E__Muon_Jet->Draw(); H__Muon_Jet->cd();
-  Energy_Quot__Muon_FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Muon_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Muon_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Muon_FJ->SetMarkerSize(6); Energy_Quot__Muon_FJ->SetMarkerColor(14); Energy_Quot__Muon_FJ->SetMarkerStyle(21);
-  Energy_Quot__Muon_FJ->DrawCopy("P");    Energy_Quot__Muon_FJ->SetMarkerColor(1);  Energy_Quot__Muon_FJ->SetMarkerStyle(25);
-  Energy_Quot__Muon_FJ->SetLineWidth(2);  Energy_Quot__Muon_FJ->SetLineColor(1);    Energy_Quot__Muon_FJ->DrawCopy("Esame");
-  Energy_Quot__Muon_Jet ->SetMarkerSize(6);  Energy_Quot__Muon_Jet ->SetMarkerColor(42);Energy_Quot__Muon_Jet ->SetMarkerStyle(23);
-  Energy_Quot__Muon_Jet ->DrawCopy("Psame"); Energy_Quot__Muon_Jet ->SetMarkerColor(2); Energy_Quot__Muon_Jet ->SetMarkerStyle(32);
-  Energy_Quot__Muon_Jet ->SetLineWidth(2);   Energy_Quot__Muon_Jet ->SetLineColor(2);   Energy_Quot__Muon_Jet ->DrawCopy("Esame");
-  Energy_Quot__Muon_BTag->SetMarkerSize(6);  Energy_Quot__Muon_BTag->SetMarkerColor(33);Energy_Quot__Muon_BTag->SetMarkerStyle(22);
-  Energy_Quot__Muon_BTag->DrawCopy("Psame"); Energy_Quot__Muon_BTag->SetMarkerColor(4); Energy_Quot__Muon_BTag->SetMarkerStyle(26);
-  Energy_Quot__Muon_BTag->SetLineWidth(2);   Energy_Quot__Muon_BTag->SetLineColor(4);   Energy_Quot__Muon_BTag->DrawCopy("Esame");
-  Energy_Quot__Muon_MinBias->SetMarkerSize(6);  Energy_Quot__Muon_MinBias->SetMarkerColor(5); Energy_Quot__Muon_MinBias->SetMarkerStyle(20);
-  Energy_Quot__Muon_MinBias->DrawCopy("Psame"); Energy_Quot__Muon_MinBias->SetMarkerColor(41);Energy_Quot__Muon_MinBias->SetMarkerStyle(24);
-  Energy_Quot__Muon_MinBias->SetLineWidth(2);   Energy_Quot__Muon_MinBias->SetLineColor(41);  Energy_Quot__Muon_MinBias->DrawCopy("Esame");
-  Energy_Quot__Muon_MultiJet->SetMarkerSize(6);  Energy_Quot__Muon_MultiJet->SetMarkerColor(8); Energy_Quot__Muon_MultiJet->SetMarkerStyle(34);
-  Energy_Quot__Muon_MultiJet->DrawCopy("Psame"); Energy_Quot__Muon_MultiJet->SetMarkerColor(32);Energy_Quot__Muon_MultiJet->SetMarkerStyle(28);
-  Energy_Quot__Muon_MultiJet->SetLineWidth(2);   Energy_Quot__Muon_MultiJet->SetLineColor(32);  Energy_Quot__Muon_MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Muon_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Mu#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_Jet );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Muon_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf(","pdf");
-  Energy_Quotient__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-Jet.pdf"); Energy_Quotient__Muon_Jet->Close();
-
-  TCanvas* Energy_Quotient__Muon_Jet200  = new TCanvas("Energy_Quotient__Muon_Jet200 ","Energy_Quotient__Muon_Jet200 ",0,0,3240,2160);
-  TPad *H__Muon_Jet200 = new TPad("H__Muon_Jet200","", 0, 0.25, 1, 1); H__Muon_Jet200->SetMargin(0.11,0,0,0); H__Muon_Jet200->SetLogy(); H__Muon_Jet200->Draw();
-  TPad *E__Muon_Jet200 = new TPad("E__Muon_Jet200","", 0, 0, 1, 0.25); E__Muon_Jet200->SetMargin(0.11,0,0.33,0); E__Muon_Jet200->Draw(); H__Muon_Jet200->cd();
-  Energy_Quot__Muon_FJ200->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Muon_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ200->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Muon_FJ200->SetMarkerSize(6); Energy_Quot__Muon_FJ200->SetMarkerColor(14); Energy_Quot__Muon_FJ200->SetMarkerStyle(21);
-  Energy_Quot__Muon_FJ200->DrawCopy("P");    Energy_Quot__Muon_FJ200->SetMarkerColor(1);  Energy_Quot__Muon_FJ200->SetMarkerStyle(25);
-  Energy_Quot__Muon_FJ200->SetLineWidth(2);  Energy_Quot__Muon_FJ200->SetLineColor(1);    Energy_Quot__Muon_FJ200->DrawCopy("Esame");
-  Energy_Quot__Muon_Jet200 ->SetMarkerSize(6);  Energy_Quot__Muon_Jet200 ->SetMarkerColor(42);Energy_Quot__Muon_Jet200 ->SetMarkerStyle(23);
-  Energy_Quot__Muon_Jet200 ->DrawCopy("Psame"); Energy_Quot__Muon_Jet200 ->SetMarkerColor(2); Energy_Quot__Muon_Jet200 ->SetMarkerStyle(32);
-  Energy_Quot__Muon_Jet200 ->SetLineWidth(2);   Energy_Quot__Muon_Jet200 ->SetLineColor(2);   Energy_Quot__Muon_Jet200 ->DrawCopy("Esame");
-  Energy_Quot__Muon_BTag200->SetMarkerSize(6);  Energy_Quot__Muon_BTag200->SetMarkerColor(33);Energy_Quot__Muon_BTag200->SetMarkerStyle(22);
-  Energy_Quot__Muon_BTag200->DrawCopy("Psame"); Energy_Quot__Muon_BTag200->SetMarkerColor(4); Energy_Quot__Muon_BTag200->SetMarkerStyle(26);
-  Energy_Quot__Muon_BTag200->SetLineWidth(2);   Energy_Quot__Muon_BTag200->SetLineColor(4);   Energy_Quot__Muon_BTag200->DrawCopy("Esame");
-  Energy_Quot__Muon_MinBias200->SetMarkerSize(6);  Energy_Quot__Muon_MinBias200->SetMarkerColor(5); Energy_Quot__Muon_MinBias200->SetMarkerStyle(20);
-  Energy_Quot__Muon_MinBias200->DrawCopy("Psame"); Energy_Quot__Muon_MinBias200->SetMarkerColor(41);Energy_Quot__Muon_MinBias200->SetMarkerStyle(24);
-  Energy_Quot__Muon_MinBias200->SetLineWidth(2);   Energy_Quot__Muon_MinBias200->SetLineColor(41);  Energy_Quot__Muon_MinBias200->DrawCopy("Esame");
-  Energy_Quot__Muon_MultiJet200->SetMarkerSize(6);  Energy_Quot__Muon_MultiJet200->SetMarkerColor(8); Energy_Quot__Muon_MultiJet200->SetMarkerStyle(34);
-  Energy_Quot__Muon_MultiJet200->DrawCopy("Psame"); Energy_Quot__Muon_MultiJet200->SetMarkerColor(32);Energy_Quot__Muon_MultiJet200->SetMarkerStyle(28);
-  Energy_Quot__Muon_MultiJet200->SetLineWidth(2);   Energy_Quot__Muon_MultiJet200->SetLineColor(32);  Energy_Quot__Muon_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Muon_Jet200->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_Jet200 );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_BTag200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MinBias200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_MultiJet200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Muon_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Muon_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-Jet200.pdf"); Energy_Quotient__Muon_Jet200->Close();
-
-  TCanvas* Energy_Quotient__Muon_200Jet = new TCanvas("Energy_Quotient__Muon_200Jet","Energy_Quotient__Muon_200Jet",0,0,3240,2160);
-  TPad *H__Muon_200Jet = new TPad("H__Muon_200Jet","", 0, 0.25, 1, 1); H__Muon_200Jet->SetMargin(0.11,0,0,0); H__Muon_200Jet->SetLogy(); H__Muon_200Jet->Draw();
-  TPad *E__Muon_200Jet = new TPad("E__Muon_200Jet","", 0, 0, 1, 0.25); E__Muon_200Jet->SetMargin(0.11,0,0.33,0); E__Muon_200Jet->Draw(); H__Muon_200Jet->cd();
-  Energy_Quot__Muon_200FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Muon_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_200FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Muon_200FJ->SetMarkerSize(6); Energy_Quot__Muon_200FJ->SetMarkerColor(14); Energy_Quot__Muon_200FJ->SetMarkerStyle(21);
-  Energy_Quot__Muon_200FJ->DrawCopy("P");    Energy_Quot__Muon_200FJ->SetMarkerColor(1);  Energy_Quot__Muon_200FJ->SetMarkerStyle(25);
-  Energy_Quot__Muon_200FJ->SetLineWidth(2);  Energy_Quot__Muon_200FJ->SetLineColor(1);    Energy_Quot__Muon_200FJ->DrawCopy("Esame");
-  Energy_Quot__Muon_200Jet->SetMarkerSize(6);  Energy_Quot__Muon_200Jet->SetMarkerColor(42);Energy_Quot__Muon_200Jet->SetMarkerStyle(23);
-  Energy_Quot__Muon_200Jet->DrawCopy("Psame"); Energy_Quot__Muon_200Jet->SetMarkerColor(2); Energy_Quot__Muon_200Jet->SetMarkerStyle(32);
-  Energy_Quot__Muon_200Jet->SetLineWidth(2);   Energy_Quot__Muon_200Jet->SetLineColor(2);   Energy_Quot__Muon_200Jet->DrawCopy("Esame");
-  Energy_Quot__Muon_200BTag->SetMarkerSize(6);  Energy_Quot__Muon_200BTag->SetMarkerColor(33);Energy_Quot__Muon_200BTag->SetMarkerStyle(22);
-  Energy_Quot__Muon_200BTag->DrawCopy("Psame"); Energy_Quot__Muon_200BTag->SetMarkerColor(4); Energy_Quot__Muon_200BTag->SetMarkerStyle(26);
-  Energy_Quot__Muon_200BTag->SetLineWidth(2);   Energy_Quot__Muon_200BTag->SetLineColor(4);   Energy_Quot__Muon_200BTag->DrawCopy("Esame");
-  Energy_Quot__Muon_200MinBias->SetMarkerSize(6);  Energy_Quot__Muon_200MinBias->SetMarkerColor(5); Energy_Quot__Muon_200MinBias->SetMarkerStyle(20);
-  Energy_Quot__Muon_200MinBias->DrawCopy("Psame"); Energy_Quot__Muon_200MinBias->SetMarkerColor(41);Energy_Quot__Muon_200MinBias->SetMarkerStyle(24);
-  Energy_Quot__Muon_200MinBias->SetLineWidth(2);   Energy_Quot__Muon_200MinBias->SetLineColor(41);  Energy_Quot__Muon_200MinBias->DrawCopy("Esame");
-  Energy_Quot__Muon_200MultiJet->SetMarkerSize(6);  Energy_Quot__Muon_200MultiJet->SetMarkerColor(8); Energy_Quot__Muon_200MultiJet->SetMarkerStyle(34);
-  Energy_Quot__Muon_200MultiJet->DrawCopy("Psame"); Energy_Quot__Muon_200MultiJet->SetMarkerColor(32);Energy_Quot__Muon_200MultiJet->SetMarkerStyle(28);
-  Energy_Quot__Muon_200MultiJet->SetLineWidth(2);   Energy_Quot__Muon_200MultiJet->SetLineColor(32);  Energy_Quot__Muon_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Muon_200Jet->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200Jet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Muon_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Muon_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Muon-200Jet.pdf"); Energy_Quotient__Muon_200Jet->Close();
-
-
-  TCanvas* Energy_Quotient__Photon_Jet  = new TCanvas("Energy_Quotient__Photon_Jet ","Energy_Quotient__Photon_Jet ",0,0,3240,2160);
-  TPad *H__Photon_Jet = new TPad("H__Photon_Jet","", 0, 0.25, 1, 1); H__Photon_Jet->SetMargin(0.11,0,0,0); H__Photon_Jet->SetLogy(); H__Photon_Jet->Draw();
-  TPad *E__Photon_Jet = new TPad("E__Photon_Jet","", 0, 0, 1, 0.25); E__Photon_Jet->SetMargin(0.11,0,0.33,0); E__Photon_Jet->Draw(); H__Photon_Jet->cd();
-  Energy_Quot__Photon_FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Photon_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Photon_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Photon_FJ->SetMarkerSize(6); Energy_Quot__Photon_FJ->SetMarkerColor(14); Energy_Quot__Photon_FJ->SetMarkerStyle(21);
-  Energy_Quot__Photon_FJ->DrawCopy("P");    Energy_Quot__Photon_FJ->SetMarkerColor(1);  Energy_Quot__Photon_FJ->SetMarkerStyle(25);
-  Energy_Quot__Photon_FJ->SetLineWidth(2);  Energy_Quot__Photon_FJ->SetLineColor(1);    Energy_Quot__Photon_FJ->DrawCopy("Esame");
-  Energy_Quot__Photon_Jet ->SetMarkerSize(6);  Energy_Quot__Photon_Jet ->SetMarkerColor(42);Energy_Quot__Photon_Jet ->SetMarkerStyle(23);
-  Energy_Quot__Photon_Jet ->DrawCopy("Psame"); Energy_Quot__Photon_Jet ->SetMarkerColor(2); Energy_Quot__Photon_Jet ->SetMarkerStyle(32);
-  Energy_Quot__Photon_Jet ->SetLineWidth(2);   Energy_Quot__Photon_Jet ->SetLineColor(2);   Energy_Quot__Photon_Jet ->DrawCopy("Esame");
-  Energy_Quot__Photon_BTag->SetMarkerSize(6);  Energy_Quot__Photon_BTag->SetMarkerColor(33);Energy_Quot__Photon_BTag->SetMarkerStyle(22);
-  Energy_Quot__Photon_BTag->DrawCopy("Psame"); Energy_Quot__Photon_BTag->SetMarkerColor(4); Energy_Quot__Photon_BTag->SetMarkerStyle(26);
-  Energy_Quot__Photon_BTag->SetLineWidth(2);   Energy_Quot__Photon_BTag->SetLineColor(4);   Energy_Quot__Photon_BTag->DrawCopy("Esame");
-  Energy_Quot__Photon_MinBias->SetMarkerSize(6);  Energy_Quot__Photon_MinBias->SetMarkerColor(5); Energy_Quot__Photon_MinBias->SetMarkerStyle(20);
-  Energy_Quot__Photon_MinBias->DrawCopy("Psame"); Energy_Quot__Photon_MinBias->SetMarkerColor(41);Energy_Quot__Photon_MinBias->SetMarkerStyle(24);
-  Energy_Quot__Photon_MinBias->SetLineWidth(2);   Energy_Quot__Photon_MinBias->SetLineColor(41);  Energy_Quot__Photon_MinBias->DrawCopy("Esame");
-  Energy_Quot__Photon_MultiJet->SetMarkerSize(6);  Energy_Quot__Photon_MultiJet->SetMarkerColor(8); Energy_Quot__Photon_MultiJet->SetMarkerStyle(34);
-  Energy_Quot__Photon_MultiJet->DrawCopy("Psame"); Energy_Quot__Photon_MultiJet->SetMarkerColor(32);Energy_Quot__Photon_MultiJet->SetMarkerStyle(28);
-  Energy_Quot__Photon_MultiJet->SetLineWidth(2);   Energy_Quot__Photon_MultiJet->SetLineColor(32);  Energy_Quot__Photon_MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Photon_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Fot#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_Jet );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Photon_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Photon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-Jet.pdf"); Energy_Quotient__Photon_Jet->Close();
-
-  TCanvas* Energy_Quotient__Photon_Jet200  = new TCanvas("Energy_Quotient__Photon_Jet200 ","Energy_Quotient__Photon_Jet200 ",0,0,3240,2160);
-  TPad *H__Photon_Jet200 = new TPad("H__Photon_Jet200","", 0, 0.25, 1, 1); H__Photon_Jet200->SetMargin(0.11,0,0,0); H__Photon_Jet200->SetLogy(); H__Photon_Jet200->Draw();
-  TPad *E__Photon_Jet200 = new TPad("E__Photon_Jet200","", 0, 0, 1, 0.25); E__Photon_Jet200->SetMargin(0.11,0,0.33,0); E__Photon_Jet200->Draw(); H__Photon_Jet200->cd();
-  Energy_Quot__Photon_FJ200->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Photon_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ200->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Photon_FJ200->SetMarkerSize(6); Energy_Quot__Photon_FJ200->SetMarkerColor(14); Energy_Quot__Photon_FJ200->SetMarkerStyle(21);
-  Energy_Quot__Photon_FJ200->DrawCopy("P");    Energy_Quot__Photon_FJ200->SetMarkerColor(1);  Energy_Quot__Photon_FJ200->SetMarkerStyle(25);
-  Energy_Quot__Photon_FJ200->SetLineWidth(2);  Energy_Quot__Photon_FJ200->SetLineColor(1);    Energy_Quot__Photon_FJ200->DrawCopy("Esame");
-  Energy_Quot__Photon_Jet200 ->SetMarkerSize(6);  Energy_Quot__Photon_Jet200 ->SetMarkerColor(42);Energy_Quot__Photon_Jet200 ->SetMarkerStyle(23);
-  Energy_Quot__Photon_Jet200 ->DrawCopy("Psame"); Energy_Quot__Photon_Jet200 ->SetMarkerColor(2); Energy_Quot__Photon_Jet200 ->SetMarkerStyle(32);
-  Energy_Quot__Photon_Jet200 ->SetLineWidth(2);   Energy_Quot__Photon_Jet200 ->SetLineColor(2);   Energy_Quot__Photon_Jet200 ->DrawCopy("Esame");
-  Energy_Quot__Photon_BTag200->SetMarkerSize(6);  Energy_Quot__Photon_BTag200->SetMarkerColor(33);Energy_Quot__Photon_BTag200->SetMarkerStyle(22);
-  Energy_Quot__Photon_BTag200->DrawCopy("Psame"); Energy_Quot__Photon_BTag200->SetMarkerColor(4); Energy_Quot__Photon_BTag200->SetMarkerStyle(26);
-  Energy_Quot__Photon_BTag200->SetLineWidth(2);   Energy_Quot__Photon_BTag200->SetLineColor(4);   Energy_Quot__Photon_BTag200->DrawCopy("Esame");
-  Energy_Quot__Photon_MinBias200->SetMarkerSize(6);  Energy_Quot__Photon_MinBias200->SetMarkerColor(5); Energy_Quot__Photon_MinBias200->SetMarkerStyle(20);
-  Energy_Quot__Photon_MinBias200->DrawCopy("Psame"); Energy_Quot__Photon_MinBias200->SetMarkerColor(41);Energy_Quot__Photon_MinBias200->SetMarkerStyle(24);
-  Energy_Quot__Photon_MinBias200->SetLineWidth(2);   Energy_Quot__Photon_MinBias200->SetLineColor(41);  Energy_Quot__Photon_MinBias200->DrawCopy("Esame");
-  Energy_Quot__Photon_MultiJet200->SetMarkerSize(6);  Energy_Quot__Photon_MultiJet200->SetMarkerColor(8); Energy_Quot__Photon_MultiJet200->SetMarkerStyle(34);
-  Energy_Quot__Photon_MultiJet200->DrawCopy("Psame"); Energy_Quot__Photon_MultiJet200->SetMarkerColor(32);Energy_Quot__Photon_MultiJet200->SetMarkerStyle(28);
-  Energy_Quot__Photon_MultiJet200->SetLineWidth(2);   Energy_Quot__Photon_MultiJet200->SetLineColor(32);  Energy_Quot__Photon_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Photon_Jet200->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_Jet200 );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_BTag200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MinBias200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_MultiJet200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Photon_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Photon_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-Jet200.pdf"); Energy_Quotient__Photon_Jet200->Close();
-
-  TCanvas* Energy_Quotient__Photon_200Jet = new TCanvas("Energy_Quotient__Photon_200Jet","Energy_Quotient__Photon_200Jet",0,0,3240,2160);
-  TPad *H__Photon_200Jet = new TPad("H__Photon_200Jet","", 0, 0.25, 1, 1); H__Photon_200Jet->SetMargin(0.11,0,0,0); H__Photon_200Jet->SetLogy(); H__Photon_200Jet->Draw();
-  TPad *E__Photon_200Jet = new TPad("E__Photon_200Jet","", 0, 0, 1, 0.25); E__Photon_200Jet->SetMargin(0.11,0,0.33,0); E__Photon_200Jet->Draw(); H__Photon_200Jet->cd();
-  Energy_Quot__Photon_200FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Photon_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_200FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Photon_200FJ->SetMarkerSize(6); Energy_Quot__Photon_200FJ->SetMarkerColor(14); Energy_Quot__Photon_200FJ->SetMarkerStyle(21);
-  Energy_Quot__Photon_200FJ->DrawCopy("P");    Energy_Quot__Photon_200FJ->SetMarkerColor(1);  Energy_Quot__Photon_200FJ->SetMarkerStyle(25);
-  Energy_Quot__Photon_200FJ->SetLineWidth(2);  Energy_Quot__Photon_200FJ->SetLineColor(1);    Energy_Quot__Photon_200FJ->DrawCopy("Esame");
-  Energy_Quot__Photon_200Jet->SetMarkerSize(6);  Energy_Quot__Photon_200Jet->SetMarkerColor(42);Energy_Quot__Photon_200Jet->SetMarkerStyle(23);
-  Energy_Quot__Photon_200Jet->DrawCopy("Psame"); Energy_Quot__Photon_200Jet->SetMarkerColor(2); Energy_Quot__Photon_200Jet->SetMarkerStyle(32);
-  Energy_Quot__Photon_200Jet->SetLineWidth(2);   Energy_Quot__Photon_200Jet->SetLineColor(2);   Energy_Quot__Photon_200Jet->DrawCopy("Esame");
-  Energy_Quot__Photon_200BTag->SetMarkerSize(6);  Energy_Quot__Photon_200BTag->SetMarkerColor(33);Energy_Quot__Photon_200BTag->SetMarkerStyle(22);
-  Energy_Quot__Photon_200BTag->DrawCopy("Psame"); Energy_Quot__Photon_200BTag->SetMarkerColor(4); Energy_Quot__Photon_200BTag->SetMarkerStyle(26);
-  Energy_Quot__Photon_200BTag->SetLineWidth(2);   Energy_Quot__Photon_200BTag->SetLineColor(4);   Energy_Quot__Photon_200BTag->DrawCopy("Esame");
-  Energy_Quot__Photon_200MinBias->SetMarkerSize(6);  Energy_Quot__Photon_200MinBias->SetMarkerColor(5); Energy_Quot__Photon_200MinBias->SetMarkerStyle(20);
-  Energy_Quot__Photon_200MinBias->DrawCopy("Psame"); Energy_Quot__Photon_200MinBias->SetMarkerColor(41);Energy_Quot__Photon_200MinBias->SetMarkerStyle(24);
-  Energy_Quot__Photon_200MinBias->SetLineWidth(2);   Energy_Quot__Photon_200MinBias->SetLineColor(41);  Energy_Quot__Photon_200MinBias->DrawCopy("Esame");
-  Energy_Quot__Photon_200MultiJet->SetMarkerSize(6);  Energy_Quot__Photon_200MultiJet->SetMarkerColor(8); Energy_Quot__Photon_200MultiJet->SetMarkerStyle(34);
-  Energy_Quot__Photon_200MultiJet->DrawCopy("Psame"); Energy_Quot__Photon_200MultiJet->SetMarkerColor(32);Energy_Quot__Photon_200MultiJet->SetMarkerStyle(28);
-  Energy_Quot__Photon_200MultiJet->SetLineWidth(2);   Energy_Quot__Photon_200MultiJet->SetLineColor(32);  Energy_Quot__Photon_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Photon_200Jet->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200Jet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Photon_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Photon_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Photon-200Jet.pdf"); Energy_Quotient__Photon_200Jet->Close();
-
-
-  TCanvas* Energy_Quotient__Electron_Jet  = new TCanvas("Energy_Quotient__Electron_Jet ","Energy_Quotient__Electron_Jet ",0,0,3240,2160);
-  TPad *H__Electron_Jet = new TPad("H__Electron_Jet","", 0, 0.25, 1, 1); H__Electron_Jet->SetMargin(0.11,0,0,0); H__Electron_Jet->SetLogy(); H__Electron_Jet->Draw();
-  TPad *E__Electron_Jet = new TPad("E__Electron_Jet","", 0, 0, 1, 0.25); E__Electron_Jet->SetMargin(0.11,0,0.33,0); E__Electron_Jet->Draw(); H__Electron_Jet->cd();
-  Energy_Quot__Electron_FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Electron_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Electron_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Electron_FJ->SetMarkerSize(6); Energy_Quot__Electron_FJ->SetMarkerColor(14); Energy_Quot__Electron_FJ->SetMarkerStyle(21);
-  Energy_Quot__Electron_FJ->DrawCopy("P");    Energy_Quot__Electron_FJ->SetMarkerColor(1);  Energy_Quot__Electron_FJ->SetMarkerStyle(25);
-  Energy_Quot__Electron_FJ->SetLineWidth(2);  Energy_Quot__Electron_FJ->SetLineColor(1);    Energy_Quot__Electron_FJ->DrawCopy("Esame");
-  Energy_Quot__Electron_Jet ->SetMarkerSize(6);  Energy_Quot__Electron_Jet ->SetMarkerColor(42);Energy_Quot__Electron_Jet ->SetMarkerStyle(23);
-  Energy_Quot__Electron_Jet ->DrawCopy("Psame"); Energy_Quot__Electron_Jet ->SetMarkerColor(2); Energy_Quot__Electron_Jet ->SetMarkerStyle(32);
-  Energy_Quot__Electron_Jet ->SetLineWidth(2);   Energy_Quot__Electron_Jet ->SetLineColor(2);   Energy_Quot__Electron_Jet ->DrawCopy("Esame");
-  Energy_Quot__Electron_BTag->SetMarkerSize(6);  Energy_Quot__Electron_BTag->SetMarkerColor(33);Energy_Quot__Electron_BTag->SetMarkerStyle(22);
-  Energy_Quot__Electron_BTag->DrawCopy("Psame"); Energy_Quot__Electron_BTag->SetMarkerColor(4); Energy_Quot__Electron_BTag->SetMarkerStyle(26);
-  Energy_Quot__Electron_BTag->SetLineWidth(2);   Energy_Quot__Electron_BTag->SetLineColor(4);   Energy_Quot__Electron_BTag->DrawCopy("Esame");
-  Energy_Quot__Electron_MinBias->SetMarkerSize(6);  Energy_Quot__Electron_MinBias->SetMarkerColor(5); Energy_Quot__Electron_MinBias->SetMarkerStyle(20);
-  Energy_Quot__Electron_MinBias->DrawCopy("Psame"); Energy_Quot__Electron_MinBias->SetMarkerColor(41);Energy_Quot__Electron_MinBias->SetMarkerStyle(24);
-  Energy_Quot__Electron_MinBias->SetLineWidth(2);   Energy_Quot__Electron_MinBias->SetLineColor(41);  Energy_Quot__Electron_MinBias->DrawCopy("Esame");
-  Energy_Quot__Electron_MultiJet->SetMarkerSize(6);  Energy_Quot__Electron_MultiJet->SetMarkerColor(8); Energy_Quot__Electron_MultiJet->SetMarkerStyle(34);
-  Energy_Quot__Electron_MultiJet->DrawCopy("Psame"); Energy_Quot__Electron_MultiJet->SetMarkerColor(32);Energy_Quot__Electron_MultiJet->SetMarkerStyle(28);
-  Energy_Quot__Electron_MultiJet->SetLineWidth(2);   Energy_Quot__Electron_MultiJet->SetLineColor(32);  Energy_Quot__Electron_MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Electron_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Electr#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_Jet );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Electron_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-Jet.pdf"); Energy_Quotient__Electron_Jet->Close();
-
-  TCanvas* Energy_Quotient__Electron_Jet200  = new TCanvas("Energy_Quotient__Electron_Jet200 ","Energy_Quotient__Electron_Jet200 ",0,0,3240,2160);
-  TPad *H__Electron_Jet200 = new TPad("H__Electron_Jet200","", 0, 0.25, 1, 1); H__Electron_Jet200->SetMargin(0.11,0,0,0); H__Electron_Jet200->SetLogy(); H__Electron_Jet200->Draw();
-  TPad *E__Electron_Jet200 = new TPad("E__Electron_Jet200","", 0, 0, 1, 0.25); E__Electron_Jet200->SetMargin(0.11,0,0.33,0); E__Electron_Jet200->Draw(); H__Electron_Jet200->cd();
-  Energy_Quot__Electron_FJ200->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Electron_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ200->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Electron_FJ200->SetMarkerSize(6); Energy_Quot__Electron_FJ200->SetMarkerColor(14); Energy_Quot__Electron_FJ200->SetMarkerStyle(21);
-  Energy_Quot__Electron_FJ200->DrawCopy("P");    Energy_Quot__Electron_FJ200->SetMarkerColor(1);  Energy_Quot__Electron_FJ200->SetMarkerStyle(25);
-  Energy_Quot__Electron_FJ200->SetLineWidth(2);  Energy_Quot__Electron_FJ200->SetLineColor(1);    Energy_Quot__Electron_FJ200->DrawCopy("Esame");
-  Energy_Quot__Electron_Jet200 ->SetMarkerSize(6);  Energy_Quot__Electron_Jet200 ->SetMarkerColor(42);Energy_Quot__Electron_Jet200 ->SetMarkerStyle(23);
-  Energy_Quot__Electron_Jet200 ->DrawCopy("Psame"); Energy_Quot__Electron_Jet200 ->SetMarkerColor(2); Energy_Quot__Electron_Jet200 ->SetMarkerStyle(32);
-  Energy_Quot__Electron_Jet200 ->SetLineWidth(2);   Energy_Quot__Electron_Jet200 ->SetLineColor(2);   Energy_Quot__Electron_Jet200 ->DrawCopy("Esame");
-  Energy_Quot__Electron_BTag200->SetMarkerSize(6);  Energy_Quot__Electron_BTag200->SetMarkerColor(33);Energy_Quot__Electron_BTag200->SetMarkerStyle(22);
-  Energy_Quot__Electron_BTag200->DrawCopy("Psame"); Energy_Quot__Electron_BTag200->SetMarkerColor(4); Energy_Quot__Electron_BTag200->SetMarkerStyle(26);
-  Energy_Quot__Electron_BTag200->SetLineWidth(2);   Energy_Quot__Electron_BTag200->SetLineColor(4);   Energy_Quot__Electron_BTag200->DrawCopy("Esame");
-  Energy_Quot__Electron_MinBias200->SetMarkerSize(6);  Energy_Quot__Electron_MinBias200->SetMarkerColor(5); Energy_Quot__Electron_MinBias200->SetMarkerStyle(20);
-  Energy_Quot__Electron_MinBias200->DrawCopy("Psame"); Energy_Quot__Electron_MinBias200->SetMarkerColor(41);Energy_Quot__Electron_MinBias200->SetMarkerStyle(24);
-  Energy_Quot__Electron_MinBias200->SetLineWidth(2);   Energy_Quot__Electron_MinBias200->SetLineColor(41);  Energy_Quot__Electron_MinBias200->DrawCopy("Esame");
-  Energy_Quot__Electron_MultiJet200->SetMarkerSize(6);  Energy_Quot__Electron_MultiJet200->SetMarkerColor(8); Energy_Quot__Electron_MultiJet200->SetMarkerStyle(34);
-  Energy_Quot__Electron_MultiJet200->DrawCopy("Psame"); Energy_Quot__Electron_MultiJet200->SetMarkerColor(32);Energy_Quot__Electron_MultiJet200->SetMarkerStyle(28);
-  Energy_Quot__Electron_MultiJet200->SetLineWidth(2);   Energy_Quot__Electron_MultiJet200->SetLineColor(32);  Energy_Quot__Electron_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Electron_Jet200->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_Jet200 );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_BTag200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MinBias200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_MultiJet200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Electron_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Electron_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-Jet200.pdf"); Energy_Quotient__Electron_Jet200->Close();
-
-  TCanvas* Energy_Quotient__Electron_200Jet = new TCanvas("Energy_Quotient__Electron_200Jet","Energy_Quotient__Electron_200Jet",0,0,3240,2160);
-  TPad *H__Electron_200Jet = new TPad("H__Electron_200Jet","", 0, 0.25, 1, 1); H__Electron_200Jet->SetMargin(0.11,0,0,0); H__Electron_200Jet->SetLogy(); H__Electron_200Jet->Draw();
-  TPad *E__Electron_200Jet = new TPad("E__Electron_200Jet","", 0, 0, 1, 0.25); E__Electron_200Jet->SetMargin(0.11,0,0.33,0); E__Electron_200Jet->Draw(); H__Electron_200Jet->cd();
-  Energy_Quot__Electron_200FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__Electron_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_200FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__Electron_200FJ->SetMarkerSize(6); Energy_Quot__Electron_200FJ->SetMarkerColor(14); Energy_Quot__Electron_200FJ->SetMarkerStyle(21);
-  Energy_Quot__Electron_200FJ->DrawCopy("P");    Energy_Quot__Electron_200FJ->SetMarkerColor(1);  Energy_Quot__Electron_200FJ->SetMarkerStyle(25);
-  Energy_Quot__Electron_200FJ->SetLineWidth(2);  Energy_Quot__Electron_200FJ->SetLineColor(1);    Energy_Quot__Electron_200FJ->DrawCopy("Esame");
-  Energy_Quot__Electron_200Jet->SetMarkerSize(6);  Energy_Quot__Electron_200Jet->SetMarkerColor(42);Energy_Quot__Electron_200Jet->SetMarkerStyle(23);
-  Energy_Quot__Electron_200Jet->DrawCopy("Psame"); Energy_Quot__Electron_200Jet->SetMarkerColor(2); Energy_Quot__Electron_200Jet->SetMarkerStyle(32);
-  Energy_Quot__Electron_200Jet->SetLineWidth(2);   Energy_Quot__Electron_200Jet->SetLineColor(2);   Energy_Quot__Electron_200Jet->DrawCopy("Esame");
-  Energy_Quot__Electron_200BTag->SetMarkerSize(6);  Energy_Quot__Electron_200BTag->SetMarkerColor(33);Energy_Quot__Electron_200BTag->SetMarkerStyle(22);
-  Energy_Quot__Electron_200BTag->DrawCopy("Psame"); Energy_Quot__Electron_200BTag->SetMarkerColor(4); Energy_Quot__Electron_200BTag->SetMarkerStyle(26);
-  Energy_Quot__Electron_200BTag->SetLineWidth(2);   Energy_Quot__Electron_200BTag->SetLineColor(4);   Energy_Quot__Electron_200BTag->DrawCopy("Esame");
-  Energy_Quot__Electron_200MinBias->SetMarkerSize(6);  Energy_Quot__Electron_200MinBias->SetMarkerColor(5); Energy_Quot__Electron_200MinBias->SetMarkerStyle(20);
-  Energy_Quot__Electron_200MinBias->DrawCopy("Psame"); Energy_Quot__Electron_200MinBias->SetMarkerColor(41);Energy_Quot__Electron_200MinBias->SetMarkerStyle(24);
-  Energy_Quot__Electron_200MinBias->SetLineWidth(2);   Energy_Quot__Electron_200MinBias->SetLineColor(41);  Energy_Quot__Electron_200MinBias->DrawCopy("Esame");
-  Energy_Quot__Electron_200MultiJet->SetMarkerSize(6);  Energy_Quot__Electron_200MultiJet->SetMarkerColor(8); Energy_Quot__Electron_200MultiJet->SetMarkerStyle(34);
-  Energy_Quot__Electron_200MultiJet->DrawCopy("Psame"); Energy_Quot__Electron_200MultiJet->SetMarkerColor(32);Energy_Quot__Electron_200MultiJet->SetMarkerStyle(28);
-  Energy_Quot__Electron_200MultiJet->SetLineWidth(2);   Energy_Quot__Electron_200MultiJet->SetLineColor(32);  Energy_Quot__Electron_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Electron_200Jet->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200Jet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__Electron_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__Electron_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__Electron-200Jet.pdf"); Energy_Quotient__Electron_200Jet->Close();
-
-
-  TCanvas* Energy_Quotient__NeutralHad_Jet  = new TCanvas("Energy_Quotient__NeutralHad_Jet ","Energy_Quotient__NeutralHad_Jet ",0,0,3240,2160);
-  TPad *H__NeutralHad_Jet = new TPad("H__NeutralHad_Jet","", 0, 0.25, 1, 1); H__NeutralHad_Jet->SetMargin(0.11,0,0,0); H__NeutralHad_Jet->SetLogy(); H__NeutralHad_Jet->Draw();
-  TPad *E__NeutralHad_Jet = new TPad("E__NeutralHad_Jet","", 0, 0, 1, 0.25); E__NeutralHad_Jet->SetMargin(0.11,0,0.33,0); E__NeutralHad_Jet->Draw(); H__NeutralHad_Jet->cd();
-  Energy_Quot__NeutralHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__NeutralHad_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__NeutralHad_FJ->SetMarkerSize(6); Energy_Quot__NeutralHad_FJ->SetMarkerColor(14); Energy_Quot__NeutralHad_FJ->SetMarkerStyle(21);
-  Energy_Quot__NeutralHad_FJ->DrawCopy("P");    Energy_Quot__NeutralHad_FJ->SetMarkerColor(1);  Energy_Quot__NeutralHad_FJ->SetMarkerStyle(25);
-  Energy_Quot__NeutralHad_FJ->SetLineWidth(2);  Energy_Quot__NeutralHad_FJ->SetLineColor(1);    Energy_Quot__NeutralHad_FJ->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_Jet ->SetMarkerSize(6);  Energy_Quot__NeutralHad_Jet ->SetMarkerColor(42);Energy_Quot__NeutralHad_Jet ->SetMarkerStyle(23);
-  Energy_Quot__NeutralHad_Jet ->DrawCopy("Psame"); Energy_Quot__NeutralHad_Jet ->SetMarkerColor(2); Energy_Quot__NeutralHad_Jet ->SetMarkerStyle(32);
-  Energy_Quot__NeutralHad_Jet ->SetLineWidth(2);   Energy_Quot__NeutralHad_Jet ->SetLineColor(2);   Energy_Quot__NeutralHad_Jet ->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_BTag->SetMarkerSize(6);  Energy_Quot__NeutralHad_BTag->SetMarkerColor(33);Energy_Quot__NeutralHad_BTag->SetMarkerStyle(22);
-  Energy_Quot__NeutralHad_BTag->DrawCopy("Psame"); Energy_Quot__NeutralHad_BTag->SetMarkerColor(4); Energy_Quot__NeutralHad_BTag->SetMarkerStyle(26);
-  Energy_Quot__NeutralHad_BTag->SetLineWidth(2);   Energy_Quot__NeutralHad_BTag->SetLineColor(4);   Energy_Quot__NeutralHad_BTag->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_MinBias->SetMarkerSize(6);  Energy_Quot__NeutralHad_MinBias->SetMarkerColor(5); Energy_Quot__NeutralHad_MinBias->SetMarkerStyle(20);
-  Energy_Quot__NeutralHad_MinBias->DrawCopy("Psame"); Energy_Quot__NeutralHad_MinBias->SetMarkerColor(41);Energy_Quot__NeutralHad_MinBias->SetMarkerStyle(24);
-  Energy_Quot__NeutralHad_MinBias->SetLineWidth(2);   Energy_Quot__NeutralHad_MinBias->SetLineColor(41);  Energy_Quot__NeutralHad_MinBias->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_MultiJet->SetMarkerSize(6);  Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(8); Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(34);
-  Energy_Quot__NeutralHad_MultiJet->DrawCopy("Psame"); Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(32);Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(28);
-  Energy_Quot__NeutralHad_MultiJet->SetLineWidth(2);   Energy_Quot__NeutralHad_MultiJet->SetLineColor(32);  Energy_Quot__NeutralHad_MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__NeutralHad_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Hadr#acute{o}nNeutro} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_Jet );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__NeutralHad_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__NeutralHad_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-Jet.pdf"); Energy_Quotient__NeutralHad_Jet->Close();
-
-  TCanvas* Energy_Quotient__NeutralHad_Jet200  = new TCanvas("Energy_Quotient__NeutralHad_Jet200 ","Energy_Quotient__NeutralHad_Jet200 ",0,0,3240,2160);
-  TPad *H__NeutralHad_Jet200 = new TPad("H__NeutralHad_Jet200","", 0, 0.25, 1, 1); H__NeutralHad_Jet200->SetMargin(0.11,0,0,0); H__NeutralHad_Jet200->SetLogy(); H__NeutralHad_Jet200->Draw();
-  TPad *E__NeutralHad_Jet200 = new TPad("E__NeutralHad_Jet200","", 0, 0, 1, 0.25); E__NeutralHad_Jet200->SetMargin(0.11,0,0.33,0); E__NeutralHad_Jet200->Draw(); H__NeutralHad_Jet200->cd();
-  Energy_Quot__NeutralHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ200->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__NeutralHad_FJ200->SetMarkerSize(6); Energy_Quot__NeutralHad_FJ200->SetMarkerColor(14); Energy_Quot__NeutralHad_FJ200->SetMarkerStyle(21);
-  Energy_Quot__NeutralHad_FJ200->DrawCopy("P");    Energy_Quot__NeutralHad_FJ200->SetMarkerColor(1);  Energy_Quot__NeutralHad_FJ200->SetMarkerStyle(25);
-  Energy_Quot__NeutralHad_FJ200->SetLineWidth(2);  Energy_Quot__NeutralHad_FJ200->SetLineColor(1);    Energy_Quot__NeutralHad_FJ200->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_Jet200 ->SetMarkerSize(6);  Energy_Quot__NeutralHad_Jet200 ->SetMarkerColor(42);Energy_Quot__NeutralHad_Jet200 ->SetMarkerStyle(23);
-  Energy_Quot__NeutralHad_Jet200 ->DrawCopy("Psame"); Energy_Quot__NeutralHad_Jet200 ->SetMarkerColor(2); Energy_Quot__NeutralHad_Jet200 ->SetMarkerStyle(32);
-  Energy_Quot__NeutralHad_Jet200 ->SetLineWidth(2);   Energy_Quot__NeutralHad_Jet200 ->SetLineColor(2);   Energy_Quot__NeutralHad_Jet200 ->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_BTag200->SetMarkerSize(6);  Energy_Quot__NeutralHad_BTag200->SetMarkerColor(33);Energy_Quot__NeutralHad_BTag200->SetMarkerStyle(22);
-  Energy_Quot__NeutralHad_BTag200->DrawCopy("Psame"); Energy_Quot__NeutralHad_BTag200->SetMarkerColor(4); Energy_Quot__NeutralHad_BTag200->SetMarkerStyle(26);
-  Energy_Quot__NeutralHad_BTag200->SetLineWidth(2);   Energy_Quot__NeutralHad_BTag200->SetLineColor(4);   Energy_Quot__NeutralHad_BTag200->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_MinBias200->SetMarkerSize(6);  Energy_Quot__NeutralHad_MinBias200->SetMarkerColor(5); Energy_Quot__NeutralHad_MinBias200->SetMarkerStyle(20);
-  Energy_Quot__NeutralHad_MinBias200->DrawCopy("Psame"); Energy_Quot__NeutralHad_MinBias200->SetMarkerColor(41);Energy_Quot__NeutralHad_MinBias200->SetMarkerStyle(24);
-  Energy_Quot__NeutralHad_MinBias200->SetLineWidth(2);   Energy_Quot__NeutralHad_MinBias200->SetLineColor(41);  Energy_Quot__NeutralHad_MinBias200->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_MultiJet200->SetMarkerSize(6);  Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(8); Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(34);
-  Energy_Quot__NeutralHad_MultiJet200->DrawCopy("Psame"); Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(32);Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(28);
-  Energy_Quot__NeutralHad_MultiJet200->SetLineWidth(2);   Energy_Quot__NeutralHad_MultiJet200->SetLineColor(32);  Energy_Quot__NeutralHad_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__NeutralHad_Jet200->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_Jet200 );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_BTag200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MinBias200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_MultiJet200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__NeutralHad_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__NeutralHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-Jet200.pdf"); Energy_Quotient__NeutralHad_Jet200->Close();
-
-  TCanvas* Energy_Quotient__NeutralHad_200Jet = new TCanvas("Energy_Quotient__NeutralHad_200Jet","Energy_Quotient__NeutralHad_200Jet",0,0,3240,2160);
-  TPad *H__NeutralHad_200Jet = new TPad("H__NeutralHad_200Jet","", 0, 0.25, 1, 1); H__NeutralHad_200Jet->SetMargin(0.11,0,0,0); H__NeutralHad_200Jet->SetLogy(); H__NeutralHad_200Jet->Draw();
-  TPad *E__NeutralHad_200Jet = new TPad("E__NeutralHad_200Jet","", 0, 0, 1, 0.25); E__NeutralHad_200Jet->SetMargin(0.11,0,0.33,0); E__NeutralHad_200Jet->Draw(); H__NeutralHad_200Jet->cd();
-  Energy_Quot__NeutralHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_200FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__NeutralHad_200FJ->SetMarkerSize(6); Energy_Quot__NeutralHad_200FJ->SetMarkerColor(14); Energy_Quot__NeutralHad_200FJ->SetMarkerStyle(21);
-  Energy_Quot__NeutralHad_200FJ->DrawCopy("P");    Energy_Quot__NeutralHad_200FJ->SetMarkerColor(1);  Energy_Quot__NeutralHad_200FJ->SetMarkerStyle(25);
-  Energy_Quot__NeutralHad_200FJ->SetLineWidth(2);  Energy_Quot__NeutralHad_200FJ->SetLineColor(1);    Energy_Quot__NeutralHad_200FJ->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_200Jet->SetMarkerSize(6);  Energy_Quot__NeutralHad_200Jet->SetMarkerColor(42);Energy_Quot__NeutralHad_200Jet->SetMarkerStyle(23);
-  Energy_Quot__NeutralHad_200Jet->DrawCopy("Psame"); Energy_Quot__NeutralHad_200Jet->SetMarkerColor(2); Energy_Quot__NeutralHad_200Jet->SetMarkerStyle(32);
-  Energy_Quot__NeutralHad_200Jet->SetLineWidth(2);   Energy_Quot__NeutralHad_200Jet->SetLineColor(2);   Energy_Quot__NeutralHad_200Jet->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_200BTag->SetMarkerSize(6);  Energy_Quot__NeutralHad_200BTag->SetMarkerColor(33);Energy_Quot__NeutralHad_200BTag->SetMarkerStyle(22);
-  Energy_Quot__NeutralHad_200BTag->DrawCopy("Psame"); Energy_Quot__NeutralHad_200BTag->SetMarkerColor(4); Energy_Quot__NeutralHad_200BTag->SetMarkerStyle(26);
-  Energy_Quot__NeutralHad_200BTag->SetLineWidth(2);   Energy_Quot__NeutralHad_200BTag->SetLineColor(4);   Energy_Quot__NeutralHad_200BTag->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_200MinBias->SetMarkerSize(6);  Energy_Quot__NeutralHad_200MinBias->SetMarkerColor(5); Energy_Quot__NeutralHad_200MinBias->SetMarkerStyle(20);
-  Energy_Quot__NeutralHad_200MinBias->DrawCopy("Psame"); Energy_Quot__NeutralHad_200MinBias->SetMarkerColor(41);Energy_Quot__NeutralHad_200MinBias->SetMarkerStyle(24);
-  Energy_Quot__NeutralHad_200MinBias->SetLineWidth(2);   Energy_Quot__NeutralHad_200MinBias->SetLineColor(41);  Energy_Quot__NeutralHad_200MinBias->DrawCopy("Esame");
-  Energy_Quot__NeutralHad_200MultiJet->SetMarkerSize(6);  Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(8); Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(34);
-  Energy_Quot__NeutralHad_200MultiJet->DrawCopy("Psame"); Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(32);Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(28);
-  Energy_Quot__NeutralHad_200MultiJet->SetLineWidth(2);   Energy_Quot__NeutralHad_200MultiJet->SetLineColor(32);  Energy_Quot__NeutralHad_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__NeutralHad_200Jet->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200Jet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__NeutralHad_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__NeutralHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__NeutralHad-200Jet.pdf"); Energy_Quotient__NeutralHad_200Jet->Close();
-
-
-  TCanvas* Energy_Quotient__ChargedHad_Jet  = new TCanvas("Energy_Quotient__ChargedHad_Jet ","Energy_Quotient__ChargedHad_Jet ",0,0,3240,2160);
-  TPad *H__ChargedHad_Jet = new TPad("H__ChargedHad_Jet","", 0, 0.25, 1, 1); H__ChargedHad_Jet->SetMargin(0.11,0,0,0); H__ChargedHad_Jet->SetLogy(); H__ChargedHad_Jet->Draw();
-  TPad *E__ChargedHad_Jet = new TPad("E__ChargedHad_Jet","", 0, 0, 1, 0.25); E__ChargedHad_Jet->SetMargin(0.11,0,0.33,0); E__ChargedHad_Jet->Draw(); H__ChargedHad_Jet->cd();
-  Energy_Quot__ChargedHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__ChargedHad_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__ChargedHad_FJ->SetMarkerSize(6); Energy_Quot__ChargedHad_FJ->SetMarkerColor(14); Energy_Quot__ChargedHad_FJ->SetMarkerStyle(21);
-  Energy_Quot__ChargedHad_FJ->DrawCopy("P");    Energy_Quot__ChargedHad_FJ->SetMarkerColor(1);  Energy_Quot__ChargedHad_FJ->SetMarkerStyle(25);
-  Energy_Quot__ChargedHad_FJ->SetLineWidth(2);  Energy_Quot__ChargedHad_FJ->SetLineColor(1);    Energy_Quot__ChargedHad_FJ->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_Jet ->SetMarkerSize(6);  Energy_Quot__ChargedHad_Jet ->SetMarkerColor(42);Energy_Quot__ChargedHad_Jet ->SetMarkerStyle(23);
-  Energy_Quot__ChargedHad_Jet ->DrawCopy("Psame"); Energy_Quot__ChargedHad_Jet ->SetMarkerColor(2); Energy_Quot__ChargedHad_Jet ->SetMarkerStyle(32);
-  Energy_Quot__ChargedHad_Jet ->SetLineWidth(2);   Energy_Quot__ChargedHad_Jet ->SetLineColor(2);   Energy_Quot__ChargedHad_Jet ->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_BTag->SetMarkerSize(6);  Energy_Quot__ChargedHad_BTag->SetMarkerColor(33);Energy_Quot__ChargedHad_BTag->SetMarkerStyle(22);
-  Energy_Quot__ChargedHad_BTag->DrawCopy("Psame"); Energy_Quot__ChargedHad_BTag->SetMarkerColor(4); Energy_Quot__ChargedHad_BTag->SetMarkerStyle(26);
-  Energy_Quot__ChargedHad_BTag->SetLineWidth(2);   Energy_Quot__ChargedHad_BTag->SetLineColor(4);   Energy_Quot__ChargedHad_BTag->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_MinBias->SetMarkerSize(6);  Energy_Quot__ChargedHad_MinBias->SetMarkerColor(5); Energy_Quot__ChargedHad_MinBias->SetMarkerStyle(20);
-  Energy_Quot__ChargedHad_MinBias->DrawCopy("Psame"); Energy_Quot__ChargedHad_MinBias->SetMarkerColor(41);Energy_Quot__ChargedHad_MinBias->SetMarkerStyle(24);
-  Energy_Quot__ChargedHad_MinBias->SetLineWidth(2);   Energy_Quot__ChargedHad_MinBias->SetLineColor(41);  Energy_Quot__ChargedHad_MinBias->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_MultiJet->SetMarkerSize(6);  Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(8); Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(34);
-  Energy_Quot__ChargedHad_MultiJet->DrawCopy("Psame"); Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(32);Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(28);
-  Energy_Quot__ChargedHad_MultiJet->SetLineWidth(2);   Energy_Quot__ChargedHad_MultiJet->SetLineColor(32);  Energy_Quot__ChargedHad_MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__ChargedHad_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Hadr#acute{o}nCargado} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_Jet );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_BTag,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__ChargedHad_Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__ChargedHad_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-Jet.pdf"); Energy_Quotient__ChargedHad_Jet->Close();
-
-  TCanvas* Energy_Quotient__ChargedHad_Jet200  = new TCanvas("Energy_Quotient__ChargedHad_Jet200 ","Energy_Quotient__ChargedHad_Jet200 ",0,0,3240,2160);
-  TPad *H__ChargedHad_Jet200 = new TPad("H__ChargedHad_Jet200","", 0, 0.25, 1, 1); H__ChargedHad_Jet200->SetMargin(0.11,0,0,0); H__ChargedHad_Jet200->SetLogy(); H__ChargedHad_Jet200->Draw();
-  TPad *E__ChargedHad_Jet200 = new TPad("E__ChargedHad_Jet200","", 0, 0, 1, 0.25); E__ChargedHad_Jet200->SetMargin(0.11,0,0.33,0); E__ChargedHad_Jet200->Draw(); H__ChargedHad_Jet200->cd();
-  Energy_Quot__ChargedHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ200->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__ChargedHad_FJ200->SetMarkerSize(6); Energy_Quot__ChargedHad_FJ200->SetMarkerColor(14); Energy_Quot__ChargedHad_FJ200->SetMarkerStyle(21);
-  Energy_Quot__ChargedHad_FJ200->DrawCopy("P");    Energy_Quot__ChargedHad_FJ200->SetMarkerColor(1);  Energy_Quot__ChargedHad_FJ200->SetMarkerStyle(25);
-  Energy_Quot__ChargedHad_FJ200->SetLineWidth(2);  Energy_Quot__ChargedHad_FJ200->SetLineColor(1);    Energy_Quot__ChargedHad_FJ200->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_Jet200 ->SetMarkerSize(6);  Energy_Quot__ChargedHad_Jet200 ->SetMarkerColor(42);Energy_Quot__ChargedHad_Jet200 ->SetMarkerStyle(23);
-  Energy_Quot__ChargedHad_Jet200 ->DrawCopy("Psame"); Energy_Quot__ChargedHad_Jet200 ->SetMarkerColor(2); Energy_Quot__ChargedHad_Jet200 ->SetMarkerStyle(32);
-  Energy_Quot__ChargedHad_Jet200 ->SetLineWidth(2);   Energy_Quot__ChargedHad_Jet200 ->SetLineColor(2);   Energy_Quot__ChargedHad_Jet200 ->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_BTag200->SetMarkerSize(6);  Energy_Quot__ChargedHad_BTag200->SetMarkerColor(33);Energy_Quot__ChargedHad_BTag200->SetMarkerStyle(22);
-  Energy_Quot__ChargedHad_BTag200->DrawCopy("Psame"); Energy_Quot__ChargedHad_BTag200->SetMarkerColor(4); Energy_Quot__ChargedHad_BTag200->SetMarkerStyle(26);
-  Energy_Quot__ChargedHad_BTag200->SetLineWidth(2);   Energy_Quot__ChargedHad_BTag200->SetLineColor(4);   Energy_Quot__ChargedHad_BTag200->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_MinBias200->SetMarkerSize(6);  Energy_Quot__ChargedHad_MinBias200->SetMarkerColor(5); Energy_Quot__ChargedHad_MinBias200->SetMarkerStyle(20);
-  Energy_Quot__ChargedHad_MinBias200->DrawCopy("Psame"); Energy_Quot__ChargedHad_MinBias200->SetMarkerColor(41);Energy_Quot__ChargedHad_MinBias200->SetMarkerStyle(24);
-  Energy_Quot__ChargedHad_MinBias200->SetLineWidth(2);   Energy_Quot__ChargedHad_MinBias200->SetLineColor(41);  Energy_Quot__ChargedHad_MinBias200->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_MultiJet200->SetMarkerSize(6);  Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(8); Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(34);
-  Energy_Quot__ChargedHad_MultiJet200->DrawCopy("Psame"); Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(32);Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(28);
-  Energy_Quot__ChargedHad_MultiJet200->SetLineWidth(2);   Energy_Quot__ChargedHad_MultiJet200->SetLineColor(32);  Energy_Quot__ChargedHad_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__ChargedHad_Jet200->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_Jet200 );
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_BTag200,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_BTag200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MinBias200,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MinBias200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_MultiJet200,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_MultiJet200);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__ChargedHad_Jet200->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf","pdf");
-  Energy_Quotient__ChargedHad_Jet200->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-Jet200.pdf"); Energy_Quotient__ChargedHad_Jet200->Close();
-
-  TCanvas* Energy_Quotient__ChargedHad_200Jet = new TCanvas("Energy_Quotient__ChargedHad_200Jet","Energy_Quotient__ChargedHad_200Jet",0,0,3240,2160);
-  TPad *H__ChargedHad_200Jet = new TPad("H__ChargedHad_200Jet","", 0, 0.25, 1, 1); H__ChargedHad_200Jet->SetMargin(0.11,0,0,0); H__ChargedHad_200Jet->SetLogy(); H__ChargedHad_200Jet->Draw();
-  TPad *E__ChargedHad_200Jet = new TPad("E__ChargedHad_200Jet","", 0, 0, 1, 0.25); E__ChargedHad_200Jet->SetMargin(0.11,0,0.33,0); E__ChargedHad_200Jet->Draw(); H__ChargedHad_200Jet->cd();
-  Energy_Quot__ChargedHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
-  Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_200FJ->SetAxisRange(0.0, 1.04, "X");
-  Energy_Quot__ChargedHad_200FJ->SetMarkerSize(6); Energy_Quot__ChargedHad_200FJ->SetMarkerColor(14); Energy_Quot__ChargedHad_200FJ->SetMarkerStyle(21);
-  Energy_Quot__ChargedHad_200FJ->DrawCopy("P");    Energy_Quot__ChargedHad_200FJ->SetMarkerColor(1);  Energy_Quot__ChargedHad_200FJ->SetMarkerStyle(25);
-  Energy_Quot__ChargedHad_200FJ->SetLineWidth(2);  Energy_Quot__ChargedHad_200FJ->SetLineColor(1);    Energy_Quot__ChargedHad_200FJ->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_200Jet->SetMarkerSize(6);  Energy_Quot__ChargedHad_200Jet->SetMarkerColor(42);Energy_Quot__ChargedHad_200Jet->SetMarkerStyle(23);
-  Energy_Quot__ChargedHad_200Jet->DrawCopy("Psame"); Energy_Quot__ChargedHad_200Jet->SetMarkerColor(2); Energy_Quot__ChargedHad_200Jet->SetMarkerStyle(32);
-  Energy_Quot__ChargedHad_200Jet->SetLineWidth(2);   Energy_Quot__ChargedHad_200Jet->SetLineColor(2);   Energy_Quot__ChargedHad_200Jet->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_200BTag->SetMarkerSize(6);  Energy_Quot__ChargedHad_200BTag->SetMarkerColor(33);Energy_Quot__ChargedHad_200BTag->SetMarkerStyle(22);
-  Energy_Quot__ChargedHad_200BTag->DrawCopy("Psame"); Energy_Quot__ChargedHad_200BTag->SetMarkerColor(4); Energy_Quot__ChargedHad_200BTag->SetMarkerStyle(26);
-  Energy_Quot__ChargedHad_200BTag->SetLineWidth(2);   Energy_Quot__ChargedHad_200BTag->SetLineColor(4);   Energy_Quot__ChargedHad_200BTag->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_200MinBias->SetMarkerSize(6);  Energy_Quot__ChargedHad_200MinBias->SetMarkerColor(5); Energy_Quot__ChargedHad_200MinBias->SetMarkerStyle(20);
-  Energy_Quot__ChargedHad_200MinBias->DrawCopy("Psame"); Energy_Quot__ChargedHad_200MinBias->SetMarkerColor(41);Energy_Quot__ChargedHad_200MinBias->SetMarkerStyle(24);
-  Energy_Quot__ChargedHad_200MinBias->SetLineWidth(2);   Energy_Quot__ChargedHad_200MinBias->SetLineColor(41);  Energy_Quot__ChargedHad_200MinBias->DrawCopy("Esame");
-  Energy_Quot__ChargedHad_200MultiJet->SetMarkerSize(6);  Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(8); Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(34);
-  Energy_Quot__ChargedHad_200MultiJet->DrawCopy("Psame"); Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(32);Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(28);
-  Energy_Quot__ChargedHad_200MultiJet->SetLineWidth(2);   Energy_Quot__ChargedHad_200MultiJet->SetLineColor(32);  Energy_Quot__ChargedHad_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__ChargedHad_200Jet->cd(); Cero->Draw();
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200Jet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
-  Energy_Quot__Error->SetLineColor(2);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200BTag,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200BTag);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(22);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(4); Energy_Quot__Error->SetMarkerStyle(26);
-  Energy_Quot__Error->SetLineColor(4);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200MinBias,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200MinBias);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(20);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(5); Energy_Quot__Error->SetMarkerStyle(24);
-  Energy_Quot__Error->SetLineColor(5);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200MultiJet,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200MultiJet);
-  Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(34);  Energy_Quot__Error->DrawCopy("Psame");
-  Energy_Quot__Error->SetMarkerColor(8); Energy_Quot__Error->SetMarkerStyle(28);
-  Energy_Quot__Error->SetLineColor(8);   Energy_Quot__Error->DrawCopy("Esame");
-  Energy_Quot__Error->Reset("ICES");
-  Energy_Quotient__ChargedHad_200Jet->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient.pdf)","pdf");
-  Energy_Quotient__ChargedHad_200Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Energy_Quotient__ChargedHad-200Jet.pdf"); Energy_Quotient__ChargedHad_200Jet->Close();
-}
-
-
-
-//###################################################################################################################################################################################
-
-void pTQuotient(){
-  // Le damos algo de personalización al las gráficas.
-
-
-  //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
-  TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
-  TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
-  TFile *MinBiasFile = new TFile("/home/saksevul/T/OpenData/MinBias_20000/ak5PF.root");
-  TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF.root");
-
-
-  TH1F *Cociente_pT__Muon_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5FJ->Scale(1.0/Cociente_pT__Muon_ak5FJ->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFJet->Scale(1.0/Cociente_pT__Muon_ak5PFJet->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFBTag->Scale(1.0/Cociente_pT__Muon_ak5PFBTag->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFMinBias->Scale(1.0/Cociente_pT__Muon_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT__Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__Muon-Jet"); Cociente_pT__Muon_ak5PFMultiJet->Scale(1.0/Cociente_pT__Muon_ak5PFMultiJet->Integral());
-
-  TH1F *CLON_C_pT__Muon_ak5FJ =(TH1F*)Cociente_pT__Muon_ak5FJ->Clone();
-  TH1F *CLON_C_pT__Muon_ak5PFJet =(TH1F*)Cociente_pT__Muon_ak5PFJet->Clone();
-  TH1F *CLON_C_pT__Muon_ak5PFBTag =(TH1F*)Cociente_pT__Muon_ak5PFBTag->Clone();
-  TH1F *CLON_C_pT__Muon_ak5PFMinBias =(TH1F*)Cociente_pT__Muon_ak5PFMinBias->Clone();
-  TH1F *CLON_C_pT__Muon_ak5PFMultiJet =(TH1F*)Cociente_pT__Muon_ak5PFMultiJet->Clone();
-
-  TH1F *Cociente_pT100__1Muon_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Muon-Jet<100");  Cociente_pT100__1Muon_ak5FJ->Scale(1.0/Cociente_pT100__1Muon_ak5FJ->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFJet->Scale(1.0/Cociente_pT100__1Muon_ak5PFJet->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFBTag->Scale(1.0/Cociente_pT100__1Muon_ak5PFBTag->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFMinBias->Scale(1.0/Cociente_pT100__1Muon_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT100__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Muon-Jet<100");   Cociente_pT100__1Muon_ak5PFMultiJet->Scale(1.0/Cociente_pT100__1Muon_ak5PFMultiJet->Integral());
-
-  TH1F *Cociente_100pT__1Muon_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Muon-Jet>100");  Cociente_100pT__1Muon_ak5FJ->Scale(1.0/Cociente_100pT__1Muon_ak5FJ->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFJet->Scale(1.0/Cociente_100pT__1Muon_ak5PFJet->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFBTag->Scale(1.0/Cociente_100pT__1Muon_ak5PFBTag->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFMinBias->Scale(1.0/Cociente_100pT__1Muon_ak5PFMinBias->Integral());
-  TH1F *Cociente_100pT__1Muon_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Muon-Jet>100");   Cociente_100pT__1Muon_ak5PFMultiJet->Scale(1.0/Cociente_100pT__1Muon_ak5PFMultiJet->Integral());
-
-  // TH1F *Cociente_pT__Muon01_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient01__Muon-Jet");Cociente_pT__Muon01_ak5FJ->Scale(1.0/Cociente_pT__Muon01_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Muon02_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient02__Muon-Jet");Cociente_pT__Muon02_ak5FJ->Scale(1.0/Cociente_pT__Muon02_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Muon03_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient03__Muon-Jet");Cociente_pT__Muon03_ak5FJ->Scale(1.0/Cociente_pT__Muon03_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Muon04_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient04__Muon-Jet");Cociente_pT__Muon04_ak5FJ->Scale(1.0/Cociente_pT__Muon04_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Muon05_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient05__Muon-Jet");Cociente_pT__Muon05_ak5FJ->Scale(1.0/Cociente_pT__Muon05_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Muon21_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient21__Muon-Jet");Cociente_pT__Muon21_ak5FJ->Scale(1.0/Cociente_pT__Muon21_ak5FJ->Integral());
-
-  TH1F *Cociente_pT__Electron_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__Electron-Jet");  Cociente_pT__Electron_ak5FJ->Scale(1.0/Cociente_pT__Electron_ak5FJ->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFJet->Scale(1.0/Cociente_pT__Electron_ak5PFJet->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFBTag->Scale(1.0/Cociente_pT__Electron_ak5PFBTag->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFMinBias->Scale(1.0/Cociente_pT__Electron_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT__Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__Electron-Jet");   Cociente_pT__Electron_ak5PFMultiJet->Scale(1.0/Cociente_pT__Electron_ak5PFMultiJet->Integral());
-
-  TH1F *Cociente_pT100__1Electron_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Electron-Jet<100");  Cociente_pT100__1Electron_ak5FJ->Scale(1.0/Cociente_pT100__1Electron_ak5FJ->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFJet->Scale(1.0/Cociente_pT100__1Electron_ak5PFJet->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFBTag->Scale(1.0/Cociente_pT100__1Electron_ak5PFBTag->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFMinBias->Scale(1.0/Cociente_pT100__1Electron_ak5PFMinBias->Integral());
-  TH1F *Cociente_pT100__1Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Electron-Jet<100");   Cociente_pT100__1Electron_ak5PFMultiJet->Scale(1.0/Cociente_pT100__1Electron_ak5PFMultiJet->Integral());
-
-  TH1F *Cociente_100pT__1Electron_ak5FJ =(TH1F*)FJFile->Get("pT_Quotient__1Electron-Jet>100");  Cociente_100pT__1Electron_ak5FJ->Scale(1.0/Cociente_100pT__1Electron_ak5FJ->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFJet =(TH1F*)JetFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFJet->Scale(1.0/Cociente_100pT__1Electron_ak5PFJet->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFBTag =(TH1F*)BTagFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFBTag->Scale(1.0/Cociente_100pT__1Electron_ak5PFBTag->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFMinBias =(TH1F*)MinBiasFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFMinBias->Scale(1.0/Cociente_100pT__1Electron_ak5PFMinBias->Integral());
-  TH1F *Cociente_100pT__1Electron_ak5PFMultiJet =(TH1F*)MultiJetFile->Get("pT_Quotient__1Electron-Jet>100");   Cociente_100pT__1Electron_ak5PFMultiJet->Scale(1.0/Cociente_100pT__1Electron_ak5PFMultiJet->Integral());
-
-  // TH1F *Cociente_pT__Electron01_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient01__Electron-Jet");Cociente_pT__Electron01_ak5FJ->Scale(1.0/Cociente_pT__Electron01_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Electron02_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient02__Electron-Jet");Cociente_pT__Electron02_ak5FJ->Scale(1.0/Cociente_pT__Electron02_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Electron03_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient03__Electron-Jet");Cociente_pT__Electron03_ak5FJ->Scale(1.0/Cociente_pT__Electron03_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Electron04_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient04__Electron-Jet");Cociente_pT__Electron04_ak5FJ->Scale(1.0/Cociente_pT__Electron04_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Electron05_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient05__Electron-Jet");Cociente_pT__Electron05_ak5FJ->Scale(1.0/Cociente_pT__Electron05_ak5FJ->Integral());
-  // TH1F *Cociente_pT__Electron21_ak5FJ = (TH1F*)FJFile->Get("pT__Quotient21__Electron-Jet");Cociente_pT__Electron21_ak5FJ->Scale(1.0/Cociente_pT__Electron21_ak5FJ->Integral());
-
-
-
-  auto   Leg = new TLegend(0.62,0.70,0.90,0.92);    Leg->SetTextSize(0.04); Leg->SetFillStyle(0); Leg->SetBorderSize(0);
-    Leg->AddEntry(CLON_C_pT__Muon_ak5FJ, "MC FastJet", "p");
-    Leg->AddEntry(CLON_C_pT__Muon_ak5PFJet, "Open-Data PF Jet", "p");
-    Leg->AddEntry(CLON_C_pT__Muon_ak5PFBTag, "Open-Data PF BTag", "p");
-    Leg->AddEntry(CLON_C_pT__Muon_ak5PFMinBias, "Open-Data PF MinBias", "p");
-    Leg->AddEntry(CLON_C_pT__Muon_ak5PFMultiJet, "Open-Data PF MultiJet", "p");
-
-  auto   legend = new TLegend(0.62,0.70,0.90,0.92);    legend->SetTextSize(0.04); legend->SetFillStyle(0); legend->SetBorderSize(0);
-    legend->AddEntry(Cociente_pT__Muon_ak5FJ, "MC FastJet", "lep");
-    legend->AddEntry(Cociente_pT__Muon_ak5PFJet, "Open-Data PF Jet", "lep");
-    legend->AddEntry(Cociente_pT__Muon_ak5PFBTag, "Open-Data PF BTag", "lep");
-    legend->AddEntry(Cociente_pT__Muon_ak5PFMinBias, "Open-Data PF MinBias", "lep");
-    legend->AddEntry(Cociente_pT__Muon_ak5PFMultiJet, "Open-Data PF MultiJet", "lep");
-
-  // auto   QuarkLegend = new TLegend(0.75,0.60,0.90,0.92);    QuarkLegend->SetTextSize(0.04);
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon_ak5FJ, "MC FastJet", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
-  //   QuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
-  //
-  // auto   ODQuarkLegend = new TLegend(0.68,0.60,0.90,0.92);    ODQuarkLegend->SetTextSize(0.04);
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon_ak5PFJet, "Open-Data PF Jet", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon01_ak5FJ, "MC, Down", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon02_ak5FJ, "MC, Up", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon03_ak5FJ, "MC, Strange", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon04_ak5FJ, "MC, Charm", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon05_ak5FJ, "MC, Bottom", "lp");
-  //   ODQuarkLegend->AddEntry(Cociente_pT__Muon21_ak5FJ, "MC, Gluon", "lp");
-
-
-
-  TCanvas* Cociente_pT__Muon_Jet = new TCanvas("Cociente_pT__Muon_Jet","Cociente pT FastJet y PFJets para muones",10,10,1920,1080);
-  Cociente_pT__Muon_Jet->SetFillColor(0);  Cociente_pT__Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  CLON_C_pT__Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES; p_{T}^{Muon} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  CLON_C_pT__Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); CLON_C_pT__Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-  CLON_C_pT__Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); CLON_C_pT__Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-  CLON_C_pT__Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);CLON_C_pT__Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  CLON_C_pT__Muon_ak5FJ->Draw("P"); CLON_C_pT__Muon_ak5FJ->Rebin(); Cociente_pT__Muon_ak5FJ->Rebin(); CLON_C_pT__Muon_ak5FJ->SetAxisRange(0.0, 1.2, "X");
-  CLON_C_pT__Muon_ak5FJ->SetMarkerStyle(21); CLON_C_pT__Muon_ak5FJ->SetMarkerColor(14); CLON_C_pT__Muon_ak5FJ->SetMarkerSize(4);
-  Cociente_pT__Muon_ak5FJ -> Draw("Esame"); Cociente_pT__Muon_ak5FJ->SetLineColor(1); Cociente_pT__Muon_ak5FJ->SetLineWidth(4);
-  Cociente_pT__Muon_ak5FJ->SetMarkerStyle(25); Cociente_pT__Muon_ak5FJ->SetMarkerColor(1); Cociente_pT__Muon_ak5FJ->SetMarkerSize(4);
-  CLON_C_pT__Muon_ak5PFJet->Draw("Psame"); CLON_C_pT__Muon_ak5PFJet->Rebin(); Cociente_pT__Muon_ak5PFJet->Rebin();
-  CLON_C_pT__Muon_ak5PFJet->SetMarkerStyle(23); CLON_C_pT__Muon_ak5PFJet->SetMarkerColor(42); CLON_C_pT__Muon_ak5PFJet->SetMarkerSize(4);
-  Cociente_pT__Muon_ak5PFJet -> Draw("Esame"); Cociente_pT__Muon_ak5PFJet->SetLineColor(2); Cociente_pT__Muon_ak5PFJet->SetLineWidth(4);
-  Cociente_pT__Muon_ak5PFJet->SetMarkerStyle(32); Cociente_pT__Muon_ak5PFJet->SetMarkerColor(2); Cociente_pT__Muon_ak5PFJet->SetMarkerSize(4);
-  CLON_C_pT__Muon_ak5PFBTag->Draw("Psame"); CLON_C_pT__Muon_ak5PFBTag->Rebin(); Cociente_pT__Muon_ak5PFBTag->Rebin();
-  CLON_C_pT__Muon_ak5PFBTag->SetMarkerStyle(22); CLON_C_pT__Muon_ak5PFBTag->SetMarkerColor(33); CLON_C_pT__Muon_ak5PFBTag->SetMarkerSize(4);
-  Cociente_pT__Muon_ak5PFBTag -> Draw("Esame"); Cociente_pT__Muon_ak5PFBTag->SetLineColor(4); Cociente_pT__Muon_ak5PFBTag->SetLineWidth(4);
-  Cociente_pT__Muon_ak5PFBTag->SetMarkerStyle(26); Cociente_pT__Muon_ak5PFBTag->SetMarkerColor(4); Cociente_pT__Muon_ak5PFBTag->SetMarkerSize(4);
-  CLON_C_pT__Muon_ak5PFMinBias->Draw("Psame"); CLON_C_pT__Muon_ak5PFMinBias->Rebin(); Cociente_pT__Muon_ak5PFMinBias->Rebin();
-  CLON_C_pT__Muon_ak5PFMinBias->SetMarkerStyle(20); CLON_C_pT__Muon_ak5PFMinBias->SetMarkerColor(5); CLON_C_pT__Muon_ak5PFMinBias->SetMarkerSize(4);
-  Cociente_pT__Muon_ak5PFMinBias -> Draw("Esame"); Cociente_pT__Muon_ak5PFMinBias->SetLineColor(41); Cociente_pT__Muon_ak5PFMinBias->SetLineWidth(4);
-  Cociente_pT__Muon_ak5PFMinBias->SetMarkerStyle(24); Cociente_pT__Muon_ak5PFMinBias->SetMarkerColor(41); Cociente_pT__Muon_ak5PFMinBias->SetMarkerSize(4);
-  CLON_C_pT__Muon_ak5PFMultiJet->Draw("Psame"); CLON_C_pT__Muon_ak5PFMultiJet->Rebin(); Cociente_pT__Muon_ak5PFMultiJet->Rebin();
-  CLON_C_pT__Muon_ak5PFMultiJet->SetMarkerStyle(34); CLON_C_pT__Muon_ak5PFMultiJet->SetMarkerColor(8); CLON_C_pT__Muon_ak5PFMultiJet->SetMarkerSize(4);
-  Cociente_pT__Muon_ak5PFMultiJet -> Draw("Esame"); Cociente_pT__Muon_ak5PFMultiJet->SetLineColor(32); Cociente_pT__Muon_ak5PFMultiJet->SetLineWidth(4);
-  Cociente_pT__Muon_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT__Muon_ak5PFMultiJet->SetMarkerColor(32); Cociente_pT__Muon_ak5PFMultiJet->SetMarkerSize(4);
-  Leg->Draw(); legend->Draw();  Cociente_pT__Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Muon-Jet.png"); Cociente_pT__Muon_Jet->Close();
-
-
-  /*    TCanvas* Cociente_pT__MuonQuark_Jet = new TCanvas("Cociente_pT__MuonQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
-      Cociente_pT__MuonQuark_Jet->SetFillColor(0);  Cociente_pT__MuonQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-      // Esto es para modificar las etiquetas del canvas.
-      Cociente_pT__Muon_ak5FJ->SetTitle("Cociente p_{T} para muones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-      Cociente_pT__Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-      Cociente_pT__Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-      Cociente_pT__Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-      // Cociente_pT__Muon_ak5FJ->SetAxisRange(0.0, 2, "X");
-      // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-      Cociente_pT__Muon_ak5FJ -> Draw("E1"); Cociente_pT__Muon_ak5FJ->SetLineColor(1); Cociente_pT__Muon_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon_ak5FJ->SetMarkerStyle(20); Cociente_pT__Muon_ak5FJ->SetMarkerColor(1); Cociente_pT__Muon_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon01_ak5FJ -> Draw("Esame"); Cociente_pT__Muon01_ak5FJ->SetLineColor(30); Cociente_pT__Muon01_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon01_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon01_ak5FJ->SetMarkerColor(30); Cociente_pT__Muon01_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon02_ak5FJ -> Draw("Esame"); Cociente_pT__Muon02_ak5FJ->SetLineColor(38); Cociente_pT__Muon02_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon02_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon02_ak5FJ->SetMarkerColor(38); Cociente_pT__Muon02_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon03_ak5FJ -> Draw("Esame"); Cociente_pT__Muon03_ak5FJ->SetLineColor(40); Cociente_pT__Muon03_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon03_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon03_ak5FJ->SetMarkerColor(40); Cociente_pT__Muon03_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon04_ak5FJ -> Draw("Esame"); Cociente_pT__Muon04_ak5FJ->SetLineColor(41); Cociente_pT__Muon04_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon04_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon04_ak5FJ->SetMarkerColor(41); Cociente_pT__Muon04_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon05_ak5FJ -> Draw("Esame"); Cociente_pT__Muon05_ak5FJ->SetLineColor(42); Cociente_pT__Muon05_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon05_ak5FJ->SetMarkerColor(42); Cociente_pT__Muon05_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon21_ak5FJ -> Draw("Esame"); Cociente_pT__Muon21_ak5FJ->SetLineColor(45); Cociente_pT__Muon21_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon21_ak5FJ->SetMarkerColor(45); Cociente_pT__Muon21_ak5FJ->SetMarkerSize(2);
-      QuarkLegend -> Draw();  Cociente_pT__MuonQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__MuonQuark-Jet.png"); Cociente_pT__MuonQuark_Jet -> Close();
-
-
-      TCanvas* Cociente_pT__ODMuonQuark_Jet = new TCanvas("Cociente_pT__ODMuonQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
-      Cociente_pT__ODMuonQuark_Jet->SetFillColor(0);  Cociente_pT__ODMuonQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-      // Esto es para modificar las etiquetas del canvas.
-      Cociente_pT__Muon_ak5PFJet->SetTitle("Cociente p_{T} para muones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-      Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetLabelSize(0.05);
-      Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetTitleSize(0.05);
-      Cociente_pT__Muon_ak5PFJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Muon_ak5PFJet->GetYaxis()->SetTitleOffset(1.0);
-      // Cociente_pT__Muon_ak5PFJet->SetAxisRange(0.0, 1.2, "X");
-      // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-      Cociente_pT__Muon_ak5PFJet -> Draw("E1"); Cociente_pT__Muon_ak5PFJet->SetLineColor(2); Cociente_pT__Muon_ak5PFJet->SetLineWidth(4);
-      Cociente_pT__Muon_ak5PFJet->SetMarkerStyle(20); Cociente_pT__Muon_ak5PFJet->SetMarkerColor(2); Cociente_pT__Muon_ak5PFJet->SetMarkerSize(2);
-      Cociente_pT__Muon01_ak5FJ -> Draw("Esame"); Cociente_pT__Muon01_ak5FJ->SetLineColor(30); Cociente_pT__Muon01_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon01_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon01_ak5FJ->SetMarkerColor(30); Cociente_pT__Muon01_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon02_ak5FJ -> Draw("Esame"); Cociente_pT__Muon02_ak5FJ->SetLineColor(38); Cociente_pT__Muon02_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon02_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon02_ak5FJ->SetMarkerColor(38); Cociente_pT__Muon02_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon03_ak5FJ -> Draw("Esame"); Cociente_pT__Muon03_ak5FJ->SetLineColor(40); Cociente_pT__Muon03_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon03_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon03_ak5FJ->SetMarkerColor(40); Cociente_pT__Muon03_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon04_ak5FJ -> Draw("Esame"); Cociente_pT__Muon04_ak5FJ->SetLineColor(41); Cociente_pT__Muon04_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon04_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon04_ak5FJ->SetMarkerColor(41); Cociente_pT__Muon04_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon05_ak5FJ -> Draw("Esame"); Cociente_pT__Muon05_ak5FJ->SetLineColor(42); Cociente_pT__Muon05_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Muon05_ak5FJ->SetMarkerColor(42); Cociente_pT__Muon05_ak5FJ->SetMarkerSize(2);
-      Cociente_pT__Muon21_ak5FJ -> Draw("Esame"); Cociente_pT__Muon21_ak5FJ->SetLineColor(45); Cociente_pT__Muon21_ak5FJ->SetLineWidth(4);
-      Cociente_pT__Muon21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Muon21_ak5FJ->SetMarkerColor(45); Cociente_pT__Muon21_ak5FJ->SetMarkerSize(2);
-      ODQuarkLegend -> Draw();  Cociente_pT__ODMuonQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__MuonODQuark-Jet.png"); Cociente_pT__ODMuonQuark_Jet -> Close();*/
-
-
-  TCanvas* Cociente_pT100__1Muon_Jet = new TCanvas("Cociente_pT100__1Muon_Jet","Cociente pT<100 FastJet y PFJets para muones",10,10,1920,1080);
-  Cociente_pT100__1Muon_Jet->SetFillColor(0);  Cociente_pT100__1Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT100__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} < 100);  p_{T}^{Muon} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-  Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-  Cociente_pT100__1Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Cociente_pT100__1Muon_ak5FJ->Rebin(); Cociente_pT100__1Muon_ak5FJ->SetAxisRange(0.0, 1.2, "X");
-  Cociente_pT100__1Muon_ak5FJ->SetMarkerSize(4);Cociente_pT100__1Muon_ak5FJ->SetMarkerStyle(21); Cociente_pT100__1Muon_ak5FJ->SetMarkerColor(14);
-  Cociente_pT100__1Muon_ak5FJ->DrawCopy("P");   Cociente_pT100__1Muon_ak5FJ->SetMarkerStyle(25); Cociente_pT100__1Muon_ak5FJ->SetMarkerColor(1);
-  Cociente_pT100__1Muon_ak5FJ->SetLineWidth(4); Cociente_pT100__1Muon_ak5FJ -> Draw("Esame");    Cociente_pT100__1Muon_ak5FJ->SetLineColor(1);
-  Cociente_pT100__1Muon_ak5PFJet->Rebin();
-  Cociente_pT100__1Muon_ak5PFJet->SetMarkerSize(4); Cociente_pT100__1Muon_ak5PFJet->SetMarkerStyle(23); Cociente_pT100__1Muon_ak5PFJet->SetMarkerColor(42);
-  Cociente_pT100__1Muon_ak5PFJet->DrawCopy("Psame");Cociente_pT100__1Muon_ak5PFJet->SetMarkerStyle(32); Cociente_pT100__1Muon_ak5PFJet->SetMarkerColor(2);
-  Cociente_pT100__1Muon_ak5PFJet->SetLineWidth(4);  Cociente_pT100__1Muon_ak5PFJet -> Draw("Esame");    Cociente_pT100__1Muon_ak5PFJet->SetLineColor(2);
-  Cociente_pT100__1Muon_ak5PFBTag->Rebin();
-  Cociente_pT100__1Muon_ak5PFBTag->SetMarkerSize(4); Cociente_pT100__1Muon_ak5PFBTag->SetMarkerStyle(22); Cociente_pT100__1Muon_ak5PFBTag->SetMarkerColor(33);
-  Cociente_pT100__1Muon_ak5PFBTag->DrawCopy("Psame");Cociente_pT100__1Muon_ak5PFBTag->SetMarkerStyle(26); Cociente_pT100__1Muon_ak5PFBTag->SetMarkerColor(4);
-  Cociente_pT100__1Muon_ak5PFBTag->SetLineWidth(4);  Cociente_pT100__1Muon_ak5PFBTag -> Draw("Esame");    Cociente_pT100__1Muon_ak5PFBTag->SetLineColor(4);
-  Cociente_pT100__1Muon_ak5PFMinBias->Rebin();
-  Cociente_pT100__1Muon_ak5PFMinBias->SetMarkerSize(4); Cociente_pT100__1Muon_ak5PFMinBias->SetMarkerStyle(20); Cociente_pT100__1Muon_ak5PFMinBias->SetMarkerColor(5);
-  Cociente_pT100__1Muon_ak5PFMinBias->DrawCopy("Psame");Cociente_pT100__1Muon_ak5PFMinBias->SetMarkerStyle(24); Cociente_pT100__1Muon_ak5PFMinBias->SetMarkerColor(kYellow+1);
-  Cociente_pT100__1Muon_ak5PFMinBias->SetLineWidth(4);  Cociente_pT100__1Muon_ak5PFMinBias -> Draw("Esame");    Cociente_pT100__1Muon_ak5PFMinBias->SetLineColor(kYellow+1);
-  Cociente_pT100__1Muon_ak5PFMultiJet->Rebin();
-  Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerSize(4); Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerStyle(34); Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerColor(8);
-  Cociente_pT100__1Muon_ak5PFMultiJet->DrawCopy("Psame");Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT100__1Muon_ak5PFMultiJet->SetMarkerColor(32);
-  Cociente_pT100__1Muon_ak5PFMultiJet->SetLineWidth(4);  Cociente_pT100__1Muon_ak5PFMultiJet -> Draw("Esame");    Cociente_pT100__1Muon_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_pT100__1Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Muon1-Jet<100.png"); Cociente_pT100__1Muon_Jet->Close();
-
-
-  TCanvas* Cociente_100pT__1Muon_Jet = new TCanvas("Cociente_100pT__1Muon_Jet","Cociente pT>100 FastJet y PFJets para muones",10,10,1920,1080);
-  Cociente_100pT__1Muon_Jet->SetFillColor(0);  Cociente_100pT__1Muon_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  Cociente_100pT__1Muon_ak5FJ->SetTitle("Cociente p_{T} para MUONES  (p_{T}^{Jet} > 100); p_{T}^{Muon} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-  Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-  Cociente_100pT__1Muon_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Muon_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Cociente_100pT__1Muon_ak5FJ->Rebin(); Cociente_100pT__1Muon_ak5FJ->SetAxisRange(0.0, 1.2, "X");
-  Cociente_100pT__1Muon_ak5FJ->SetMarkerSize(4);Cociente_100pT__1Muon_ak5FJ->SetMarkerStyle(21); Cociente_100pT__1Muon_ak5FJ->SetMarkerColor(14);
-  Cociente_100pT__1Muon_ak5FJ->DrawCopy("P");   Cociente_100pT__1Muon_ak5FJ->SetMarkerStyle(25); Cociente_100pT__1Muon_ak5FJ->SetMarkerColor(1);
-  Cociente_100pT__1Muon_ak5FJ->SetLineWidth(4); Cociente_100pT__1Muon_ak5FJ -> Draw("Esame");    Cociente_100pT__1Muon_ak5FJ->SetLineColor(1);
-  Cociente_100pT__1Muon_ak5PFJet->Rebin();
-  Cociente_100pT__1Muon_ak5PFJet->SetMarkerSize(4); Cociente_100pT__1Muon_ak5PFJet->SetMarkerStyle(23); Cociente_100pT__1Muon_ak5PFJet->SetMarkerColor(42);
-  Cociente_100pT__1Muon_ak5PFJet->DrawCopy("Psame");Cociente_100pT__1Muon_ak5PFJet->SetMarkerStyle(32); Cociente_100pT__1Muon_ak5PFJet->SetMarkerColor(2);
-  Cociente_100pT__1Muon_ak5PFJet->SetLineWidth(4);  Cociente_100pT__1Muon_ak5PFJet -> Draw("Esame");    Cociente_100pT__1Muon_ak5PFJet->SetLineColor(2);
-  Cociente_100pT__1Muon_ak5PFBTag->Rebin();
-  Cociente_100pT__1Muon_ak5PFBTag->SetMarkerSize(4); Cociente_100pT__1Muon_ak5PFBTag->SetMarkerStyle(22); Cociente_100pT__1Muon_ak5PFBTag->SetMarkerColor(33);
-  Cociente_100pT__1Muon_ak5PFBTag->DrawCopy("Psame");Cociente_100pT__1Muon_ak5PFBTag->SetMarkerStyle(26); Cociente_100pT__1Muon_ak5PFBTag->SetMarkerColor(4);
-  Cociente_100pT__1Muon_ak5PFBTag->SetLineWidth(4);  Cociente_100pT__1Muon_ak5PFBTag -> Draw("Esame");    Cociente_100pT__1Muon_ak5PFBTag->SetLineColor(4);
-  Cociente_100pT__1Muon_ak5PFMinBias->Rebin();
-  Cociente_100pT__1Muon_ak5PFMinBias->SetMarkerSize(4); Cociente_100pT__1Muon_ak5PFMinBias->SetMarkerStyle(20); Cociente_100pT__1Muon_ak5PFMinBias->SetMarkerColor(5);
-  Cociente_100pT__1Muon_ak5PFMinBias->DrawCopy("Psame");Cociente_100pT__1Muon_ak5PFMinBias->SetMarkerStyle(24); Cociente_100pT__1Muon_ak5PFMinBias->SetMarkerColor(kYellow+1);
-  Cociente_100pT__1Muon_ak5PFMinBias->SetLineWidth(4);  Cociente_100pT__1Muon_ak5PFMinBias -> Draw("Esame");    Cociente_100pT__1Muon_ak5PFMinBias->SetLineColor(kYellow+1);
-  Cociente_100pT__1Muon_ak5PFMultiJet->Rebin();
-  Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerSize(4); Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerStyle(34); Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerColor(kSpring-9);
-  Cociente_100pT__1Muon_ak5PFMultiJet->DrawCopy("Psame");Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerStyle(28); Cociente_100pT__1Muon_ak5PFMultiJet->SetMarkerColor(8);
-  Cociente_100pT__1Muon_ak5PFMultiJet->SetLineWidth(4);  Cociente_100pT__1Muon_ak5PFMultiJet -> Draw("Esame");    Cociente_100pT__1Muon_ak5PFMultiJet->SetLineColor(8);
-  Leg->Draw(); legend->Draw();  Cociente_100pT__1Muon_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Muon1-Jet>100.png"); Cociente_100pT__1Muon_Jet->Close();
-
-
-  TCanvas* Cociente_pT__Electron_Jet = new TCanvas("Cociente_pT__Electron_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
-  Cociente_pT__Electron_Jet->SetFillColor(0);  Cociente_pT__Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT__Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Cociente_pT__Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-  Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-  Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Cociente_pT__Electron_ak5FJ->Rebin(); Cociente_pT__Electron_ak5FJ->SetAxisRange(0.0, 1.2, "X");
-  Cociente_pT__Electron_ak5FJ->SetMarkerSize(4);Cociente_pT__Electron_ak5FJ->SetMarkerStyle(21); Cociente_pT__Electron_ak5FJ->SetMarkerColor(14);
-  Cociente_pT__Electron_ak5FJ->DrawCopy("P");   Cociente_pT__Electron_ak5FJ->SetMarkerStyle(25); Cociente_pT__Electron_ak5FJ->SetMarkerColor(1);
-  Cociente_pT__Electron_ak5FJ->SetLineWidth(4); Cociente_pT__Electron_ak5FJ->Draw("Esame");      Cociente_pT__Electron_ak5FJ->SetLineColor(1);
-  Cociente_pT__Electron_ak5PFJet->Rebin();
-  Cociente_pT__Electron_ak5PFJet->SetMarkerSize(4); Cociente_pT__Electron_ak5PFJet->SetMarkerStyle(23); Cociente_pT__Electron_ak5PFJet->SetMarkerColor(42);
-  Cociente_pT__Electron_ak5PFJet->DrawCopy("Psame");Cociente_pT__Electron_ak5PFJet->SetMarkerStyle(32); Cociente_pT__Electron_ak5PFJet->SetMarkerColor(2);
-  Cociente_pT__Electron_ak5PFJet->SetLineWidth(4);  Cociente_pT__Electron_ak5PFJet->Draw("Esame");      Cociente_pT__Electron_ak5PFJet->SetLineColor(2);
-  Cociente_pT__Electron_ak5PFBTag->Rebin();
-  Cociente_pT__Electron_ak5PFBTag->SetMarkerSize(4); Cociente_pT__Electron_ak5PFBTag->SetMarkerStyle(22); Cociente_pT__Electron_ak5PFBTag->SetMarkerColor(33);
-  Cociente_pT__Electron_ak5PFBTag->DrawCopy("Psame");Cociente_pT__Electron_ak5PFBTag->SetMarkerStyle(26); Cociente_pT__Electron_ak5PFBTag->SetMarkerColor(4);
-  Cociente_pT__Electron_ak5PFBTag->SetLineWidth(4);  Cociente_pT__Electron_ak5PFBTag->Draw("Esame");      Cociente_pT__Electron_ak5PFBTag->SetLineColor(4);
-  Cociente_pT__Electron_ak5PFMinBias->Rebin();
-  Cociente_pT__Electron_ak5PFMinBias->SetMarkerSize(4); Cociente_pT__Electron_ak5PFMinBias->SetMarkerStyle(20); Cociente_pT__Electron_ak5PFMinBias->SetMarkerColor(5);
-  Cociente_pT__Electron_ak5PFMinBias->DrawCopy("Psame");Cociente_pT__Electron_ak5PFMinBias->SetMarkerStyle(24); Cociente_pT__Electron_ak5PFMinBias->SetMarkerColor(41);
-  Cociente_pT__Electron_ak5PFMinBias->SetLineWidth(4);  Cociente_pT__Electron_ak5PFMinBias->Draw("Esame");      Cociente_pT__Electron_ak5PFMinBias->SetLineColor(41);
-  Cociente_pT__Electron_ak5PFMultiJet->Rebin();
-  Cociente_pT__Electron_ak5PFMultiJet->SetMarkerSize(4); Cociente_pT__Electron_ak5PFMultiJet->SetMarkerStyle(34); Cociente_pT__Electron_ak5PFMultiJet->SetMarkerColor(8);
-  Cociente_pT__Electron_ak5PFMultiJet->DrawCopy("Psame");Cociente_pT__Electron_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT__Electron_ak5PFMultiJet->SetMarkerColor(32);
-  Cociente_pT__Electron_ak5PFMultiJet->SetLineWidth(4);  Cociente_pT__Electron_ak5PFMultiJet->Draw("Esame");      Cociente_pT__Electron_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_pT__Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Electron-Jet.png"); Cociente_pT__Electron_Jet->Close();
-
-/*
-    TCanvas* Cociente_pT__ElecQuark_Jet = new TCanvas("Cociente_pT__ElecQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
-    Cociente_pT__ElecQuark_Jet->SetFillColor(0);  Cociente_pT__ElecQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-    // Esto es para modificar las etiquetas del canvas.
-    Cociente_pT__Electron_ak5FJ->SetTitle("Cociente p_{T} para electrones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Cociente_pT__Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-    Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-    Cociente_pT__Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-    // Cociente_pT__Electron_ak5FJ->SetAxisRange(0.0, 1.2, "X");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Cociente_pT__Electron_ak5FJ -> Draw("E1"); Cociente_pT__Electron_ak5FJ->SetLineColor(1); Cociente_pT__Electron_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron_ak5FJ->SetMarkerStyle(20); Cociente_pT__Electron_ak5FJ->SetMarkerColor(1); Cociente_pT__Electron_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron01_ak5FJ -> Draw("Esame"); Cociente_pT__Electron01_ak5FJ->SetLineColor(30); Cociente_pT__Electron01_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron01_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron01_ak5FJ->SetMarkerColor(30); Cociente_pT__Electron01_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron02_ak5FJ -> Draw("Esame"); Cociente_pT__Electron02_ak5FJ->SetLineColor(38); Cociente_pT__Electron02_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron02_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron02_ak5FJ->SetMarkerColor(38); Cociente_pT__Electron02_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron03_ak5FJ -> Draw("Esame"); Cociente_pT__Electron03_ak5FJ->SetLineColor(40); Cociente_pT__Electron03_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron03_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron03_ak5FJ->SetMarkerColor(40); Cociente_pT__Electron03_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron04_ak5FJ -> Draw("Esame"); Cociente_pT__Electron04_ak5FJ->SetLineColor(41); Cociente_pT__Electron04_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron04_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron04_ak5FJ->SetMarkerColor(41); Cociente_pT__Electron04_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron05_ak5FJ -> Draw("Esame"); Cociente_pT__Electron05_ak5FJ->SetLineColor(42); Cociente_pT__Electron05_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron05_ak5FJ->SetMarkerColor(42); Cociente_pT__Electron05_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron21_ak5FJ -> Draw("Esame"); Cociente_pT__Electron21_ak5FJ->SetLineColor(45); Cociente_pT__Electron21_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron21_ak5FJ->SetMarkerColor(45); Cociente_pT__Electron21_ak5FJ->SetMarkerSize(2);
-    QuarkLegend -> Draw();  Cociente_pT__ElecQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__ElectronQuark-Jet.png"); Cociente_pT__ElecQuark_Jet -> Close();
-
-
-    TCanvas* Cociente_pT__ElecQuark_Jet = new TCanvas("Cociente_pT__ElecQuark_Jet","Cociente pT FastJet y PFJets para electrones",10,10,1920,1080);
-    Cociente_pT__ElecQuark_Jet->SetFillColor(0);  Cociente_pT__ElecQuark_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-    // Esto es para modificar las etiquetas del canvas.
-    Cociente_pT__Electron_ak5PFJet->SetTitle("Cociente p_{T} para electrones considerando el Parton madre; p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Cociente_pT__Electron_ak5PFJet->GetXaxis()->SetLabelSize(0.05); Cociente_pT__Electron_ak5PFJet->GetYaxis()->SetLabelSize(0.05);
-    Cociente_pT__Electron_ak5PFJet->GetXaxis()->SetTitleSize(0.05); Cociente_pT__Electron_ak5PFJet->GetYaxis()->SetTitleSize(0.05);
-    Cociente_pT__Electron_ak5PFJet->GetXaxis()->SetTitleOffset(1.0);Cociente_pT__Electron_ak5PFJet->GetYaxis()->SetTitleOffset(1.0);
-    // Cociente_pT__Electron_ak5PFJet->SetAxisRange(0.0, 1.2, "X");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Cociente_pT__Electron_ak5PFJet -> Draw("E1"); Cociente_pT__Electron_ak5PFJet->SetLineColor(2); Cociente_pT__Electron_ak5PFJet->SetLineWidth(4);
-    Cociente_pT__Electron_ak5PFJet->SetMarkerStyle(20); Cociente_pT__Electron_ak5PFJet->SetMarkerColor(2); Cociente_pT__Electron_ak5PFJet->SetMarkerSize(2);
-    Cociente_pT__Electron01_ak5FJ -> Draw("Esame"); Cociente_pT__Electron01_ak5FJ->SetLineColor(30); Cociente_pT__Electron01_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron01_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron01_ak5FJ->SetMarkerColor(30); Cociente_pT__Electron01_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron02_ak5FJ -> Draw("Esame"); Cociente_pT__Electron02_ak5FJ->SetLineColor(38); Cociente_pT__Electron02_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron02_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron02_ak5FJ->SetMarkerColor(38); Cociente_pT__Electron02_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron03_ak5FJ -> Draw("Esame"); Cociente_pT__Electron03_ak5FJ->SetLineColor(40); Cociente_pT__Electron03_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron03_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron03_ak5FJ->SetMarkerColor(40); Cociente_pT__Electron03_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron04_ak5FJ -> Draw("Esame"); Cociente_pT__Electron04_ak5FJ->SetLineColor(41); Cociente_pT__Electron04_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron04_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron04_ak5FJ->SetMarkerColor(41); Cociente_pT__Electron04_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron05_ak5FJ -> Draw("Esame"); Cociente_pT__Electron05_ak5FJ->SetLineColor(42); Cociente_pT__Electron05_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron05_ak5FJ->SetMarkerStyle(22); Cociente_pT__Electron05_ak5FJ->SetMarkerColor(42); Cociente_pT__Electron05_ak5FJ->SetMarkerSize(2);
-    Cociente_pT__Electron21_ak5FJ -> Draw("Esame"); Cociente_pT__Electron21_ak5FJ->SetLineColor(45); Cociente_pT__Electron21_ak5FJ->SetLineWidth(4);
-    Cociente_pT__Electron21_ak5FJ->SetMarkerStyle(23); Cociente_pT__Electron21_ak5FJ->SetMarkerColor(45); Cociente_pT__Electron21_ak5FJ->SetMarkerSize(2);
-    ODQuarkLegend -> Draw();  Cociente_pT__ElecQuark_Jet -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__ElectronODQuark-Jet.png"); Cociente_pT__ElecQuark_Jet -> Close();
-*/
-
-  TCanvas* Cociente_pT100__1Electron_Jet = new TCanvas("Cociente_pT100__1Electron_Jet","Cociente pT<100 FastJet y PFJets para electrones",10,10,1920,1080);
-  Cociente_pT100__1Electron_Jet->SetFillColor(0);  Cociente_pT100__1Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  Cociente_pT100__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} < 100); p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-  Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-  Cociente_pT100__1Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_pT100__1Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Cociente_pT100__1Electron_ak5FJ->Rebin(); Cociente_pT100__1Electron_ak5FJ->SetAxisRange(0.0, 1.2, "X");
-  Cociente_pT100__1Electron_ak5FJ->SetMarkerSize(4);Cociente_pT100__1Electron_ak5FJ->SetMarkerStyle(21); Cociente_pT100__1Electron_ak5FJ->SetMarkerColor(14);
-  Cociente_pT100__1Electron_ak5FJ->DrawCopy("P");   Cociente_pT100__1Electron_ak5FJ->SetMarkerStyle(25); Cociente_pT100__1Electron_ak5FJ->SetMarkerColor(1);
-  Cociente_pT100__1Electron_ak5FJ->SetLineWidth(4); Cociente_pT100__1Electron_ak5FJ -> Draw("Esame");    Cociente_pT100__1Electron_ak5FJ->SetLineColor(1);
-  Cociente_pT100__1Electron_ak5PFJet->Rebin();
-  Cociente_pT100__1Electron_ak5PFJet->SetMarkerSize(4); Cociente_pT100__1Electron_ak5PFJet->SetMarkerStyle(23); Cociente_pT100__1Electron_ak5PFJet->SetMarkerColor(42);
-  Cociente_pT100__1Electron_ak5PFJet->DrawCopy("Psame");Cociente_pT100__1Electron_ak5PFJet->SetMarkerStyle(32); Cociente_pT100__1Electron_ak5PFJet->SetMarkerColor(2);
-  Cociente_pT100__1Electron_ak5PFJet->SetLineWidth(4);  Cociente_pT100__1Electron_ak5PFJet -> Draw("Esame");    Cociente_pT100__1Electron_ak5PFJet->SetLineColor(2);
-  Cociente_pT100__1Electron_ak5PFBTag->Rebin();
-  Cociente_pT100__1Electron_ak5PFBTag->SetMarkerSize(4); Cociente_pT100__1Electron_ak5PFBTag->SetMarkerStyle(22); Cociente_pT100__1Electron_ak5PFBTag->SetMarkerColor(33);
-  Cociente_pT100__1Electron_ak5PFBTag->DrawCopy("Psame");Cociente_pT100__1Electron_ak5PFBTag->SetMarkerStyle(26); Cociente_pT100__1Electron_ak5PFBTag->SetMarkerColor(4);
-  Cociente_pT100__1Electron_ak5PFBTag->SetLineWidth(4);  Cociente_pT100__1Electron_ak5PFBTag -> Draw("Esame");    Cociente_pT100__1Electron_ak5PFBTag->SetLineColor(4);
-  Cociente_pT100__1Electron_ak5PFMinBias->Rebin();
-  Cociente_pT100__1Electron_ak5PFMinBias->SetMarkerSize(4); Cociente_pT100__1Electron_ak5PFMinBias->SetMarkerStyle(20); Cociente_pT100__1Electron_ak5PFMinBias->SetMarkerColor(5);
-  Cociente_pT100__1Electron_ak5PFMinBias->DrawCopy("Psame");Cociente_pT100__1Electron_ak5PFMinBias->SetMarkerStyle(24); Cociente_pT100__1Electron_ak5PFMinBias->SetMarkerColor(41);
-  Cociente_pT100__1Electron_ak5PFMinBias->SetLineWidth(4);  Cociente_pT100__1Electron_ak5PFMinBias -> Draw("Esame");    Cociente_pT100__1Electron_ak5PFMinBias->SetLineColor(41);
-  Cociente_pT100__1Electron_ak5PFMultiJet->Rebin();
-  Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerSize(4); Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerStyle(34); Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerColor(8);
-  Cociente_pT100__1Electron_ak5PFMultiJet->DrawCopy("Psame");Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerStyle(28); Cociente_pT100__1Electron_ak5PFMultiJet->SetMarkerColor(32);
-  Cociente_pT100__1Electron_ak5PFMultiJet->SetLineWidth(4);  Cociente_pT100__1Electron_ak5PFMultiJet -> Draw("Esame");    Cociente_pT100__1Electron_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_pT100__1Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Electron1-Jet<100.png"); Cociente_pT100__1Electron_Jet->Close();
-
-
-  TCanvas* Cociente_100pT__1Electron_Jet = new TCanvas("Cociente_100pT__1Electron_Jet","Cociente pT>100 FastJet y PFJets para electrones",10,10,1920,1080);
-  Cociente_100pT__1Electron_Jet->SetFillColor(0);  Cociente_100pT__1Electron_Jet->SetFrameBorderMode(0);  gPad->SetLogy();
-  // Esto es para modificar las etiquetas del canvas.
-  Cociente_100pT__1Electron_ak5FJ->SetTitle("Cociente p_{T} para ELECTRONES  (p_{T}^{Jet} > 100); p_{T}^{Electron} / p_{T}^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetLabelSize(0.05); Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetLabelSize(0.05);
-  Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetTitleSize(0.05); Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetTitleSize(0.05);
-  Cociente_100pT__1Electron_ak5FJ->GetXaxis()->SetTitleOffset(1.0);Cociente_100pT__1Electron_ak5FJ->GetYaxis()->SetTitleOffset(1.0);
-  // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-  Cociente_100pT__1Electron_ak5FJ->Rebin(); Cociente_100pT__1Electron_ak5FJ->SetAxisRange(0.0, 1.2, "X");
-  Cociente_100pT__1Electron_ak5FJ->SetMarkerSize(4);Cociente_100pT__1Electron_ak5FJ->SetMarkerStyle(21); Cociente_100pT__1Electron_ak5FJ->SetMarkerColor(14);
-  Cociente_100pT__1Electron_ak5FJ->DrawCopy("P");   Cociente_100pT__1Electron_ak5FJ->SetMarkerStyle(25); Cociente_100pT__1Electron_ak5FJ->SetMarkerColor(1);
-  Cociente_100pT__1Electron_ak5FJ->SetLineWidth(4); Cociente_100pT__1Electron_ak5FJ->Draw("Esame");      Cociente_100pT__1Electron_ak5FJ->SetLineColor(1);
-  Cociente_100pT__1Electron_ak5PFJet->Rebin();
-  Cociente_100pT__1Electron_ak5PFJet->SetMarkerSize(4); Cociente_100pT__1Electron_ak5PFJet->SetMarkerStyle(23); Cociente_100pT__1Electron_ak5PFJet->SetMarkerColor(42);
-  Cociente_100pT__1Electron_ak5PFJet->DrawCopy("Psame");Cociente_100pT__1Electron_ak5PFJet->SetMarkerStyle(32); Cociente_100pT__1Electron_ak5PFJet->SetMarkerColor(2);
-  Cociente_100pT__1Electron_ak5PFJet->SetLineWidth(4);  Cociente_100pT__1Electron_ak5PFJet->Draw("Esame");      Cociente_100pT__1Electron_ak5PFJet->SetLineColor(2);
-  Cociente_100pT__1Electron_ak5PFBTag->Rebin();
-  Cociente_100pT__1Electron_ak5PFBTag->SetMarkerSize(4); Cociente_100pT__1Electron_ak5PFBTag->SetMarkerStyle(22); Cociente_100pT__1Electron_ak5PFBTag->SetMarkerColor(33);
-  Cociente_100pT__1Electron_ak5PFBTag->DrawCopy("Psame");Cociente_100pT__1Electron_ak5PFBTag->SetMarkerStyle(26); Cociente_100pT__1Electron_ak5PFBTag->SetMarkerColor(4);
-  Cociente_100pT__1Electron_ak5PFBTag->SetLineWidth(4);  Cociente_100pT__1Electron_ak5PFBTag->Draw("Esame");      Cociente_100pT__1Electron_ak5PFBTag->SetLineColor(4);
-  Cociente_100pT__1Electron_ak5PFMinBias->Rebin();
-  Cociente_100pT__1Electron_ak5PFMinBias->SetMarkerSize(4); Cociente_100pT__1Electron_ak5PFMinBias->SetMarkerStyle(20); Cociente_100pT__1Electron_ak5PFMinBias->SetMarkerColor(5);
-  Cociente_100pT__1Electron_ak5PFMinBias->DrawCopy("Psame");Cociente_100pT__1Electron_ak5PFMinBias->SetMarkerStyle(24); Cociente_100pT__1Electron_ak5PFMinBias->SetMarkerColor(41);
-  Cociente_100pT__1Electron_ak5PFMinBias->SetLineWidth(4);  Cociente_100pT__1Electron_ak5PFMinBias->Draw("Esame");      Cociente_100pT__1Electron_ak5PFMinBias->SetLineColor(41);
-  Cociente_100pT__1Electron_ak5PFMultiJet->Rebin();
-  Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerSize(4); Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerStyle(34); Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerColor(8);
-  Cociente_100pT__1Electron_ak5PFMultiJet->DrawCopy("Psame");Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerStyle(28); Cociente_100pT__1Electron_ak5PFMultiJet->SetMarkerColor(32);
-  Cociente_100pT__1Electron_ak5PFMultiJet->SetLineWidth(4);  Cociente_100pT__1Electron_ak5PFMultiJet->Draw("Esame");      Cociente_pT__Electron_ak5PFMultiJet->SetLineColor(32);
-  Leg->Draw(); legend->Draw();  Cociente_100pT__1Electron_Jet->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Cociente_pT__Electron1-Jet>100.png"); Cociente_100pT__1Electron_Jet->Close();
-
-}
-
-
-//###################################################################################################################################################################################
-
-void Vertice() {
-  //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
-  TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
-  TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
-  TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF.root");
-
-
-  TH1F *Muons__fX =(TH1F*)FJFile->Get("Muons__fX"); Muons__fX->Scale(1.0/Muons__fX->Integral());
-  TH1F *MuonsJet_fX_ =(TH1F*)JetFile->Get("Muons_fX_"); MuonsJet_fX_->Scale(1.0/MuonsJet_fX_->Integral());
-  TH1F *MuonsBTag_fX_ =(TH1F*)BTagFile->Get("Muons_fX_"); MuonsBTag_fX_->Scale(1.0/MuonsBTag_fX_->Integral());
-  TH1F *MuonsMultiJet_fX_ =(TH1F*)MultiJetFile->Get("Muons_fX_"); MuonsMultiJet_fX_->Scale(1.0/MuonsMultiJet_fX_->Integral());
-  TH1F *Muons__fY =(TH1F*)FJFile->Get("Muons__fY"); Muons__fY->Scale(1.0/Muons__fY->Integral());
-  TH1F *MuonsJet_fY_ =(TH1F*)JetFile->Get("Muons_fY_"); MuonsJet_fY_->Scale(1.0/MuonsJet_fY_->Integral());
-  TH1F *MuonsBTag_fY_ =(TH1F*)BTagFile->Get("Muons_fY_"); MuonsBTag_fY_->Scale(1.0/MuonsBTag_fY_->Integral());
-  TH1F *MuonsMultiJet_fY_ =(TH1F*)MultiJetFile->Get("Muons_fY_"); MuonsMultiJet_fY_->Scale(1.0/MuonsMultiJet_fY_->Integral());
-  TH1F *Muons__fZ =(TH1F*)FJFile->Get("Muons__fZ"); Muons__fZ->Scale(1.0/Muons__fZ->Integral());
-  TH1F *MuonsJet_fZ_ =(TH1F*)JetFile->Get("Muons_fZ_"); MuonsJet_fZ_->Scale(1.0/MuonsJet_fZ_->Integral());
-  TH1F *MuonsBTag_fZ_ =(TH1F*)BTagFile->Get("Muons_fZ_"); MuonsBTag_fZ_->Scale(1.0/MuonsBTag_fZ_->Integral());
-  TH1F *MuonsMultiJet_fZ_ =(TH1F*)MultiJetFile->Get("Muons_fZ_"); MuonsMultiJet_fZ_->Scale(1.0/MuonsMultiJet_fZ_->Integral());
-
-  TH1F *Electrons__fX =(TH1F*)FJFile->Get("Electrons__fX"); Electrons__fX->Scale(1.0/Electrons__fX->Integral());
-  TH1F *ElectronsJet_fX_ =(TH1F*)JetFile->Get("Electrons_fX_"); ElectronsJet_fX_->Scale(1.0/ElectronsJet_fX_->Integral());
-  TH1F *ElectronsBTag_fX_ =(TH1F*)BTagFile->Get("Electrons_fX_"); ElectronsBTag_fX_->Scale(1.0/ElectronsBTag_fX_->Integral());
-  TH1F *ElectronsMultiJet_fX_ =(TH1F*)MultiJetFile->Get("Electrons_fX_"); ElectronsMultiJet_fX_->Scale(1.0/ElectronsMultiJet_fX_->Integral());
-  TH1F *Electrons__fY =(TH1F*)FJFile->Get("Electrons__fY"); Electrons__fY->Scale(1.0/Electrons__fY->Integral());
-  TH1F *ElectronsJet_fY_ =(TH1F*)JetFile->Get("Electrons_fY_"); ElectronsJet_fY_->Scale(1.0/ElectronsJet_fY_->Integral());
-  TH1F *ElectronsBTag_fY_ =(TH1F*)BTagFile->Get("Electrons_fY_"); ElectronsBTag_fY_->Scale(1.0/ElectronsBTag_fY_->Integral());
-  TH1F *ElectronsMultiJet_fY_ =(TH1F*)MultiJetFile->Get("Electrons_fY_"); ElectronsMultiJet_fY_->Scale(1.0/ElectronsMultiJet_fY_->Integral());
-  TH1F *Electrons__fZ =(TH1F*)FJFile->Get("Electrons__fZ"); Electrons__fZ->Scale(1.0/Electrons__fZ->Integral());
-  TH1F *ElectronsJet_fZ_ =(TH1F*)JetFile->Get("Electrons_fZ_"); ElectronsJet_fZ_->Scale(1.0/ElectronsJet_fZ_->Integral());
-  TH1F *ElectronsBTag_fZ_ =(TH1F*)BTagFile->Get("Electrons_fZ_"); ElectronsBTag_fZ_->Scale(1.0/ElectronsBTag_fZ_->Integral());
-  TH1F *ElectronsMultiJet_fZ_ =(TH1F*)MultiJetFile->Get("Electrons_fZ_"); ElectronsMultiJet_fZ_->Scale(1.0/ElectronsMultiJet_fZ_->Integral());
-
-
-
-  auto   legend = new TLegend(0.61,0.74,0.90,0.92);    legend->SetTextSize(0.04);
-    legend->AddEntry(Muons__fX, "MC FastJet", "lp");
-    legend->AddEntry(MuonsJet_fX_, "Open-Data PF Jet", "lp");
-    legend->AddEntry(MuonsBTag_fX_, "Open-Data PF BTag", "lp");
-    legend->AddEntry(MuonsMultiJet_fX_, "Open-Data PF MultiJet", "lp");
-
-
-
-  TCanvas* fX_Muons = new TCanvas("fX_Muons","X vertice de FastJet y PFJets para muones",10,10,1920,1080);
-  fX_Muons->SetFillColor(0);  fX_Muons->SetFrameBorderMode(0);  gPad->SetLogy();
-
-    // Esto es para modificar las etiquetas del canvas.
-    Muons__fX->SetTitle("Vertice en el eje X para muones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Muons__fX->GetXaxis()->SetLabelSize(0.05); Muons__fX->GetYaxis()->SetLabelSize(0.05);
-    Muons__fX->GetXaxis()->SetTitleSize(0.05); Muons__fX->GetYaxis()->SetTitleSize(0.05);
-    Muons__fX->GetXaxis()->SetTitleOffset(1.0);Muons__fX->GetYaxis()->SetTitleOffset(1.0);
-    Muons__fX->SetAxisRange(-2, 2, "X");  Muons__fX->SetAxisRange(0.00001, 3, "Y");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Muons__fX -> Draw("E1"); Muons__fX->SetLineColor(1);
-    Muons__fX->SetMarkerStyle(20); Muons__fX->SetMarkerColor(1);
-    MuonsJet_fX_ -> Draw("Esame"); MuonsJet_fX_->SetLineColor(2);
-    MuonsJet_fX_->SetMarkerStyle(23); MuonsJet_fX_->SetMarkerColor(2);
-    MuonsBTag_fX_ -> Draw("Esame"); MuonsBTag_fX_->SetLineColor(9);
-    MuonsBTag_fX_->SetMarkerStyle(22); MuonsBTag_fX_->SetMarkerColor(9);
-    MuonsMultiJet_fX_ -> Draw("Esame"); MuonsMultiJet_fX_->SetLineColor(32);
-    MuonsMultiJet_fX_->SetMarkerStyle(21); MuonsMultiJet_fX_->SetMarkerColor(32);
-    legend -> Draw(); fX_Muons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Muones_X__FastJet-PFJets.png"); fX_Muons -> Close();
-
-
-  TCanvas* fY_Muons = new TCanvas("fY_Muons","Y vertice de FastJet y PFJets para muones",10,10,1920,1080);
-  fY_Muons->SetFillColor(0);  fY_Muons->SetFrameBorderMode(0);  gPad->SetLogy();
-
-    // Esto es para modificar las etiquetas del canvas.
-    Muons__fY->SetTitle("Vertice en el eje Y para muones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Muons__fY->GetXaxis()->SetLabelSize(0.05); Muons__fY->GetYaxis()->SetLabelSize(0.05);
-    Muons__fY->GetXaxis()->SetTitleSize(0.05); Muons__fY->GetYaxis()->SetTitleSize(0.05);
-    Muons__fY->GetXaxis()->SetTitleOffset(1.0);Muons__fY->GetYaxis()->SetTitleOffset(1.0);
-    Muons__fY->SetAxisRange(-2, 2, "X");  Muons__fY->SetAxisRange(0.00001, 3, "Y");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Muons__fY -> Draw("E1"); Muons__fY->SetLineColor(1);
-    Muons__fY->SetMarkerStyle(20); Muons__fY->SetMarkerColor(1);
-    MuonsJet_fY_ -> Draw("Esame"); MuonsJet_fY_->SetLineColor(2);
-    MuonsJet_fY_->SetMarkerStyle(23); MuonsJet_fY_->SetMarkerColor(2);
-    MuonsBTag_fY_ -> Draw("Esame"); MuonsBTag_fY_->SetLineColor(9);
-    MuonsBTag_fY_->SetMarkerStyle(22); MuonsBTag_fY_->SetMarkerColor(9);
-    MuonsMultiJet_fY_ -> Draw("Esame"); MuonsMultiJet_fY_->SetLineColor(32);
-    MuonsMultiJet_fY_->SetMarkerStyle(21); MuonsMultiJet_fY_->SetMarkerColor(32);
-    legend -> Draw(); fY_Muons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Muones_Y__FastJet-PFJets.png"); fY_Muons -> Close();
-
-
-  TCanvas* fZ_Muons = new TCanvas("fZ_Muons","X vertice de FastJet y PFJets para muones",10,10,1920,1080);
-  fZ_Muons->SetFillColor(0);  fZ_Muons->SetFrameBorderMode(0);  gPad->SetLogy();
-
-    // Esto es para modificar las etiquetas del canvas.
-    Muons__fZ->SetTitle("Vertice en el eje Z para muones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Muons__fZ->GetXaxis()->SetLabelSize(0.05); Muons__fZ->GetYaxis()->SetLabelSize(0.05);
-    Muons__fZ->GetXaxis()->SetTitleSize(0.05); Muons__fZ->GetYaxis()->SetTitleSize(0.05);
-    Muons__fZ->GetXaxis()->SetTitleOffset(1.0);Muons__fZ->GetYaxis()->SetTitleOffset(1.0);
-    Muons__fZ->SetAxisRange(-2, 2, "X");  Muons__fZ->SetAxisRange(0.00001, 3, "Y");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Muons__fZ -> Draw("E1"); Muons__fZ->SetLineColor(1);
-    Muons__fZ->SetMarkerStyle(20); Muons__fZ->SetMarkerColor(1);
-    MuonsJet_fZ_ -> Draw("Esame"); MuonsJet_fZ_->SetLineColor(2);
-    MuonsJet_fZ_->SetMarkerStyle(23); MuonsJet_fZ_->SetMarkerColor(2);
-    MuonsBTag_fZ_ -> Draw("Esame"); MuonsBTag_fZ_->SetLineColor(9);
-    MuonsBTag_fZ_->SetMarkerStyle(22); MuonsBTag_fZ_->SetMarkerColor(9);
-    MuonsMultiJet_fZ_ -> Draw("Esame"); MuonsMultiJet_fZ_->SetLineColor(32);
-    MuonsMultiJet_fZ_->SetMarkerStyle(21); MuonsMultiJet_fZ_->SetMarkerColor(32);
-    legend -> Draw(); fZ_Muons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Muones_Z__FastJet-PFJets.png"); fZ_Muons -> Close();
-
-
-
-  TCanvas* fX_Electrons = new TCanvas("fX_Electrons","X vertice de FastJet y PFJets para electrones",10,10,1920,1080);
-  fX_Electrons->SetFillColor(0);  fX_Electrons->SetFrameBorderMode(0);  gPad->SetLogy();
-
-    // Esto es para modificar las etiquetas del canvas.
-    Electrons__fX->SetTitle("Vertice en el eje X para electrones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Electrons__fX->GetXaxis()->SetLabelSize(0.05); Electrons__fX->GetYaxis()->SetLabelSize(0.05);
-    Electrons__fX->GetXaxis()->SetTitleSize(0.05); Electrons__fX->GetYaxis()->SetTitleSize(0.05);
-    Electrons__fX->GetXaxis()->SetTitleOffset(1.0);Electrons__fX->GetYaxis()->SetTitleOffset(1.0);
-    Electrons__fX->SetAxisRange(-2, 2, "X");  Electrons__fX->SetAxisRange(0.00001, 3, "Y");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Electrons__fX -> Draw("E1"); Electrons__fX->SetLineColor(1);
-    Electrons__fX->SetMarkerStyle(20); Electrons__fX->SetMarkerColor(1);
-    ElectronsJet_fX_ -> Draw("Esame"); ElectronsJet_fX_->SetLineColor(2);
-    ElectronsJet_fX_->SetMarkerStyle(23); ElectronsJet_fX_->SetMarkerColor(2);
-    ElectronsBTag_fX_ -> Draw("Esame"); ElectronsBTag_fX_->SetLineColor(9);
-    ElectronsBTag_fX_->SetMarkerStyle(22); ElectronsBTag_fX_->SetMarkerColor(9);
-    ElectronsMultiJet_fX_ -> Draw("Esame"); ElectronsMultiJet_fX_->SetLineColor(32);
-    ElectronsMultiJet_fX_->SetMarkerStyle(21); ElectronsMultiJet_fX_->SetMarkerColor(32);
-    legend -> Draw(); fX_Electrons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Electrones_X__FastJet-PFJets.png"); fX_Electrons -> Close();
-
-
-  TCanvas* fY_Electrons = new TCanvas("fY_Electrons","Y vertice de FastJet y PFJets para electrones",10,10,1920,1080);
-  fY_Electrons->SetFillColor(0);  fY_Electrons->SetFrameBorderMode(0);  gPad->SetLogy();
-
-    // Esto es para modificar las etiquetas del canvas.
-    Electrons__fY->SetTitle("Vertice en el eje Y para electrones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Electrons__fY->GetXaxis()->SetLabelSize(0.05); Electrons__fY->GetYaxis()->SetLabelSize(0.05);
-    Electrons__fY->GetXaxis()->SetTitleSize(0.05); Electrons__fY->GetYaxis()->SetTitleSize(0.05);
-    Electrons__fY->GetXaxis()->SetTitleOffset(1.0);Electrons__fY->GetYaxis()->SetTitleOffset(1.0);
-    Electrons__fY->SetAxisRange(-2, 2, "X");  Electrons__fY->SetAxisRange(0.00001, 3, "Y");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Electrons__fY -> Draw("E1"); Electrons__fY->SetLineColor(1);
-    Electrons__fY->SetMarkerStyle(20); Electrons__fY->SetMarkerColor(1);
-    ElectronsJet_fY_ -> Draw("Esame"); ElectronsJet_fY_->SetLineColor(2);
-    ElectronsJet_fY_->SetMarkerStyle(23); ElectronsJet_fY_->SetMarkerColor(2);
-    ElectronsBTag_fY_ -> Draw("Esame"); ElectronsBTag_fY_->SetLineColor(9);
-    ElectronsBTag_fY_->SetMarkerStyle(22); ElectronsBTag_fY_->SetMarkerColor(9);
-    ElectronsMultiJet_fY_ -> Draw("Esame"); ElectronsMultiJet_fY_->SetLineColor(32);
-    ElectronsMultiJet_fY_->SetMarkerStyle(21); ElectronsMultiJet_fY_->SetMarkerColor(32);
-    legend -> Draw(); fY_Electrons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Electrones_Y__FastJet-PFJets.png"); fY_Electrons -> Close();
-
-
-  TCanvas* fZ_Electrons = new TCanvas("fZ_Electrons","X vertice de FastJet y PFJets para electrones",10,10,1920,1080);
-  fZ_Electrons->SetFillColor(0);  fZ_Electrons->SetFrameBorderMode(0);  gPad->SetLogy();
-
-    // Esto es para modificar las etiquetas del canvas.
-    Electrons__fZ->SetTitle("Vertice en el eje Z para electrones; Posicion [cm]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-    Electrons__fZ->GetXaxis()->SetLabelSize(0.05); Electrons__fZ->GetYaxis()->SetLabelSize(0.05);
-    Electrons__fZ->GetXaxis()->SetTitleSize(0.05); Electrons__fZ->GetYaxis()->SetTitleSize(0.05);
-    Electrons__fZ->GetXaxis()->SetTitleOffset(1.0);Electrons__fZ->GetYaxis()->SetTitleOffset(1.0);
-    Electrons__fZ->SetAxisRange(-2, 2, "X");  Electrons__fZ->SetAxisRange(0.00001, 3, "Y");
-    // Aqui ponemos todas las gráficas que necesitamos en el canvas.
-    Electrons__fZ -> Draw("E1"); Electrons__fZ->SetLineColor(1);
-    Electrons__fZ->SetMarkerStyle(20); Electrons__fZ->SetMarkerColor(1);
-    ElectronsJet_fZ_ -> Draw("Esame"); ElectronsJet_fZ_->SetLineColor(2);
-    ElectronsJet_fZ_->SetMarkerStyle(23); ElectronsJet_fZ_->SetMarkerColor(2);
-    ElectronsBTag_fZ_ -> Draw("Esame"); ElectronsBTag_fZ_->SetLineColor(9);
-    ElectronsBTag_fZ_->SetMarkerStyle(22); ElectronsBTag_fZ_->SetMarkerColor(9);
-    ElectronsMultiJet_fZ_ -> Draw("Esame"); ElectronsMultiJet_fZ_->SetLineColor(32);
-    ElectronsMultiJet_fZ_->SetMarkerStyle(21); ElectronsMultiJet_fZ_->SetMarkerColor(32);
-    legend -> Draw(); fZ_Electrons -> SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Vertice_Electrones_Z__FastJet-PFJets.png"); fZ_Electrons -> Close();
-
-}
-
-//###################################################################################################################################################################################
-
 void rootMacro(){
 
   // Le damos algo de personalización al las gráficas..
@@ -1898,10 +1283,7 @@ void rootMacro(){
   gStyle->SetOptStat(0);          //gStyle->SetOptTitle(1);
 
   // Corremos los macros que nos interesan.
-  // DistanciaAngular();
   EnergyQuotient();
   // Limits();
-  // pTQuotient();
   // Multiplicidad();
-  // Vertice();
 }
