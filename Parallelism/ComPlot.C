@@ -51,7 +51,7 @@ void EnergyQuotient() {
 
   TCanvas* Energy_Quotient__Muon_Jet = new TCanvas("Energy_Quotient__Muon_Jet","Energy_Quotient__Muon_Jet",0,0,3240,2160);
   Energy_Quotient__Muon_Jet -> Divide(1,2,0,0,0);
-  TPad *Pad1=(TPad*)(Energy_Quotient__Muon_Jet->cd(1));Pad1->SetPad(0, 0.25, 1, 1);Pad1->SetLeftMargin(0.11);Pad1->SetLogy();
+  TPad *Hist=(TPad*)(Energy_Quotient__Muon_Jet->cd(1));Hist->SetPad(0, 0.25, 1, 1);Hist->SetLeftMargin(0.11);Hist->SetLogy();
   Energy_Quot__Muon_FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Muon_FJ->GetXaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetTitleSize(0.05);
   Energy_Quot__Muon_FJ->GetXaxis()->SetTitleOffset(0.8);Energy_Quot__Muon_FJ->GetYaxis()->SetTitleOffset(1.0);
@@ -73,7 +73,7 @@ void EnergyQuotient() {
   Energy_Quot__Muon_MultiJet->DrawCopy("Psame"); Energy_Quot__Muon_MultiJet->SetMarkerColor(32);Energy_Quot__Muon_MultiJet->SetMarkerStyle(28);
   Energy_Quot__Muon_MultiJet->SetLineWidth(2);   Energy_Quot__Muon_MultiJet->SetLineColor(32);  Energy_Quot__Muon_MultiJet->DrawCopy("Esame");
   Leg->Draw(); Legend->Draw();
-  TPad *Pad2=(TPad*)(Energy_Quotient__Muon_Jet->cd(2)); Pad2->SetPad(0, 0, 1, 0.25); Pad2->SetLeftMargin(0.11); Pad2->SetBottomMargin(0.33); Cero->Draw();
+  TPad *Error=(TPad*)(Energy_Quotient__Muon_Jet->cd(2)); Error->SetPad(0, 0, 1, 0.25); Error->SetLeftMargin(0.11); Error->SetBottomMargin(0.33); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_Jet);
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
