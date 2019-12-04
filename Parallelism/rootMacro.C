@@ -1275,12 +1275,7 @@ void Multiplicidad() {
 
 void rootMacro(){
 
-  // Le damos algo de personalización al las gráficas..
-  // gROOT->ForceStyle();
-  // gStyle->SetPadBorderMode(0);    gStyle->SetPadBorderSize(0);
-  // gStyle->SetPadTopMargin(0.0); gStyle->SetPadBottomMargin(0.12);
-  // gStyle->SetPadLeftMargin(0.11); gStyle->SetPadRightMargin(0);
-  gStyle->SetOptStat(0);          //gStyle->SetOptTitle(1);
+  gStyle->SetOptStat(0);
 
   // Corremos los macros que nos interesan.
   EnergyQuotient();
