@@ -123,7 +123,7 @@ void EnergyQuotient() {
 
 
   TF1 *Cero = new TF1("Cero","0",0,1.08); Cero->GetYaxis()->SetRangeUser(-2,2); Cero->SetLineColor(14); Cero->SetLineStyle(2); Cero->SetLineWidth(2);
-  Cero->GetXaxis()->SetTitleSize(0.15); Cero->GetYaxis()->SetTitleSize(0.12); Cero->GetYaxis()->SetTitleOffset(0.4);
+  Cero->GetXaxis()->SetTitleSize(0.15); Cero->GetYaxis()->SetTitleSize(0.2); Cero->GetYaxis()->SetTitleOffset(0.2);
   Cero->GetXaxis()->SetLabelSize(0.15); Cero->GetYaxis()->SetLabelSize(0.1);
 
   TH1F *Energy_Quot__Error = new TH1F("", "", 100, 0, 2); Energy_Quot__Error->Reset("ICES"); Energy_Quot__Error->Rebin();
@@ -154,7 +154,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Muon_Jet  = new TCanvas("Energy_Quotient__Muon_Jet ","Energy_Quotient__Muon_Jet ",0,0,3240,2160);
   TPad *H__Muon_Jet = new TPad("H__Muon_Jet","", 0, 0.25, 1, 1); H__Muon_Jet->SetMargin(0.11,0,0,0); H__Muon_Jet->SetLogy(); H__Muon_Jet->Draw();
   TPad *E__Muon_Jet = new TPad("E__Muon_Jet","", 0, 0, 1, 0.25); E__Muon_Jet->SetMargin(0.11,0,0.33,0); E__Muon_Jet->Draw(); H__Muon_Jet->cd();
-  Energy_Quot__Muon_FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Muon_FJ->SetTitle(" ; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Muon_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Muon_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Muon_FJ->SetMarkerSize(6); Energy_Quot__Muon_FJ->SetMarkerColor(14); Energy_Quot__Muon_FJ->SetMarkerStyle(21);
@@ -173,7 +173,7 @@ void EnergyQuotient() {
   Energy_Quot__Muon_MultiJet->DrawCopy("Psame"); Energy_Quot__Muon_MultiJet->SetMarkerColor(32);Energy_Quot__Muon_MultiJet->SetMarkerStyle(28);
   Energy_Quot__Muon_MultiJet->SetLineWidth(2);   Energy_Quot__Muon_MultiJet->SetLineColor(32);  Energy_Quot__Muon_MultiJet->DrawCopy("Esame");
   Leg->Draw(); Legend->Draw(); E__Muon_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Mu#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
+  Cero->SetTitle(";E^{Mu#acute{o}n}/E^{Jet};#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Muon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_Jet );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -200,7 +200,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Muon_Jet200  = new TCanvas("Energy_Quotient__Muon_Jet200 ","Energy_Quotient__Muon_Jet200 ",0,0,3240,2160);
   TPad *H__Muon_Jet200 = new TPad("H__Muon_Jet200","", 0, 0.25, 1, 1); H__Muon_Jet200->SetMargin(0.11,0,0,0); H__Muon_Jet200->SetLogy(); H__Muon_Jet200->Draw();
   TPad *E__Muon_Jet200 = new TPad("E__Muon_Jet200","", 0, 0, 1, 0.25); E__Muon_Jet200->SetMargin(0.11,0,0.33,0); E__Muon_Jet200->Draw(); H__Muon_Jet200->cd();
-  Energy_Quot__Muon_FJ200->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Muon_FJ200->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_FJ200->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Muon_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Muon_FJ200->SetMarkerSize(6); Energy_Quot__Muon_FJ200->SetMarkerColor(14); Energy_Quot__Muon_FJ200->SetMarkerStyle(21);
@@ -218,7 +218,8 @@ void EnergyQuotient() {
   Energy_Quot__Muon_MultiJet200->SetMarkerSize(6);  Energy_Quot__Muon_MultiJet200->SetMarkerColor(8); Energy_Quot__Muon_MultiJet200->SetMarkerStyle(34);
   Energy_Quot__Muon_MultiJet200->DrawCopy("Psame"); Energy_Quot__Muon_MultiJet200->SetMarkerColor(32);Energy_Quot__Muon_MultiJet200->SetMarkerStyle(28);
   Energy_Quot__Muon_MultiJet200->SetLineWidth(2);   Energy_Quot__Muon_MultiJet200->SetLineColor(32);  Energy_Quot__Muon_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Muon_Jet200->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__Muon_Jet200->cd();
+  Cero->SetTitle(";E^{Mu#acute{o}n}/E^{Jet}, E^{Jet}<200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Muon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_Jet200 );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -245,7 +246,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Muon_200Jet = new TCanvas("Energy_Quotient__Muon_200Jet","Energy_Quotient__Muon_200Jet",0,0,3240,2160);
   TPad *H__Muon_200Jet = new TPad("H__Muon_200Jet","", 0, 0.25, 1, 1); H__Muon_200Jet->SetMargin(0.11,0,0,0); H__Muon_200Jet->SetLogy(); H__Muon_200Jet->Draw();
   TPad *E__Muon_200Jet = new TPad("E__Muon_200Jet","", 0, 0, 1, 0.25); E__Muon_200Jet->SetMargin(0.11,0,0.33,0); E__Muon_200Jet->Draw(); H__Muon_200Jet->cd();
-  Energy_Quot__Muon_200FJ->SetTitle("Cociente Energ#acute{i}a  Mu#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Muon_200FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Muon_200FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Muon_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Muon_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Muon_200FJ->SetMarkerSize(6); Energy_Quot__Muon_200FJ->SetMarkerColor(14); Energy_Quot__Muon_200FJ->SetMarkerStyle(21);
@@ -263,7 +264,8 @@ void EnergyQuotient() {
   Energy_Quot__Muon_200MultiJet->SetMarkerSize(6);  Energy_Quot__Muon_200MultiJet->SetMarkerColor(8); Energy_Quot__Muon_200MultiJet->SetMarkerStyle(34);
   Energy_Quot__Muon_200MultiJet->DrawCopy("Psame"); Energy_Quot__Muon_200MultiJet->SetMarkerColor(32);Energy_Quot__Muon_200MultiJet->SetMarkerStyle(28);
   Energy_Quot__Muon_200MultiJet->SetLineWidth(2);   Energy_Quot__Muon_200MultiJet->SetLineColor(32);  Energy_Quot__Muon_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Muon_200Jet->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__Muon_200Jet->cd();
+  Cero->SetTitle(";E^{Mu#acute{o}n}/E^{Jet}, E^{Jet}>200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Muon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Muon_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Muon_200Jet);
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -291,7 +293,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Photon_Jet  = new TCanvas("Energy_Quotient__Photon_Jet ","Energy_Quotient__Photon_Jet ",0,0,3240,2160);
   TPad *H__Photon_Jet = new TPad("H__Photon_Jet","", 0, 0.25, 1, 1); H__Photon_Jet->SetMargin(0.11,0,0,0); H__Photon_Jet->SetLogy(); H__Photon_Jet->Draw();
   TPad *E__Photon_Jet = new TPad("E__Photon_Jet","", 0, 0, 1, 0.25); E__Photon_Jet->SetMargin(0.11,0,0.33,0); E__Photon_Jet->Draw(); H__Photon_Jet->cd();
-  Energy_Quot__Photon_FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Photon_FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Photon_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Photon_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Photon_FJ->SetMarkerSize(6); Energy_Quot__Photon_FJ->SetMarkerColor(14); Energy_Quot__Photon_FJ->SetMarkerStyle(21);
@@ -310,7 +312,7 @@ void EnergyQuotient() {
   Energy_Quot__Photon_MultiJet->DrawCopy("Psame"); Energy_Quot__Photon_MultiJet->SetMarkerColor(32);Energy_Quot__Photon_MultiJet->SetMarkerStyle(28);
   Energy_Quot__Photon_MultiJet->SetLineWidth(2);   Energy_Quot__Photon_MultiJet->SetLineColor(32);  Energy_Quot__Photon_MultiJet->DrawCopy("Esame");
   Leg->Draw(); Legend->Draw(); E__Photon_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Fot#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.4,0.4);
+  Cero->SetTitle(";E^{Fot#acute{o}n}/E^{Jet};#xi"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.4,0.4);
   Energy_Quot__Error->Add(Energy_Quot__Photon_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_Jet );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -337,7 +339,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Photon_Jet200  = new TCanvas("Energy_Quotient__Photon_Jet200 ","Energy_Quotient__Photon_Jet200 ",0,0,3240,2160);
   TPad *H__Photon_Jet200 = new TPad("H__Photon_Jet200","", 0, 0.25, 1, 1); H__Photon_Jet200->SetMargin(0.11,0,0,0); H__Photon_Jet200->SetLogy(); H__Photon_Jet200->Draw();
   TPad *E__Photon_Jet200 = new TPad("E__Photon_Jet200","", 0, 0, 1, 0.25); E__Photon_Jet200->SetMargin(0.11,0,0.33,0); E__Photon_Jet200->Draw(); H__Photon_Jet200->cd();
-  Energy_Quot__Photon_FJ200->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Photon_FJ200->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_FJ200->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Photon_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Photon_FJ200->SetMarkerSize(6); Energy_Quot__Photon_FJ200->SetMarkerColor(14); Energy_Quot__Photon_FJ200->SetMarkerStyle(21);
@@ -355,7 +357,8 @@ void EnergyQuotient() {
   Energy_Quot__Photon_MultiJet200->SetMarkerSize(6);  Energy_Quot__Photon_MultiJet200->SetMarkerColor(8); Energy_Quot__Photon_MultiJet200->SetMarkerStyle(34);
   Energy_Quot__Photon_MultiJet200->DrawCopy("Psame"); Energy_Quot__Photon_MultiJet200->SetMarkerColor(32);Energy_Quot__Photon_MultiJet200->SetMarkerStyle(28);
   Energy_Quot__Photon_MultiJet200->SetLineWidth(2);   Energy_Quot__Photon_MultiJet200->SetLineColor(32);  Energy_Quot__Photon_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Photon_Jet200->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__Photon_Jet200->cd();
+  Cero->SetTitle(";E^{Fot#acute{o}n}/E^{Jet}, E^{Jet}<200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Photon_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_Jet200 );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -382,7 +385,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Photon_200Jet = new TCanvas("Energy_Quotient__Photon_200Jet","Energy_Quotient__Photon_200Jet",0,0,3240,2160);
   TPad *H__Photon_200Jet = new TPad("H__Photon_200Jet","", 0, 0.25, 1, 1); H__Photon_200Jet->SetMargin(0.11,0,0,0); H__Photon_200Jet->SetLogy(); H__Photon_200Jet->Draw();
   TPad *E__Photon_200Jet = new TPad("E__Photon_200Jet","", 0, 0, 1, 0.25); E__Photon_200Jet->SetMargin(0.11,0,0.33,0); E__Photon_200Jet->Draw(); H__Photon_200Jet->cd();
-  Energy_Quot__Photon_200FJ->SetTitle("Cociente Energ#acute{i}a  Fot#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Photon_200FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Photon_200FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Photon_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Photon_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Photon_200FJ->SetMarkerSize(6); Energy_Quot__Photon_200FJ->SetMarkerColor(14); Energy_Quot__Photon_200FJ->SetMarkerStyle(21);
@@ -400,7 +403,8 @@ void EnergyQuotient() {
   Energy_Quot__Photon_200MultiJet->SetMarkerSize(6);  Energy_Quot__Photon_200MultiJet->SetMarkerColor(8); Energy_Quot__Photon_200MultiJet->SetMarkerStyle(34);
   Energy_Quot__Photon_200MultiJet->DrawCopy("Psame"); Energy_Quot__Photon_200MultiJet->SetMarkerColor(32);Energy_Quot__Photon_200MultiJet->SetMarkerStyle(28);
   Energy_Quot__Photon_200MultiJet->SetLineWidth(2);   Energy_Quot__Photon_200MultiJet->SetLineColor(32);  Energy_Quot__Photon_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Photon_200Jet->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__Photon_200Jet->cd();
+  Cero->SetTitle(";E^{Fot#acute{o}n}/E^{Jet}, E^{Jet}>200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Photon_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Photon_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Photon_200Jet);
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -428,7 +432,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Electron_Jet  = new TCanvas("Energy_Quotient__Electron_Jet ","Energy_Quotient__Electron_Jet ",0,0,3240,2160);
   TPad *H__Electron_Jet = new TPad("H__Electron_Jet","", 0, 0.25, 1, 1); H__Electron_Jet->SetMargin(0.11,0,0,0); H__Electron_Jet->SetLogy(); H__Electron_Jet->Draw();
   TPad *E__Electron_Jet = new TPad("E__Electron_Jet","", 0, 0, 1, 0.25); E__Electron_Jet->SetMargin(0.11,0,0.33,0); E__Electron_Jet->Draw(); H__Electron_Jet->cd();
-  Energy_Quot__Electron_FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Electron_FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Electron_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Electron_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Electron_FJ->SetMarkerSize(6); Energy_Quot__Electron_FJ->SetMarkerColor(14); Energy_Quot__Electron_FJ->SetMarkerStyle(21);
@@ -447,7 +451,7 @@ void EnergyQuotient() {
   Energy_Quot__Electron_MultiJet->DrawCopy("Psame"); Energy_Quot__Electron_MultiJet->SetMarkerColor(32);Energy_Quot__Electron_MultiJet->SetMarkerStyle(28);
   Energy_Quot__Electron_MultiJet->SetLineWidth(2);   Energy_Quot__Electron_MultiJet->SetLineColor(32);  Energy_Quot__Electron_MultiJet->DrawCopy("Esame");
   Leg->Draw(); Legend->Draw(); E__Electron_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Electr#acute{o}n} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw();
+  Cero->SetTitle(";E^{Electr#acute{o}n}/E^{Jet};#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Electron_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_Jet );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -474,7 +478,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Electron_Jet200  = new TCanvas("Energy_Quotient__Electron_Jet200 ","Energy_Quotient__Electron_Jet200 ",0,0,3240,2160);
   TPad *H__Electron_Jet200 = new TPad("H__Electron_Jet200","", 0, 0.25, 1, 1); H__Electron_Jet200->SetMargin(0.11,0,0,0); H__Electron_Jet200->SetLogy(); H__Electron_Jet200->Draw();
   TPad *E__Electron_Jet200 = new TPad("E__Electron_Jet200","", 0, 0, 1, 0.25); E__Electron_Jet200->SetMargin(0.11,0,0.33,0); E__Electron_Jet200->Draw(); H__Electron_Jet200->cd();
-  Energy_Quot__Electron_FJ200->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Electron_FJ200->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_FJ200->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Electron_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Electron_FJ200->SetMarkerSize(6); Energy_Quot__Electron_FJ200->SetMarkerColor(14); Energy_Quot__Electron_FJ200->SetMarkerStyle(21);
@@ -492,7 +496,8 @@ void EnergyQuotient() {
   Energy_Quot__Electron_MultiJet200->SetMarkerSize(6);  Energy_Quot__Electron_MultiJet200->SetMarkerColor(8); Energy_Quot__Electron_MultiJet200->SetMarkerStyle(34);
   Energy_Quot__Electron_MultiJet200->DrawCopy("Psame"); Energy_Quot__Electron_MultiJet200->SetMarkerColor(32);Energy_Quot__Electron_MultiJet200->SetMarkerStyle(28);
   Energy_Quot__Electron_MultiJet200->SetLineWidth(2);   Energy_Quot__Electron_MultiJet200->SetLineColor(32);  Energy_Quot__Electron_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Electron_Jet200->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__Electron_Jet200->cd();
+  Cero->SetTitle(";E^{Electr#acute{o}n}/E^{Jet}, E^{Jet}<200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__Electron_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_Jet200 );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -519,7 +524,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__Electron_200Jet = new TCanvas("Energy_Quotient__Electron_200Jet","Energy_Quotient__Electron_200Jet",0,0,3240,2160);
   TPad *H__Electron_200Jet = new TPad("H__Electron_200Jet","", 0, 0.25, 1, 1); H__Electron_200Jet->SetMargin(0.11,0,0,0); H__Electron_200Jet->SetLogy(); H__Electron_200Jet->Draw();
   TPad *E__Electron_200Jet = new TPad("E__Electron_200Jet","", 0, 0, 1, 0.25); E__Electron_200Jet->SetMargin(0.11,0,0.33,0); E__Electron_200Jet->Draw(); H__Electron_200Jet->cd();
-  Energy_Quot__Electron_200FJ->SetTitle("Cociente Energ#acute{i}a  Electr#acute{o}n/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__Electron_200FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__Electron_200FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__Electron_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__Electron_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__Electron_200FJ->SetMarkerSize(6); Energy_Quot__Electron_200FJ->SetMarkerColor(14); Energy_Quot__Electron_200FJ->SetMarkerStyle(21);
@@ -537,7 +542,8 @@ void EnergyQuotient() {
   Energy_Quot__Electron_200MultiJet->SetMarkerSize(6);  Energy_Quot__Electron_200MultiJet->SetMarkerColor(8); Energy_Quot__Electron_200MultiJet->SetMarkerStyle(34);
   Energy_Quot__Electron_200MultiJet->DrawCopy("Psame"); Energy_Quot__Electron_200MultiJet->SetMarkerColor(32);Energy_Quot__Electron_200MultiJet->SetMarkerStyle(28);
   Energy_Quot__Electron_200MultiJet->SetLineWidth(2);   Energy_Quot__Electron_200MultiJet->SetLineColor(32);  Energy_Quot__Electron_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__Electron_200Jet->cd(); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.6,1.2);
+  Leg->Draw(); Legend->Draw(); E__Electron_200Jet->cd();
+  Cero->SetTitle(";E^{Electr#acute{o}n}/E^{Jet}, E^{Jet}>200;#xi"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.6,1.2);
   Energy_Quot__Error->Add(Energy_Quot__Electron_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__Electron_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__Electron_200Jet);
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -565,7 +571,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__NeutralHad_Jet  = new TCanvas("Energy_Quotient__NeutralHad_Jet ","Energy_Quotient__NeutralHad_Jet ",0,0,3240,2160);
   TPad *H__NeutralHad_Jet = new TPad("H__NeutralHad_Jet","", 0, 0.25, 1, 1); H__NeutralHad_Jet->SetMargin(0.11,0,0,0); H__NeutralHad_Jet->SetLogy(); H__NeutralHad_Jet->Draw();
   TPad *E__NeutralHad_Jet = new TPad("E__NeutralHad_Jet","", 0, 0, 1, 0.25); E__NeutralHad_Jet->SetMargin(0.11,0,0.33,0); E__NeutralHad_Jet->Draw(); H__NeutralHad_Jet->cd();
-  Energy_Quot__NeutralHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__NeutralHad_FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__NeutralHad_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__NeutralHad_FJ->SetMarkerSize(6); Energy_Quot__NeutralHad_FJ->SetMarkerColor(14); Energy_Quot__NeutralHad_FJ->SetMarkerStyle(21);
@@ -584,7 +590,7 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_MultiJet->DrawCopy("Psame"); Energy_Quot__NeutralHad_MultiJet->SetMarkerColor(32);Energy_Quot__NeutralHad_MultiJet->SetMarkerStyle(28);
   Energy_Quot__NeutralHad_MultiJet->SetLineWidth(2);   Energy_Quot__NeutralHad_MultiJet->SetLineColor(32);  Energy_Quot__NeutralHad_MultiJet->DrawCopy("Esame");
   Leg->Draw(); Legend->Draw(); E__NeutralHad_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Hadr#acute{o}nNeutro} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.8,0.8);
+  Cero->SetTitle(";E^{Hadr#acute{o}nNeutro}/E^{Jet};#xi"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.8,0.8);
   Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_Jet );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -611,7 +617,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__NeutralHad_Jet200  = new TCanvas("Energy_Quotient__NeutralHad_Jet200 ","Energy_Quotient__NeutralHad_Jet200 ",0,0,3240,2160);
   TPad *H__NeutralHad_Jet200 = new TPad("H__NeutralHad_Jet200","", 0, 0.25, 1, 1); H__NeutralHad_Jet200->SetMargin(0.11,0,0,0); H__NeutralHad_Jet200->SetLogy(); H__NeutralHad_Jet200->Draw();
   TPad *E__NeutralHad_Jet200 = new TPad("E__NeutralHad_Jet200","", 0, 0, 1, 0.25); E__NeutralHad_Jet200->SetMargin(0.11,0,0.33,0); E__NeutralHad_Jet200->Draw(); H__NeutralHad_Jet200->cd();
-  Energy_Quot__NeutralHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__NeutralHad_FJ200->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__NeutralHad_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__NeutralHad_FJ200->SetMarkerSize(6); Energy_Quot__NeutralHad_FJ200->SetMarkerColor(14); Energy_Quot__NeutralHad_FJ200->SetMarkerStyle(21);
@@ -629,7 +635,8 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_MultiJet200->SetMarkerSize(6);  Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(8); Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(34);
   Energy_Quot__NeutralHad_MultiJet200->DrawCopy("Psame"); Energy_Quot__NeutralHad_MultiJet200->SetMarkerColor(32);Energy_Quot__NeutralHad_MultiJet200->SetMarkerStyle(28);
   Energy_Quot__NeutralHad_MultiJet200->SetLineWidth(2);   Energy_Quot__NeutralHad_MultiJet200->SetLineColor(32);  Energy_Quot__NeutralHad_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__NeutralHad_Jet200->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__NeutralHad_Jet200->cd();
+  Cero->SetTitle(";E^{Hadr#acute{o}nNeutro}/E^{Jet}, E^{Jet}<200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__NeutralHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_Jet200 );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -656,7 +663,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__NeutralHad_200Jet = new TCanvas("Energy_Quotient__NeutralHad_200Jet","Energy_Quotient__NeutralHad_200Jet",0,0,3240,2160);
   TPad *H__NeutralHad_200Jet = new TPad("H__NeutralHad_200Jet","", 0, 0.25, 1, 1); H__NeutralHad_200Jet->SetMargin(0.11,0,0,0); H__NeutralHad_200Jet->SetLogy(); H__NeutralHad_200Jet->Draw();
   TPad *E__NeutralHad_200Jet = new TPad("E__NeutralHad_200Jet","", 0, 0, 1, 0.25); E__NeutralHad_200Jet->SetMargin(0.11,0,0.33,0); E__NeutralHad_200Jet->Draw(); H__NeutralHad_200Jet->cd();
-  Energy_Quot__NeutralHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nNeutro/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__NeutralHad_200FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__NeutralHad_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__NeutralHad_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__NeutralHad_200FJ->SetMarkerSize(6); Energy_Quot__NeutralHad_200FJ->SetMarkerColor(14); Energy_Quot__NeutralHad_200FJ->SetMarkerStyle(21);
@@ -674,7 +681,8 @@ void EnergyQuotient() {
   Energy_Quot__NeutralHad_200MultiJet->SetMarkerSize(6);  Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(8); Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(34);
   Energy_Quot__NeutralHad_200MultiJet->DrawCopy("Psame"); Energy_Quot__NeutralHad_200MultiJet->SetMarkerColor(32);Energy_Quot__NeutralHad_200MultiJet->SetMarkerStyle(28);
   Energy_Quot__NeutralHad_200MultiJet->SetLineWidth(2);   Energy_Quot__NeutralHad_200MultiJet->SetLineColor(32);  Energy_Quot__NeutralHad_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__NeutralHad_200Jet->cd(); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-2.6,1.2);
+  Leg->Draw(); Legend->Draw(); E__NeutralHad_200Jet->cd();
+  Cero->SetTitle(";E^{Hadr#acute{o}nNeutro}/E^{Jet}, E^{Jet}>200;#xi"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-2.6,1.2);
   Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__NeutralHad_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__NeutralHad_200Jet);
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -702,7 +710,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__ChargedHad_Jet  = new TCanvas("Energy_Quotient__ChargedHad_Jet ","Energy_Quotient__ChargedHad_Jet ",0,0,3240,2160);
   TPad *H__ChargedHad_Jet = new TPad("H__ChargedHad_Jet","", 0, 0.25, 1, 1); H__ChargedHad_Jet->SetMargin(0.11,0,0,0); H__ChargedHad_Jet->SetLogy(); H__ChargedHad_Jet->Draw();
   TPad *E__ChargedHad_Jet = new TPad("E__ChargedHad_Jet","", 0, 0, 1, 0.25); E__ChargedHad_Jet->SetMargin(0.11,0,0.33,0); E__ChargedHad_Jet->Draw(); H__ChargedHad_Jet->cd();
-  Energy_Quot__ChargedHad_FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__ChargedHad_FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__ChargedHad_FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__ChargedHad_FJ->SetMarkerSize(6); Energy_Quot__ChargedHad_FJ->SetMarkerColor(14); Energy_Quot__ChargedHad_FJ->SetMarkerStyle(21);
@@ -721,7 +729,7 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_MultiJet->DrawCopy("Psame"); Energy_Quot__ChargedHad_MultiJet->SetMarkerColor(32);Energy_Quot__ChargedHad_MultiJet->SetMarkerStyle(28);
   Energy_Quot__ChargedHad_MultiJet->SetLineWidth(2);   Energy_Quot__ChargedHad_MultiJet->SetLineColor(32);  Energy_Quot__ChargedHad_MultiJet->DrawCopy("Esame");
   Leg->Draw(); Legend->Draw(); E__ChargedHad_Jet->cd();
-  Cero->SetTitle(";Energ#acute{i}a^{Hadr#acute{o}nCargado} / Energ#acute{i}a^{Jet}; Error Relativo"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.6,0.6);
+  Cero->SetTitle(";E^{Hadr#acute{o}nCargado}/E^{Jet};#xi"); Cero->Draw(); Cero->GetYaxis()->SetRangeUser(-0.6,0.6);
   Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_Jet ,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_Jet );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -748,7 +756,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__ChargedHad_Jet200  = new TCanvas("Energy_Quotient__ChargedHad_Jet200 ","Energy_Quotient__ChargedHad_Jet200 ",0,0,3240,2160);
   TPad *H__ChargedHad_Jet200 = new TPad("H__ChargedHad_Jet200","", 0, 0.25, 1, 1); H__ChargedHad_Jet200->SetMargin(0.11,0,0,0); H__ChargedHad_Jet200->SetLogy(); H__ChargedHad_Jet200->Draw();
   TPad *E__ChargedHad_Jet200 = new TPad("E__ChargedHad_Jet200","", 0, 0, 1, 0.25); E__ChargedHad_Jet200->SetMargin(0.11,0,0.33,0); E__ChargedHad_Jet200->Draw(); H__ChargedHad_Jet200->cd();
-  Energy_Quot__ChargedHad_FJ200->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} < 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__ChargedHad_FJ200->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__ChargedHad_FJ200->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_FJ200->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__ChargedHad_FJ200->SetMarkerSize(6); Energy_Quot__ChargedHad_FJ200->SetMarkerColor(14); Energy_Quot__ChargedHad_FJ200->SetMarkerStyle(21);
@@ -766,7 +774,8 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_MultiJet200->SetMarkerSize(6);  Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(8); Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(34);
   Energy_Quot__ChargedHad_MultiJet200->DrawCopy("Psame"); Energy_Quot__ChargedHad_MultiJet200->SetMarkerColor(32);Energy_Quot__ChargedHad_MultiJet200->SetMarkerStyle(28);
   Energy_Quot__ChargedHad_MultiJet200->SetLineWidth(2);   Energy_Quot__ChargedHad_MultiJet200->SetLineColor(32);  Energy_Quot__ChargedHad_MultiJet200->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__ChargedHad_Jet200->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__ChargedHad_Jet200->cd();
+  Cero->SetTitle(";E^{Hadr#acute{o}nCargado}/E^{Jet}, E^{Jet}<200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__ChargedHad_FJ200,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_Jet200 ,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_Jet200 );
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -793,7 +802,7 @@ void EnergyQuotient() {
   TCanvas* Energy_Quotient__ChargedHad_200Jet = new TCanvas("Energy_Quotient__ChargedHad_200Jet","Energy_Quotient__ChargedHad_200Jet",0,0,3240,2160);
   TPad *H__ChargedHad_200Jet = new TPad("H__ChargedHad_200Jet","", 0, 0.25, 1, 1); H__ChargedHad_200Jet->SetMargin(0.11,0,0,0); H__ChargedHad_200Jet->SetLogy(); H__ChargedHad_200Jet->Draw();
   TPad *E__ChargedHad_200Jet = new TPad("E__ChargedHad_200Jet","", 0, 0, 1, 0.25); E__ChargedHad_200Jet->SetMargin(0.11,0,0.33,0); E__ChargedHad_200Jet->Draw(); H__ChargedHad_200Jet->cd();
-  Energy_Quot__ChargedHad_200FJ->SetTitle("Cociente Energ#acute{i}a  Hadr#acute{o}nCargado/Jet  (Energ#acute{i}a^{Jet} > 200); ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Energy_Quot__ChargedHad_200FJ->SetTitle("; ; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleSize(0.05); Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetTitleOffset(1.0);
   Energy_Quot__ChargedHad_200FJ->GetYaxis()->SetLabelSize(0.05); Energy_Quot__ChargedHad_200FJ->SetAxisRange(0.0, 1.04, "X");
   Energy_Quot__ChargedHad_200FJ->SetMarkerSize(6); Energy_Quot__ChargedHad_200FJ->SetMarkerColor(14); Energy_Quot__ChargedHad_200FJ->SetMarkerStyle(21);
@@ -811,7 +820,8 @@ void EnergyQuotient() {
   Energy_Quot__ChargedHad_200MultiJet->SetMarkerSize(6);  Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(8); Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(34);
   Energy_Quot__ChargedHad_200MultiJet->DrawCopy("Psame"); Energy_Quot__ChargedHad_200MultiJet->SetMarkerColor(32);Energy_Quot__ChargedHad_200MultiJet->SetMarkerStyle(28);
   Energy_Quot__ChargedHad_200MultiJet->SetLineWidth(2);   Energy_Quot__ChargedHad_200MultiJet->SetLineColor(32);  Energy_Quot__ChargedHad_200MultiJet->DrawCopy("Esame");
-  Leg->Draw(); Legend->Draw(); E__ChargedHad_200Jet->cd(); Cero->Draw();
+  Leg->Draw(); Legend->Draw(); E__ChargedHad_200Jet->cd();
+  Cero->SetTitle(";E^{Hadr#acute{o}nCargado}/E^{Jet}, E^{Jet}>200;#xi"); Cero->Draw();
   Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200FJ,-1); Energy_Quot__Error->Add(Energy_Quot__ChargedHad_200Jet,1); Energy_Quot__Error->Divide(Energy_Quot__ChargedHad_200Jet);
   Energy_Quot__Error->SetMarkerColor(14);Energy_Quot__Error->SetMarkerStyle(23);  Energy_Quot__Error->DrawCopy("Psame");
   Energy_Quot__Error->SetMarkerColor(2); Energy_Quot__Error->SetMarkerStyle(32);
@@ -1104,10 +1114,10 @@ void Limits() {
 
 
 
-  TCanvas* Limite_Energia_Muones = new TCanvas("Limite_Energia_Muones","Limite de Energ#acute{i}a para Muones",10,10,1920,1080);
+  TCanvas* Limite_Energia_Muones = new TCanvas("Limite_Energia_Muones","Limite de E para Muones",10,10,1920,1080);
   Limite_Energia_Muones->SetFillColor(0);  Limite_Energia_Muones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_MuonEnergy->SetTitle("Espectro de Energ#acute{i}a para Muones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Jet_MuonEnergy->SetTitle("Espectro de E para Muones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_MuonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_MuonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_MuonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_MuonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -1123,10 +1133,10 @@ void Limits() {
   MultiJet_MuonEnergy->SetMarkerStyle(23); MultiJet_MuonEnergy->SetMarkerColor(32); MultiJet_MuonEnergy->SetMarkerSize(2);
   legend->Draw(); Limite_Energia_Muones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Muones.png"); Limite_Energia_Muones->Close();
 
-  TCanvas* Limite_Energia_Fotones = new TCanvas("Limite_Energia_Fotones","Limite de Energ#acute{i}a para Fotones",10,10,1920,1080);
+  TCanvas* Limite_Energia_Fotones = new TCanvas("Limite_Energia_Fotones","Limite de E para Fotones",10,10,1920,1080);
   Limite_Energia_Fotones->SetFillColor(0);  Limite_Energia_Fotones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_PhotonEnergy->SetTitle("Espectro de Energ#acute{i}a para Fotones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Jet_PhotonEnergy->SetTitle("Espectro de E para Fotones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_PhotonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_PhotonEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -1142,10 +1152,10 @@ void Limits() {
   MultiJet_PhotonEnergy->SetMarkerStyle(23); MultiJet_PhotonEnergy->SetMarkerColor(32); MultiJet_PhotonEnergy->SetMarkerSize(2);
   legend->Draw(); Limite_Energia_Fotones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Fotones.png"); Limite_Energia_Fotones->Close();
 
-  TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite Energ#acute{i}a para Electrones",10,10,1920,1080);
+  TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite E para Electrones",10,10,1920,1080);
   Limite_Energia_Electrones->SetFillColor(0);  Limite_Energia_Electrones->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_ElectronEnergy->SetTitle("Espectro de Energ#acute{i}a para Electrones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Jet_ElectronEnergy->SetTitle("Espectro de E para Electrones en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_ElectronEnergy->GetXaxis()->SetLabelSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_ElectronEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -1162,10 +1172,10 @@ void Limits() {
   legend->Draw(); Limite_Energia_Electrones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Electrones.png");
   legend->Draw(); Limite_Energia_Electrones->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_Electrones.pdf"); Limite_Energia_Electrones->Close();
 
-  TCanvas* Limite_Energia_HadNeutros = new TCanvas("Limite_Energia_HadNeutros","Limite Energ#acute{i}a para HadNeutros",10,10,1920,1080);
+  TCanvas* Limite_Energia_HadNeutros = new TCanvas("Limite_Energia_HadNeutros","Limite E para HadNeutros",10,10,1920,1080);
   Limite_Energia_HadNeutros->SetFillColor(0);  Limite_Energia_HadNeutros->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_NeuHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadNeutros en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Jet_NeuHadEnergy->SetTitle("Espectro de E para HadNeutros en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_NeuHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_NeuHadEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -1181,10 +1191,10 @@ void Limits() {
   MultiJet_NeuHadEnergy->SetMarkerStyle(23); MultiJet_NeuHadEnergy->SetMarkerColor(32); MultiJet_NeuHadEnergy->SetMarkerSize(2);
   legend->Draw(); Limite_Energia_HadNeutros->SaveAs("/home/saksevul/T/Parallelism/ak5Jets/Limite_Energia_HadNeutros.png"); Limite_Energia_HadNeutros->Close();
 
-  TCanvas* Limite_Energia_HadCargados = new TCanvas("Limite_Energia_HadCargados","Limite Energ#acute{i}a para HadCargados",10,10,1920,1080);
+  TCanvas* Limite_Energia_HadCargados = new TCanvas("Limite_Energia_HadCargados","Limite E para HadCargados",10,10,1920,1080);
   Limite_Energia_HadCargados->SetFillColor(0);  Limite_Energia_HadCargados->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_CharHadEnergy->SetTitle("Espectro de Energ#acute{i}a para HadCargados en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Jet_CharHadEnergy->SetTitle("Espectro de E para HadCargados en ak5PFJets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_CharHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_CharHadEnergy->GetYaxis()->SetTitleOffset(1.0);
@@ -1203,7 +1213,7 @@ void Limits() {
   TCanvas* Limite_Energia_Jets = new TCanvas("Limite_Energia_Jets","Limite de #eta para Jets",10,10,1920,1080);
   Limite_Energia_Jets->SetFillColor(0);  Limite_Energia_Jets->SetFrameBorderMode(0);  gPad->SetLogy(); gPad->SetGrid(1,1);
   // Esto es para modificar las etiquetas del canvas.
-  Jet_JetEnergy->SetTitle("Espectro de Energ#acute{i}a para Jets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
+  Jet_JetEnergy->SetTitle("Espectro de E para Jets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
   Jet_JetEnergy->GetXaxis()->SetLabelSize(0.05); Jet_JetEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_JetEnergy->GetXaxis()->SetTitleSize(0.05); Jet_JetEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_JetEnergy->GetXaxis()->SetTitleOffset(1.0);Jet_JetEnergy->GetYaxis()->SetTitleOffset(1.0);
