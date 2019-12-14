@@ -18,7 +18,7 @@ ipTHM=10
   # previous pT Hat Minimum (ipTHM).
   ppTHM=$ipTHM
 # initial Number of Events (ver y/o editar Master Macro, 2 en total).
-iNoE=12000
+iNoE=24000
   # previous Number of Events.
   pNoE=$iNoE
 # Guardamos es directorio actual de trabajo y pasamos a la RutaDMM.
@@ -61,14 +61,14 @@ do
     pARJ=kt6;    pJCA=$kt;    pJS=0.6
   fi
   # Ciclo sobre distintos valores de pT Hat Minimum.
-  for pTHM in {10..600..1}
+  for pTHM in {1..1200..1}
   do
     # Modificamos el Master Macro (MM) para utilizar el AS actual.
     sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
     # Cabiamos el valor del pTHatMin.
   	sed -i "s/pTHatMin\ =\ $ppTHM.0/pTHatMin\ =\ $pTHM.0/g" $MM
     # Decrecimiento exponancial.
-    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/200); print x}')
+    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/400); print x}')
     # Cabiamos el valor del NoE.
     sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $NoE\;/g" $MM
     # A CORRER ESA MADRE!

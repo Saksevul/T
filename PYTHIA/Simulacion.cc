@@ -1,4 +1,4 @@
-NeutralHadronEnergy// PYTHIA is licenced under the GNU GPL v2 or later, see COPYING for details.
+// PYTHIA is licenced under the GNU GPL v2 or later, see COPYING for details.
 
 // Stdlib header file for input and output.
 #include <iostream>
@@ -23,7 +23,7 @@ NeutralHadronEnergy// PYTHIA is licenced under the GNU GPL v2 or later, see COPY
 using namespace Pythia8;
 
 //----------------------------------------------------------------------------------------------------------------
-int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
+int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
@@ -33,14 +33,14 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   // FastJet.
   TH1F* h_Jets_pt_         = new TH1F("Jets_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 1200, 0, 2400);
   TH1F *h_Jets_eta_        = new TH1F("Jets_eta_", "Distribución en #eta de ak5FastJet; #eta; Ocurrencia", 599, -5.95, 5.95);
-  TH1F *h_JetEnergy        = new TH1F("Jets_Energy", "Energ#acute{i}a de FastJets; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
+  TH1F *h_Jets__Energy        = new TH1F("Jets_Energy", "Energ#acute{i}a de FastJets; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_MuonEnergy       = new TH1F("Jets_MuonEnergy", "Energ#acute{i}a de Muones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_PhotonEnergy     = new TH1F("Jets_PhotonEnergy", "Energ#acute{i}a de Fotones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_ElectronEnergy   = new TH1F("Jets_ElectronEnergy", "Energ#acute{i}a de Electrones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_NeutralHadronEnergy = new TH1F("Jets_NeutralHadronEnergy", "Energ#acute{i}a de Hadrones Neutros; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_ChargedHadronEnergy = new TH1F("Jets_ChargedHadronEnergy", "Energ#acute{i}a de Hadrones Cargados; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   // Multiplicidades
-  TH1F* h_Jets__Multipicity= new TH1F("Jets__Multiplicity", "Multiplicidad, de ak5FastJet, por Evento; Multilicidad; Ocurrencia", 120, 0, 120);
+  TH1F* h_Jets__Multiplicity= new TH1F("Jets__Multiplicity", "Multiplicidad, de ak5FastJet por Evento; Multilicidad; Frecuencia", 120, 0, 120);
   // Cocientes.
   TH1F *h_Jets__EnergyQuotient_Muon_Jet    = new TH1F("Jets_Energy_Quotient__Muon-Jet",   "Cociente Energia  Muon / ak5PFJet; Energia_{Muon}/Energia_{ak5PFJet}; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_Jet100     = new TH1F("Jets_Energy_Quot__Muon-0Jet100",   "Cociente Energ#acute{i}a  Muon / 0<ak5PFJet<100; Indice; Frecuencia", 120, 0, 1.2);
@@ -103,14 +103,12 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   TH1F *h_Jets__EnergyQuot_ChargedHad_900Jet1000 = new TH1F("Jets_Energy_Quot__ChargedHad-900Jet100", "Cociente Energ#acute{i}a  ChargedHad / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_1000Jet    = new TH1F("Jets_Energy_Quot__ChargedHad-1000Jet",   "Cociente Energ#acute{i}a  ChargedHad / 1000<ak5PFJet; Indice; Frecuencia", 120, 0, 1.2);
 // Distancia angular.
-  TH1F *h__D__Muon_Jet     = new TH1F("_D__Muon-Jet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Muon al ak5FastJet; Valor; Frecuencia", 120, 0, 1.2);
-  TH1F *h__D__Electron_Jet = new TH1F("_D__Electron-Jet", "Distancia angular #sqrt{(#Delta#phi)^{2} + (#Delta#eta)^{2}} del Electron al ak5FastJet; Valor; Frecuencia", 120, 0, 1.2);
   // TH1F* h_Jets__D__Jet_Jet  = new TH1F("ak5FastJet__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5FastJet_{i} al ak5FastJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
-  // Pdg Id().
-  TH1I*h__Pdg_Id = new TH1I("Pdg_Id", "Partículas contenidas en los Jets; PDG id(); Frecuencia", 800, -4000, 4000);
-  TH1I*h__OtherPdg_Id = new TH1I("OtherPdg_Id", "Partículas contenidas en los Jets; PDG id(); Frecuencia", 800, -4000, 4000);
-  TH1I*h__JetMother = new TH1I("JetMother", "Madre de Jet; PDG id(); Frecuencia", 43, -21.5, 21.5);
-  TH1I*h__OtherMother = new TH1I("OtherMother", "Madre de Jet distinta a Quark o Gluon; PDG id(); Frecuencia", 43, -21.5, 21.5);
+  // // Pdg Id().
+  // TH1I*h__Pdg_Id = new TH1I("Pdg_Id", "Partículas contenidas en los Jets; PDG id(); Frecuencia", 800, -4000, 4000);
+  // TH1I*h__OtherPdg_Id = new TH1I("OtherPdg_Id", "Partículas contenidas en los Jets; PDG id(); Frecuencia", 800, -4000, 4000);
+  // TH1I*h__JetMother = new TH1I("JetMother", "Madre de Jet; PDG id(); Frecuencia", 43, -21.5, 21.5);
+  // TH1I*h__OtherMother = new TH1I("OtherMother", "Madre de Jet distinta a Quark o Gluon; PDG id(); Frecuencia", 43, -21.5, 21.5);
 
   // Generator. Shorthand for event.
   Pythia pythia;
@@ -148,7 +146,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
 
   // Number of events, generated and listed ones (for jets).
-  int nEvent    = 12000;
+  int nEvent    = 24000;
   printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 10.0\n\n\t Salida:  ak5FJ-10.root \n\n\n\n", nEvent);
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= -1; C/A = 0; kT = 1.
@@ -214,7 +212,7 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
     // #######################################################################################################################################################################
     // Esto ya es de mi propia cosecha.
-    for (size_t i=0; i<sortedJets.size(); i++){   Bool_t FlagE=false, FlagM=false; Float_t JMpT = 0.0, pTE=0.0, pTM=0.0;  Int_t motherM, motherE; Int_t JMIndex;
+    for (size_t i=0; i<sortedJets.size(); i++){
 
       Float_t MuonEnergy = 0.0, PhotonEnergy = 0.0, ElectronEnergy = 0.0, NeutralHadronEnergy =0.0, ChargedHadronEnergy = 0.0;
 
@@ -231,150 +229,89 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
       //     h_Jets__D__Jet_Jet -> Fill( sqrt(pow2(sortedJets[i].eta()-sortedJets[j].eta()) +  pow2(2*PI-abs(sortedJets[i].phi_std()-sortedJets[j].phi_std()))) );
       // } }-
 
-      for (size_t j=0; j<sortedJets[i].constituents().size(); j++) {   Int_t JCIndex = sortedJets[i].constituents()[j].user_info<MyInfo>().Index(); // Event Index.
-
-        // Para conocer el partón madre el Jet en función de su partícula más energética.
-        if ( JMpT < sortedJets[i].constituents()[j].pt() ) {  JMpT = sortedJets[i].constituents()[j].pt();  JMIndex = event[JCIndex].mother1();
-          while ( abs(event[JMIndex].id()) > 21 ) { JMIndex=event[JMIndex].mother1(); }
-        }
-
-        // Muons.
-        if ( abs(event[JCIndex].id()) == 13 ) {  motherM=event[JCIndex].mother1();
-          MuonEnergy = MuonEnergy + sortedJets[i].constituents()[j].E();
-          if ( abs(event[JCIndex].eta()) < etaMax ) {
-            if ( sortedJets[i].constituents()[j].pt() > pTM) { FlagM=true; pTM=sortedJets[i].constituents()[j].pt(); }  // Para obtener información del Muón màs energético.
-          }
-          while ( abs(event[motherM].id()) > 21 ) motherM=event[motherM].mother1();
-          if ( abs(event[motherM].id()) == 21 ) {     h__pTQuotient21_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 1 ) { h__pTQuotient01_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 2 ) { h__pTQuotient02_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 3 ) { h__pTQuotient03_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 4 ) { h__pTQuotient04_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherM].id()) == 5 ) { h__pTQuotient05_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else {
-            h__pTQuotientOt_Muon_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );
-            h__OtherMother -> Fill(event[motherM].id());
-          }
-        }
-
-        // Photons.
-        else if ( abs(event[JCIndex].id()) == 22 ) { PhotonEnergy = PhotonEnergy + sortedJets[i].constituents()[j].E(); }
-
-        // Electrons.
-        else if ( abs(event[JCIndex].id()) == 11 ) {  motherE=event[JCIndex].mother1();
-          ElectronEnergy = ElectronEnergy + sortedJets[i].constituents()[j].E();
-          if ( abs(event[JCIndex].eta()) < etaMax ) {
-            if ( sortedJets[i].constituents()[j].pt() > pTE) { FlagE=true; pTE=sortedJets[i].constituents()[j].pt(); }
-          }
-          while ( abs(event[motherE].id()) > 21 ) motherE=event[motherE].mother1();
-          // const char * nombre; nombre=event[motherE].name().c_str();
-          // printf(" Madre final de este Electron = %s.\n", nombre);
-          if ( abs(event[motherE].id()) == 21 ) {     h__pTQuotient21_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 1 ) { h__pTQuotient01_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 2 ) { h__pTQuotient02_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 3 ) { h__pTQuotient03_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 4 ) { h__pTQuotient04_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else if ( abs(event[motherE].id()) == 5 ) { h__pTQuotient05_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );  }
-          else {
-            h__pTQuotientOt_Electron_Jet -> Fill ( sortedJets[i].constituents()[j].pt()/sortedJets[i].pt() );
-            h__OtherMother -> Fill(event[motherE].id());
-          }
-        }
-
-        // Neutral Hadrons.
-        else if ( event[JCIndex].isNeutral() ) NeutralHadronEnergy = NeutralHadronEnergy + sortedJets[i].constituents()[j].E();
-        // Charged Hadrons.
-        else if ( event[JCIndex].isCharged() ) ChargedHadronEnergy = ChargedHadronEnergy + sortedJets[i].constituents()[j].E();
-        //Other Particles.
-        else h__OtherPdg_Id -> Fill(event[JCIndex].id());
-
-        // Pdg Id().
-        h__Pdg_Id -> Fill(event[JCIndex].id());
-      } // j for loop.  Jet Constituents.
-
+      for (size_t j=0; j<sortedJets[i].constituents().size(); j++) {
 
       // Energies.
       Float_t JetEnergy = MuonEnergy + PhotonEnergy + ElectronEnergy + NeutralHadronEnergy + ChargedHadronEnergy;
 
-      h_JetEnergy -> Fill (JetEnergy);
+      h_Jets__Energy -> Fill (JetEnergy);
 
       // Cociente de la energia de las partículas respecto a al E del Jet. Y Multiplicidad de las particulas en cada Jet.
       if (MuonEnergy > 0.0) { h_MuonEnergy -> Fill(MuonEnergy);
         h_Jets__EnergyQuotient_Muon_Jet -> Fill(MuonEnergy/JetEnergy);
-        if          ( JetEnergy<100) {  h_Jets__EnergyQuot_Muon_Jet100    -> Fill(MuonEnergy/JetEnergy)  }
-        else if (100<=JetEnergy<200) {  h_Jets__EnergyQuot_Muon_100Jet200 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (200<=JetEnergy<300) {  h_Jets__EnergyQuot_Muon_200Jet300 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (300<=JetEnergy<400) {  h_Jets__EnergyQuot_Muon_300Jet400 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (400<=JetEnergy<500) {  h_Jets__EnergyQuot_Muon_400Jet500 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (500<=JetEnergy<600) {  h_Jets__EnergyQuot_Muon_500Jet600 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (600<=JetEnergy<700) {  h_Jets__EnergyQuot_Muon_600Jet700 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (700<=JetEnergy<800) {  h_Jets__EnergyQuot_Muon_700Jet800 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (800<=JetEnergy<900) {  h_Jets__EnergyQuot_Muon_800Jet900 -> Fill(MuonEnergy/JetEnergy)  }
-        else if (900<=JetEnergy<1000){  h_Jets__EnergyQuot_Muon_900Jet1000-> Fill(MuonEnergy/JetEnergy)  }
-        else                         {  h_Jets__EnergyQuot_Muon_1000Jet   -> Fill(MuonEnergy/JetEnergy)  }
+        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Muon_Jet100    -> Fill(MuonEnergy/JetEnergy);
+        else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_Muon_100Jet200 -> Fill(MuonEnergy/JetEnergy);
+        else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_Muon_200Jet300 -> Fill(MuonEnergy/JetEnergy);
+        else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_Muon_300Jet400 -> Fill(MuonEnergy/JetEnergy);
+        else if (400<=JetEnergy&&JetEnergy<500) h_Jets__EnergyQuot_Muon_400Jet500 -> Fill(MuonEnergy/JetEnergy);
+        else if (500<=JetEnergy&&JetEnergy<600) h_Jets__EnergyQuot_Muon_500Jet600 -> Fill(MuonEnergy/JetEnergy);
+        else if (600<=JetEnergy&&JetEnergy<700) h_Jets__EnergyQuot_Muon_600Jet700 -> Fill(MuonEnergy/JetEnergy);
+        else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Muon_700Jet800 -> Fill(MuonEnergy/JetEnergy);
+        else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Muon_800Jet900 -> Fill(MuonEnergy/JetEnergy);
+        else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Muon_900Jet1000-> Fill(MuonEnergy/JetEnergy);
+        else                         h_Jets__EnergyQuot_Muon_1000Jet   -> Fill(MuonEnergy/JetEnergy);
       }
       if (PhotonEnergy > 0.0) { h_PhotonEnergy -> Fill(PhotonEnergy);
         h_Jets__EnergyQuotient_Photon_Jet -> Fill(PhotonEnergy/JetEnergy);
-        if          ( JetEnergy<100) {  h_Jets__EnergyQuot_Photon_Jet100    -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (100<=JetEnergy<200) {  h_Jets__EnergyQuot_Photon_100Jet200 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (200<=JetEnergy<300) {  h_Jets__EnergyQuot_Photon_200Jet300 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (300<=JetEnergy<400) {  h_Jets__EnergyQuot_Photon_300Jet400 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (400<=JetEnergy<500) {  h_Jets__EnergyQuot_Photon_400Jet500 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (500<=JetEnergy<600) {  h_Jets__EnergyQuot_Photon_500Jet600 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (600<=JetEnergy<700) {  h_Jets__EnergyQuot_Photon_600Jet700 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (700<=JetEnergy<800) {  h_Jets__EnergyQuot_Photon_700Jet800 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (800<=JetEnergy<900) {  h_Jets__EnergyQuot_Photon_800Jet900 -> Fill(PhotonEnergy/JetEnergy)  }
-        else if (900<=JetEnergy<1000){  h_Jets__EnergyQuot_Photon_900Jet1000-> Fill(PhotonEnergy/JetEnergy)  }
-        else                         {  h_Jets__EnergyQuot_Photon_1000Jet   -> Fill(PhotonEnergy/JetEnergy)  }
+        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Photon_Jet100    -> Fill(PhotonEnergy/JetEnergy);
+        else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_Photon_100Jet200 -> Fill(PhotonEnergy/JetEnergy);
+        else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_Photon_200Jet300 -> Fill(PhotonEnergy/JetEnergy);
+        else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_Photon_300Jet400 -> Fill(PhotonEnergy/JetEnergy);
+        else if (400<=JetEnergy&&JetEnergy<500) h_Jets__EnergyQuot_Photon_400Jet500 -> Fill(PhotonEnergy/JetEnergy);
+        else if (500<=JetEnergy&&JetEnergy<600) h_Jets__EnergyQuot_Photon_500Jet600 -> Fill(PhotonEnergy/JetEnergy);
+        else if (600<=JetEnergy&&JetEnergy<700) h_Jets__EnergyQuot_Photon_600Jet700 -> Fill(PhotonEnergy/JetEnergy);
+        else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Photon_700Jet800 -> Fill(PhotonEnergy/JetEnergy);
+        else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Photon_800Jet900 -> Fill(PhotonEnergy/JetEnergy);
+        else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Photon_900Jet1000-> Fill(PhotonEnergy/JetEnergy);
+        else                         h_Jets__EnergyQuot_Photon_1000Jet   -> Fill(PhotonEnergy/JetEnergy);
       }
       if (ElectronEnergy > 0.0) { h_ElectronEnergy -> Fill(ElectronEnergy);
         h_Jets__EnergyQuotient_Electron_Jet -> Fill(ElectronEnergy/JetEnergy);
-        if          ( JetEnergy<100) {  h_Jets__EnergyQuot_Electron_Jet100    -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (100<=JetEnergy<200) {  h_Jets__EnergyQuot_Electron_100Jet200 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (200<=JetEnergy<300) {  h_Jets__EnergyQuot_Electron_200Jet300 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (300<=JetEnergy<400) {  h_Jets__EnergyQuot_Electron_300Jet400 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (400<=JetEnergy<500) {  h_Jets__EnergyQuot_Electron_400Jet500 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (500<=JetEnergy<600) {  h_Jets__EnergyQuot_Electron_500Jet600 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (600<=JetEnergy<700) {  h_Jets__EnergyQuot_Electron_600Jet700 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (700<=JetEnergy<800) {  h_Jets__EnergyQuot_Electron_700Jet800 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (800<=JetEnergy<900) {  h_Jets__EnergyQuot_Electron_800Jet900 -> Fill(ElectronEnergy/JetEnergy)  }
-        else if (900<=JetEnergy<1000){  h_Jets__EnergyQuot_Electron_900Jet1000-> Fill(ElectronEnergy/JetEnergy)  }
-        else                         {  h_Jets__EnergyQuot_Electron_1000Jet   -> Fill(ElectronEnergy/JetEnergy)  }
+        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Electron_Jet100    -> Fill(ElectronEnergy/JetEnergy);
+        else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_Electron_100Jet200 -> Fill(ElectronEnergy/JetEnergy);
+        else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_Electron_200Jet300 -> Fill(ElectronEnergy/JetEnergy);
+        else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_Electron_300Jet400 -> Fill(ElectronEnergy/JetEnergy);
+        else if (400<=JetEnergy&&JetEnergy<500) h_Jets__EnergyQuot_Electron_400Jet500 -> Fill(ElectronEnergy/JetEnergy);
+        else if (500<=JetEnergy&&JetEnergy<600) h_Jets__EnergyQuot_Electron_500Jet600 -> Fill(ElectronEnergy/JetEnergy);
+        else if (600<=JetEnergy&&JetEnergy<700) h_Jets__EnergyQuot_Electron_600Jet700 -> Fill(ElectronEnergy/JetEnergy);
+        else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Electron_700Jet800 -> Fill(ElectronEnergy/JetEnergy);
+        else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Electron_800Jet900 -> Fill(ElectronEnergy/JetEnergy);
+        else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Electron_900Jet1000-> Fill(ElectronEnergy/JetEnergy);
+        else                         h_Jets__EnergyQuot_Electron_1000Jet   -> Fill(ElectronEnergy/JetEnergy);
       }
       if (NeutralHadronEnergy > 0.0) { h_NeutralHadronEnergy -> Fill(NeutralHadronEnergy);
         h_Jets__EnergyQuotient_NeutralHad_Jet -> Fill(NeutralHadronEnergy/JetEnergy);
-        if          ( JetEnergy<100) {  h_Jets__EnergyQuot_NeutralHad_Jet100    -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (100<=JetEnergy<200) {  h_Jets__EnergyQuot_NeutralHad_100Jet200 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (200<=JetEnergy<300) {  h_Jets__EnergyQuot_NeutralHad_200Jet300 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (300<=JetEnergy<400) {  h_Jets__EnergyQuot_NeutralHad_300Jet400 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (400<=JetEnergy<500) {  h_Jets__EnergyQuot_NeutralHad_400Jet500 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (500<=JetEnergy<600) {  h_Jets__EnergyQuot_NeutralHad_500Jet600 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (600<=JetEnergy<700) {  h_Jets__EnergyQuot_NeutralHad_600Jet700 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (700<=JetEnergy<800) {  h_Jets__EnergyQuot_NeutralHad_700Jet800 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (800<=JetEnergy<900) {  h_Jets__EnergyQuot_NeutralHad_800Jet900 -> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else if (900<=JetEnergy<1000){  h_Jets__EnergyQuot_NeutralHad_900Jet1000-> Fill(NeutralHadronEnergy/JetEnergy)  }
-        else                         {  h_Jets__EnergyQuot_NeutralHad_1000Jet   -> Fill(NeutralHadronEnergy/JetEnergy)  }
+        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_NeutralHad_Jet100    -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_NeutralHad_100Jet200 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_NeutralHad_200Jet300 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_NeutralHad_300Jet400 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (400<=JetEnergy&&JetEnergy<500) h_Jets__EnergyQuot_NeutralHad_400Jet500 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (500<=JetEnergy&&JetEnergy<600) h_Jets__EnergyQuot_NeutralHad_500Jet600 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (600<=JetEnergy&&JetEnergy<700) h_Jets__EnergyQuot_NeutralHad_600Jet700 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_NeutralHad_700Jet800 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_NeutralHad_800Jet900 -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_NeutralHad_900Jet1000-> Fill(NeutralHadronEnergy/JetEnergy);
+        else                         h_Jets__EnergyQuot_NeutralHad_1000Jet   -> Fill(NeutralHadronEnergy/JetEnergy);
       }
       if (ChargedHadronEnergy > 0.0) { h_ChargedHadronEnergy -> Fill(ChargedHadronEnergy);
         h_Jets__EnergyQuotient_ChargedHad_Jet -> Fill(ChargedHadronEnergy/JetEnergy);
-        if          ( JetEnergy<100) {  h_Jets__EnergyQuot_ChargedHad_Jet100    -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (100<=JetEnergy<200) {  h_Jets__EnergyQuot_ChargedHad_100Jet200 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (200<=JetEnergy<300) {  h_Jets__EnergyQuot_ChargedHad_200Jet300 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (300<=JetEnergy<400) {  h_Jets__EnergyQuot_ChargedHad_300Jet400 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (400<=JetEnergy<500) {  h_Jets__EnergyQuot_ChargedHad_400Jet500 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (500<=JetEnergy<600) {  h_Jets__EnergyQuot_ChargedHad_500Jet600 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (600<=JetEnergy<700) {  h_Jets__EnergyQuot_ChargedHad_600Jet700 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (700<=JetEnergy<800) {  h_Jets__EnergyQuot_ChargedHad_700Jet800 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (800<=JetEnergy<900) {  h_Jets__EnergyQuot_ChargedHad_800Jet900 -> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else if (900<=JetEnergy<1000){  h_Jets__EnergyQuot_ChargedHad_900Jet1000-> Fill(ChargedHadronEnergy/JetEnergy)  }
-        else                         {  h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Fill(ChargedHadronEnergy/JetEnergy)  }
+        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_ChargedHad_Jet100    -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_ChargedHad_100Jet200 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_ChargedHad_200Jet300 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_ChargedHad_300Jet400 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (400<=JetEnergy&&JetEnergy<500) h_Jets__EnergyQuot_ChargedHad_400Jet500 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (500<=JetEnergy&&JetEnergy<600) h_Jets__EnergyQuot_ChargedHad_500Jet600 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (600<=JetEnergy&&JetEnergy<700) h_Jets__EnergyQuot_ChargedHad_600Jet700 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_ChargedHad_700Jet800 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_ChargedHad_800Jet900 -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_ChargedHad_900Jet1000-> Fill(ChargedHadronEnergy/JetEnergy);
+        else                         h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Fill(ChargedHadronEnergy/JetEnergy);
       }
-      // Pdg Id().
-      h__JetMother -> Fill(event[JMIndex].id());
     } // i for loop.  Event Jets.
 
-    h_Jets__Multipicity -> Fill(sortedJets.size());
+    h_Jets__Multiplicity -> Fill(sortedJets.size());
 
+    }  // End of the i loop.
   }  // End of Event loop.
 
 // #######################################################################################################################################################################
@@ -385,8 +322,8 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
 
   h_Jets_pt_        -> Write();
   h_Jets_eta_       -> Write();
-  h_JetEnergy       -> Write();
-  h_JetMultipicity-> Write();
+  h_Jets__Energy       -> Write();
+  h_Jets__Multiplicity-> Write();
   h_MuonEnergy      -> Write();
   h_PhotonEnergy    -> Write();
   h_ElectronEnergy  -> Write();
@@ -456,12 +393,6 @@ int main(int argc, char* argv[]) {   Float_t PI=3.1415927;
   h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Write();
 
   // h_Jets__D__Jet_Jet -> Write();
-
-  // Madre de Jets.
-  h__OtherPdg_Id -> Write();
-  h__Pdg_Id      -> Write();
-  h__OtherMother -> Write();
-  h__JetMother   -> Write();
 
   // Done.
   delete OutputFile;

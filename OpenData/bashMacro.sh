@@ -7,7 +7,7 @@ start_date=$(date +%x) && start_time=$(date +%X)
 # Ruta al Macro Maestro (RutaMM).
 RutaMM=/home/saksevul/T/OpenData/Analisis.C
 # Ruta a la Lista de AOD's. (RutaLAOD).
-RutaLAOD=/home/saksevul/CMS_Run2011A/BTag_20000/ListaAOD1024
+RutaLAOD=/home/saksevul/CMS_Run2011A/BTag_20000/ListaAOD
 # Ruta al Directorio de Archivos de Salida (RutaDAS).
 RutaDAS=/home/saksevul/T/OpenData/BTag_20000
 # inicial Tipo de AOD (iTAOD).
