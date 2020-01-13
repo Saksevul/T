@@ -52,11 +52,6 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   TH1F *h_Jets__ChaHad_Multiplicity    = new TH1F("Jets_Multiplicity__ChaHad", "Multiplicidad HadronCargado en cada ak5PFJet; Multiplicidad HadronCargado; Frecuencia", 100, 0, 100);
   TH1F *h_Jets__NeuHad_Multiplicity    = new TH1F("Jets_Multiplicity__NeuHad", "Multiplicidad HadronNeutro en cada ak5PFJet; Multiplicidad HadronNeutral; Frecuencia", 100, 0, 100);
   TH1F *h_Jets__Multiplicity       = new TH1F("Jets__Multiplicity", "Multiplicidad de ak5PFJet por Evento; Multiplicidad; Frecuencia", 120, 0, 120);
-  TH1F *h_Jets_pT04__Multiplicity  = new TH1F("Jets_pT>04__Multiplicity", "Multiplicidad de ak5PFJet, con p_{T} > 04 GeV, por Evento; Numero de Jets; Frecuencia", 120, 0, 120);
-  TH1F *h_Jets_pT08__Multiplicity  = new TH1F("Jets_pT>08__Multiplicity", "Multiplicidad de ak5PFJet, con p_{T} > 08 GeV, por Evento; Numero de Jets; Frecuencia", 120, 0, 120);
-  TH1F *h_Jets_pT16__Multiplicity  = new TH1F("Jets_pT>16__Multiplicity", "Multiplicidad de ak5PFJet, con p_{T} > 16 GeV, por Evento; Numero de Jets; Frecuencia", 120, 0, 120);
-  TH1F *h_Jets_pT32__Multiplicity  = new TH1F("Jets_pT>32__Multiplicity", "Multiplicidad de ak5PFJet, con p_{T} > 32 GeV, por Evento; Numero de Jets; Frecuencia", 120, 0, 120);
-  TH1F *h_Jets_pT64__Multiplicity  = new TH1F("Jets_pT>64__Multiplicity", "Multiplicidad de ak5PFJet, con p_{T} > 64 GeV, por Evento; Numero de Jets; Frecuencia", 120, 0, 120);
   // Espectro de p_T.
   TH1F *h_Jets_Multiplicity64__pT = new TH1F("Jets_Mult<=64__pT", "Distribucion de pT de ak5PFJet, con Multilicidad <= 64, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
   TH1F *h_Jets_Multiplicity32__pT = new TH1F("Jets_Mult<=32__pT", "Distribucion de pT de ak5PFJet, con Multilicidad <= 32, por Evento; p_{T} [GeV]; Frecuencia", 800, 0, 3200);
@@ -67,63 +62,63 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   // Cocientes.
   TH1F *h_Jets__EnergyQuotient_Muon_Jet    = new TH1F("Jets_Energy_Quotient__Muon-Jet",   "Cociente Energia  Muon / ak5PFJet; Energia_{Muon}/Energia_{ak5PFJet}; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_Jet100     = new TH1F("Jets_Energy_Quot__Muon-0Jet100",   "Cociente Energ#acute{i}a  Muon / 0<ak5PFJet<100; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_100Jet200  = new TH1F("Jets_Energy_Quot__Muon-100Jet100", "Cociente Energ#acute{i}a  Muon / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_200Jet300  = new TH1F("Jets_Energy_Quot__Muon-200Jet100", "Cociente Energ#acute{i}a  Muon / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_300Jet400  = new TH1F("Jets_Energy_Quot__Muon-300Jet100", "Cociente Energ#acute{i}a  Muon / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_400Jet500  = new TH1F("Jets_Energy_Quot__Muon-400Jet100", "Cociente Energ#acute{i}a  Muon / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_500Jet600  = new TH1F("Jets_Energy_Quot__Muon-500Jet100", "Cociente Energ#acute{i}a  Muon / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_600Jet700  = new TH1F("Jets_Energy_Quot__Muon-600Jet100", "Cociente Energ#acute{i}a  Muon / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_700Jet800  = new TH1F("Jets_Energy_Quot__Muon-700Jet100", "Cociente Energ#acute{i}a  Muon / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_800Jet900  = new TH1F("Jets_Energy_Quot__Muon-800Jet100", "Cociente Energ#acute{i}a  Muon / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_900Jet1000 = new TH1F("Jets_Energy_Quot__Muon-900Jet100", "Cociente Energ#acute{i}a  Muon / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_100Jet200  = new TH1F("Jets_Energy_Quot__Muon-100Jet200", "Cociente Energ#acute{i}a  Muon / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_200Jet300  = new TH1F("Jets_Energy_Quot__Muon-200Jet300", "Cociente Energ#acute{i}a  Muon / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_300Jet400  = new TH1F("Jets_Energy_Quot__Muon-300Jet400", "Cociente Energ#acute{i}a  Muon / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_400Jet500  = new TH1F("Jets_Energy_Quot__Muon-400Jet500", "Cociente Energ#acute{i}a  Muon / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_500Jet600  = new TH1F("Jets_Energy_Quot__Muon-500Jet600", "Cociente Energ#acute{i}a  Muon / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_600Jet700  = new TH1F("Jets_Energy_Quot__Muon-600Jet700", "Cociente Energ#acute{i}a  Muon / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_700Jet800  = new TH1F("Jets_Energy_Quot__Muon-700Jet800", "Cociente Energ#acute{i}a  Muon / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_800Jet900  = new TH1F("Jets_Energy_Quot__Muon-800Jet900", "Cociente Energ#acute{i}a  Muon / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_900Jet1000 = new TH1F("Jets_Energy_Quot__Muon-900Jet1000", "Cociente Energ#acute{i}a  Muon / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_1000Jet    = new TH1F("Jets_Energy_Quot__Muon-1000Jet",   "Cociente Energ#acute{i}a  Muon / 1000<ak5PFJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_Photon_Jet    = new TH1F("Jets_Energy_Quotient__Photon-Jet",   "Cociente Energia  Photon / ak5PFJet; Energia_{Photon}/Energia_{ak5PFJet}; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Photon_Jet100     = new TH1F("Jets_Energy_Quot__Photon-0Jet100",   "Cociente Energ#acute{i}a  Photon / 0<ak5PFJet<100; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_100Jet200  = new TH1F("Jets_Energy_Quot__Photon-100Jet100", "Cociente Energ#acute{i}a  Photon / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_200Jet300  = new TH1F("Jets_Energy_Quot__Photon-200Jet100", "Cociente Energ#acute{i}a  Photon / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_300Jet400  = new TH1F("Jets_Energy_Quot__Photon-300Jet100", "Cociente Energ#acute{i}a  Photon / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_400Jet500  = new TH1F("Jets_Energy_Quot__Photon-400Jet100", "Cociente Energ#acute{i}a  Photon / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_500Jet600  = new TH1F("Jets_Energy_Quot__Photon-500Jet100", "Cociente Energ#acute{i}a  Photon / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_600Jet700  = new TH1F("Jets_Energy_Quot__Photon-600Jet100", "Cociente Energ#acute{i}a  Photon / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_700Jet800  = new TH1F("Jets_Energy_Quot__Photon-700Jet100", "Cociente Energ#acute{i}a  Photon / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_800Jet900  = new TH1F("Jets_Energy_Quot__Photon-800Jet100", "Cociente Energ#acute{i}a  Photon / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_900Jet1000 = new TH1F("Jets_Energy_Quot__Photon-900Jet100", "Cociente Energ#acute{i}a  Photon / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_100Jet200  = new TH1F("Jets_Energy_Quot__Photon-100Jet200", "Cociente Energ#acute{i}a  Photon / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_200Jet300  = new TH1F("Jets_Energy_Quot__Photon-200Jet300", "Cociente Energ#acute{i}a  Photon / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_300Jet400  = new TH1F("Jets_Energy_Quot__Photon-300Jet400", "Cociente Energ#acute{i}a  Photon / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_400Jet500  = new TH1F("Jets_Energy_Quot__Photon-400Jet500", "Cociente Energ#acute{i}a  Photon / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_500Jet600  = new TH1F("Jets_Energy_Quot__Photon-500Jet600", "Cociente Energ#acute{i}a  Photon / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_600Jet700  = new TH1F("Jets_Energy_Quot__Photon-600Jet700", "Cociente Energ#acute{i}a  Photon / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_700Jet800  = new TH1F("Jets_Energy_Quot__Photon-700Jet800", "Cociente Energ#acute{i}a  Photon / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_800Jet900  = new TH1F("Jets_Energy_Quot__Photon-800Jet900", "Cociente Energ#acute{i}a  Photon / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_900Jet1000 = new TH1F("Jets_Energy_Quot__Photon-900Jet1000", "Cociente Energ#acute{i}a  Photon / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Photon_1000Jet    = new TH1F("Jets_Energy_Quot__Photon-1000Jet",   "Cociente Energ#acute{i}a  Photon / 1000<ak5PFJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_Electron_Jet    = new TH1F("Jets_Energy_Quotient__Electron-Jet",   "Cociente Energia  Electron / ak5PFJet; Energia_{Electron}/Energia_{ak5PFJet}; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Electron_Jet100     = new TH1F("Jets_Energy_Quot__Electron-0Jet100",   "Cociente Energ#acute{i}a  Electron / 0<ak5PFJet<100; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_100Jet200  = new TH1F("Jets_Energy_Quot__Electron-100Jet100", "Cociente Energ#acute{i}a  Electron / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_200Jet300  = new TH1F("Jets_Energy_Quot__Electron-200Jet100", "Cociente Energ#acute{i}a  Electron / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_300Jet400  = new TH1F("Jets_Energy_Quot__Electron-300Jet100", "Cociente Energ#acute{i}a  Electron / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_400Jet500  = new TH1F("Jets_Energy_Quot__Electron-400Jet100", "Cociente Energ#acute{i}a  Electron / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_500Jet600  = new TH1F("Jets_Energy_Quot__Electron-500Jet100", "Cociente Energ#acute{i}a  Electron / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_600Jet700  = new TH1F("Jets_Energy_Quot__Electron-600Jet100", "Cociente Energ#acute{i}a  Electron / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_700Jet800  = new TH1F("Jets_Energy_Quot__Electron-700Jet100", "Cociente Energ#acute{i}a  Electron / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_800Jet900  = new TH1F("Jets_Energy_Quot__Electron-800Jet100", "Cociente Energ#acute{i}a  Electron / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_900Jet1000 = new TH1F("Jets_Energy_Quot__Electron-900Jet100", "Cociente Energ#acute{i}a  Electron / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_100Jet200  = new TH1F("Jets_Energy_Quot__Electron-100Jet200", "Cociente Energ#acute{i}a  Electron / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_200Jet300  = new TH1F("Jets_Energy_Quot__Electron-200Jet300", "Cociente Energ#acute{i}a  Electron / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_300Jet400  = new TH1F("Jets_Energy_Quot__Electron-300Jet400", "Cociente Energ#acute{i}a  Electron / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_400Jet500  = new TH1F("Jets_Energy_Quot__Electron-400Jet500", "Cociente Energ#acute{i}a  Electron / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_500Jet600  = new TH1F("Jets_Energy_Quot__Electron-500Jet600", "Cociente Energ#acute{i}a  Electron / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_600Jet700  = new TH1F("Jets_Energy_Quot__Electron-600Jet700", "Cociente Energ#acute{i}a  Electron / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_700Jet800  = new TH1F("Jets_Energy_Quot__Electron-700Jet800", "Cociente Energ#acute{i}a  Electron / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_800Jet900  = new TH1F("Jets_Energy_Quot__Electron-800Jet900", "Cociente Energ#acute{i}a  Electron / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_900Jet1000 = new TH1F("Jets_Energy_Quot__Electron-900Jet1000", "Cociente Energ#acute{i}a  Electron / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Electron_1000Jet    = new TH1F("Jets_Energy_Quot__Electron-1000Jet",   "Cociente Energ#acute{i}a  Electron / 1000<ak5PFJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_NeutralHad_Jet  = new TH1F("Jets_Energy_Quotient__NeutralHad-Jet",     "Cociente Energia  NeutralHad / ak5PFJet; Energia_{NeutralHad}/Energia_{ak5PFJet}; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_NeutralHad_Jet100     = new TH1F("Jets_Energy_Quot__NeutralHad-0Jet100",   "Cociente Energ#acute{i}a  NeutralHad / 0<ak5PFJet<100; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_100Jet200  = new TH1F("Jets_Energy_Quot__NeutralHad-100Jet100", "Cociente Energ#acute{i}a  NeutralHad / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_200Jet300  = new TH1F("Jets_Energy_Quot__NeutralHad-200Jet100", "Cociente Energ#acute{i}a  NeutralHad / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_300Jet400  = new TH1F("Jets_Energy_Quot__NeutralHad-300Jet100", "Cociente Energ#acute{i}a  NeutralHad / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_400Jet500  = new TH1F("Jets_Energy_Quot__NeutralHad-400Jet100", "Cociente Energ#acute{i}a  NeutralHad / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_500Jet600  = new TH1F("Jets_Energy_Quot__NeutralHad-500Jet100", "Cociente Energ#acute{i}a  NeutralHad / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_600Jet700  = new TH1F("Jets_Energy_Quot__NeutralHad-600Jet100", "Cociente Energ#acute{i}a  NeutralHad / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_700Jet800  = new TH1F("Jets_Energy_Quot__NeutralHad-700Jet100", "Cociente Energ#acute{i}a  NeutralHad / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_800Jet900  = new TH1F("Jets_Energy_Quot__NeutralHad-800Jet100", "Cociente Energ#acute{i}a  NeutralHad / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_900Jet1000 = new TH1F("Jets_Energy_Quot__NeutralHad-900Jet100", "Cociente Energ#acute{i}a  NeutralHad / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_100Jet200  = new TH1F("Jets_Energy_Quot__NeutralHad-100Jet200", "Cociente Energ#acute{i}a  NeutralHad / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_200Jet300  = new TH1F("Jets_Energy_Quot__NeutralHad-200Jet300", "Cociente Energ#acute{i}a  NeutralHad / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_300Jet400  = new TH1F("Jets_Energy_Quot__NeutralHad-300Jet400", "Cociente Energ#acute{i}a  NeutralHad / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_400Jet500  = new TH1F("Jets_Energy_Quot__NeutralHad-400Jet500", "Cociente Energ#acute{i}a  NeutralHad / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_500Jet600  = new TH1F("Jets_Energy_Quot__NeutralHad-500Jet600", "Cociente Energ#acute{i}a  NeutralHad / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_600Jet700  = new TH1F("Jets_Energy_Quot__NeutralHad-600Jet700", "Cociente Energ#acute{i}a  NeutralHad / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_700Jet800  = new TH1F("Jets_Energy_Quot__NeutralHad-700Jet800", "Cociente Energ#acute{i}a  NeutralHad / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_800Jet900  = new TH1F("Jets_Energy_Quot__NeutralHad-800Jet900", "Cociente Energ#acute{i}a  NeutralHad / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_900Jet1000 = new TH1F("Jets_Energy_Quot__NeutralHad-900Jet1000", "Cociente Energ#acute{i}a  NeutralHad / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_NeutralHad_1000Jet    = new TH1F("Jets_Energy_Quot__NeutralHad-1000Jet",   "Cociente Energ#acute{i}a  NeutralHad / 1000<ak5PFJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_ChargedHad_Jet    = new TH1F("Jets_Energy_Quotient__ChargedHad-Jet",   "Cociente Energia  ChargedHad / ak5PFJet; Energia_{ChagedHad}/Energia_{ak5PFJet}; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_Jet100     = new TH1F("Jets_Energy_Quot__ChargedHad-0Jet100",   "Cociente Energ#acute{i}a  ChargedHad / 0<ak5PFJet<100; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_100Jet200  = new TH1F("Jets_Energy_Quot__ChargedHad-100Jet100", "Cociente Energ#acute{i}a  ChargedHad / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_200Jet300  = new TH1F("Jets_Energy_Quot__ChargedHad-200Jet100", "Cociente Energ#acute{i}a  ChargedHad / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_300Jet400  = new TH1F("Jets_Energy_Quot__ChargedHad-300Jet100", "Cociente Energ#acute{i}a  ChargedHad / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_400Jet500  = new TH1F("Jets_Energy_Quot__ChargedHad-400Jet100", "Cociente Energ#acute{i}a  ChargedHad / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_500Jet600  = new TH1F("Jets_Energy_Quot__ChargedHad-500Jet100", "Cociente Energ#acute{i}a  ChargedHad / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_600Jet700  = new TH1F("Jets_Energy_Quot__ChargedHad-600Jet100", "Cociente Energ#acute{i}a  ChargedHad / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_700Jet800  = new TH1F("Jets_Energy_Quot__ChargedHad-700Jet100", "Cociente Energ#acute{i}a  ChargedHad / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_800Jet900  = new TH1F("Jets_Energy_Quot__ChargedHad-800Jet100", "Cociente Energ#acute{i}a  ChargedHad / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_900Jet1000 = new TH1F("Jets_Energy_Quot__ChargedHad-900Jet100", "Cociente Energ#acute{i}a  ChargedHad / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_100Jet200  = new TH1F("Jets_Energy_Quot__ChargedHad-100Jet200", "Cociente Energ#acute{i}a  ChargedHad / 100<ak5PFJet<200; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_200Jet300  = new TH1F("Jets_Energy_Quot__ChargedHad-200Jet300", "Cociente Energ#acute{i}a  ChargedHad / 200<ak5PFJet<300; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_300Jet400  = new TH1F("Jets_Energy_Quot__ChargedHad-300Jet400", "Cociente Energ#acute{i}a  ChargedHad / 300<ak5PFJet<400; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_400Jet500  = new TH1F("Jets_Energy_Quot__ChargedHad-400Jet500", "Cociente Energ#acute{i}a  ChargedHad / 400<ak5PFJet<500; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_500Jet600  = new TH1F("Jets_Energy_Quot__ChargedHad-500Jet600", "Cociente Energ#acute{i}a  ChargedHad / 500<ak5PFJet<600; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_600Jet700  = new TH1F("Jets_Energy_Quot__ChargedHad-600Jet700", "Cociente Energ#acute{i}a  ChargedHad / 600<ak5PFJet<700; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_700Jet800  = new TH1F("Jets_Energy_Quot__ChargedHad-700Jet800", "Cociente Energ#acute{i}a  ChargedHad / 700<ak5PFJet<800; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_800Jet900  = new TH1F("Jets_Energy_Quot__ChargedHad-800Jet900", "Cociente Energ#acute{i}a  ChargedHad / 800<ak5PFJet<900; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_900Jet1000 = new TH1F("Jets_Energy_Quot__ChargedHad-900Jet1000", "Cociente Energ#acute{i}a  ChargedHad / 900<ak5PFJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_1000Jet    = new TH1F("Jets_Energy_Quot__ChargedHad-1000Jet",   "Cociente Energ#acute{i}a  ChargedHad / 1000<ak5PFJet; Indice; Frecuencia", 120, 0, 1.2);
 
   // Distancia angular.
@@ -280,12 +275,6 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
     // Multiplicidad de Jets en cada Evento. Se tomo p_T como criterio de selección.
     h_Jets__Multiplicity -> Fill(Jets_pt_->GetLen());
-    // if (MultJet_04 > 0)  h_Jets_pT04__Multiplicity -> Fill(MultJet_04);  // Aqui llenamos los histogramas con la cantidad de jets,
-    // if (MultJet_08 > 0)  h_Jets_pT08__Multiplicity -> Fill(MultJet_08);  // en cada evento, que cumple con tener p_T > x GeV.
-    // if (MultJet_16 > 0)  h_Jets_pT16__Multiplicity -> Fill(MultJet_16);  // En otras palabras, estos son espectros de multiplicidad
-    // if (MultJet_32 > 0)  h_Jets_pT32__Multiplicity -> Fill(MultJet_32);  // en funcion de distintos rangos de p_T.
-    // if (MultJet_64 > 0)  h_Jets_pT64__Multiplicity -> Fill(MultJet_64);
-
 
       // printf("\t \t Dont worry. Evento %i hecho. =D \n\n", e);
 
@@ -297,26 +286,21 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
 
   // Guardamos nustros histogramas en el archivo root que nos interesa.
-  h_Jets_pt_        -> Write();
-  h_Jets_eta_       -> Write();
+  h_Jets_pt_           -> Write();
+  h_Jets_eta_          -> Write();
   h_Jets__Energy       -> Write();
-  h_MuonEnergy      -> Write();
-  h_PhotonEnergy    -> Write();
-  h_ElectronEnergy  -> Write();
+  h_MuonEnergy         -> Write();
+  h_PhotonEnergy       -> Write();
+  h_ElectronEnergy     -> Write();
   h_NeutralHadronEnergy-> Write();
   h_ChargedHadronEnergy-> Write();
-  // Multiplicidades
+  // Multiplicidad
   h_Jets__Multiplicity-> Write();
   // h_Jets__MuonMultiplicity      -> Write();
   // h_Jets__PhotonMultiplicity    -> Write();
   // h_Jets__ElectronMultiplicity  -> Write();
   // h_Jets__NeuHad_Multiplicity   -> Write();
   // h_Jets__ChaHad_Multiplicity   -> Write();
-  // h_Jets_pT04__Multiplicity -> Write();
-  // h_Jets_pT08__Multiplicity -> Write();
-  // h_Jets_pT16__Multiplicity -> Write();
-  // h_Jets_pT32__Multiplicity -> Write();
-  // h_Jets_pT64__Multiplicity -> Write();
   // // Momentos Transverso.
   // h_Jets_Multiplicity64__pT -> Write();
   // h_Jets_Multiplicity32__pT -> Write();
@@ -385,13 +369,8 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   h_Jets__EnergyQuot_ChargedHad_800Jet900 -> Write();
   h_Jets__EnergyQuot_ChargedHad_900Jet1000-> Write();
   h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Write();
-  // Distancias Angulares: eta, phi y total
+  // Distancia Angular.
   // h_Jets__D__Jet_Jet      -> Write();
-  // h_Jets_pT04__D__Jet_Jet -> Write();
-  // h_Jets_pT08__D__Jet_Jet -> Write();
-  // h_Jets_pT16__D__Jet_Jet -> Write();
-  // h_Jets_pT32__D__Jet_Jet -> Write();
-  // h_Jets_pT64__D__Jet_Jet -> Write();
 
 
   // Cerramos y eliminamos los archivos abierto y creado.

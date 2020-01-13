@@ -18,7 +18,7 @@ ipTHM=10
   # previous pT Hat Minimum (ipTHM).
   ppTHM=$ipTHM
 # initial Number of Events (ver y/o editar Master Macro, 2 en total).
-iNoE=24000
+iNoE=2400
   # previous Number of Events.
   pNoE=$iNoE
 # Guardamos es directorio actual de trabajo y pasamos a la RutaDMM.
@@ -61,7 +61,7 @@ do
     pARJ=kt6;    pJCA=$kt;    pJS=0.6
   fi
   # Ciclo sobre distintos valores de pT Hat Minimum.
-  for pTHM in {1..1200..1}
+  for pTHM in {10..1200..10}
   do
     # Modificamos el Master Macro (MM) para utilizar el AS actual.
     sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
