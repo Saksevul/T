@@ -13,12 +13,12 @@ RutaDAS=$RutaDMM/FastJet
 iARJ=ak5
   # previo Algoritmo de Reconstrucción de Jets (iARJ).
   pARJ=$iARJ
-# initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 4 en total).
-ipTHM=10
+# initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+ipTHM=2
   # previous pT Hat Minimum (ipTHM).
   ppTHM=$ipTHM
 # initial Number of Events (ver y/o editar Master Macro, 2 en total).
-iNoE=2400
+iNoE=3600
   # previous Number of Events.
   pNoE=$iNoE
 # Guardamos es directorio actual de trabajo y pasamos a la RutaDMM.
@@ -61,18 +61,18 @@ do
     pARJ=kt6;    pJCA=$kt;    pJS=0.6
   fi
   # Ciclo sobre distintos valores de pT Hat Minimum.
-  for pTHM in {10..1200..10}
+  for pTHM in {2..3500..1} # initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   do
     # Modificamos el Master Macro (MM) para utilizar el AS actual.
     sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
     # Cabiamos el valor del pTHatMin.
   	sed -i "s/pTHatMin\ =\ $ppTHM.0/pTHatMin\ =\ $pTHM.0/g" $MM
     # Decrecimiento exponancial.
-    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/400); print x}')
+    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/1200); print x}')
     # Cabiamos el valor del NoE.
     sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $NoE\;/g" $MM
     # A CORRER ESA MADRE!
-    make -s Simulacion && ./Simulacion > /dev/null
+    # make -s Simulacion && ./Simulacion > /dev/null
     # Redefinios ppTHM para el siguiente ciclo for.
   	ppTHM=$pTHM
     # Redefinios pNoE para el siguiente ciclo for.

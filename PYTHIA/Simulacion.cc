@@ -28,12 +28,12 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-10.root", "RECREATE");
+  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-2.root", "RECREATE"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   // Histograms.
   // FastJet.
   TH1F* h_Jets_pt_         = new TH1F("Jets_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 1200, 0, 2400);
   TH1F *h_Jets_eta_        = new TH1F("Jets_eta_", "Distribución en #eta de ak5FastJet; #eta; Ocurrencia", 599, -5.95, 5.95);
-  TH1F *h_Jets__Energy        = new TH1F("Jets_Energy", "Energ#acute{i}a de FastJets; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
+  TH1F *h_Jets__Energy     = new TH1F("Jets_Energy", "Energ#acute{i}a de FastJets; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_MuonEnergy       = new TH1F("Jets_MuonEnergy", "Energ#acute{i}a de Muones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_PhotonEnergy     = new TH1F("Jets_PhotonEnergy", "Energ#acute{i}a de Fotones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_ElectronEnergy   = new TH1F("Jets_ElectronEnergy", "Energ#acute{i}a de Electrones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
@@ -43,7 +43,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   TH1F* h_Jets__Multiplicity= new TH1F("Jets__Multiplicity", "Multiplicidad, de ak5FastJet por Evento; Multilicidad; Frecuencia", 120, 0, 120);
   // Cocientes.
   TH1F *h_Jets__EnergyQuotient_Muon_Jet    = new TH1F("Jets_Energy_Quotient__Muon-Jet",   "Cociente Energia  Muon / ak5FastJet; Energia_{Muon}/Energia_{ak5FastJet}; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Muon_Jet100     = new TH1F("Jets_Energy_Quot__Muon-0Jet100",   "Cociente Energ#acute{i}a  Muon / 0<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_0Jet10     = new TH1F("Jets_Energy_Quot__Muon-0Jet10",    "Cociente Energ#acute{i}a  Muon / 0<ak5FastJet<10; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_10Jet30    = new TH1F("Jets_Energy_Quot__Muon-10Jet30",   "Cociente Energ#acute{i}a  Muon / 10<ak5FastJet<30; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_30Jet60    = new TH1F("Jets_Energy_Quot__Muon-30Jet60",   "Cociente Energ#acute{i}a  Muon / 30<ak5FastJet<60; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Muon_60Jet100   = new TH1F("Jets_Energy_Quot__Muon-60Jet100",  "Cociente Energ#acute{i}a  Muon / 60<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_100Jet200  = new TH1F("Jets_Energy_Quot__Muon-100Jet200", "Cociente Energ#acute{i}a  Muon / 100<ak5FastJet<200; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_200Jet300  = new TH1F("Jets_Energy_Quot__Muon-200Jet300", "Cociente Energ#acute{i}a  Muon / 200<ak5FastJet<300; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_300Jet400  = new TH1F("Jets_Energy_Quot__Muon-300Jet400", "Cociente Energ#acute{i}a  Muon / 300<ak5FastJet<400; Indice; Frecuencia", 120, 0, 1.2);
@@ -55,7 +58,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   TH1F *h_Jets__EnergyQuot_Muon_900Jet1000 = new TH1F("Jets_Energy_Quot__Muon-900Jet1000", "Cociente Energ#acute{i}a  Muon / 900<ak5FastJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_1000Jet    = new TH1F("Jets_Energy_Quot__Muon-1000Jet",   "Cociente Energ#acute{i}a  Muon / 1000<ak5FastJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_Photon_Jet    = new TH1F("Jets_Energy_Quotient__Photon-Jet",   "Cociente Energia  Photon / ak5FastJet; Energia_{Photon}/Energia_{ak5FastJet}; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Photon_Jet100     = new TH1F("Jets_Energy_Quot__Photon-0Jet100",   "Cociente Energ#acute{i}a  Photon / 0<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_0Jet10     = new TH1F("Jets_Energy_Quot__Photon-0Jet10",    "Cociente Energ#acute{i}a  Photon / 0<ak5FastJet<10; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_10Jet30    = new TH1F("Jets_Energy_Quot__Photon-10Jet30",   "Cociente Energ#acute{i}a  Photon / 10<ak5FastJet<30; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_30Jet60    = new TH1F("Jets_Energy_Quot__Photon-30Jet60",   "Cociente Energ#acute{i}a  Photon / 30<ak5FastJet<60; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Photon_60Jet100   = new TH1F("Jets_Energy_Quot__Photon-60Jet100",  "Cociente Energ#acute{i}a  Photon / 60<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Photon_100Jet200  = new TH1F("Jets_Energy_Quot__Photon-100Jet200", "Cociente Energ#acute{i}a  Photon / 100<ak5FastJet<200; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Photon_200Jet300  = new TH1F("Jets_Energy_Quot__Photon-200Jet300", "Cociente Energ#acute{i}a  Photon / 200<ak5FastJet<300; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Photon_300Jet400  = new TH1F("Jets_Energy_Quot__Photon-300Jet400", "Cociente Energ#acute{i}a  Photon / 300<ak5FastJet<400; Indice; Frecuencia", 120, 0, 1.2);
@@ -67,7 +73,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   TH1F *h_Jets__EnergyQuot_Photon_900Jet1000 = new TH1F("Jets_Energy_Quot__Photon-900Jet1000", "Cociente Energ#acute{i}a  Photon / 900<ak5FastJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Photon_1000Jet    = new TH1F("Jets_Energy_Quot__Photon-1000Jet",   "Cociente Energ#acute{i}a  Photon / 1000<ak5FastJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_Electron_Jet    = new TH1F("Jets_Energy_Quotient__Electron-Jet",   "Cociente Energia  Electron / ak5FastJet; Energia_{Electron}/Energia_{ak5FastJet}; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_Electron_Jet100     = new TH1F("Jets_Energy_Quot__Electron-0Jet100",   "Cociente Energ#acute{i}a  Electron / 0<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_0Jet10     = new TH1F("Jets_Energy_Quot__Electron-0Jet10",    "Cociente Energ#acute{i}a  Electron / 0<ak5FastJet<10; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_10Jet30    = new TH1F("Jets_Energy_Quot__Electron-10Jet30",   "Cociente Energ#acute{i}a  Electron / 10<ak5FastJet<30; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_30Jet60    = new TH1F("Jets_Energy_Quot__Electron-30Jet60",   "Cociente Energ#acute{i}a  Electron / 30<ak5FastJet<60; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_Electron_60Jet100   = new TH1F("Jets_Energy_Quot__Electron-60Jet100",  "Cociente Energ#acute{i}a  Electron / 60<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Electron_100Jet200  = new TH1F("Jets_Energy_Quot__Electron-100Jet200", "Cociente Energ#acute{i}a  Electron / 100<ak5FastJet<200; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Electron_200Jet300  = new TH1F("Jets_Energy_Quot__Electron-200Jet300", "Cociente Energ#acute{i}a  Electron / 200<ak5FastJet<300; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Electron_300Jet400  = new TH1F("Jets_Energy_Quot__Electron-300Jet400", "Cociente Energ#acute{i}a  Electron / 300<ak5FastJet<400; Indice; Frecuencia", 120, 0, 1.2);
@@ -79,7 +88,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   TH1F *h_Jets__EnergyQuot_Electron_900Jet1000 = new TH1F("Jets_Energy_Quot__Electron-900Jet1000", "Cociente Energ#acute{i}a  Electron / 900<ak5FastJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Electron_1000Jet    = new TH1F("Jets_Energy_Quot__Electron-1000Jet",   "Cociente Energ#acute{i}a  Electron / 1000<ak5FastJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_NeutralHad_Jet  = new TH1F("Jets_Energy_Quotient__NeutralHad-Jet",     "Cociente Energia  NeutralHad / ak5FastJet; Energia_{NeutralHad}/Energia_{ak5FastJet}; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_NeutralHad_Jet100     = new TH1F("Jets_Energy_Quot__NeutralHad-0Jet100",   "Cociente Energ#acute{i}a  NeutralHad / 0<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_0Jet10     = new TH1F("Jets_Energy_Quot__NeutralHad-0Jet10",    "Cociente Energ#acute{i}a  NeutralHad / 0<ak5FastJet<10; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_10Jet30    = new TH1F("Jets_Energy_Quot__NeutralHad-10Jet30",   "Cociente Energ#acute{i}a  NeutralHad / 10<ak5FastJet<30; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_30Jet60    = new TH1F("Jets_Energy_Quot__NeutralHad-30Jet60",   "Cociente Energ#acute{i}a  NeutralHad / 30<ak5FastJet<60; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_NeutralHad_60Jet100   = new TH1F("Jets_Energy_Quot__NeutralHad-60Jet100",  "Cociente Energ#acute{i}a  NeutralHad / 60<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_NeutralHad_100Jet200  = new TH1F("Jets_Energy_Quot__NeutralHad-100Jet200", "Cociente Energ#acute{i}a  NeutralHad / 100<ak5FastJet<200; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_NeutralHad_200Jet300  = new TH1F("Jets_Energy_Quot__NeutralHad-200Jet300", "Cociente Energ#acute{i}a  NeutralHad / 200<ak5FastJet<300; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_NeutralHad_300Jet400  = new TH1F("Jets_Energy_Quot__NeutralHad-300Jet400", "Cociente Energ#acute{i}a  NeutralHad / 300<ak5FastJet<400; Indice; Frecuencia", 120, 0, 1.2);
@@ -91,7 +103,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   TH1F *h_Jets__EnergyQuot_NeutralHad_900Jet1000 = new TH1F("Jets_Energy_Quot__NeutralHad-900Jet1000", "Cociente Energ#acute{i}a  NeutralHad / 900<ak5FastJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_NeutralHad_1000Jet    = new TH1F("Jets_Energy_Quot__NeutralHad-1000Jet",   "Cociente Energ#acute{i}a  NeutralHad / 1000<ak5FastJet; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuotient_ChargedHad_Jet    = new TH1F("Jets_Energy_Quotient__ChargedHad-Jet",   "Cociente Energia  ChargedHad / ak5FastJet; Energia_{ChagedHad}/Energia_{ak5FastJet}; Frecuencia", 120, 0, 1.2);
-  TH1F *h_Jets__EnergyQuot_ChargedHad_Jet100     = new TH1F("Jets_Energy_Quot__ChargedHad-0Jet100",   "Cociente Energ#acute{i}a  ChargedHad / 0<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_0Jet10     = new TH1F("Jets_Energy_Quot__ChargedHad-0Jet10",    "Cociente Energ#acute{i}a  ChargedHad / 0<ak5FastJet<10; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_10Jet30    = new TH1F("Jets_Energy_Quot__ChargedHad-10Jet30",   "Cociente Energ#acute{i}a  ChargedHad / 10<ak5FastJet<30; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_30Jet60    = new TH1F("Jets_Energy_Quot__ChargedHad-30Jet60",   "Cociente Energ#acute{i}a  ChargedHad / 30<ak5FastJet<60; Indice; Frecuencia", 120, 0, 1.2);
+  TH1F *h_Jets__EnergyQuot_ChargedHad_60Jet100   = new TH1F("Jets_Energy_Quot__ChargedHad-60Jet100",  "Cociente Energ#acute{i}a  ChargedHad / 60<ak5FastJet<100; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_100Jet200  = new TH1F("Jets_Energy_Quot__ChargedHad-100Jet200", "Cociente Energ#acute{i}a  ChargedHad / 100<ak5FastJet<200; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_200Jet300  = new TH1F("Jets_Energy_Quot__ChargedHad-200Jet300", "Cociente Energ#acute{i}a  ChargedHad / 200<ak5FastJet<300; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_300Jet400  = new TH1F("Jets_Energy_Quot__ChargedHad-300Jet400", "Cociente Energ#acute{i}a  ChargedHad / 300<ak5FastJet<400; Indice; Frecuencia", 120, 0, 1.2);
@@ -118,7 +133,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   // pythia.readString("SoftQCD:nonDiffractive = on");
   // pythia.readString("SoftQCD:singleDiffractive = on");
   // pythia.readString("SoftQCD:doubleDiffractive = on");
-  // pythia.readString("PhaseSpace:pTHatMin = 10.0");
+  // pythia.readString("PhaseSpace:pTHatMin = 2.0");
   // pythia.readString("PhaseSpace:pTHatMax = 1200.0");
   // pythia.readString("PhaseSpace:mHatMax = 1200.0");
   // pythia.readString("ParticleDecays:limitTau0 = On");
@@ -126,12 +141,12 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
   // Process selection.
   pythia.readString("HardQCD:all = on");
-  pythia.readString("PhaseSpace:pTHatMin = 10.0");
+  pythia.readString("PhaseSpace:pTHatMin = 2.0"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   // pythia.readString("HardQCD:hardccbar = on");
   // pythia.readString("HardQCD:hardbbbar = on");
   // pythia.readString("HardQCD:3parton = on");
-  pythia.readString("PromptPhoton:all = on");
-  pythia.readString("WeakBosonExchange:all = on");
+  // pythia.readString("PromptPhoton:all = on");
+  // pythia.readString("WeakBosonExchange:all = on");
   pythia.readString("ParticleDecays:limitTau0 = On");
   pythia.readString("ParticleDecays:tau0Max = 10.0");
 
@@ -146,8 +161,8 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
 
   // Number of events, generated and listed ones (for jets). (Ver y/o editar bashMacro, 2 en total).
-  int nEvent    = 2400;
-  printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 10.0\n\n\t Salida:  ak5FJ-10.root \n\n\n\n", nEvent);
+  int nEvent    = 3600;
+  printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 2.0\n\n\t Salida:  ak5FJ-2.root \n\n\n\n", nEvent); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= -1; C/A = 0; kT = 1.
   double R      = 0.5;    // Jet size.
@@ -246,7 +261,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
       // Cociente de la energia de las partículas respecto a al E del Jet. Y Multiplicidad de las particulas en cada Jet.
       if (MuonEnergy > 0.0) { h_MuonEnergy -> Fill(MuonEnergy);
         h_Jets__EnergyQuotient_Muon_Jet -> Fill(MuonEnergy/JetEnergy);
-        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Muon_Jet100    -> Fill(MuonEnergy/JetEnergy);
+        if      (     JetEnergy&&JetEnergy<10 ) h_Jets__EnergyQuot_Muon_0Jet10    -> Fill(MuonEnergy/JetEnergy);
+        else if ( 10<=JetEnergy&&JetEnergy<30 ) h_Jets__EnergyQuot_Muon_10Jet30   -> Fill(MuonEnergy/JetEnergy);
+        else if ( 30<=JetEnergy&&JetEnergy<60 ) h_Jets__EnergyQuot_Muon_30Jet60   -> Fill(MuonEnergy/JetEnergy);
+        else if ( 60<=JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Muon_60Jet100  -> Fill(MuonEnergy/JetEnergy);
         else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_Muon_100Jet200 -> Fill(MuonEnergy/JetEnergy);
         else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_Muon_200Jet300 -> Fill(MuonEnergy/JetEnergy);
         else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_Muon_300Jet400 -> Fill(MuonEnergy/JetEnergy);
@@ -260,7 +278,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
       }
       if (PhotonEnergy > 0.0) { h_PhotonEnergy -> Fill(PhotonEnergy);
         h_Jets__EnergyQuotient_Photon_Jet -> Fill(PhotonEnergy/JetEnergy);
-        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Photon_Jet100    -> Fill(PhotonEnergy/JetEnergy);
+        if      (     JetEnergy&&JetEnergy<10 ) h_Jets__EnergyQuot_Photon_0Jet10    -> Fill(PhotonEnergy/JetEnergy);
+        else if ( 10<=JetEnergy&&JetEnergy<30 ) h_Jets__EnergyQuot_Photon_10Jet30   -> Fill(PhotonEnergy/JetEnergy);
+        else if ( 30<=JetEnergy&&JetEnergy<60 ) h_Jets__EnergyQuot_Photon_30Jet60   -> Fill(PhotonEnergy/JetEnergy);
+        else if ( 60<=JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Photon_60Jet100  -> Fill(PhotonEnergy/JetEnergy);
         else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_Photon_100Jet200 -> Fill(PhotonEnergy/JetEnergy);
         else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_Photon_200Jet300 -> Fill(PhotonEnergy/JetEnergy);
         else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_Photon_300Jet400 -> Fill(PhotonEnergy/JetEnergy);
@@ -274,7 +295,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
       }
       if (ElectronEnergy > 0.0) { h_ElectronEnergy -> Fill(ElectronEnergy);
         h_Jets__EnergyQuotient_Electron_Jet -> Fill(ElectronEnergy/JetEnergy);
-        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Electron_Jet100    -> Fill(ElectronEnergy/JetEnergy);
+        if      (     JetEnergy&&JetEnergy<10 ) h_Jets__EnergyQuot_Electron_0Jet10    -> Fill(ElectronEnergy/JetEnergy);
+        else if ( 10<=JetEnergy&&JetEnergy<30 ) h_Jets__EnergyQuot_Electron_10Jet30   -> Fill(ElectronEnergy/JetEnergy);
+        else if ( 30<=JetEnergy&&JetEnergy<60 ) h_Jets__EnergyQuot_Electron_30Jet60   -> Fill(ElectronEnergy/JetEnergy);
+        else if ( 60<=JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_Electron_60Jet100  -> Fill(ElectronEnergy/JetEnergy);
         else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_Electron_100Jet200 -> Fill(ElectronEnergy/JetEnergy);
         else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_Electron_200Jet300 -> Fill(ElectronEnergy/JetEnergy);
         else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_Electron_300Jet400 -> Fill(ElectronEnergy/JetEnergy);
@@ -288,7 +312,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
       }
       if (NeutralHadronEnergy > 0.0) { h_NeutralHadronEnergy -> Fill(NeutralHadronEnergy);
         h_Jets__EnergyQuotient_NeutralHad_Jet -> Fill(NeutralHadronEnergy/JetEnergy);
-        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_NeutralHad_Jet100    -> Fill(NeutralHadronEnergy/JetEnergy);
+        if      (     JetEnergy&&JetEnergy<10 ) h_Jets__EnergyQuot_NeutralHad_0Jet10    -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if ( 10<=JetEnergy&&JetEnergy<30 ) h_Jets__EnergyQuot_NeutralHad_10Jet30   -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if ( 30<=JetEnergy&&JetEnergy<60 ) h_Jets__EnergyQuot_NeutralHad_30Jet60   -> Fill(NeutralHadronEnergy/JetEnergy);
+        else if ( 60<=JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_NeutralHad_60Jet100  -> Fill(NeutralHadronEnergy/JetEnergy);
         else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_NeutralHad_100Jet200 -> Fill(NeutralHadronEnergy/JetEnergy);
         else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_NeutralHad_200Jet300 -> Fill(NeutralHadronEnergy/JetEnergy);
         else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_NeutralHad_300Jet400 -> Fill(NeutralHadronEnergy/JetEnergy);
@@ -302,7 +329,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
       }
       if (ChargedHadronEnergy > 0.0) { h_ChargedHadronEnergy -> Fill(ChargedHadronEnergy);
         h_Jets__EnergyQuotient_ChargedHad_Jet -> Fill(ChargedHadronEnergy/JetEnergy);
-        if          ( JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_ChargedHad_Jet100    -> Fill(ChargedHadronEnergy/JetEnergy);
+        if      (     JetEnergy&&JetEnergy<10 ) h_Jets__EnergyQuot_ChargedHad_0Jet10    -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if ( 10<=JetEnergy&&JetEnergy<30 ) h_Jets__EnergyQuot_ChargedHad_10Jet30   -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if ( 30<=JetEnergy&&JetEnergy<60 ) h_Jets__EnergyQuot_ChargedHad_30Jet60   -> Fill(ChargedHadronEnergy/JetEnergy);
+        else if ( 60<=JetEnergy&&JetEnergy<100) h_Jets__EnergyQuot_ChargedHad_60Jet100  -> Fill(ChargedHadronEnergy/JetEnergy);
         else if (100<=JetEnergy&&JetEnergy<200) h_Jets__EnergyQuot_ChargedHad_100Jet200 -> Fill(ChargedHadronEnergy/JetEnergy);
         else if (200<=JetEnergy&&JetEnergy<300) h_Jets__EnergyQuot_ChargedHad_200Jet300 -> Fill(ChargedHadronEnergy/JetEnergy);
         else if (300<=JetEnergy&&JetEnergy<400) h_Jets__EnergyQuot_ChargedHad_300Jet400 -> Fill(ChargedHadronEnergy/JetEnergy);
@@ -335,7 +365,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   h_Jets__Multiplicity-> Write();
   // Cocientes
   h_Jets__EnergyQuotient_Muon_Jet   -> Write();
-  h_Jets__EnergyQuot_Muon_Jet100    -> Write();
+  h_Jets__EnergyQuot_Muon_0Jet10    -> Write();
+  h_Jets__EnergyQuot_Muon_10Jet30   -> Write();
+  h_Jets__EnergyQuot_Muon_30Jet60   -> Write();
+  h_Jets__EnergyQuot_Muon_60Jet100  -> Write();
   h_Jets__EnergyQuot_Muon_100Jet200 -> Write();
   h_Jets__EnergyQuot_Muon_200Jet300 -> Write();
   h_Jets__EnergyQuot_Muon_300Jet400 -> Write();
@@ -347,7 +380,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   h_Jets__EnergyQuot_Muon_900Jet1000-> Write();
   h_Jets__EnergyQuot_Muon_1000Jet   -> Write();
   h_Jets__EnergyQuotient_Photon_Jet   -> Write();
-  h_Jets__EnergyQuot_Photon_Jet100    -> Write();
+  h_Jets__EnergyQuot_Photon_0Jet10    -> Write();
+  h_Jets__EnergyQuot_Photon_10Jet30   -> Write();
+  h_Jets__EnergyQuot_Photon_30Jet60   -> Write();
+  h_Jets__EnergyQuot_Photon_60Jet100  -> Write();
   h_Jets__EnergyQuot_Photon_100Jet200 -> Write();
   h_Jets__EnergyQuot_Photon_200Jet300 -> Write();
   h_Jets__EnergyQuot_Photon_300Jet400 -> Write();
@@ -359,7 +395,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   h_Jets__EnergyQuot_Photon_900Jet1000-> Write();
   h_Jets__EnergyQuot_Photon_1000Jet   -> Write();
   h_Jets__EnergyQuotient_Electron_Jet   -> Write();
-  h_Jets__EnergyQuot_Electron_Jet100    -> Write();
+  h_Jets__EnergyQuot_Electron_0Jet10    -> Write();
+  h_Jets__EnergyQuot_Electron_10Jet30   -> Write();
+  h_Jets__EnergyQuot_Electron_30Jet60   -> Write();
+  h_Jets__EnergyQuot_Electron_60Jet100  -> Write();
   h_Jets__EnergyQuot_Electron_100Jet200 -> Write();
   h_Jets__EnergyQuot_Electron_200Jet300 -> Write();
   h_Jets__EnergyQuot_Electron_300Jet400 -> Write();
@@ -370,8 +409,11 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   h_Jets__EnergyQuot_Electron_800Jet900 -> Write();
   h_Jets__EnergyQuot_Electron_900Jet1000-> Write();
   h_Jets__EnergyQuot_Electron_1000Jet   -> Write();
-  h_Jets__EnergyQuotient_NeutralHad_Jet -> Write();
-  h_Jets__EnergyQuot_NeutralHad_Jet100    -> Write();
+  h_Jets__EnergyQuotient_NeutralHad_Jet   -> Write();
+  h_Jets__EnergyQuot_NeutralHad_0Jet10    -> Write();
+  h_Jets__EnergyQuot_NeutralHad_10Jet30   -> Write();
+  h_Jets__EnergyQuot_NeutralHad_30Jet60   -> Write();
+  h_Jets__EnergyQuot_NeutralHad_60Jet100  -> Write();
   h_Jets__EnergyQuot_NeutralHad_100Jet200 -> Write();
   h_Jets__EnergyQuot_NeutralHad_200Jet300 -> Write();
   h_Jets__EnergyQuot_NeutralHad_300Jet400 -> Write();
@@ -383,7 +425,10 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   h_Jets__EnergyQuot_NeutralHad_900Jet1000-> Write();
   h_Jets__EnergyQuot_NeutralHad_1000Jet   -> Write();
   h_Jets__EnergyQuotient_ChargedHad_Jet   -> Write();
-  h_Jets__EnergyQuot_ChargedHad_Jet100    -> Write();
+  h_Jets__EnergyQuot_ChargedHad_0Jet10    -> Write();
+  h_Jets__EnergyQuot_ChargedHad_10Jet30   -> Write();
+  h_Jets__EnergyQuot_ChargedHad_30Jet60   -> Write();
+  h_Jets__EnergyQuot_ChargedHad_60Jet100  -> Write();
   h_Jets__EnergyQuot_ChargedHad_100Jet200 -> Write();
   h_Jets__EnergyQuot_ChargedHad_200Jet300 -> Write();
   h_Jets__EnergyQuot_ChargedHad_300Jet400 -> Write();
