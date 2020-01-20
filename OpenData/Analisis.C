@@ -46,12 +46,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   TH1F *h_NeutralHadronEnergy = new TH1F("Jets_NeutralHadronEnergy", "Energ#acute{i}a de Hadrones Neutros; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_ChargedHadronEnergy = new TH1F("Jets_ChargedHadronEnergy", "Energ#acute{i}a de Hadrones Cargados; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   // Multiplicidad.
-  TH1F *h_Jets__MuonMultiplicity       = new TH1F("Jets_Multiplicity__Muon!=0", "Multiplicidad, != 0, de Muones en cada ak5PFJet; Multiplicidad Muon; Frecuencia", 12, 0, 12);
-  TH1F *h_Jets__PhotonMultiplicity     = new TH1F("Jets_Multiplicity__Photon!=0", "Multiplicidad, != 0, de Fotones en cada ak5PFJet; Multiplicidad Foton; Frecuencia", 120, 0, 120);
-  TH1F *h_Jets__ElectronMultiplicity   = new TH1F("Jets_Multiplicity__Electron!=0", "Multiplicidad, != 0, de Electrones en cada ak5PFJet; Multiplicidad Electron; Frecuencia", 12, 0, 12);
-  TH1F *h_Jets__ChaHad_Multiplicity    = new TH1F("Jets_Multiplicity__ChaHad", "Multiplicidad HadronCargado en cada ak5PFJet; Multiplicidad HadronCargado; Frecuencia", 100, 0, 100);
-  TH1F *h_Jets__NeuHad_Multiplicity    = new TH1F("Jets_Multiplicity__NeuHad", "Multiplicidad HadronNeutro en cada ak5PFJet; Multiplicidad HadronNeutral; Frecuencia", 100, 0, 100);
-  TH1F *h_Jets__Multiplicity       = new TH1F("Jets__Multiplicity", "Multiplicidad de ak5PFJet por Evento; Multiplicidad; Frecuencia", 120, 0, 120);
+  TH1F *h_Jets__Multiplicity           = new TH1F("Jets__Multiplicity", "Multiplicidad de ak5PFJet por Evento; Multiplicidad; Frecuencia", 120, 0, 120);
+  TH1F *h_Jets__MuonMultiplicity       = new TH1F("Jets_Multiplicity__Muon", "Multiplicidad, != 0, de Muones en cada ak5PFJet; Multiplicidad Muon; Frecuencia", 120, 0, 120);
+  TH1F *h_Jets__PhotonMultiplicity     = new TH1F("Jets_Multiplicity__Photon", "Multiplicidad, != 0, de Fotones en cada ak5PFJet; Multiplicidad Foton; Frecuencia", 120, 0, 120);
+  TH1F *h_Jets__ElectronMultiplicity   = new TH1F("Jets_Multiplicity__Electron", "Multiplicidad, != 0, de Electrones en cada ak5PFJet; Multiplicidad Electron; Frecuencia", 120, 0, 120);
+  TH1F *h_Jets__NeutralHad_Multiplicity= new TH1F("Jets_Multiplicity__NeutralHad", "Multiplicidad, != 0, de Hadrones Neutros en cada ak5PFJet; Multiplicidad HadronNeutral; Frecuencia", 120, 0, 120);
+  TH1F *h_Jets__ChargedHad_Multiplicity= new TH1F("Jets_Multiplicity__ChargedHad", "Multiplicidad, != 0, de Hadrones Cargados en cada ak5PFJet; Multiplicidad HadronCargado; Frecuencia", 120, 0, 120);
   // Cocientes.
   TH1F *h_Jets__EnergyQuotient_Muon_Jet    = new TH1F("Jets_Energy_Quotient__Muon-Jet",   "Cociente Energia  Muon / ak5PFJet; Energia_{Muon}/Energia_{ak5PFJet}; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_Muon_0Jet10     = new TH1F("Jets_Energy_Quot__Muon-0Jet10",    "Cociente Energ#acute{i}a  Muon / 0<ak5FastJet<10; Indice; Frecuencia", 120, 0, 1.2);
@@ -156,7 +156,10 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
       h_Jets_pt_ -> Fill(Jets_pt_->GetValue(i));
       h_Jets_eta_-> Fill(Jets_eta_->GetValue(i));
+      // Multiplicidad de Jets en cada Evento.
+      h_Jets__Multiplicity -> Fill(Jets_pt_->GetLen());
 
+      // Energías.
       Float_t JetEnergy=Jets_mChargedHadronEnergy->GetValue(i)+Jets_mNeutralHadronEnergy->GetValue(i)+Jets_mElectronEnergy->GetValue(i)+Jets_mPhotonEnergy->GetValue(i)+Jets_mMuonEnergy->GetValue(i);
 
       h_Jets__Energy -> Fill(JetEnergy);
@@ -177,7 +180,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Muon_700Jet800 -> Fill(Jets_mMuonEnergy->GetValue(i)/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Muon_800Jet900 -> Fill(Jets_mMuonEnergy->GetValue(i)/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Muon_900Jet1000-> Fill(Jets_mMuonEnergy->GetValue(i)/JetEnergy);
-        else                         h_Jets__EnergyQuot_Muon_1000Jet   -> Fill(Jets_mMuonEnergy->GetValue(i)/JetEnergy);
+        else                                    h_Jets__EnergyQuot_Muon_1000Jet   -> Fill(Jets_mMuonEnergy->GetValue(i)/JetEnergy);
+        //Multiplicidad de Muones en cada Jet.
+        h_Jets__MuonMultiplicity->Fill(Jets_mMuonMultiplicity->GetValue(i));
       }
       if (Jets_mPhotonMultiplicity->GetValue(i) != 0) { h_PhotonEnergy -> Fill(Jets_mPhotonEnergy->GetValue(i));
         h_Jets__EnergyQuotient_Photon_Jet -> Fill(Jets_mPhotonEnergy->GetValue(i)/JetEnergy);
@@ -194,7 +199,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Photon_700Jet800 -> Fill(Jets_mPhotonEnergy->GetValue(i)/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Photon_800Jet900 -> Fill(Jets_mPhotonEnergy->GetValue(i)/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Photon_900Jet1000-> Fill(Jets_mPhotonEnergy->GetValue(i)/JetEnergy);
-        else                         h_Jets__EnergyQuot_Photon_1000Jet   -> Fill(Jets_mPhotonEnergy->GetValue(i)/JetEnergy);
+        else                                    h_Jets__EnergyQuot_Photon_1000Jet   -> Fill(Jets_mPhotonEnergy->GetValue(i)/JetEnergy);
+        //Multiplicidad de Fotones en cada Jet.
+        h_Jets__PhotonMultiplicity->Fill(Jets_mPhotonMultiplicity->GetValue(i));
       }
       if (Jets_mElectronMultiplicity->GetValue(i) != 0) { h_ElectronEnergy -> Fill(Jets_mElectronEnergy->GetValue(i));
         h_Jets__EnergyQuotient_Electron_Jet -> Fill(Jets_mElectronEnergy->GetValue(i)/JetEnergy);
@@ -211,7 +218,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Electron_700Jet800 -> Fill(Jets_mElectronEnergy->GetValue(i)/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Electron_800Jet900 -> Fill(Jets_mElectronEnergy->GetValue(i)/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Electron_900Jet1000-> Fill(Jets_mElectronEnergy->GetValue(i)/JetEnergy);
-        else                         h_Jets__EnergyQuot_Electron_1000Jet   -> Fill(Jets_mElectronEnergy->GetValue(i)/JetEnergy);
+        else                                    h_Jets__EnergyQuot_Electron_1000Jet   -> Fill(Jets_mElectronEnergy->GetValue(i)/JetEnergy);
+        //Multiplicidad de Electrones en cada Jet.
+        h_Jets__ElectronMultiplicity->Fill(Jets_mElectronMultiplicity->GetValue(i));
       }
       if (Jets_mNeutralHadronMultiplicity->GetValue(i) != 0) { h_NeutralHadronEnergy -> Fill(Jets_mNeutralHadronEnergy->GetValue(i));
         h_Jets__EnergyQuotient_NeutralHad_Jet -> Fill(Jets_mNeutralHadronEnergy->GetValue(i)/JetEnergy);
@@ -228,7 +237,9 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_NeutralHad_700Jet800 -> Fill(Jets_mNeutralHadronEnergy->GetValue(i)/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_NeutralHad_800Jet900 -> Fill(Jets_mNeutralHadronEnergy->GetValue(i)/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_NeutralHad_900Jet1000-> Fill(Jets_mNeutralHadronEnergy->GetValue(i)/JetEnergy);
-        else                         h_Jets__EnergyQuot_NeutralHad_1000Jet   -> Fill(Jets_mNeutralHadronEnergy->GetValue(i)/JetEnergy);
+        else                                    h_Jets__EnergyQuot_NeutralHad_1000Jet   -> Fill(Jets_mNeutralHadronEnergy->GetValue(i)/JetEnergy);
+        //Multiplicidad de Hadrones Neutros en cada Jet.
+        h_Jets__NeutralHad_Multiplicity->Fill(Jets_mNeutralHadronMultiplicity->GetValue(i));
       }
       if (Jets_mChargedHadronMultiplicity->GetValue(i) != 0) { h_ChargedHadronEnergy -> Fill(Jets_mChargedHadronEnergy->GetValue(i));
         h_Jets__EnergyQuotient_ChargedHad_Jet -> Fill(Jets_mChargedHadronEnergy->GetValue(i)/JetEnergy);
@@ -245,13 +256,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_ChargedHad_700Jet800 -> Fill(Jets_mChargedHadronEnergy->GetValue(i)/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_ChargedHad_800Jet900 -> Fill(Jets_mChargedHadronEnergy->GetValue(i)/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_ChargedHad_900Jet1000-> Fill(Jets_mChargedHadronEnergy->GetValue(i)/JetEnergy);
-        else                         h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Fill(Jets_mChargedHadronEnergy->GetValue(i)/JetEnergy);
+        else                                    h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Fill(Jets_mChargedHadronEnergy->GetValue(i)/JetEnergy);
+        // Multiplicidad de Hadrones Cargados en cada Jet.
+        h_Jets__ChargedHad_Multiplicity->Fill(Jets_mChargedHadronMultiplicity->GetValue(i));
       }
+      // Multiplicidad de Partículas en cada Jet.
     } // for loop i
-
-
-    // Multiplicidad de Jets en cada Evento. Se tomo p_T como criterio de selección.
-    h_Jets__Multiplicity -> Fill(Jets_pt_->GetLen());
 
       // printf("\t \t Dont worry. Evento %i hecho. =D \n\n", e);
 
@@ -272,7 +282,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   h_NeutralHadronEnergy-> Write();
   h_ChargedHadronEnergy-> Write();
   // Multiplicidad
-  h_Jets__Multiplicity-> Write();
+  h_Jets__Multiplicity           -> Write();
+  h_Jets__MuonMultiplicity       -> Write();
+  h_Jets__PhotonMultiplicity     -> Write();
+  h_Jets__ElectronMultiplicity   -> Write();
+  h_Jets__NeutralHad_Multiplicity-> Write();
+  h_Jets__ChargedHad_Multiplicity-> Write();
   // Cocientes
   h_Jets__EnergyQuotient_Muon_Jet   -> Write();
   h_Jets__EnergyQuot_Muon_0Jet10    -> Write();
