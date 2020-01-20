@@ -151,9 +151,9 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   // pythia.readString("HardQCD:hardbbbar = on");
   // pythia.readString("HardQCD:3parton = on");
   // pythia.readString("PromptPhoton:all = on");
-  pythia.readString("WeakBosonExchange:all = on");
-  pythia.readString("ParticleDecays:limitTau0 = On");
-  pythia.readString("ParticleDecays:tau0Max = 10.0");
+  // pythia.readString("WeakBosonExchange:all = on");
+  // pythia.readString("ParticleDecays:limitTau0 = On");
+  // pythia.readString("ParticleDecays:tau0Max = 10.0");
 
   // No event record printout.
   pythia.readString("Next:numberShowInfo = 0");
@@ -281,7 +281,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Muon_700Jet800 -> Fill(MuonEnergy/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Muon_800Jet900 -> Fill(MuonEnergy/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Muon_900Jet1000-> Fill(MuonEnergy/JetEnergy);
-        else                         h_Jets__EnergyQuot_Muon_1000Jet   -> Fill(MuonEnergy/JetEnergy);
+        else                                    h_Jets__EnergyQuot_Muon_1000Jet   -> Fill(MuonEnergy/JetEnergy);
         //Multiplicidad de Muones en cada Jet.
         h_Jets__MuonMultiplicity-> Fill(MuonMultiplicity);
       }
@@ -300,7 +300,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Photon_700Jet800 -> Fill(PhotonEnergy/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Photon_800Jet900 -> Fill(PhotonEnergy/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Photon_900Jet1000-> Fill(PhotonEnergy/JetEnergy);
-        else                         h_Jets__EnergyQuot_Photon_1000Jet   -> Fill(PhotonEnergy/JetEnergy);
+        else                                    h_Jets__EnergyQuot_Photon_1000Jet   -> Fill(PhotonEnergy/JetEnergy);
         //Multiplicidad de Fotones en cada Jet.
         h_Jets__PhotonMultiplicity-> Fill(PhotonMultiplicity);
       }
@@ -319,7 +319,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_Electron_700Jet800 -> Fill(ElectronEnergy/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_Electron_800Jet900 -> Fill(ElectronEnergy/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_Electron_900Jet1000-> Fill(ElectronEnergy/JetEnergy);
-        else                         h_Jets__EnergyQuot_Electron_1000Jet   -> Fill(ElectronEnergy/JetEnergy);
+        else                                    h_Jets__EnergyQuot_Electron_1000Jet   -> Fill(ElectronEnergy/JetEnergy);
         //Multiplicidad de Electrones en cada Jet.
         h_Jets__ElectronMultiplicity-> Fill(ElectronMultiplicity);
       }
@@ -338,9 +338,9 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_NeutralHad_700Jet800 -> Fill(NeutralHadEnergy/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_NeutralHad_800Jet900 -> Fill(NeutralHadEnergy/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_NeutralHad_900Jet1000-> Fill(NeutralHadEnergy/JetEnergy);
-        else                         h_Jets__EnergyQuot_NeutralHad_1000Jet   -> Fill(NeutralHadEnergy/JetEnergy);
+        else                                    h_Jets__EnergyQuot_NeutralHad_1000Jet   -> Fill(NeutralHadEnergy/JetEnergy);
         //Multiplicidad de Hadrones Neutros en cada Jet.
-        h_Jets__NeutralHad_Multiplicity-> Fill(NeutralHad_Multiplicity);
+        h_Jets__NeutralHad_Multiplicity-> Fill(NeutralHadMultiplicity);
       }
       if (ChargedHadMultiplicity > 0) { h_ChargedHadEnergy -> Fill(ChargedHadEnergy);
         h_Jets__EnergyQuotient_ChargedHad_Jet -> Fill(ChargedHadEnergy/JetEnergy);
@@ -357,9 +357,9 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
         else if (700<=JetEnergy&&JetEnergy<800) h_Jets__EnergyQuot_ChargedHad_700Jet800 -> Fill(ChargedHadEnergy/JetEnergy);
         else if (800<=JetEnergy&&JetEnergy<900) h_Jets__EnergyQuot_ChargedHad_800Jet900 -> Fill(ChargedHadEnergy/JetEnergy);
         else if (900<=JetEnergy&&JetEnergy<1000)h_Jets__EnergyQuot_ChargedHad_900Jet1000-> Fill(ChargedHadEnergy/JetEnergy);
-        else                         h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Fill(ChargedHadEnergy/JetEnergy);
+        else                                    h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Fill(ChargedHadEnergy/JetEnergy);
         // Multiplicidad de Hadrones Cargados en cada Jet.
-        h_Jets__ChargedHad_Multiplicity-> Fill(ChargedHad_Multiplicity);
+        h_Jets__ChargedHad_Multiplicity-> Fill(ChargedHadMultiplicity);
       }
     }  // End of the i loop.
   }  // End of Event loop.
@@ -380,11 +380,11 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   h_ChargedHadEnergy-> Write();
   // Multiplicidad
   h_Jets__Multiplicity           -> Write();
-  h_Jets__MuonMultiplicity
-  h_Jets__PhotonMultiplicity
-  h_Jets__ElectronMultiplicity
-  h_Jets__NeutralHad_Multiplicity
-  h_Jets__ChargedHad_Multiplicity
+  h_Jets__MuonMultiplicity       -> Write();
+  h_Jets__PhotonMultiplicity     -> Write();
+  h_Jets__ElectronMultiplicity   -> Write();
+  h_Jets__NeutralHad_Multiplicity-> Write();
+  h_Jets__ChargedHad_Multiplicity-> Write();
   // Cocientes
   h_Jets__EnergyQuotient_Muon_Jet   -> Write();
   h_Jets__EnergyQuot_Muon_0Jet10    -> Write();

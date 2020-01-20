@@ -23,8 +23,8 @@ for ARJ in ak5 ak7 kt4 kt6
 do
   # Modificamos el MM para utilizar el ARJ actual.
   sed -i "s/$pARJ/$ARJ/g" $RutaMM
-  # Correr el Macro Maestro (MM). (Sin mensajes de error).
-  root -l -q $RutaMM # 2> /dev/null
+  # Correr el Macro Maestro (MM). (Sin ventanas emergentes).
+  root -b -q $RutaMM # 2> /dev/null
   # Redefinios pARJ para el siguiente ciclo for.
   pARJ=$ARJ
 done  # Fin del ciclo for para ARJ.
