@@ -18,7 +18,7 @@ ipTHM=2
   # previous pT Hat Minimum (ipTHM).
   ppTHM=$ipTHM
 # initial Number of Events (ver y/o editar Master Macro, 2 en total).
-iNoE=3600
+iNoE=4800
   # previous Number of Events.
   pNoE=$iNoE
 # Guardamos es directorio actual de trabajo y pasamos a la RutaDMM.
@@ -72,7 +72,7 @@ do
     # Cabiamos el valor del NoE.
     sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $NoE\;/g" $MM
     # A CORRER ESA MADRE!
-    # make -s Simulacion && ./Simulacion > /dev/null
+    make -s Simulacion && ./Simulacion > /dev/null
     # Redefinios ppTHM para el siguiente ciclo for.
   	ppTHM=$pTHM
     # Redefinios pNoE para el siguiente ciclo for.

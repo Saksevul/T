@@ -146,7 +146,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   // pythia.readString("HardQCD:hardbbbar = on");
   // pythia.readString("HardQCD:3parton = on");
   // pythia.readString("PromptPhoton:all = on");
-  // pythia.readString("WeakBosonExchange:all = on");
+  pythia.readString("WeakBosonExchange:all = on");
   pythia.readString("ParticleDecays:limitTau0 = On");
   pythia.readString("ParticleDecays:tau0Max = 10.0");
 
@@ -161,7 +161,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
 
   // Number of events, generated and listed ones (for jets). (Ver y/o editar bashMacro, 2 en total).
-  int nEvent    = 3600;
+  int nEvent    = 4800;
   printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 2.0\n\n\t Salida:  ak5FJ-2.root \n\n\n\n", nEvent); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= -1; C/A = 0; kT = 1.
