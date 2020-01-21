@@ -61,7 +61,7 @@ do
     pARJ=kt6;    pJCA=$kt;    pJS=0.6
   fi
   # Ciclo sobre distintos valores de pT Hat Minimum.
-  for pTHM in {2..3500..1} # initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  for pTHM in {3500..2..1} # initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   do
     # Modificamos el Master Macro (MM) para utilizar el AS actual.
     sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
@@ -72,7 +72,7 @@ do
     # Cabiamos el valor del NoE.
     sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $NoE\;/g" $MM
     # A CORRER ESA MADRE!
-    make -s Simulacion && ./Simulacion > /dev/null
+    make -s Simulacion 2> /dev/null && ./Simulacion
     # Redefinios ppTHM para el siguiente ciclo for.
   	ppTHM=$pTHM
     # Redefinios pNoE para el siguiente ciclo for.
