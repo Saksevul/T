@@ -138,7 +138,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   // pythia.readString("SoftQCD:nonDiffractive = on");
   // pythia.readString("SoftQCD:singleDiffractive = on");
   // pythia.readString("SoftQCD:doubleDiffractive = on");
-  // pythia.readString("PhaseSpace:pTHatMin = 2.00.0");
+  // pythia.readString("PhaseSpace:pTHatMin = 2.0");
   // pythia.readString("PhaseSpace:pTHatMax = 1200.0");
   // pythia.readString("PhaseSpace:mHatMax = 1200.0");
   // pythia.readString("ParticleDecays:limitTau0 = On");
@@ -146,7 +146,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
   // Process selection.
   pythia.readString("HardQCD:all = on");
-  pythia.readString("PhaseSpace:pTHatMin = 2.00.0"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  pythia.readString("PhaseSpace:pTHatMin = 2.0"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   // pythia.readString("HardQCD:hardccbar = on");
   // pythia.readString("HardQCD:hardbbbar = on");
   // pythia.readString("HardQCD:3parton = on");
@@ -167,7 +167,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
   // Number of events, generated and listed ones (for jets). (Ver y/o editar bashMacro, 2 en total).
   int nEvent    = 4800;
-  printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 2.00.0\n\n\t Salida:  ak5FJ-2.root \n\n\n\n", nEvent); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 2.0\n\n\t Salida:  ak5FJ-2.root \n\n\n\n", nEvent); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   // Select common parameters FastJet analyses.
   int    JCA    = -1;     // anti-kT= -1; C/A = 0; kT = 1.
   double R      = 0.5;    // Jet size.
