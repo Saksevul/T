@@ -18,17 +18,14 @@ ipTHM=2
   # previous pT Hat Minimum (ipTHM).
   ppTHM=$ipTHM
 # initial Number of Events (ver y/o editar Master Macro, 2 en total).
-iNoE=4800
+iNoE=1200
   # previous Number of Events.
   pNoE=$iNoE
 # Guardamos es directorio actual de trabajo y pasamos a la RutaDMM.
 pwd=$PWD && cd $RutaDMM
-
 # previous Jet Custering Algorithm (JCA).
 pJCA=\-1
   ak=\-1;  kt=1
-  # FastJet (FJ). Será utilizado como sufijo.
-  FJ=FJ
 # previous Jet Size (JS).
 pJS=0.5
 
@@ -61,13 +58,14 @@ do
     pARJ=kt6;    pJCA=$kt;    pJS=0.6
   fi
   # Ciclo sobre distintos valores de pT Hat Minimum.
-  for pTHM in {3500..2..1} # initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  for pTHM in {2..3500..1} # initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
   do
     # Modificamos el Master Macro (MM) para utilizar el AS actual.
     sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
     # Cabiamos el valor del pTHatMin.
   	sed -i "s/pTHatMin\ =\ $ppTHM.0/pTHatMin\ =\ $pTHM.0/g" $MM
-    # Decrecimiento exponancial.
+    # Numero de eventos en función de pTHatMin.
+    # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*pTHM^(-0.2); print x}')
     NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/1200); print x}')
     # Cabiamos el valor del NoE.
     sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $NoE\;/g" $MM
@@ -86,11 +84,11 @@ do
   ppTHM=$ipTHM;  pNoE=$iNoE
 
   # Eliminamos los archivos viejos, pues serán remplazados.
-	rm $RutaDAS/$ARJ$FJ.root
+	rm $RutaDAS/$ARJ\FJ\(Exponencial\).root
   # Creamos un único archivo de salida para cada ARJ.
-	hadd $RutaDAS/$ARJ\FJ.root $RutaDAS/$ARJ$FJ-*.root
+	hadd $RutaDAS/$ARJ\FJ\(Exponencial\).root $RutaDAS/$ARJ\FJ-*.root
   # Eliminamos los archivos individuales.
-	rm $RutaDAS/$ARJ$FJ-*.root
+	rm $RutaDAS/$ARJ\FJ-*.root
 done  # Fin del ciclo for para ARJ.
 
 

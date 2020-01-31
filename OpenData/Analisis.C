@@ -14,7 +14,6 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   //Jets
   TLeaf *Jets_pt_                        = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.pt_");
   TLeaf *Jets_eta_                       = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.eta_");
-  TLeaf *Jets_phi_                       = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.phi_");
   // TLeaf *Jets_mJetArea                  = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.mJetArea");
   TLeaf *Jets_mPileupEnergy              = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.mPileupEnergy");
   TLeaf *Jets_mChargedHadronEnergy       = Eventos->GetLeaf("recoPFJets_ak5PFJets__RECO.obj.m_specific.mChargedHadronEnergy");
@@ -37,12 +36,12 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
 
 
   // Jets
-  TH1F* h_Jets_pt_         = new TH1F("Jets_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 1200, 0, 2400);
-  TH1F *h_Jets_eta_        = new TH1F("Jets_eta_", "Distribución en #eta de ak5FastJet; #eta; Ocurrencia", 599, -5.95, 5.95);
+  TH1F* h_Jets_pt_            = new TH1F("Jets_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 1200, 0, 2400);
+  TH1F *h_Jets_eta_           = new TH1F("Jets_eta_", "Distribución en #eta de ak5FastJet; #eta; Ocurrencia", 599, -5.95, 5.95);
   TH1F *h_Jets__Energy        = new TH1F("Jets_Energy", "Energ#acute{i}a de FastJets; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
-  TH1F *h_MuonEnergy       = new TH1F("Jets_MuonEnergy", "Energ#acute{i}a de Muones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
-  TH1F *h_PhotonEnergy     = new TH1F("Jets_PhotonEnergy", "Energ#acute{i}a de Fotones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
-  TH1F *h_ElectronEnergy   = new TH1F("Jets_ElectronEnergy", "Energ#acute{i}a de Electrones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
+  TH1F *h_MuonEnergy          = new TH1F("Jets_MuonEnergy", "Energ#acute{i}a de Muones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
+  TH1F *h_PhotonEnergy        = new TH1F("Jets_PhotonEnergy", "Energ#acute{i}a de Fotones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
+  TH1F *h_ElectronEnergy      = new TH1F("Jets_ElectronEnergy", "Energ#acute{i}a de Electrones; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_NeutralHadronEnergy = new TH1F("Jets_NeutralHadronEnergy", "Energ#acute{i}a de Hadrones Neutros; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   TH1F *h_ChargedHadronEnergy = new TH1F("Jets_ChargedHadronEnergy", "Energ#acute{i}a de Hadrones Cargados; Energ#acute{i}a [GeV]; Frecuencia", 1800, 0, 3600);
   // Multiplicidad.
@@ -143,7 +142,6 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
     // Jets->GetEntry(e);
     Jets_pt_  ->GetBranch()->GetEntry(e);
     Jets_eta_ ->GetBranch()->GetEntry(e);
-    Jets_phi_ ->GetBranch()->GetEntry(e);
     // Jets_mPileupEnergy -> GetBranch()->GetEntry(e);
     Jets_mMuonEnergy         ->GetBranch()->GetEntry(e);  Jets_mMuonMultiplicity         ->GetBranch()->GetEntry(e);
     Jets_mPhotonEnergy       ->GetBranch()->GetEntry(e);  Jets_mPhotonMultiplicity       ->GetBranch()->GetEntry(e);
@@ -151,8 +149,15 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
     Jets_mNeutralHadronEnergy->GetBranch()->GetEntry(e);  Jets_mNeutralHadronMultiplicity->GetBranch()->GetEntry(e);
     Jets_mChargedHadronEnergy->GetBranch()->GetEntry(e);  Jets_mChargedHadronMultiplicity->GetBranch()->GetEntry(e);
 
-    for (Int_t i=0; i<Jets_pt_->GetLen(); i++) {      // Float_t iJet_pT=Jets_pt_->GetValue(i), iJet_eta=Jets_eta_->GetValue(i), iJet_phi=Jets_phi_->GetValue(i);
-      if ( fabs(Jets_eta_->GetValue(i)) > etaMax ) continue;
+    for (Int_t i=0; i<Jets_pt_->GetLen(); i++) {
+      if (fabs(Jets_eta_->GetValue(i)) > etaMax) continue;
+
+      // Seleccion respecto a energías mínimas.
+      if (Jets_mMuonMultiplicity->GetValue(i)>0 && Jets_mMuonEnergy->GetValue(i)/Jets_mMuonMultiplicity->GetValue(i)<8.0) continue;
+      if (Jets_mPhotonMultiplicity->GetValue(i)>0 && Jets_mPhotonEnergy->GetValue(i)/Jets_mPhotonMultiplicity->GetValue(i)<0.8) continue;
+      if (Jets_mElectronMultiplicity->GetValue(i)>0 && Jets_mElectronEnergy->GetValue(i)/Jets_mElectronMultiplicity->GetValue(i)<3.8) continue;
+      if (Jets_mNeutralHadronMultiplicity->GetValue(i)>0 && Jets_mNeutralHadronEnergy->GetValue(i)/Jets_mNeutralHadronMultiplicity->GetValue(i)<2.6) continue;
+      if (Jets_mChargedHadronMultiplicity->GetValue(i)>0 && Jets_mChargedHadronEnergy->GetValue(i)/Jets_mChargedHadronMultiplicity->GetValue(i)<1.0) continue;
 
       h_Jets_pt_ -> Fill(Jets_pt_->GetValue(i));
       h_Jets_eta_-> Fill(Jets_eta_->GetValue(i));

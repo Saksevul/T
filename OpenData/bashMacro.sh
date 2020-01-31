@@ -7,7 +7,7 @@ start_date=$(date +%x) && start_time=$(date +%X)
 # Ruta al Macro Maestro (RutaMM).
 RutaMM=/home/saksevul/T/OpenData/Analisis.C
 # Ruta a la Lista de AOD's. (RutaLAOD).
-RutaLAOD=/home/saksevul/CMS_Run2011A/BTag_20000/ListaAOD
+RutaLAOD=/media/saksevul/Pawahtun/CMS_Run2011A/BTag_20000/ListaAOD
 # Ruta al Directorio de Archivos de Salida (RutaDAS).
 RutaDAS=/home/saksevul/T/OpenData/BTag_20000
 # inicial Tipo de AOD (iTAOD).
@@ -26,41 +26,41 @@ iAOD=0001.root
 
 # 2.- Realizar ciclos for para aumentar la estadística.
 
-# Ciclo for sobre Tipo de AOD (TAOD).
-for TAOD in BTag Jet MinBias MultiJet
+# Ciclo for sobre los Algoritmos de Reconstrucción de Jets (ARJ).
+for ARJ in ak5PF ak7PF kt4PF kt6PF
 do
-  # Modificamos RutaLAOD para utilizar el TAOD actual.
-  RutaLAOD=$(echo $RutaLAOD | sed "s/$pTAOD\_20000/$TAOD\_20000/g")
-  # Modificamos RutaDAS para utilizar el TAOD actual.
-  RutaDAS=$(echo $RutaDAS | sed "s/$pTAOD\_20000/$TAOD\_20000/g")
-  # Modificamos el Master Macro (MM) para utilizar el TAOD actual.
-  sed -i "s/$pTAOD\_20000/$TAOD\_20000/g" $RutaMM
-  # Ciclo for sobre los Algoritmos de Reconstrucción de Jets (ARJ).
-  for ARJ in ak5PF ak7PF kt4PF kt6PF
+  # Modificamos el MM para utilizar el ARJ actual.
+  sed -i "s/$pARJ/$ARJ/g" $RutaMM
+  # Ciclo for sobre Tipo de AOD (TAOD).
+  for TAOD in BTag Jet MinBias MultiJet
   do
-    # Modificamos el MM para utilizar el ARJ actual.
-    sed -i "s/$pARJ/$ARJ/g" $RutaMM
-    # Ciclo for sobre los archivos en root Files List (AODL).
-    for AOD in $(cat $RutaLAOD)
-    do
-      # Cambiar el root File de entrada en el Master Macro (MM).
-      sed -i "s/$pAOD/$AOD/g" $RutaMM
-      # Correr el Master Macro (MM). (Sin mensajes de error).
-      root -l -q 2> /dev/null $RutaMM
-      # Redefinimos pAOD para el siguiente ciclo.
-      pAOD=$AOD
-    done  # Fin del ciclo for para AOD.
+    # Modificamos el Master Macro (MM) para utilizar el TAOD actual.
+    sed -i "s/$pTAOD\_20000/$TAOD\_20000/g" $RutaMM
+    # Modificamos RutaDAS para utilizar el TAOD actual.
+    RutaDAS=$(echo $RutaDAS | sed "s/$pTAOD\_20000/$TAOD\_20000/g")
+    # Modificamos RutaLAOD para utilizar el TAOD actual.
+    RutaLAOD=$(echo $RutaLAOD | sed "s/$pTAOD\_20000/$TAOD\_20000/g")
+      # Ciclo for sobre los archivos en root Files List (AODL).
+      for AOD in $(cat $RutaLAOD)
+      do
+        # Cambiar el root File de entrada en el Master Macro (MM).
+        sed -i "s/$pAOD/$AOD/g" $RutaMM
+        # Correr el Master Macro (MM). (Sin mensajes de error).
+        root -l -q 2> /dev/null $RutaMM
+        # Redefinimos pAOD para el siguiente ciclo.
+        pAOD=$AOD
+      done  # Fin del ciclo for para AOD.
     # Eliminamos los archivos viejos, pues serán remplazados.
     rm $RutaDAS/$ARJ.root
     # Creamos un único archivo root para el ARJ actual.
     hadd $RutaDAS/$ARJ.root $RutaDAS/$ARJ-*.root
     # Eliminamos permanentemente los archivos individuales.
     rm $RutaDAS/$ARJ-*.root
-    # Redefinios pARJ para el siguiente ciclo for.
-    pARJ=$ARJ
+    # Redefinimos pTAOD para el siguiente ciclo.
+    pTAOD=$TAOD
   done  # Fin del ciclo for para ARJ.
-  # Redefinimos pTAOD para el siguiente ciclo.
-  pTAOD=$TAOD
+  # Redefinios pARJ para el siguiente ciclo for.
+  pARJ=$ARJ
 done  # Fin del ciclo for para TAOD.
 
 
