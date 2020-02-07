@@ -13,14 +13,16 @@ RutaDAS=$RutaDMM/FastJet
 iARJ=ak5
   # previo Algoritmo de Reconstrucción de Jets (iARJ).
   pARJ=$iARJ
-# initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+# initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
 ipTHM=2
   # previous pT Hat Minimum (ipTHM).
   ppTHM=$ipTHM
 # initial Number of Events (ver y/o editar Master Macro, 2 en total).
-iNoE=1200
-  # previous Number of Events.
+iNoE=4800
+  # previous Number of Events (pNoE).
   pNoE=$iNoE
+  # Total Number of Events (TNoE).
+  TNoE=0
 # Guardamos es directorio actual de trabajo y pasamos a la RutaDMM.
 pwd=$PWD && cd $RutaDMM
 # previous Jet Custering Algorithm (JCA).
@@ -58,15 +60,21 @@ do
     pARJ=kt6;    pJCA=$kt;    pJS=0.6
   fi
   # Ciclo sobre distintos valores de pT Hat Minimum.
-  for pTHM in {2..3500..1} # initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  for pTHM in {2..3500..1} # initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
   do
     # Modificamos el Master Macro (MM) para utilizar el AS actual.
     sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
     # Cabiamos el valor del pTHatMin.
   	sed -i "s/pTHatMin\ =\ $ppTHM.0/pTHatMin\ =\ $pTHM.0/g" $MM
     # Numero de eventos en función de pTHatMin.
-    # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*pTHM^(-0.2); print x}')
-    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/1200); print x}')
+    # # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/1000); print x}')
+    # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*(10^(-pTHM/1000)-10^(-3500/1000)); print int(x)}')
+    # # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*pTHM^(-0.3); print x}')
+    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=2.5*iNoE*(pTHM^(-0.1)-3500^(-0.1)); print int(x)}')
+    # # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE/4.0-pTHM/12.0; print x}')
+    # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=(iNoE/(14400.0))*(3500-pTHM); print int(x)}')
+    # Sumamos estos Eventos al Total de Eventos.
+    TNoE=$(awk -v NoE=$NoE -v TNoE=$TNoE 'BEGIN{x=TNoE+NoE; print x}')
     # Cabiamos el valor del NoE.
     sed -i "s/nEvent\ \ \ \ =\ $pNoE\;/nEvent\ \ \ \ =\ $NoE\;/g" $MM
     # A CORRER ESA MADRE!
@@ -84,9 +92,9 @@ do
   ppTHM=$ipTHM;  pNoE=$iNoE
 
   # Eliminamos los archivos viejos, pues serán remplazados.
-	rm $RutaDAS/$ARJ\FJ\(Exponencial\).root
+	rm $RutaDAS/$ARJ\FJ\2.root
   # Creamos un único archivo de salida para cada ARJ.
-	hadd $RutaDAS/$ARJ\FJ\(Exponencial\).root $RutaDAS/$ARJ\FJ-*.root
+	hadd $RutaDAS/$ARJ\FJ\2.root $RutaDAS/$ARJ\FJ-*.root
   # Eliminamos los archivos individuales.
 	rm $RutaDAS/$ARJ\FJ-*.root
 done  # Fin del ciclo for para ARJ.
@@ -103,7 +111,8 @@ cd $pwd
 
 
 # 5.- Mostrar la fecha y hora de inicio y término de este macro.
-printf "\n\n Inició  el  $start_date, a las  $start_time.\n\n Terminó el  $(date +%x), a las  $(date +%X).\n\n"
+printf "\n\n\t Eventos Totales Simulados: $TNoE.\n\n"
+printf "\n\n Inició  el  $start_date, a las  $start_time.\n\n Terminó el  $(date +%x), a las  $(date +%X).\n\n\n"
 
 
 # 6.- Eliminar todas las variables utilizadas.
