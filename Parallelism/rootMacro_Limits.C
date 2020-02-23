@@ -64,7 +64,7 @@ void Limits() {
 
   TCanvas* Limite_Energia_Muones = new TCanvas("Limite_Energia_Muones","Limite de E para Muones",0,0,3840,2160);
   Limite_Energia_Muones->SetLogy(); Limite_Energia_Muones->SetMargin(0.14,0,0.142,0); // Jet_MuonEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_MuonEnergy->SetTitle(" ; #frac{E^{Mu#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #left(#frac{E^{Mu#acute{o}n}}{Mult}#right)}");
+  Jet_MuonEnergy->SetTitle(" ; #frac{E^{Mu#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Mu#acute{o}n}}{Mult}}");
   Jet_MuonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_MuonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_MuonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_MuonEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -84,7 +84,7 @@ void Limits() {
 
   TCanvas* Limite_Energia_Fotones = new TCanvas("Limite_Energia_Fotones","Limite de E para Fotones",0,0,3840,2160);
   Limite_Energia_Fotones->SetLogy(); Limite_Energia_Fotones->SetMargin(0.14,0,0.142,0); // Jet_PhotonEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_PhotonEnergy->SetTitle(" ; #frac{E^{Fot#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #left(#frac{E^{Fot#acute{o}n}}{Mult}#right)}");
+  Jet_PhotonEnergy->SetTitle(" ; #frac{E^{Fot#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Fot#acute{o}n}}{Mult}}");
   Jet_PhotonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_PhotonEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -104,7 +104,7 @@ void Limits() {
 
   TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite E para Electrones",0,0,3840,2160);
   Limite_Energia_Electrones->SetLogy(); Limite_Energia_Electrones->SetMargin(0.14,0,0.142,0); // Jet_ElectronEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_ElectronEnergy->SetTitle(" ; #frac{E^{Electr#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #left(#frac{E^{Electr#acute{o}n}}{Mult}#right)}");
+  Jet_ElectronEnergy->SetTitle(" ; #frac{E^{Electr#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Electr#acute{o}n}}{Mult}}");
   Jet_ElectronEnergy->GetXaxis()->SetLabelSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_ElectronEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -124,7 +124,7 @@ void Limits() {
 
   TCanvas* Limite_Energia_HadNeutros = new TCanvas("Limite_Energia_HadNeutros","Limite E para HadNeutros",0,0,3840,2160);
   Limite_Energia_HadNeutros->SetLogy(); Limite_Energia_HadNeutros->SetMargin(0.14,0,0.14,0); // Jet_NeuHadEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_NeuHadEnergy->SetTitle(" ; #frac{E^{HadNeutro}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #left(#frac{E^{HadNeutro}}{Mult}#right)}");
+  Jet_NeuHadEnergy->SetTitle(" ; #frac{E^{HadNeutro}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{HadNeutro}}{Mult}}");
   Jet_NeuHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_NeuHadEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -144,7 +144,7 @@ void Limits() {
 
   TCanvas* Limite_Energia_HadCargados = new TCanvas("Limite_Energia_HadCargados","Limite E para HadCargados",0,0,3840,2160);
   Limite_Energia_HadCargados->SetLogy(); Limite_Energia_HadCargados->SetMargin(0.14,0,0.14,0); // Jet_CharHadEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_CharHadEnergy->SetTitle(" ; #frac{E^{HadCargado}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #left(#frac{E^{HadCargado}}{Mult}#right)}");
+  Jet_CharHadEnergy->SetTitle(" ; #frac{E^{HadCargado}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{HadCargado}}{Mult}}");
   Jet_CharHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_CharHadEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -558,56 +558,60 @@ void Multiplicities() {
 void pTHatMin() {
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *ExpFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Exponencial2).root");
-  TFile *PotFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Potencial2).root");
-  TFile *LinFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Lineal2).root");
+  TFile *ExpFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Exponencial).root");
+  TFile *PotFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Potencial).root");
+  TFile *LinFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Lineal).root");
 
-  TH1F *Exp_Jets__pt_              = (TH1F*)ExpFile->Get("Jets_pt_");  Exp_Jets__pt_->Scale(1.0/Exp_Jets__pt_->Integral());  Exp_Jets__pt_->Rebin(10);
+  // Parámetro de Rebin.
+  Int_t nRB = 5;
+
+  TH1F *Exp_Jets__pt_              = (TH1F*)ExpFile->Get("Jets_pt_");   Exp_Jets__pt_->Scale(1.0/Exp_Jets__pt_->Integral());  Exp_Jets__pt_->Rebin(10);
   TH1F *Exp_Jets__eta_             = (TH1F*)ExpFile->Get("Jets_eta_");  Exp_Jets__eta_->Scale(1.0/Exp_Jets__eta_->Integral());  //Exp_Jets__eta_->Rebin(10);
-  TH1F *Exp_Jets__Energy           = (TH1F*)ExpFile->Get("Jets_Energy");  Exp_Jets__Energy->Scale(1.0/Exp_Jets__Energy->Integral());  Exp_Jets__Energy->Rebin(10);
-  TH1F *Exp_Jets__MuonEnergy       = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__Muon-Jet");  Exp_Jets__MuonEnergy->Scale(1.0/Exp_Jets__MuonEnergy->Integral());  Exp_Jets__MuonEnergy->Rebin(4);
-  TH1F *Exp_Jets__PhotonEnergy     = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__Photon-Jet");  Exp_Jets__PhotonEnergy->Scale(1.0/Exp_Jets__PhotonEnergy->Integral());  Exp_Jets__PhotonEnergy->Rebin(4);
-  TH1F *Exp_Jets__ElectronEnergy   = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__Electron-Jet");  Exp_Jets__ElectronEnergy->Scale(1.0/Exp_Jets__ElectronEnergy->Integral());  Exp_Jets__ElectronEnergy->Rebin(4);
-  TH1F *Exp_Jets__NeutralHadEnergy = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__NeutralHad-Jet");  Exp_Jets__NeutralHadEnergy->Scale(1.0/Exp_Jets__NeutralHadEnergy->Integral());  Exp_Jets__NeutralHadEnergy->Rebin(4);
-  TH1F *Exp_Jets__ChargedHadEnergy = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__ChargedHad-Jet");  Exp_Jets__ChargedHadEnergy->Scale(1.0/Exp_Jets__ChargedHadEnergy->Integral());  Exp_Jets__ChargedHadEnergy->Rebin(4);
+  TH1F *Exp_Jets__Energy           = (TH1F*)ExpFile->Get("Jets_Energy");Exp_Jets__Energy->Scale(1.0/Exp_Jets__Energy->Integral());  Exp_Jets__Energy->Rebin(10);
+  TH1F *Exp_Jets__MuonEnergy       = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__Muon-Jet");      Exp_Jets__MuonEnergy->Scale(1.0/Exp_Jets__MuonEnergy->Integral());  Exp_Jets__MuonEnergy->Rebin(nRB);  Exp_Jets__MuonEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Exp_Jets__PhotonEnergy     = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__Photon-Jet");    Exp_Jets__PhotonEnergy->Scale(1.0/Exp_Jets__PhotonEnergy->Integral());  Exp_Jets__PhotonEnergy->Rebin(nRB);  Exp_Jets__PhotonEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Exp_Jets__ElectronEnergy   = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__Electron-Jet");  Exp_Jets__ElectronEnergy->Scale(1.0/Exp_Jets__ElectronEnergy->Integral());  Exp_Jets__ElectronEnergy->Rebin(nRB);  Exp_Jets__ElectronEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Exp_Jets__NeutralHadEnergy = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__NeutralHad-Jet");Exp_Jets__NeutralHadEnergy->Scale(1.0/Exp_Jets__NeutralHadEnergy->Integral());  Exp_Jets__NeutralHadEnergy->Rebin(nRB);  Exp_Jets__NeutralHadEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Exp_Jets__ChargedHadEnergy = (TH1F*)ExpFile->Get("Jets_Energy_Quotient__ChargedHad-Jet");Exp_Jets__ChargedHadEnergy->Scale(1.0/Exp_Jets__ChargedHadEnergy->Integral());  Exp_Jets__ChargedHadEnergy->Rebin(nRB);  Exp_Jets__ChargedHadEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
 
-  TH1F *Pot_Jets__pt_              = (TH1F*)PotFile->Get("Jets_pt_");  Pot_Jets__pt_->Scale(1.0/Pot_Jets__pt_->Integral());  Pot_Jets__pt_->Rebin(10);
+  TH1F *Pot_Jets__pt_              = (TH1F*)PotFile->Get("Jets_pt_");   Pot_Jets__pt_->Scale(1.0/Pot_Jets__pt_->Integral());  Pot_Jets__pt_->Rebin(10);
   TH1F *Pot_Jets__eta_             = (TH1F*)PotFile->Get("Jets_eta_");  Pot_Jets__eta_->Scale(1.0/Pot_Jets__eta_->Integral());  //Pot_Jets__eta_->Rebin(10);
-  TH1F *Pot_Jets__Energy           = (TH1F*)PotFile->Get("Jets_Energy");  Pot_Jets__Energy->Scale(1.0/Pot_Jets__Energy->Integral());  Pot_Jets__Energy->Rebin(10);
-  TH1F *Pot_Jets__MuonEnergy       = (TH1F*)PotFile->Get("Jets_Energy_Quotient__Muon-Jet");  Pot_Jets__MuonEnergy->Scale(1.0/Pot_Jets__MuonEnergy->Integral());  Pot_Jets__MuonEnergy->Rebin(4);
-  TH1F *Pot_Jets__PhotonEnergy     = (TH1F*)PotFile->Get("Jets_Energy_Quotient__Photon-Jet");  Pot_Jets__PhotonEnergy->Scale(1.0/Pot_Jets__PhotonEnergy->Integral());  Pot_Jets__PhotonEnergy->Rebin(4);
-  TH1F *Pot_Jets__ElectronEnergy   = (TH1F*)PotFile->Get("Jets_Energy_Quotient__Electron-Jet");  Pot_Jets__ElectronEnergy->Scale(1.0/Pot_Jets__ElectronEnergy->Integral());  Pot_Jets__ElectronEnergy->Rebin(4);
-  TH1F *Pot_Jets__NeutralHadEnergy = (TH1F*)PotFile->Get("Jets_Energy_Quotient__NeutralHad-Jet");  Pot_Jets__NeutralHadEnergy->Scale(1.0/Pot_Jets__NeutralHadEnergy->Integral());  Pot_Jets__NeutralHadEnergy->Rebin(4);
-  TH1F *Pot_Jets__ChargedHadEnergy = (TH1F*)PotFile->Get("Jets_Energy_Quotient__ChargedHad-Jet");  Pot_Jets__ChargedHadEnergy->Scale(1.0/Pot_Jets__ChargedHadEnergy->Integral());  Pot_Jets__ChargedHadEnergy->Rebin(4);
+  TH1F *Pot_Jets__Energy           = (TH1F*)PotFile->Get("Jets_Energy");Pot_Jets__Energy->Scale(1.0/Pot_Jets__Energy->Integral());  Pot_Jets__Energy->Rebin(10);
+  TH1F *Pot_Jets__MuonEnergy       = (TH1F*)PotFile->Get("Jets_Energy_Quotient__Muon-Jet");      Pot_Jets__MuonEnergy->Scale(1.0/Pot_Jets__MuonEnergy->Integral());  Pot_Jets__MuonEnergy->Rebin(nRB);  Pot_Jets__MuonEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Pot_Jets__PhotonEnergy     = (TH1F*)PotFile->Get("Jets_Energy_Quotient__Photon-Jet");    Pot_Jets__PhotonEnergy->Scale(1.0/Pot_Jets__PhotonEnergy->Integral());  Pot_Jets__PhotonEnergy->Rebin(nRB);  Pot_Jets__PhotonEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Pot_Jets__ElectronEnergy   = (TH1F*)PotFile->Get("Jets_Energy_Quotient__Electron-Jet");  Pot_Jets__ElectronEnergy->Scale(1.0/Pot_Jets__ElectronEnergy->Integral());  Pot_Jets__ElectronEnergy->Rebin(nRB);  Pot_Jets__ElectronEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Pot_Jets__NeutralHadEnergy = (TH1F*)PotFile->Get("Jets_Energy_Quotient__NeutralHad-Jet");Pot_Jets__NeutralHadEnergy->Scale(1.0/Pot_Jets__NeutralHadEnergy->Integral());  Pot_Jets__NeutralHadEnergy->Rebin(nRB);  Pot_Jets__NeutralHadEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Pot_Jets__ChargedHadEnergy = (TH1F*)PotFile->Get("Jets_Energy_Quotient__ChargedHad-Jet");Pot_Jets__ChargedHadEnergy->Scale(1.0/Pot_Jets__ChargedHadEnergy->Integral());  Pot_Jets__ChargedHadEnergy->Rebin(nRB);  Pot_Jets__ChargedHadEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
 
-  TH1F *Lin_Jets__pt_              = (TH1F*)LinFile->Get("Jets_pt_");  Lin_Jets__pt_->Scale(1.0/Lin_Jets__pt_->Integral());  Lin_Jets__pt_->Rebin(10);
+  TH1F *Lin_Jets__pt_              = (TH1F*)LinFile->Get("Jets_pt_");   Lin_Jets__pt_->Scale(1.0/Lin_Jets__pt_->Integral());  Lin_Jets__pt_->Rebin(10);
   TH1F *Lin_Jets__eta_             = (TH1F*)LinFile->Get("Jets_eta_");  Lin_Jets__eta_->Scale(1.0/Lin_Jets__eta_->Integral());  //Lin_Jets__eta_->Rebin(10);
-  TH1F *Lin_Jets__Energy           = (TH1F*)LinFile->Get("Jets_Energy");  Lin_Jets__Energy->Scale(1.0/Lin_Jets__Energy->Integral());  Lin_Jets__Energy->Rebin(10);
-  TH1F *Lin_Jets__MuonEnergy       = (TH1F*)LinFile->Get("Jets_Energy_Quotient__Muon-Jet");  Lin_Jets__MuonEnergy->Scale(1.0/Lin_Jets__MuonEnergy->Integral());  Lin_Jets__MuonEnergy->Rebin(4);
-  TH1F *Lin_Jets__PhotonEnergy     = (TH1F*)LinFile->Get("Jets_Energy_Quotient__Photon-Jet");  Lin_Jets__PhotonEnergy->Scale(1.0/Lin_Jets__PhotonEnergy->Integral());  Lin_Jets__PhotonEnergy->Rebin(4);
-  TH1F *Lin_Jets__ElectronEnergy   = (TH1F*)LinFile->Get("Jets_Energy_Quotient__Electron-Jet");  Lin_Jets__ElectronEnergy->Scale(1.0/Lin_Jets__ElectronEnergy->Integral());  Lin_Jets__ElectronEnergy->Rebin(4);
-  TH1F *Lin_Jets__NeutralHadEnergy = (TH1F*)LinFile->Get("Jets_Energy_Quotient__NeutralHad-Jet");  Lin_Jets__NeutralHadEnergy->Scale(1.0/Lin_Jets__NeutralHadEnergy->Integral());  Lin_Jets__NeutralHadEnergy->Rebin(4);
-  TH1F *Lin_Jets__ChargedHadEnergy = (TH1F*)LinFile->Get("Jets_Energy_Quotient__ChargedHad-Jet");  Lin_Jets__ChargedHadEnergy->Scale(1.0/Lin_Jets__ChargedHadEnergy->Integral());  Lin_Jets__ChargedHadEnergy->Rebin(4);
+  TH1F *Lin_Jets__Energy           = (TH1F*)LinFile->Get("Jets_Energy");Lin_Jets__Energy->Scale(1.0/Lin_Jets__Energy->Integral());  Lin_Jets__Energy->Rebin(10);
+  TH1F *Lin_Jets__MuonEnergy       = (TH1F*)LinFile->Get("Jets_Energy_Quotient__Muon-Jet");      Lin_Jets__MuonEnergy->Scale(1.0/Lin_Jets__MuonEnergy->Integral());  Lin_Jets__MuonEnergy->Rebin(nRB);  Lin_Jets__MuonEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Lin_Jets__PhotonEnergy     = (TH1F*)LinFile->Get("Jets_Energy_Quotient__Photon-Jet");    Lin_Jets__PhotonEnergy->Scale(1.0/Lin_Jets__PhotonEnergy->Integral());  Lin_Jets__PhotonEnergy->Rebin(nRB);  Lin_Jets__PhotonEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Lin_Jets__ElectronEnergy   = (TH1F*)LinFile->Get("Jets_Energy_Quotient__Electron-Jet");  Lin_Jets__ElectronEnergy->Scale(1.0/Lin_Jets__ElectronEnergy->Integral());  Lin_Jets__ElectronEnergy->Rebin(nRB);  Lin_Jets__ElectronEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Lin_Jets__NeutralHadEnergy = (TH1F*)LinFile->Get("Jets_Energy_Quotient__NeutralHad-Jet");Lin_Jets__NeutralHadEnergy->Scale(1.0/Lin_Jets__NeutralHadEnergy->Integral());  Lin_Jets__NeutralHadEnergy->Rebin(nRB);  Lin_Jets__NeutralHadEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
+  TH1F *Lin_Jets__ChargedHadEnergy = (TH1F*)LinFile->Get("Jets_Energy_Quotient__ChargedHad-Jet");Lin_Jets__ChargedHadEnergy->Scale(1.0/Lin_Jets__ChargedHadEnergy->Integral());  Lin_Jets__ChargedHadEnergy->Rebin(nRB);  Lin_Jets__ChargedHadEnergy->GetXaxis()->SetLimits(-nRB/200.0,1.2-nRB/200.0);
 
 
-  TH1F *CLONE_Exp_Jets__pt_ =(TH1F*)Exp_Jets__pt_->Clone(); CLONE_Exp_Jets__pt_->SetMarkerSize(9); CLONE_Exp_Jets__pt_->SetMarkerStyle(45); CLONE_Exp_Jets__pt_->SetMarkerColor(40);
-  TH1F *CLONE_Pot_Jets__pt_ =(TH1F*)Pot_Jets__pt_->Clone(); CLONE_Pot_Jets__pt_->SetMarkerSize(9); CLONE_Pot_Jets__pt_->SetMarkerStyle(47); CLONE_Pot_Jets__pt_->SetMarkerColor(42);
-  TH1F *CLONE_Lin_Jets__pt_ =(TH1F*)Lin_Jets__pt_->Clone(); CLONE_Lin_Jets__pt_->SetMarkerSize(9); CLONE_Lin_Jets__pt_->SetMarkerStyle(29); CLONE_Lin_Jets__pt_->SetMarkerColor(29);
+  TH1F *CLONE_Exp_Jets__pt_ =(TH1F*)Exp_Jets__pt_->Clone(); CLONE_Exp_Jets__pt_->SetMarkerSize(16); CLONE_Exp_Jets__pt_->SetMarkerStyle(47); CLONE_Exp_Jets__pt_->SetMarkerColor(40);
+  TH1F *CLONE_Pot_Jets__pt_ =(TH1F*)Pot_Jets__pt_->Clone(); CLONE_Pot_Jets__pt_->SetMarkerSize(16); CLONE_Pot_Jets__pt_->SetMarkerStyle(45); CLONE_Pot_Jets__pt_->SetMarkerColor(42);
+  TH1F *CLONE_Lin_Jets__pt_ =(TH1F*)Lin_Jets__pt_->Clone(); CLONE_Lin_Jets__pt_->SetMarkerSize(16); CLONE_Lin_Jets__pt_->SetMarkerStyle(29); CLONE_Lin_Jets__pt_->SetMarkerColor(29);
 
-  auto   Leg = new TLegend(0.82,0.87,1.0,0.999);    Leg->SetTextSize(0.04); Leg->SetFillStyle(0); Leg->SetBorderSize(0);
+  auto   Leg = new TLegend(0.82,0.8,1.0,0.999);    Leg->SetTextSize(0.06); Leg->SetFillStyle(0); Leg->SetBorderSize(0);
   Leg->AddEntry(CLONE_Exp_Jets__pt_, "Exponencial", "p");
   Leg->AddEntry(CLONE_Pot_Jets__pt_, "Potencial", "p");
   Leg->AddEntry(CLONE_Lin_Jets__pt_, "Lineal", "p");
+  // Leg->SetLegendTextSize(0.06);
 
 
-  TH1F *CLON2_Exp_Jets__pt_ =(TH1F*)Exp_Jets__pt_->Clone(); CLON2_Exp_Jets__pt_->SetMarkerSize(9); CLON2_Exp_Jets__pt_->SetMarkerStyle(44); CLON2_Exp_Jets__pt_->SetMarkerColor(9);
+  TH1F *CLON2_Exp_Jets__pt_ =(TH1F*)Exp_Jets__pt_->Clone(); CLON2_Exp_Jets__pt_->SetMarkerSize(16); CLON2_Exp_Jets__pt_->SetMarkerStyle(46); CLON2_Exp_Jets__pt_->SetMarkerColor(9);
   CLON2_Exp_Jets__pt_->SetLineWidth(3);  CLON2_Exp_Jets__pt_->SetLineColor(9);
-  TH1F *CLON2_Pot_Jets__pt_ =(TH1F*)Pot_Jets__pt_->Clone(); CLON2_Pot_Jets__pt_->SetMarkerSize(9); CLON2_Pot_Jets__pt_->SetMarkerStyle(46); CLON2_Pot_Jets__pt_->SetMarkerColor(46);
+  TH1F *CLON2_Pot_Jets__pt_ =(TH1F*)Pot_Jets__pt_->Clone(); CLON2_Pot_Jets__pt_->SetMarkerSize(16); CLON2_Pot_Jets__pt_->SetMarkerStyle(44); CLON2_Pot_Jets__pt_->SetMarkerColor(46);
   CLON2_Pot_Jets__pt_->SetLineWidth(3);  CLON2_Pot_Jets__pt_->SetLineColor(46);
-  TH1F *CLON2_Lin_Jets__pt_ =(TH1F*)Lin_Jets__pt_->Clone(); CLON2_Lin_Jets__pt_->SetMarkerSize(9); CLON2_Lin_Jets__pt_->SetMarkerStyle(30); CLON2_Lin_Jets__pt_->SetMarkerColor(8);
+  TH1F *CLON2_Lin_Jets__pt_ =(TH1F*)Lin_Jets__pt_->Clone(); CLON2_Lin_Jets__pt_->SetMarkerSize(16); CLON2_Lin_Jets__pt_->SetMarkerStyle(30); CLON2_Lin_Jets__pt_->SetMarkerColor(8);
   CLON2_Lin_Jets__pt_->SetLineWidth(3);  CLON2_Lin_Jets__pt_->SetLineColor(8);
 
-  auto   Legend = new TLegend(0.82,0.87,1.0,0.999);    Legend->SetTextSize(0.04); Legend->SetFillStyle(0); Legend->SetBorderSize(0);
+  auto   Legend = new TLegend(0.82,0.8,1.0,0.999);    Legend->SetTextSize(0.06); Legend->SetFillStyle(0); Legend->SetBorderSize(0);
   Legend->AddEntry(CLON2_Exp_Jets__pt_, "Exponencial", "lep");
   Legend->AddEntry(CLON2_Pot_Jets__pt_, "Potencial", "lep");
   Legend->AddEntry(CLON2_Lin_Jets__pt_, "Lineal", "lep");
@@ -615,105 +619,120 @@ void pTHatMin() {
 
 
   TCanvas* pTHatMin_pT_ = new TCanvas("pTHatMin_pT_ ","pTHatMin_pT_ ",0,0,5040,2160);
-  pTHatMin_pT_->SetLogy(); pTHatMin_pT_->SetMargin(0.11,0,0.0825,0);
+  pTHatMin_pT_->SetLogy(); pTHatMin_pT_->SetMargin(0.126,0,0.108,0);
   Exp_Jets__pt_->SetTitle("Espectro de p_{T} para Jets; p_{T} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dp_{T}}");
-  Exp_Jets__pt_->SetMarkerSize(6); Exp_Jets__pt_->SetMarkerColor(40); Exp_Jets__pt_->SetMarkerStyle(45);
-  Exp_Jets__pt_->DrawCopy("P");    Exp_Jets__pt_->SetMarkerColor(9);  Exp_Jets__pt_->SetMarkerStyle(44);
+  Exp_Jets__pt_->SetMarkerSize(12); Exp_Jets__pt_->SetMarkerColor(40); Exp_Jets__pt_->SetMarkerStyle(47);
+  Exp_Jets__pt_->DrawCopy("P");    Exp_Jets__pt_->SetMarkerColor(9);  Exp_Jets__pt_->SetMarkerStyle(46);
   Exp_Jets__pt_->SetLineWidth(2);  Exp_Jets__pt_->SetLineColor(9);    Exp_Jets__pt_->DrawCopy("E1same");
-  Pot_Jets__pt_->SetMarkerSize(6); Pot_Jets__pt_->SetMarkerColor(42); Pot_Jets__pt_->SetMarkerStyle(47);
-  Pot_Jets__pt_->DrawCopy("Psame");Pot_Jets__pt_->SetMarkerColor(46); Pot_Jets__pt_->SetMarkerStyle(46);
+  Pot_Jets__pt_->SetMarkerSize(12); Pot_Jets__pt_->SetMarkerColor(42); Pot_Jets__pt_->SetMarkerStyle(45);
+  Pot_Jets__pt_->DrawCopy("Psame");Pot_Jets__pt_->SetMarkerColor(46); Pot_Jets__pt_->SetMarkerStyle(44);
   Pot_Jets__pt_->SetLineWidth(2);  Pot_Jets__pt_->SetLineColor(46);   Pot_Jets__pt_->DrawCopy("E1same");
-  Lin_Jets__pt_->SetMarkerSize(6); Lin_Jets__pt_->SetMarkerColor(29); Lin_Jets__pt_->SetMarkerStyle(29);
+  Lin_Jets__pt_->SetMarkerSize(12); Lin_Jets__pt_->SetMarkerColor(29); Lin_Jets__pt_->SetMarkerStyle(29);
   Lin_Jets__pt_->DrawCopy("Psame");Lin_Jets__pt_->SetMarkerColor(8);  Lin_Jets__pt_->SetMarkerStyle(30);
   Lin_Jets__pt_->SetLineWidth(2);  Lin_Jets__pt_->SetLineColor(8);    Lin_Jets__pt_->DrawCopy("E1same");
   Leg->Draw(); Legend->Draw(); pTHatMin_pT_->Print("/home/saksevul/T/Parallelism/ak5Jets/pTHatMin.pdf(","pdf"); pTHatMin_pT_->Close();
 
 
   TCanvas* pTHatMin_Energy = new TCanvas("pTHatMin_Energy ","pTHatMin_Energy ",0,0,5040,2160);
-  pTHatMin_Energy->SetLogy(); pTHatMin_Energy->SetMargin(0.11,0,0.0825,0);
+  pTHatMin_Energy->SetLogy(); pTHatMin_Energy->SetMargin(0.126,0,0.108,0);
   Exp_Jets__Energy->SetTitle("Espectro de E para Jets; E [GeV]; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Exp_Jets__Energy->SetMarkerSize(6); Exp_Jets__Energy->SetMarkerColor(40); Exp_Jets__Energy->SetMarkerStyle(45);
-  Exp_Jets__Energy->DrawCopy("P");    Exp_Jets__Energy->SetMarkerColor(9);  Exp_Jets__Energy->SetMarkerStyle(44);
+  Exp_Jets__Energy->SetMarkerSize(12); Exp_Jets__Energy->SetMarkerColor(40); Exp_Jets__Energy->SetMarkerStyle(47);
+  Exp_Jets__Energy->DrawCopy("P");    Exp_Jets__Energy->SetMarkerColor(9);  Exp_Jets__Energy->SetMarkerStyle(46);
   Exp_Jets__Energy->SetLineWidth(2);  Exp_Jets__Energy->SetLineColor(9);    Exp_Jets__Energy->DrawCopy("E1same");
-  Pot_Jets__Energy->SetMarkerSize(6); Pot_Jets__Energy->SetMarkerColor(42); Pot_Jets__Energy->SetMarkerStyle(47);
-  Pot_Jets__Energy->DrawCopy("Psame");Pot_Jets__Energy->SetMarkerColor(46); Pot_Jets__Energy->SetMarkerStyle(46);
+  Pot_Jets__Energy->SetMarkerSize(12); Pot_Jets__Energy->SetMarkerColor(42); Pot_Jets__Energy->SetMarkerStyle(45);
+  Pot_Jets__Energy->DrawCopy("Psame");Pot_Jets__Energy->SetMarkerColor(46); Pot_Jets__Energy->SetMarkerStyle(44);
   Pot_Jets__Energy->SetLineWidth(2);  Pot_Jets__Energy->SetLineColor(46);   Pot_Jets__Energy->DrawCopy("E1same");
-  Lin_Jets__Energy->SetMarkerSize(6); Lin_Jets__Energy->SetMarkerColor(29); Lin_Jets__Energy->SetMarkerStyle(29);
+  Lin_Jets__Energy->SetMarkerSize(12); Lin_Jets__Energy->SetMarkerColor(29); Lin_Jets__Energy->SetMarkerStyle(29);
   Lin_Jets__Energy->DrawCopy("Psame");Lin_Jets__Energy->SetMarkerColor(8);  Lin_Jets__Energy->SetMarkerStyle(30);
   Lin_Jets__Energy->SetLineWidth(2);  Lin_Jets__Energy->SetLineColor(8);    Lin_Jets__Energy->DrawCopy("E1same");
   Leg->Draw(); Legend->Draw(); pTHatMin_Energy->Print("/home/saksevul/T/Parallelism/ak5Jets/pTHatMin.pdf","pdf"); pTHatMin_Energy->Close();
 
 
   TCanvas* pTHatMin_MuonEnergy = new TCanvas("pTHatMin_MuonEnergy ","pTHatMin_MuonEnergy ",0,0,5040,2160);
-  pTHatMin_MuonEnergy->SetLogy(); pTHatMin_MuonEnergy->SetMargin(0.11,0,0.0825,0); Exp_Jets__MuonEnergy->SetAxisRange(0.0, 1.04, "X");
+  pTHatMin_MuonEnergy->SetLogy(); pTHatMin_MuonEnergy->SetMargin(0.126,0,0.108,0); Exp_Jets__MuonEnergy->SetAxisRange(0.0, 1.0, "X");
   Exp_Jets__MuonEnergy->SetTitle(" ; E^{Mu#acute{o}n}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{d#frac{E^{Mu#acute{o}n}}{E^{Jet}}}");
-  Exp_Jets__MuonEnergy->SetMarkerSize(6); Exp_Jets__MuonEnergy->SetMarkerColor(40); Exp_Jets__MuonEnergy->SetMarkerStyle(45);
-  Exp_Jets__MuonEnergy->DrawCopy("P");    Exp_Jets__MuonEnergy->SetMarkerColor(9);  Exp_Jets__MuonEnergy->SetMarkerStyle(44);
+  Exp_Jets__MuonEnergy->GetXaxis()->SetLabelSize(0.06);  Exp_Jets__MuonEnergy->GetYaxis()->SetTitleSize(0.06);
+  Exp_Jets__MuonEnergy->GetXaxis()->SetTitleSize(0.06);  Exp_Jets__MuonEnergy->GetYaxis()->SetLabelSize(0.06);
+  Exp_Jets__MuonEnergy->GetXaxis()->SetTitleOffset(0.82);Exp_Jets__MuonEnergy->GetYaxis()->SetTitleOffset(0.91);
+  Exp_Jets__MuonEnergy->SetMarkerSize(12); Exp_Jets__MuonEnergy->SetMarkerColor(40); Exp_Jets__MuonEnergy->SetMarkerStyle(47);
+  Exp_Jets__MuonEnergy->DrawCopy("P");    Exp_Jets__MuonEnergy->SetMarkerColor(9);  Exp_Jets__MuonEnergy->SetMarkerStyle(46);
   Exp_Jets__MuonEnergy->SetLineWidth(2);  Exp_Jets__MuonEnergy->SetLineColor(9);    Exp_Jets__MuonEnergy->DrawCopy("E1same");
-  Pot_Jets__MuonEnergy->SetMarkerSize(6); Pot_Jets__MuonEnergy->SetMarkerColor(42); Pot_Jets__MuonEnergy->SetMarkerStyle(47);
-  Pot_Jets__MuonEnergy->DrawCopy("Psame");Pot_Jets__MuonEnergy->SetMarkerColor(46); Pot_Jets__MuonEnergy->SetMarkerStyle(46);
+  Pot_Jets__MuonEnergy->SetMarkerSize(12); Pot_Jets__MuonEnergy->SetMarkerColor(42); Pot_Jets__MuonEnergy->SetMarkerStyle(45);
+  Pot_Jets__MuonEnergy->DrawCopy("Psame");Pot_Jets__MuonEnergy->SetMarkerColor(46); Pot_Jets__MuonEnergy->SetMarkerStyle(44);
   Pot_Jets__MuonEnergy->SetLineWidth(2);  Pot_Jets__MuonEnergy->SetLineColor(46);   Pot_Jets__MuonEnergy->DrawCopy("E1same");
-  Lin_Jets__MuonEnergy->SetMarkerSize(6); Lin_Jets__MuonEnergy->SetMarkerColor(29); Lin_Jets__MuonEnergy->SetMarkerStyle(29);
+  Lin_Jets__MuonEnergy->SetMarkerSize(12); Lin_Jets__MuonEnergy->SetMarkerColor(29); Lin_Jets__MuonEnergy->SetMarkerStyle(29);
   Lin_Jets__MuonEnergy->DrawCopy("Psame");Lin_Jets__MuonEnergy->SetMarkerColor(8);  Lin_Jets__MuonEnergy->SetMarkerStyle(30);
   Lin_Jets__MuonEnergy->SetLineWidth(2);  Lin_Jets__MuonEnergy->SetLineColor(8);    Lin_Jets__MuonEnergy->DrawCopy("E1same");
   Leg->Draw(); Legend->Draw(); pTHatMin_MuonEnergy->Print("/home/saksevul/T/Parallelism/ak5Jets/pTHatMin.pdf","pdf"); pTHatMin_MuonEnergy->Close();
 
 
   TCanvas* pTHatMin_PhotonEnergy = new TCanvas("pTHatMin_PhotonEnergy ","pTHatMin_PhotonEnergy ",0,0,5040,2160);
-  pTHatMin_PhotonEnergy->SetLogy(); pTHatMin_PhotonEnergy->SetMargin(0.11,0,0.0825,0); Exp_Jets__PhotonEnergy->SetAxisRange(0.0, 1.04, "X");
-  Exp_Jets__PhotonEnergy->SetTitle(" ; E^{Fot#acute{o}n}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Exp_Jets__PhotonEnergy->SetMarkerSize(6); Exp_Jets__PhotonEnergy->SetMarkerColor(40); Exp_Jets__PhotonEnergy->SetMarkerStyle(45);
-  Exp_Jets__PhotonEnergy->DrawCopy("P");    Exp_Jets__PhotonEnergy->SetMarkerColor(9);  Exp_Jets__PhotonEnergy->SetMarkerStyle(44);
+  pTHatMin_PhotonEnergy->SetLogy(); pTHatMin_PhotonEnergy->SetMargin(0.126,0,0.108,0); Exp_Jets__PhotonEnergy->SetAxisRange(0.0, 1.0, "X");
+  Exp_Jets__PhotonEnergy->SetTitle(" ; E^{Fot#acute{o}n}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{d#frac{E^{Fot#acute{o}n}}{E^{Jet}}}");
+  Exp_Jets__PhotonEnergy->GetXaxis()->SetLabelSize(0.06);  Exp_Jets__PhotonEnergy->GetYaxis()->SetTitleSize(0.06);
+  Exp_Jets__PhotonEnergy->GetXaxis()->SetTitleSize(0.06);  Exp_Jets__PhotonEnergy->GetYaxis()->SetLabelSize(0.06);
+  Exp_Jets__PhotonEnergy->GetXaxis()->SetTitleOffset(0.82);Exp_Jets__PhotonEnergy->GetYaxis()->SetTitleOffset(0.91);
+  Exp_Jets__PhotonEnergy->SetMarkerSize(12); Exp_Jets__PhotonEnergy->SetMarkerColor(40); Exp_Jets__PhotonEnergy->SetMarkerStyle(47);
+  Exp_Jets__PhotonEnergy->DrawCopy("P");    Exp_Jets__PhotonEnergy->SetMarkerColor(9);  Exp_Jets__PhotonEnergy->SetMarkerStyle(46);
   Exp_Jets__PhotonEnergy->SetLineWidth(2);  Exp_Jets__PhotonEnergy->SetLineColor(9);    Exp_Jets__PhotonEnergy->DrawCopy("E1same");
-  Pot_Jets__PhotonEnergy->SetMarkerSize(6); Pot_Jets__PhotonEnergy->SetMarkerColor(42); Pot_Jets__PhotonEnergy->SetMarkerStyle(47);
-  Pot_Jets__PhotonEnergy->DrawCopy("Psame");Pot_Jets__PhotonEnergy->SetMarkerColor(46); Pot_Jets__PhotonEnergy->SetMarkerStyle(46);
+  Pot_Jets__PhotonEnergy->SetMarkerSize(12); Pot_Jets__PhotonEnergy->SetMarkerColor(42); Pot_Jets__PhotonEnergy->SetMarkerStyle(45);
+  Pot_Jets__PhotonEnergy->DrawCopy("Psame");Pot_Jets__PhotonEnergy->SetMarkerColor(46); Pot_Jets__PhotonEnergy->SetMarkerStyle(44);
   Pot_Jets__PhotonEnergy->SetLineWidth(2);  Pot_Jets__PhotonEnergy->SetLineColor(46);   Pot_Jets__PhotonEnergy->DrawCopy("E1same");
-  Lin_Jets__PhotonEnergy->SetMarkerSize(6); Lin_Jets__PhotonEnergy->SetMarkerColor(29); Lin_Jets__PhotonEnergy->SetMarkerStyle(29);
+  Lin_Jets__PhotonEnergy->SetMarkerSize(12); Lin_Jets__PhotonEnergy->SetMarkerColor(29); Lin_Jets__PhotonEnergy->SetMarkerStyle(29);
   Lin_Jets__PhotonEnergy->DrawCopy("Psame");Lin_Jets__PhotonEnergy->SetMarkerColor(8);  Lin_Jets__PhotonEnergy->SetMarkerStyle(30);
   Lin_Jets__PhotonEnergy->SetLineWidth(2);  Lin_Jets__PhotonEnergy->SetLineColor(8);    Lin_Jets__PhotonEnergy->DrawCopy("E1same");
   Leg->Draw(); Legend->Draw(); pTHatMin_PhotonEnergy->Print("/home/saksevul/T/Parallelism/ak5Jets/pTHatMin.pdf","pdf"); pTHatMin_PhotonEnergy->Close();
 
 
   TCanvas* pTHatMin_ElectronEnergy = new TCanvas("pTHatMin_ElectronEnergy ","pTHatMin_ElectronEnergy ",0,0,5040,2160);
-  pTHatMin_ElectronEnergy->SetLogy(); pTHatMin_ElectronEnergy->SetMargin(0.11,0,0.0825,0); Exp_Jets__ElectronEnergy->SetAxisRange(0.0, 1.04, "X");
-  Exp_Jets__ElectronEnergy->SetTitle(" ; E^{Electr#acute{o}n}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Exp_Jets__ElectronEnergy->SetMarkerSize(6); Exp_Jets__ElectronEnergy->SetMarkerColor(40); Exp_Jets__ElectronEnergy->SetMarkerStyle(45);
-  Exp_Jets__ElectronEnergy->DrawCopy("P");    Exp_Jets__ElectronEnergy->SetMarkerColor(9);  Exp_Jets__ElectronEnergy->SetMarkerStyle(44);
+  pTHatMin_ElectronEnergy->SetLogy(); pTHatMin_ElectronEnergy->SetMargin(0.126,0,0.108,0); Exp_Jets__ElectronEnergy->SetAxisRange(0.0, 1.0, "X");
+  Exp_Jets__ElectronEnergy->SetTitle(" ; E^{Electr#acute{o}n}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{d#frac{E^{Electr#acute{o}n}}{E^{Jet}}}");
+  Exp_Jets__ElectronEnergy->GetXaxis()->SetLabelSize(0.06);  Exp_Jets__ElectronEnergy->GetYaxis()->SetTitleSize(0.06);
+  Exp_Jets__ElectronEnergy->GetXaxis()->SetTitleSize(0.06);  Exp_Jets__ElectronEnergy->GetYaxis()->SetLabelSize(0.06);
+  Exp_Jets__ElectronEnergy->GetXaxis()->SetTitleOffset(0.82);Exp_Jets__ElectronEnergy->GetYaxis()->SetTitleOffset(0.91);
+  Exp_Jets__ElectronEnergy->SetMarkerSize(12); Exp_Jets__ElectronEnergy->SetMarkerColor(40); Exp_Jets__ElectronEnergy->SetMarkerStyle(47);
+  Exp_Jets__ElectronEnergy->DrawCopy("P");    Exp_Jets__ElectronEnergy->SetMarkerColor(9);  Exp_Jets__ElectronEnergy->SetMarkerStyle(46);
   Exp_Jets__ElectronEnergy->SetLineWidth(2);  Exp_Jets__ElectronEnergy->SetLineColor(9);    Exp_Jets__ElectronEnergy->DrawCopy("E1same");
-  Pot_Jets__ElectronEnergy->SetMarkerSize(6); Pot_Jets__ElectronEnergy->SetMarkerColor(42); Pot_Jets__ElectronEnergy->SetMarkerStyle(47);
-  Pot_Jets__ElectronEnergy->DrawCopy("Psame");Pot_Jets__ElectronEnergy->SetMarkerColor(46); Pot_Jets__ElectronEnergy->SetMarkerStyle(46);
+  Pot_Jets__ElectronEnergy->SetMarkerSize(12); Pot_Jets__ElectronEnergy->SetMarkerColor(42); Pot_Jets__ElectronEnergy->SetMarkerStyle(45);
+  Pot_Jets__ElectronEnergy->DrawCopy("Psame");Pot_Jets__ElectronEnergy->SetMarkerColor(46); Pot_Jets__ElectronEnergy->SetMarkerStyle(44);
   Pot_Jets__ElectronEnergy->SetLineWidth(2);  Pot_Jets__ElectronEnergy->SetLineColor(46);   Pot_Jets__ElectronEnergy->DrawCopy("E1same");
-  Lin_Jets__ElectronEnergy->SetMarkerSize(6); Lin_Jets__ElectronEnergy->SetMarkerColor(29); Lin_Jets__ElectronEnergy->SetMarkerStyle(29);
+  Lin_Jets__ElectronEnergy->SetMarkerSize(12); Lin_Jets__ElectronEnergy->SetMarkerColor(29); Lin_Jets__ElectronEnergy->SetMarkerStyle(29);
   Lin_Jets__ElectronEnergy->DrawCopy("Psame");Lin_Jets__ElectronEnergy->SetMarkerColor(8);  Lin_Jets__ElectronEnergy->SetMarkerStyle(30);
   Lin_Jets__ElectronEnergy->SetLineWidth(2);  Lin_Jets__ElectronEnergy->SetLineColor(8);    Lin_Jets__ElectronEnergy->DrawCopy("E1same");
   Leg->Draw(); Legend->Draw(); pTHatMin_ElectronEnergy->Print("/home/saksevul/T/Parallelism/ak5Jets/pTHatMin.pdf","pdf"); pTHatMin_ElectronEnergy->Close();
 
 
   TCanvas* pTHatMin_NeutralHadEnergy = new TCanvas("pTHatMin_NeutralHadEnergy ","pTHatMin_NeutralHadEnergy ",0,0,5040,2160);
-  pTHatMin_NeutralHadEnergy->SetLogy(); pTHatMin_NeutralHadEnergy->SetMargin(0.11,0,0.0825,0); Exp_Jets__NeutralHadEnergy->SetAxisRange(0.0, 1.04, "X");
-  Exp_Jets__NeutralHadEnergy->SetTitle(" ; E^{HadNeutro}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Exp_Jets__NeutralHadEnergy->SetMarkerSize(6); Exp_Jets__NeutralHadEnergy->SetMarkerColor(40); Exp_Jets__NeutralHadEnergy->SetMarkerStyle(45);
-  Exp_Jets__NeutralHadEnergy->DrawCopy("P");    Exp_Jets__NeutralHadEnergy->SetMarkerColor(9);  Exp_Jets__NeutralHadEnergy->SetMarkerStyle(44);
+  pTHatMin_NeutralHadEnergy->SetLogy(); pTHatMin_NeutralHadEnergy->SetMargin(0.126,0,0.108,0); Exp_Jets__NeutralHadEnergy->SetAxisRange(0.0, 1.0, "X");
+  Exp_Jets__NeutralHadEnergy->GetXaxis()->SetLabelSize(0.06);  Exp_Jets__NeutralHadEnergy->GetYaxis()->SetTitleSize(0.06);
+  Exp_Jets__NeutralHadEnergy->GetXaxis()->SetTitleSize(0.06);  Exp_Jets__NeutralHadEnergy->GetYaxis()->SetLabelSize(0.06);
+  Exp_Jets__NeutralHadEnergy->GetXaxis()->SetTitleOffset(0.82);Exp_Jets__NeutralHadEnergy->GetYaxis()->SetTitleOffset(0.91);
+  Exp_Jets__NeutralHadEnergy->SetTitle(" ; E^{HadNeutro}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{d#frac{E^{HadNeutro}}{E^{Jet}}}");
+  Exp_Jets__NeutralHadEnergy->SetMarkerSize(12); Exp_Jets__NeutralHadEnergy->SetMarkerColor(40); Exp_Jets__NeutralHadEnergy->SetMarkerStyle(47);
+  Exp_Jets__NeutralHadEnergy->DrawCopy("P");    Exp_Jets__NeutralHadEnergy->SetMarkerColor(9);  Exp_Jets__NeutralHadEnergy->SetMarkerStyle(46);
   Exp_Jets__NeutralHadEnergy->SetLineWidth(2);  Exp_Jets__NeutralHadEnergy->SetLineColor(9);    Exp_Jets__NeutralHadEnergy->DrawCopy("E1same");
-  Pot_Jets__NeutralHadEnergy->SetMarkerSize(6); Pot_Jets__NeutralHadEnergy->SetMarkerColor(42); Pot_Jets__NeutralHadEnergy->SetMarkerStyle(47);
-  Pot_Jets__NeutralHadEnergy->DrawCopy("Psame");Pot_Jets__NeutralHadEnergy->SetMarkerColor(46); Pot_Jets__NeutralHadEnergy->SetMarkerStyle(46);
+  Pot_Jets__NeutralHadEnergy->SetMarkerSize(12); Pot_Jets__NeutralHadEnergy->SetMarkerColor(42); Pot_Jets__NeutralHadEnergy->SetMarkerStyle(45);
+  Pot_Jets__NeutralHadEnergy->DrawCopy("Psame");Pot_Jets__NeutralHadEnergy->SetMarkerColor(46); Pot_Jets__NeutralHadEnergy->SetMarkerStyle(44);
   Pot_Jets__NeutralHadEnergy->SetLineWidth(2);  Pot_Jets__NeutralHadEnergy->SetLineColor(46);   Pot_Jets__NeutralHadEnergy->DrawCopy("E1same");
-  Lin_Jets__NeutralHadEnergy->SetMarkerSize(6); Lin_Jets__NeutralHadEnergy->SetMarkerColor(29); Lin_Jets__NeutralHadEnergy->SetMarkerStyle(29);
+  Lin_Jets__NeutralHadEnergy->SetMarkerSize(12); Lin_Jets__NeutralHadEnergy->SetMarkerColor(29); Lin_Jets__NeutralHadEnergy->SetMarkerStyle(29);
   Lin_Jets__NeutralHadEnergy->DrawCopy("Psame");Lin_Jets__NeutralHadEnergy->SetMarkerColor(8);  Lin_Jets__NeutralHadEnergy->SetMarkerStyle(30);
   Lin_Jets__NeutralHadEnergy->SetLineWidth(2);  Lin_Jets__NeutralHadEnergy->SetLineColor(8);    Lin_Jets__NeutralHadEnergy->DrawCopy("E1same");
   Leg->Draw(); Legend->Draw(); pTHatMin_NeutralHadEnergy->Print("/home/saksevul/T/Parallelism/ak5Jets/pTHatMin.pdf","pdf"); pTHatMin_NeutralHadEnergy->Close();
 
 
   TCanvas* pTHatMin_ChargedHadEnergy = new TCanvas("pTHatMin_ChargedHadEnergy ","pTHatMin_ChargedHadEnergy ",0,0,5040,2160);
-  pTHatMin_ChargedHadEnergy->SetLogy(); pTHatMin_ChargedHadEnergy->SetMargin(0.11,0,0.0825,0); Exp_Jets__ChargedHadEnergy->SetAxisRange(0.0, 1.04, "X");
-  Exp_Jets__ChargedHadEnergy->SetTitle(" ; E^{HadCargado}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{dE}");
-  Exp_Jets__ChargedHadEnergy->SetMarkerSize(6); Exp_Jets__ChargedHadEnergy->SetMarkerColor(40); Exp_Jets__ChargedHadEnergy->SetMarkerStyle(45);
-  Exp_Jets__ChargedHadEnergy->DrawCopy("P");    Exp_Jets__ChargedHadEnergy->SetMarkerColor(9);  Exp_Jets__ChargedHadEnergy->SetMarkerStyle(44);
+  pTHatMin_ChargedHadEnergy->SetLogy(); pTHatMin_ChargedHadEnergy->SetMargin(0.126,0,0.108,0); Exp_Jets__ChargedHadEnergy->SetAxisRange(0.0, 1.0, "X");
+  Exp_Jets__ChargedHadEnergy->GetXaxis()->SetLabelSize(0.06);  Exp_Jets__ChargedHadEnergy->GetYaxis()->SetTitleSize(0.06);
+  Exp_Jets__ChargedHadEnergy->GetXaxis()->SetTitleSize(0.06);  Exp_Jets__ChargedHadEnergy->GetYaxis()->SetLabelSize(0.06);
+  Exp_Jets__ChargedHadEnergy->GetXaxis()->SetTitleOffset(0.82);Exp_Jets__ChargedHadEnergy->GetYaxis()->SetTitleOffset(0.91);
+  Exp_Jets__ChargedHadEnergy->SetTitle(" ; E^{HadCargado}/E^{Jet}; #frac{1}{N_{Tot}} #frac{dN}{d#frac{E^{HadCargado}}{E^{Jet}}}");
+  Exp_Jets__ChargedHadEnergy->SetMarkerSize(12); Exp_Jets__ChargedHadEnergy->SetMarkerColor(40); Exp_Jets__ChargedHadEnergy->SetMarkerStyle(47);
+  Exp_Jets__ChargedHadEnergy->DrawCopy("P");    Exp_Jets__ChargedHadEnergy->SetMarkerColor(9);  Exp_Jets__ChargedHadEnergy->SetMarkerStyle(46);
   Exp_Jets__ChargedHadEnergy->SetLineWidth(2);  Exp_Jets__ChargedHadEnergy->SetLineColor(9);    Exp_Jets__ChargedHadEnergy->DrawCopy("E1same");
-  Pot_Jets__ChargedHadEnergy->SetMarkerSize(6); Pot_Jets__ChargedHadEnergy->SetMarkerColor(42); Pot_Jets__ChargedHadEnergy->SetMarkerStyle(47);
-  Pot_Jets__ChargedHadEnergy->DrawCopy("Psame");Pot_Jets__ChargedHadEnergy->SetMarkerColor(46); Pot_Jets__ChargedHadEnergy->SetMarkerStyle(46);
+  Pot_Jets__ChargedHadEnergy->SetMarkerSize(12); Pot_Jets__ChargedHadEnergy->SetMarkerColor(42); Pot_Jets__ChargedHadEnergy->SetMarkerStyle(45);
+  Pot_Jets__ChargedHadEnergy->DrawCopy("Psame");Pot_Jets__ChargedHadEnergy->SetMarkerColor(46); Pot_Jets__ChargedHadEnergy->SetMarkerStyle(44);
   Pot_Jets__ChargedHadEnergy->SetLineWidth(2);  Pot_Jets__ChargedHadEnergy->SetLineColor(46);   Pot_Jets__ChargedHadEnergy->DrawCopy("E1same");
-  Lin_Jets__ChargedHadEnergy->SetMarkerSize(6); Lin_Jets__ChargedHadEnergy->SetMarkerColor(29); Lin_Jets__ChargedHadEnergy->SetMarkerStyle(29);
+  Lin_Jets__ChargedHadEnergy->SetMarkerSize(12); Lin_Jets__ChargedHadEnergy->SetMarkerColor(29); Lin_Jets__ChargedHadEnergy->SetMarkerStyle(29);
   Lin_Jets__ChargedHadEnergy->DrawCopy("Psame");Lin_Jets__ChargedHadEnergy->SetMarkerColor(8);  Lin_Jets__ChargedHadEnergy->SetMarkerStyle(30);
   Lin_Jets__ChargedHadEnergy->SetLineWidth(2);  Lin_Jets__ChargedHadEnergy->SetLineColor(8);    Lin_Jets__ChargedHadEnergy->DrawCopy("E1same");
   Leg->Draw(); Legend->Draw(); pTHatMin_ChargedHadEnergy->Print("/home/saksevul/T/Parallelism/ak5Jets/pTHatMin.pdf)","pdf"); pTHatMin_ChargedHadEnergy->Close();

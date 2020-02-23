@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-2.root", "RECREATE"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-2.root", "RECREATE"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
   // Histograms.
   // FastJet.
   TH1F* h_Jets_pt_         = new TH1F("Jets_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 1200, 0, 2400);
@@ -146,7 +146,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
   // Process selection.
   pythia.readString("HardQCD:all = on");
-  pythia.readString("PhaseSpace:pTHatMin = 2.0"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  pythia.readString("PhaseSpace:pTHatMin = 2.0"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
   // pythia.readString("HardQCD:hardccbar = on");
   // pythia.readString("HardQCD:hardbbbar = on");
   // pythia.readString("HardQCD:3parton = on");
@@ -167,14 +167,12 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
 
   // Number of events, generated and listed ones (for jets). (Ver y/o editar bashMacro, 2 en total).
   int nEvent    = 4800;
-  printf("\n\n\n\t Numero de Eventos = %i \t pTHatMin = 2.0\n\n\t Salida:  ak5FJ-2.root \n\n\n\n", nEvent); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 6 en total).
+  printf("\n\n\n\n\t JCA: ak5FastJet, \t NoE = %i  @  pTHatMin = 2.0 \n\n\n\n\n", nEvent); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
   // Select common parameters FastJet analyses.
-  int    JCA    = -1;     // anti-kT= -1; C/A = 0; kT = 1.
+  int    JCA    = -1;     // anti-kT= -1; kT = 1.
   double R      = 0.5;    // Jet size.
   double pTMin  = 3.0;    // Min jet pT.
   double etaMax = 1.479;    // Pseudorapidity range of detector.
-  int    select = 2;      // Which particles are included?
-  int    massSet= 2;      // Which mass are they assumed to have?
 
   fastjet::JetDefinition jetDef(fastjet::genkt_algorithm, R, JCA);
   std::vector <fastjet::PseudoJet> fjInputs;  //
@@ -189,30 +187,20 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
     // Begin FastJet analysis: extract particles from event record.
     fjInputs.resize(0);    Vec4   pTemp;    double mTemp;
 
-    for (int i = 0; i < event.size(); ++i) if ( event[i].isFinal()) {      // Require visible/charged particles inside detector.
-      if      (select >  2 &&  event[i].isNeutral() ) continue;
-      else if (select == 2 && !event[i].isVisible() ) continue;   // Particle with strong or electric charge, or composed of ones having it.
-      if (/*etaMax < 20. &&*/ abs(event[i].eta()) > etaMax ) continue;
+    for (int i=0; i<event.size(); ++i) if (event[i].isFinal()) {      // Require visible/charged particles inside detector.
 
-      if ( abs(event[i].id()) == 13 && event[i].e() < 4.00 ) continue;
-      else if ( abs(event[i].id()) == 22 && event[i].e() < 0.32) continue;
-      else if ( abs(event[i].id()) == 11 && event[i].e() < 3.00) continue;
-      else if ( abs(event[i].isNeutral()) && event[i].e() < 0.80) continue;
-      else if ( abs(event[i].isCharged()) && event[i].e() < 0.40) continue;
+      if (!event[i].isVisible()) continue;   // Particle with strong or electric charge, or composed of ones having it.
+
+      if (abs(event[i].eta()) > 3.0) continue;
+
+      if      (abs(event[i].id())==13 && event[i].e()<4.00) continue;   // Muón.
+      else if (abs(event[i].id())==22 && event[i].e()<0.32) continue;   // Fotón.
+      else if (abs(event[i].id())==11 && event[i].e()<2.20) continue;   // Electrón.
+      else if (abs(event[i].isNeutral()) && event[i].e()<0.80) continue;// Hadrón Neutro.
+      else if (abs(event[i].isCharged()) && event[i].e()<0.60) continue;// Hadrón Cargado.
 
       // Create a PseudoJet from the complete Pythia particle.
       fastjet::PseudoJet particleTemp = event[i];
-
-      // Optionally modify mass and energy.
-      pTemp = event[i].p();
-      mTemp = event[i].m();
-      if (massSet < 2) {
-        mTemp = (massSet == 0 || event[i].id() == 22) ? 0. : 0.13957;
-        pTemp.e( sqrt(pTemp.pAbs2() + mTemp*mTemp) );
-        particleTemp.reset_momentum( pTemp.px(), pTemp.py(), pTemp.pz(), pTemp.e() );
-      }
-
-      // particleTemp.reset_momentum( event[i].px(), event[i].py(), event[i].pz(), event[i].e() );
 
       // Esto es para poder conocer índice del evento de cada constituyentes del Jet.
       particleTemp.set_user_info( new MyInfo( i ) );  // particleTemp son las partículas candidatas a formar parte del Jet.
@@ -233,32 +221,35 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
     // #######################################################################################################################################################################
     // Esto ya es de mi propia cosecha.
     for (size_t i=0; i<sortedJets.size(); i++){
+      if (abs(sortedJets[i].eta()) > etaMax) continue;
 
       Float_t MuonEnergy=0.0, PhotonEnergy=0.0, ElectronEnergy=0.0, NeutralHadEnergy=0.0, ChargedHadEnergy=0.0;
       Int_t MuonMultiplicity=0, PhotonMultiplicity=0, ElectronMultiplicity=0, NeutralHadMultiplicity=0, ChargedHadMultiplicity=0;
 
-      if ( abs(sortedJets[i].eta()) > etaMax ) continue;
+      for (size_t j=0; j<sortedJets[i].constituents().size(); j++) {
+        Int_t JCIndex = sortedJets[i].constituents()[j].user_info<MyInfo>().Index(); // Event Index.
+        // Muons.
+        if      (abs(event[JCIndex].id())==13){ MuonMultiplicity=MuonMultiplicity+1;  MuonEnergy=MuonEnergy+sortedJets[i].constituents()[j].E(); }
+        // Photons.
+        else if (abs(event[JCIndex].id())==22){ PhotonMultiplicity=PhotonMultiplicity+1;  PhotonEnergy=PhotonEnergy+sortedJets[i].constituents()[j].E(); }
+        // Electrons.
+        else if (abs(event[JCIndex].id())==11){ ElectronMultiplicity=ElectronMultiplicity+1;  ElectronEnergy=ElectronEnergy+sortedJets[i].constituents()[j].E(); }
+        // Neutral Hadrons.
+        else if (event[JCIndex].isNeutral() ) { NeutralHadMultiplicity=NeutralHadMultiplicity+1;  NeutralHadEnergy=NeutralHadEnergy+sortedJets[i].constituents()[j].E(); }
+        // Charged Hadrons.
+        else if (event[JCIndex].isCharged() ) { ChargedHadMultiplicity=ChargedHadMultiplicity+1;  ChargedHadEnergy=ChargedHadEnergy+sortedJets[i].constituents()[j].E(); }
+      }
+
+      if (MuonMultiplicity>0 && MuonEnergy/MuonMultiplicity<8.0) continue;
+      if (PhotonMultiplicity>0 && PhotonEnergy/PhotonMultiplicity<0.8) continue;
+      if (ElectronMultiplicity>0 && ElectronEnergy/ElectronMultiplicity<3.8) continue;
+      if (NeutralHadMultiplicity>0 && NeutralHadEnergy/NeutralHadMultiplicity<2.6) continue;
+      if (ChargedHadMultiplicity>0 && ChargedHadEnergy/ChargedHadMultiplicity<1.0) continue;
 
       h_Jets_pt_ -> Fill(sortedJets[i].pt());
       h_Jets_eta_-> Fill(sortedJets[i].eta());
       // Multiplicidad de Jets en cada Evento.
       h_Jets__Multiplicity -> Fill(sortedJets.size());
-
-      for (size_t j=0; j<sortedJets[i].constituents().size(); j++) {
-
-        Int_t JCIndex = sortedJets[i].constituents()[j].user_info<MyInfo>().Index(); // Event Index.
-
-        // Muons.
-        if      (abs(event[JCIndex].id())==13) {MuonEnergy=MuonEnergy + sortedJets[i].constituents()[j].E(); MuonMultiplicity=MuonMultiplicity+1;}
-        // Photons.
-        else if (abs(event[JCIndex].id())==22) {PhotonEnergy=PhotonEnergy + sortedJets[i].constituents()[j].E(); PhotonMultiplicity=PhotonMultiplicity+1;}
-        // Electrons.
-        else if (abs(event[JCIndex].id())==11) {ElectronEnergy=ElectronEnergy + sortedJets[i].constituents()[j].E(); ElectronMultiplicity=ElectronMultiplicity+1;}
-        // Neutral Hadrons.
-        else if (event[JCIndex].isNeutral()  ) {NeutralHadEnergy=NeutralHadEnergy + sortedJets[i].constituents()[j].E(); NeutralHadMultiplicity=NeutralHadMultiplicity+1;}
-        // Charged Hadrons.
-        else if (event[JCIndex].isCharged()  ) {ChargedHadEnergy=ChargedHadEnergy + sortedJets[i].constituents()[j].E(); ChargedHadMultiplicity=ChargedHadMultiplicity+1;}
-      }
 
       // Energies.
       Float_t JetEnergy = MuonEnergy + PhotonEnergy + ElectronEnergy + NeutralHadEnergy + ChargedHadEnergy;
