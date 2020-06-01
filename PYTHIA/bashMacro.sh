@@ -6,7 +6,7 @@ start_date=$(date +%x) && start_time=$(date +%X)
 # Macro Maestro (MM).
 MM=Simulacion.cc
 # Ruta al Directorio del Macro Maestro (RutaDMM).
-RutaDMM=/home/saksevul/T/PYTHIA
+RutaDMM=/home/saksevul/T/Pythia
 # Ruta al Directorio de Archivos de Salida (RutaDAS) (ver y/o editar MM 2 en total).
 RutaDAS=$RutaDMM/FastJet
 # inicial Algoritmo de Reconstrucción de Jets (pARJ).
@@ -92,7 +92,7 @@ do
   ppTHM=$ipTHM;  pNoE=$iNoE
 
   # Eliminamos los archivos viejos, pues serán remplazados.
-	rm $RutaDAS/$ARJ\FJ\2.root
+	rm $RutaDAS/$ARJ\FJ.root
   # Creamos un único archivo de salida para cada ARJ.
 	hadd $RutaDAS/$ARJ\FJ\2.root $RutaDAS/$ARJ\FJ-*.root
   # Eliminamos los archivos individuales.

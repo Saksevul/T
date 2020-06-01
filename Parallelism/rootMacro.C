@@ -1,7 +1,7 @@
 void EnergyQuotient() {
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ2.root");
+  TFile *FJFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ.root");
   TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
   TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
   TFile *MinBiasFile = new TFile("/home/saksevul/T/OpenData/MinBias_20000/ak5PF.root");
@@ -5498,7 +5498,7 @@ void EnergyQuotient() {
 
 void Multiplicidad() {
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
+  TFile *FJFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ.root");
   TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
   TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
   TFile *MultiJetFile = new TFile("/home/saksevul/T/OpenData/MultiJet_20000/ak5PF.root");

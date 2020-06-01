@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   // Create the ROOT application environment.
   TApplication theApp("hist", &argc, argv);
   // Create file on which histogram(s) can be saved.
-  TFile* OutputFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ-2.root", "RECREATE"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
+  TFile* OutputFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ.root", "RECREATE"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
   // Histograms.
   // FastJet.
   TH1F* h_Jets_pt_         = new TH1F("Jets_pt_",  "Espectro de p_{T} de ak5FastJet; p_{T} [GeV]; Ocurrencia", 1200, 0, 2400);

@@ -33,7 +33,6 @@ void Limits() {
   TH1F *MultiJet_CharHadEnergy =(TH1F*)MultiJetFile->Get("Jets_nChargedHadronEnergy"); MultiJet_CharHadEnergy->Scale(1.0/MultiJet_CharHadEnergy->Integral()); MultiJet_CharHadEnergy->Rebin(20);
 
 
-
   TH1F *CLONE_Jet_MuonEnergy =(TH1F*)Jet_MuonEnergy->Clone(); CLONE_Jet_MuonEnergy->SetMarkerSize(6); CLONE_Jet_MuonEnergy->SetMarkerStyle(23); CLONE_Jet_MuonEnergy->SetMarkerColor(42);
   TH1F *CLONE_BTag_MuonEnergy =(TH1F*)BTag_MuonEnergy->Clone(); CLONE_BTag_MuonEnergy->SetMarkerSize(6); CLONE_BTag_MuonEnergy->SetMarkerStyle(22); CLONE_BTag_MuonEnergy->SetMarkerColor(33);
   TH1F *CLONE_MinBias_MuonEnergy =(TH1F*)MinBias_MuonEnergy->Clone(); CLONE_MinBias_MuonEnergy->SetMarkerSize(6); CLONE_MinBias_MuonEnergy->SetMarkerStyle(20); CLONE_MinBias_MuonEnergy->SetMarkerColor(5);
@@ -63,8 +62,8 @@ void Limits() {
 
 
   TCanvas* Limite_Energia_Muones = new TCanvas("Limite_Energia_Muones","Limite de E para Muones",0,0,3840,2160);
-  Limite_Energia_Muones->SetLogy(); Limite_Energia_Muones->SetMargin(0.14,0,0.142,0); // Jet_MuonEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_MuonEnergy->SetTitle(" ; #frac{E^{Mu#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Mu#acute{o}n}}{Mult}}");
+  Limite_Energia_Muones->SetLogy(); Limite_Energia_Muones->SetMargin(0.14,0.014,0.15,0); // Jet_MuonEnergy->SetAxisRange(0.0, 10.0, "X");
+  Jet_MuonEnergy->SetTitle(" ; #frac{E^{Mu#acute{o}n}}{Mult^{Mu#acute{o}n}} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Mu#acute{o}n}}{Mult^{Mu#acute{o}n}}}");
   Jet_MuonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_MuonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_MuonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_MuonEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_MuonEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -80,11 +79,11 @@ void Limits() {
   MultiJet_MuonEnergy->SetMarkerSize(4);  MultiJet_MuonEnergy->SetMarkerColor(8);  MultiJet_MuonEnergy->SetMarkerStyle(34);
   MultiJet_MuonEnergy->DrawCopy("Psame"); MultiJet_MuonEnergy->SetMarkerColor(32); MultiJet_MuonEnergy->SetMarkerStyle(28);
   MultiJet_MuonEnergy->SetLineWidth(2);   MultiJet_MuonEnergy->SetLineColor(32);   MultiJet_MuonEnergy->DrawCopy("Esame");
-  Leg->Draw();Legend->Draw(); Limite_Energia_Muones->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Limits.pdf(","pdf"); Limite_Energia_Muones->Close();
+  Leg->Draw();Legend->Draw(); Limite_Energia_Muones->Print("/home/saksevul/T/Parallelism/Comparisons/Energy_Lim-ak5Jets.pdf(","pdf"); Limite_Energia_Muones->Close();
 
   TCanvas* Limite_Energia_Fotones = new TCanvas("Limite_Energia_Fotones","Limite de E para Fotones",0,0,3840,2160);
-  Limite_Energia_Fotones->SetLogy(); Limite_Energia_Fotones->SetMargin(0.14,0,0.142,0); // Jet_PhotonEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_PhotonEnergy->SetTitle(" ; #frac{E^{Fot#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Fot#acute{o}n}}{Mult}}");
+  Limite_Energia_Fotones->SetLogy(); Limite_Energia_Fotones->SetMargin(0.14,0.014,0.15,0); // Jet_PhotonEnergy->SetAxisRange(0.0, 10.0, "X");
+  Jet_PhotonEnergy->SetTitle(" ; #frac{E^{Fot#acute{o}n}}{Mult^{Fot#acute{o}n}} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Fot#acute{o}n}}{Mult^{Fot#acute{o}n}}}");
   Jet_PhotonEnergy->GetXaxis()->SetLabelSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleSize(0.05); Jet_PhotonEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_PhotonEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_PhotonEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -100,11 +99,11 @@ void Limits() {
   MultiJet_PhotonEnergy->SetMarkerSize(4);  MultiJet_PhotonEnergy->SetMarkerColor(8);  MultiJet_PhotonEnergy->SetMarkerStyle(34);
   MultiJet_PhotonEnergy->DrawCopy("Psame"); MultiJet_PhotonEnergy->SetMarkerColor(32); MultiJet_PhotonEnergy->SetMarkerStyle(28);
   MultiJet_PhotonEnergy->SetLineWidth(2);   MultiJet_PhotonEnergy->SetLineColor(32);   MultiJet_PhotonEnergy->DrawCopy("Esame");
-  Leg->Draw();Legend->Draw(); Limite_Energia_Fotones->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Limits.pdf","pdf"); Limite_Energia_Fotones->Close();
+  Leg->Draw();Legend->Draw(); Limite_Energia_Fotones->Print("/home/saksevul/T/Parallelism/Comparisons/Energy_Lim-ak5Jets.pdf","pdf"); Limite_Energia_Fotones->Close();
 
   TCanvas* Limite_Energia_Electrones = new TCanvas("Limite_Energia_Electrones","Limite E para Electrones",0,0,3840,2160);
-  Limite_Energia_Electrones->SetLogy(); Limite_Energia_Electrones->SetMargin(0.14,0,0.142,0); // Jet_ElectronEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_ElectronEnergy->SetTitle(" ; #frac{E^{Electr#acute{o}n}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Electr#acute{o}n}}{Mult}}");
+  Limite_Energia_Electrones->SetLogy(); Limite_Energia_Electrones->SetMargin(0.14,0.014,0.15,0); // Jet_ElectronEnergy->SetAxisRange(0.0, 10.0, "X");
+  Jet_ElectronEnergy->SetTitle(" ; #frac{E^{Electr#acute{o}n}}{Mult^{Electr#acute{o}n}} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{Electr#acute{o}n}}{Mult^{Electr#acute{o}n}}}");
   Jet_ElectronEnergy->GetXaxis()->SetLabelSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleSize(0.05); Jet_ElectronEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_ElectronEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_ElectronEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -120,11 +119,11 @@ void Limits() {
   MultiJet_ElectronEnergy->SetMarkerSize(4);  MultiJet_ElectronEnergy->SetMarkerColor(8);  MultiJet_ElectronEnergy->SetMarkerStyle(34);
   MultiJet_ElectronEnergy->DrawCopy("Psame"); MultiJet_ElectronEnergy->SetMarkerColor(32); MultiJet_ElectronEnergy->SetMarkerStyle(28);
   MultiJet_ElectronEnergy->SetLineWidth(2);   MultiJet_ElectronEnergy->SetLineColor(32);   MultiJet_ElectronEnergy->DrawCopy("Esame");
-  Leg->Draw();Legend->Draw(); Limite_Energia_Electrones->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Limits.pdf","pdf"); Limite_Energia_Electrones->Close();
+  Leg->Draw();Legend->Draw(); Limite_Energia_Electrones->Print("/home/saksevul/T/Parallelism/Comparisons/Energy_Lim-ak5Jets.pdf","pdf"); Limite_Energia_Electrones->Close();
 
   TCanvas* Limite_Energia_HadNeutros = new TCanvas("Limite_Energia_HadNeutros","Limite E para HadNeutros",0,0,3840,2160);
-  Limite_Energia_HadNeutros->SetLogy(); Limite_Energia_HadNeutros->SetMargin(0.14,0,0.14,0); // Jet_NeuHadEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_NeuHadEnergy->SetTitle(" ; #frac{E^{HadNeutro}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{HadNeutro}}{Mult}}");
+  Limite_Energia_HadNeutros->SetLogy(); Limite_Energia_HadNeutros->SetMargin(0.14,0.014,0.15,0); // Jet_NeuHadEnergy->SetAxisRange(0.0, 10.0, "X");
+  Jet_NeuHadEnergy->SetTitle(" ; #frac{E^{HadNeutro}}{Mult^{HadNeutro}} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{HadNeutro}}{Mult^{HadNeutro}}}");
   Jet_NeuHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_NeuHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_NeuHadEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_NeuHadEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -140,11 +139,11 @@ void Limits() {
   MultiJet_NeuHadEnergy->SetMarkerSize(4);  MultiJet_NeuHadEnergy->SetMarkerColor(8);  MultiJet_NeuHadEnergy->SetMarkerStyle(34);
   MultiJet_NeuHadEnergy->DrawCopy("Psame"); MultiJet_NeuHadEnergy->SetMarkerColor(32); MultiJet_NeuHadEnergy->SetMarkerStyle(28);
   MultiJet_NeuHadEnergy->SetLineWidth(2);   MultiJet_NeuHadEnergy->SetLineColor(32);   MultiJet_NeuHadEnergy->DrawCopy("Esame");
-  Leg->Draw();Legend->Draw(); Limite_Energia_HadNeutros->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Limits.pdf","pdf"); Limite_Energia_HadNeutros->Close();
+  Leg->Draw();Legend->Draw(); Limite_Energia_HadNeutros->Print("/home/saksevul/T/Parallelism/Comparisons/Energy_Lim-ak5Jets.pdf","pdf"); Limite_Energia_HadNeutros->Close();
 
   TCanvas* Limite_Energia_HadCargados = new TCanvas("Limite_Energia_HadCargados","Limite E para HadCargados",0,0,3840,2160);
-  Limite_Energia_HadCargados->SetLogy(); Limite_Energia_HadCargados->SetMargin(0.14,0,0.14,0); // Jet_CharHadEnergy->SetAxisRange(0.0, 10.0, "X");
-  Jet_CharHadEnergy->SetTitle(" ; #frac{E^{HadCargado}}{Mult} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{HadCargado}}{Mult}}");
+  Limite_Energia_HadCargados->SetLogy(); Limite_Energia_HadCargados->SetMargin(0.14,0.014,0.15,0); // Jet_CharHadEnergy->SetAxisRange(0.0, 10.0, "X");
+  Jet_CharHadEnergy->SetTitle(" ; #frac{E^{HadCargado}}{Mult^{HadCargado}} [GeV]; #frac{1}{N_{Tot}} #frac{dN}{d #frac{E^{HadCargado}}{Mult^{HadCargado}}}");
   Jet_CharHadEnergy->GetXaxis()->SetLabelSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetLabelSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleSize(0.05); Jet_CharHadEnergy->GetYaxis()->SetTitleSize(0.05);
   Jet_CharHadEnergy->GetXaxis()->SetTitleOffset(1.2);Jet_CharHadEnergy->GetYaxis()->SetTitleOffset(1.2);
@@ -160,7 +159,7 @@ void Limits() {
   MultiJet_CharHadEnergy->SetMarkerSize(4);  MultiJet_CharHadEnergy->SetMarkerColor(8);  MultiJet_CharHadEnergy->SetMarkerStyle(34);
   MultiJet_CharHadEnergy->DrawCopy("Psame"); MultiJet_CharHadEnergy->SetMarkerColor(32); MultiJet_CharHadEnergy->SetMarkerStyle(28);
   MultiJet_CharHadEnergy->SetLineWidth(2);   MultiJet_CharHadEnergy->SetLineColor(32);   MultiJet_CharHadEnergy->DrawCopy("Esame");
-  Leg->Draw();Legend->Draw(); Limite_Energia_HadCargados->Print("/home/saksevul/T/Parallelism/ak5Jets/Energy_Limits.pdf)","pdf"); Limite_Energia_HadCargados->Close();
+  Leg->Draw();Legend->Draw(); Limite_Energia_HadCargados->Print("/home/saksevul/T/Parallelism/Comparisons/Energy_Lim-ak5Jets.pdf)","pdf"); Limite_Energia_HadCargados->Close();
 
 
 }
@@ -170,7 +169,7 @@ void Limits() {
 void Kinematics() {
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
+  TFile *FJFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ.root");
   TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
   TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
   TFile *MinBiasFile = new TFile("/home/saksevul/T/OpenData/MinBias_20000/ak5PF.root");
@@ -394,7 +393,7 @@ void Kinematics() {
 void Multiplicities() {
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *FJFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ.root");
+  TFile *FJFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ.root");
   TFile *JetFile = new TFile("/home/saksevul/T/OpenData/Jet_20000/ak5PF.root");
   TFile *BTagFile = new TFile("/home/saksevul/T/OpenData/BTag_20000/ak5PF.root");
   TFile *MinBiasFile = new TFile("/home/saksevul/T/OpenData/MinBias_20000/ak5PF.root");
@@ -558,9 +557,9 @@ void Multiplicities() {
 void pTHatMin() {
 
   //Abrimos el archivo que nos interesa y el árbol que queremos leer.
-  TFile *ExpFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Exponencial).root");
-  TFile *PotFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Potencial).root");
-  TFile *LinFile = new TFile("/home/saksevul/T/PYTHIA/FastJet/ak5FJ(Lineal).root");
+  TFile *ExpFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ(Exponencial).root");
+  TFile *PotFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ(Potencial).root");
+  TFile *LinFile = new TFile("/home/saksevul/T/Pythia/FastJet/ak5FJ(Lineal).root");
 
   // Parámetro de Rebin.
   Int_t nRB = 5;
@@ -742,8 +741,8 @@ void pTHatMin() {
 //##########################################################################################################################################################
 void rootMacro_Limits(){  gStyle->SetOptStat(0);
 
-  // Limits();
+  Limits();
   // Kinematics();
   // Multiplicities();
-  pTHatMin();
+  // pTHatMin();
 }
