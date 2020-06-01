@@ -377,6 +377,6 @@ void Analisis() {   Float_t PI=TMath::Pi(); Int_t nprint=1;
   // new TBrowser();
 
 
-    printf("\t\t %i) Análisis terminado. Fuck yeah!\n\n", nprint++);
+    printf("\t\t %i) Análisis terminado!\n\n", nprint++);
 
 }

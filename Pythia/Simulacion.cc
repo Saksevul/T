@@ -122,38 +122,14 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   TH1F *h_Jets__EnergyQuot_ChargedHad_800Jet900  = new TH1F("Jets_Energy_Quot__ChargedHad-800Jet900", "Cociente Energ#acute{i}a  ChargedHad / 800<ak5FastJet<900; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_900Jet1000 = new TH1F("Jets_Energy_Quot__ChargedHad-900Jet1000", "Cociente Energ#acute{i}a  ChargedHad / 900<ak5FastJet<1000; Indice; Frecuencia", 120, 0, 1.2);
   TH1F *h_Jets__EnergyQuot_ChargedHad_1000Jet    = new TH1F("Jets_Energy_Quot__ChargedHad-1000Jet",   "Cociente Energ#acute{i}a  ChargedHad / 1000<ak5FastJet; Indice; Frecuencia", 120, 0, 1.2);
-// Distancia angular.
-  // TH1F* h_Jets__D__Jet_Jet  = new TH1F("ak5FastJet__D__Jet-Jet", "Distancia angular #sqrt{(#Delta#phi_{ij})^{2} + (#Delta#eta_{ij})^{2}} del ak5FastJet_{i} al ak5FastJet_{j}, por Evento; Valor; Ocurrencia", 120, 0, 12);
-  // // Pdg Id().
-  // TH1I*h__Pdg_Id = new TH1I("Pdg_Id", "Partículas contenidas en los Jets; PDG id(); Frecuencia", 800, -4000, 4000);
-  // TH1I*h__OtherPdg_Id = new TH1I("OtherPdg_Id", "Partículas contenidas en los Jets; PDG id(); Frecuencia", 800, -4000, 4000);
-  // TH1I*h__JetMother = new TH1I("JetMother", "Madre de Jet; PDG id(); Frecuencia", 43, -21.5, 21.5);
-  // TH1I*h__OtherMother = new TH1I("OtherMother", "Madre de Jet distinta a Quark o Gluon; PDG id(); Frecuencia", 43, -21.5, 21.5);
 
   // Generator. Shorthand for event.
   Pythia pythia;
   Event& event = pythia.event;
 
-  // // Soft QCD processes.
-  // pythia.readString("SoftQCD:nonDiffractive = on");
-  // pythia.readString("SoftQCD:singleDiffractive = on");
-  // pythia.readString("SoftQCD:doubleDiffractive = on");
-  // pythia.readString("PhaseSpace:pTHatMin = 2.0");
-  // pythia.readString("PhaseSpace:pTHatMax = 1200.0");
-  // pythia.readString("PhaseSpace:mHatMax = 1200.0");
-  // pythia.readString("ParticleDecays:limitTau0 = On");
-  // pythia.readString("ParticleDecays:tau0Max = 10.0");
-
   // Process selection.
   pythia.readString("HardQCD:all = on");
   pythia.readString("PhaseSpace:pTHatMin = 2.0"); // initial pT Hat Minimum (ver y/o editar Master Macro y ciclo for pTHM, 5 en total).
-  // pythia.readString("HardQCD:hardccbar = on");
-  // pythia.readString("HardQCD:hardbbbar = on");
-  // pythia.readString("HardQCD:3parton = on");
-  // pythia.readString("PromptPhoton:all = on");
-  // pythia.readString("WeakBosonExchange:all = on");
-  // pythia.readString("ParticleDecays:limitTau0 = On");
-  // pythia.readString("ParticleDecays:tau0Max = 10.0");
 
   // No event record printout.
   pythia.readString("Next:numberShowInfo = 0");
@@ -174,11 +150,9 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   double pTMin  = 3.0;    // Min jet pT.
   double etaMax = 1.479;    // Pseudorapidity range of detector.
 
+  // Set up FastJet jet finder. // generalised k_T algorithm.
   fastjet::JetDefinition jetDef(fastjet::genkt_algorithm, R, JCA);
   std::vector <fastjet::PseudoJet> fjInputs;  //
-  // Set up FastJet jet finder. // generalised k_T algorithm.
-  //fastjet::JetDefinition jetDef(algorithm, R);
-  // there's no need for a pointer to the jetDef (it's a fairly small object)
 
 
   // Begin event loop. Generate event. Skip if error. Por Evento se refiere a una colisión o a un decaimiento.
@@ -215,7 +189,6 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
     fastjet::ClusterSequence clustSeq(fjInputs, jetDef);
     inclusiveJets = clustSeq.inclusive_jets(pTMin);
     sortedJets    = sorted_by_pt(inclusiveJets);
-
 
 
     // #######################################################################################################################################################################
@@ -452,8 +425,6 @@ int main(int argc, char* argv[]) {   // Float_t PI=3.1415927;
   h_Jets__EnergyQuot_ChargedHad_800Jet900 -> Write();
   h_Jets__EnergyQuot_ChargedHad_900Jet1000-> Write();
   h_Jets__EnergyQuot_ChargedHad_1000Jet   -> Write();
-  // Distancia Angular.
-  // h_Jets__D__Jet_Jet -> Write();
 
   // Done.
   delete OutputFile;

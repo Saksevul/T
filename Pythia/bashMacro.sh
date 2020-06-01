@@ -66,13 +66,10 @@ do
     sed -i "s/\-$ppTHM.root/\-$pTHM.root/g" $MM
     # Cabiamos el valor del pTHatMin.
   	sed -i "s/pTHatMin\ =\ $ppTHM.0/pTHatMin\ =\ $pTHM.0/g" $MM
-    # Numero de eventos en función de pTHatMin.
-    # # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*10^(-pTHM/1000); print x}')
-    # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*(10^(-pTHM/1000)-10^(-3500/1000)); print int(x)}')
-    # # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*pTHM^(-0.3); print x}')
-    NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=2.5*iNoE*(pTHM^(-0.1)-3500^(-0.1)); print int(x)}')
-    # # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE/4.0-pTHM/12.0; print x}')
-    # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=(iNoE/(14400.0))*(3500-pTHM); print int(x)}')
+    # Numero de eventos en función de pTHatMin.                 # Exponencial.
+      # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=iNoE*(10^(-pTHM/1000)-10^(-3500/1000)); print int(x)}')  # Exponencial.
+      NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=2.5*iNoE*(pTHM^(-0.1)-3500^(-0.1)); print int(x)}')      # Potencial.
+      # NoE=$(awk -v pTHM=$pTHM -v iNoE=$iNoE 'BEGIN{x=(iNoE/(14400.0))*(3500-pTHM); print int(x)}')            # Lineal.
     # Sumamos estos Eventos al Total de Eventos.
     TNoE=$(awk -v NoE=$NoE -v TNoE=$TNoE 'BEGIN{x=TNoE+NoE; print x}')
     # Cabiamos el valor del NoE.
